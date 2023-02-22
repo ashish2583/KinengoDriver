@@ -19,6 +19,7 @@ import { Rating, AirbnbRating } from 'react-native-ratings';
 import {baseUrl,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-toast-message';
+// import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MapDire from '../../component/MapDire';
 import MyMapView from '../../component/MyMapView'

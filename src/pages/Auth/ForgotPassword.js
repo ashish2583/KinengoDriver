@@ -11,7 +11,7 @@ import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { baseUrl, login, requestPostApi } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
-// import Toast from 'react-native-simple-toast'
+ 
 import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
 
