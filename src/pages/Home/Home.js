@@ -16,7 +16,7 @@ import {  useSelector, useDispatch } from 'react-redux';
 import {setCurentPosition,setBidAmount,setNotificationData,setStartAddress,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
 import { Rating, AirbnbRating } from 'react-native-ratings';
 // import MyNetinfo from '../../component/MyNetinfo'
-import {baseUrl,booking_bid_ride,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
+import {baseUrl,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -148,8 +148,9 @@ const [fuleCost, setfuleCost] = useState('');
 const [fuleModle, setfuleModle] = useState(false);
 const [My_Alert, setMy_Alert] = useState(false)
 const [alert_sms, setalert_sms] = useState('')
-const [myTime,setMytime]=useState(0)
-const [lodingTime,setlodingTime]=useState('10')
+const [time, settime] = useState(20);
+const timeCopy = useRef(20);
+const intervalID = useRef(0);
 
   useEffect( () => { 
     console.log('userdetaileuserdetaile==>>',userdetaile);
@@ -157,25 +158,41 @@ const [lodingTime,setlodingTime]=useState('10')
    
   }, [])
 
-const A=()=>{
-  for(let i=1;i<20;i++){
-   setTimeout(()=>{
-    console.log();
-  if(lodingTime!=myTime){
-     setMytime(parseInt(myTime+1))
-     setLoder(!loder)
-   console.log(myTime);
+
+  function callAutoTimer() {
+    intervalID.current = setInterval(() => {
+      settime(timeCopy.current - 1)
+      timeCopy.current = timeCopy.current - 1
+      console.log('s', timeCopy.current)
+      if (timeCopy.current <= 0) {
+        console.log('Call Function !')
+         setmodlevisual(false)
+        clearInterval(intervalID.current);
+      }
+    }, 1000);
   }
 
-},1000) 
+  const AcceptRideClick = async () => {
+    var data = {
+      "driver_id": "24",
+      "ride_id": "1",
+      "status": "0",
+      "created_date": "01-01-2023",
+      "driver_arrived_time": "09:00",
+      "ride_start_time": "09:05",
+      "ride_end_time": "11:00",
+      "payment_id": ""
+    }
+    const { responseJson, err } = await requestPostApi(driver_accept_ride_request, data, 'POST', userdetaile.token)
+    setLoading(false)
+    console.log('the res==>>', responseJson)
+    if (responseJson.headers.success == 1) {
+      props.navigation.navigate('Home2', { from: 'home' })
+    } else {
+      setalert_sms(err)
+      setMy_Alert(true)
+    }
   }
- 
-}
-
-const B=()=>{
-   A()
-  console.log(myTime);
-}
 
 
   messaging().onNotificationOpenedApp(remoteMessage => {
@@ -215,6 +232,7 @@ const B=()=>{
     if(remoteMessage.notification.title=='You have a new ride'){
   
     setmodlevisual(true)
+    callAutoTimer()
     // if(remoteMessage.notification.body!='new message'  && remoteMessage.notification.body!='Ride Cancelled By Customer'){
     // var dest_pos={latitude: parseInt(data.end_latitude), longitude: parseInt(data.end_longitude)}
     // var st_pos={latitude: parseInt(data.start_latitude), longitude: parseInt(data.start_longitude)}  
@@ -503,7 +521,9 @@ const B=()=>{
            
 <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingHorizontal:20,paddingVertical:20,borderTopLeftRadius: 30, borderTopRightRadius: 30,}}>
 <Text style={{color:Mycolors.TEXT_COLOR,fontWeight:'bold',fontSize:15}}>Please Accept Your Order</Text>
-
+          <View style={{ width: '50%', alignItems: 'flex-end', paddingHorizontal: 20, }}>
+                <Text style={{ color: Mycolors.TEXT_COLOR, fontWeight: 'bold', fontSize: 16 }}>{time}</Text>
+              </View>
             <View style={{width:30,height:30,borderRadius:15,}}>
 
             </View>
@@ -576,7 +596,8 @@ const B=()=>{
 }} onPress={()=>{
 //  getBidAmount()
 //  setBidCheck(true)
-props.navigation.navigate('Home2',{from:'home'})
+AcceptRideClick()
+// props.navigation.navigate('Home2',{from:'home'})
   }}>
 <Text style={{color:Mycolors.BG_COLOR,fontSize:13,fontWeight:'bold',marginLeft:5}}>Accept</Text>
 </TouchableOpacity>

@@ -15,6 +15,7 @@ export const auth_send_otp = 'auth/send-otp'
 export const auth_driver_signup = 'driver/signup'
 export const add_vichle = 'driver/add-vichle'
 export const driver_update_driver_location = 'driver/update-driver/location'
+export const driver_accept_ride_request=`driver/accept-ride-request`;
 
 
 export const booking_verify_ride = 'booking/verify_ride'
