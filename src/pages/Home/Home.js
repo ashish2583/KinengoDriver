@@ -25,6 +25,7 @@ import MapDire from '../../component/MapDire';
 import MyMapView from '../../component/MyMapView'
 import MyAlert from '../../component/MyAlert'
 import messaging from '@react-native-firebase/messaging';
+import SendNotification from '../../component/SendNotification';
 
 Geolocation.setRNConfiguration(GoogleApiKey); 
 Geocoder.init(GoogleApiKey);
@@ -37,7 +38,7 @@ const dispatch =  useDispatch();
 const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 const mapdata  = useSelector(state => state.maplocation)
 const userdetaile  = useSelector(state => state.user.user_details)
-const dashboard  = useSelector(state => state.user.dashdata)
+const dashboard  = useSelector(state => state.user.dashdata) 
 const mapStyle = [
   { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
   { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
@@ -150,44 +151,66 @@ const [fuleModle, setfuleModle] = useState(false);
 const [My_Alert, setMy_Alert] = useState(false)
 const [alert_sms, setalert_sms] = useState('')
 const [time, settime] = useState(20);
-const timeCopy = useRef(20);
+const timeCopy = useRef(60);
 const intervalID = useRef(0);
 
   useEffect( () => { 
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
-   
+        senNoti()
   }, [])
 
+  const senNoti= async()=>{
+    let notidata={
+        'data': {"business_address": "Sector 57, Noida, Uttar Pradesh, India", "business_name": "Nile Technologies", "lattitude": "28.608600616455078", "longitude": "77.35099792480469", "notificationType": "rederequest", "order_id": "11", "ride_id": "1"},
+        'title':'Message from kiningo driver',
+        'body': 'You have a new ride',
+       // 'token':'cxHj6Y-nQla1KsGRx3LJDJ:APA91bGkoGHr_DHvfMIycmP_b5pKmjRXY4jzfLnGUGLni4QZg5rXaHWZWBrCzyTGEMZ-c31tOIJWvM3os6b1lI-MhTt9z1o-d97lCJmnPf26fZssGQ4pQwVcoAQbN9FT579TSWC77AiV'
+       //  'token':mapdata.notificationdata.device_id 
+        'token':mapdata.devicetoken
+      }                                     
+      let result= await SendNotification.SendNotification(notidata)
+       // console.log('result')             
+    }
 
   function callAutoTimer() {
-    intervalID.current = setInterval(() => {
-      settime(timeCopy.current - 1)
-      timeCopy.current = timeCopy.current - 1
-      console.log('s', timeCopy.current)
-      if (timeCopy.current <= 0) {
-        console.log('Call Function !')
-         setmodlevisual(false)
-        clearInterval(intervalID.current);
-      }
-    }, 1000);
+    // intervalID.current = setInterval(() => {
+    //   settime(timeCopy.current - 1)
+    //   timeCopy.current = timeCopy.current - 1
+    //   console.log('s', timeCopy.current)
+    //   if (timeCopy.current <= 0 && timeCopy.current >= -1) {
+    //     console.log('Call Function !')
+    //       setmodlevisual(false)
+    //     clearInterval(intervalID.current);
+    //   }
+    // }, 1000);
   }
-
-  const AcceptRideClick = async () => {
+  
+ 
+       const AcceptRideClick = async () => {
+    // props.navigation.navigate('Home2', { from: 'home' })
     var data = {
-      "driver_id": "24",
-      "ride_id": "1",
-      "status": "0",
-      "created_date": "01-01-2023",
-      "driver_arrived_time": "09:00",
-      "ride_start_time": "09:05",
-      "ride_end_time": "11:00",
+      "driver_id": userdetaile.userid,
+      "ride_id": mapdata.notificationdata.ride_id,
+      "status": "1",
+      "created_date": "",
+      "driver_arrived_time": "",
+      "ride_start_time": "",
+      "ride_end_time": "",
       "payment_id": ""
     }
     const { responseJson, err } = await requestPostApi(driver_accept_ride_request, data, 'POST', userdetaile.token)
     setLoading(false)
     console.log('the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
+      dispatch(setNotificationData(responseJson.body))
+      var sp1=parseFloat(responseJson.body.lattitude) 
+      var sp2=parseFloat(responseJson.body.longitude) 
+      var dp1=parseFloat(responseJson.body.destination_lat) 
+      var dp2=parseFloat(responseJson.body.destination_long) 
+      console.log('eeeeeeeeeeeeeeee',{ latitude: sp1, longitude: sp2});
+      dispatch(setStartPosition({ latitude: sp1, longitude: sp2}))
+      dispatch(setDestnationPosition({ latitude: dp1, longitude: dp2}))
       props.navigation.navigate('Home2', { from: 'home' })
     } else {
       setalert_sms(err)
@@ -200,9 +223,8 @@ const intervalID = useRef(0);
     const data = remoteMessage.data
     console.log('Notification caused app to open from background state:',remoteMessage)
     if(remoteMessage.notification.body=='You have a new ride'){
-      // checkRideStatus(remoteMessage.data.ride_id)
-      dispatch(setDestnationAddress(data.end_location))
-      dispatch(setStartAddress(data.start_location))
+     // dispatch(setDestnationAddress(data.business_address))
+     // dispatch(setStartAddress(data.start_location))
       dispatch(setNotificationData(data))
       // resetStacks('Home2')
     }
@@ -218,8 +240,8 @@ const intervalID = useRef(0);
         const data = remoteMessage.data
         console.log('Home Notification==>>',remoteMessage)
         if(remoteMessage.notification.body=='You have a new ride'){
-          dispatch(setDestnationAddress(data.end_location))
-          dispatch(setStartAddress(data.start_location))
+         // dispatch(setDestnationAddress(data.business_address))
+         // dispatch(setStartAddress(data.start_location))
           dispatch(setNotificationData(data))
           // resetStacks('Home2')
         }
@@ -229,18 +251,25 @@ const intervalID = useRef(0);
   messaging().onMessage(async remoteMessage => {
   const data = remoteMessage.data
   console.log('Home Notification==>>',remoteMessage)
-  // if(remoteMessage.notification.body=='You have a new ride'){
-    if(remoteMessage.notification.title=='You have a new ride'){
+  if(remoteMessage.notification.body=='You have a new ride'){
+    // {"collapseKey": "com.kinengodriver", 
+    // "data": {"business_address": "Sector 57, Noida, Uttar Pradesh, India",
+    //  "business_name": "Nile Technologies", 
+    //  "lattitude": "28.608600616455078", "longitude": "77.35099792480469",
+    //   "notificationType": "riderequest", "order_id": "11", "ride_id": "3"},
+    //   "from": "984454687422", "messageId": "0:1677066019102075%2e068bdc2e068bdc", 
+    //   "notification": {"android": {"sound": "default"}, "body": "You have a new ride",
+    //    "title": "KinenGo"}, "sentTime": 1677066019083, "ttl": 2419200}
   
     setmodlevisual(true)
     callAutoTimer()
     // if(remoteMessage.notification.body!='new message'  && remoteMessage.notification.body!='Ride Cancelled By Customer'){
     // var dest_pos={latitude: parseInt(data.end_latitude), longitude: parseInt(data.end_longitude)}
     // var st_pos={latitude: parseInt(data.start_latitude), longitude: parseInt(data.start_longitude)}  
-    dispatch(setDestnationAddress(data.end_location))
+  //  dispatch(setDestnationAddress(data.business_address))
     // dispatch(setDestnationPosition(dest_pos))
     // dispatch(setStartPosition(st_pos))
-    dispatch(setStartAddress(data.start_location))
+   // dispatch(setStartAddress(data.start_location))
     dispatch(setNotificationData(data))
     // resetStacks('Home2')
   }else if(remoteMessage.notification.body=='new message'){
@@ -564,13 +593,10 @@ const intervalID = useRef(0);
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, fontWeight: '600', }}>Order Pickup Location</Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>dtv varanasi</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>{mapdata.notificationdata.business_address}</Text>
            </View>
           </View>
 </View>
-
-
-
 
 
         </View>

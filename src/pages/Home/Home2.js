@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, FlatList, TouchableOpacity, Platform, Alert, PermissionsAndroid, ScrollView ,Keyboard} from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView,Linking, TextInput, FlatList, TouchableOpacity, Platform, Alert, PermissionsAndroid, ScrollView ,Keyboard} from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline, AnimatedRegion, Animated } from 'react-native-maps';
 import { Mycolors, dimensions } from '../../utility/Mycolors';
 import Geolocation from "react-native-geolocation-service";
@@ -179,11 +179,23 @@ const setDriverLocation=(id,location,angle)=>{
     });
   }
   
+  const dialCall = (num) => {
+    let phoneNumber = '';
+ 
+    if (Platform.OS === 'android') {
+      phoneNumber = 'tel:${'+num+'}';
+    }
+    else {
+      phoneNumber = 'telprompt:${'+num+'}';
+    }
+    Linking.openURL(phoneNumber);
+  };
 
   const myposition = () => {
     Geolocation.getCurrentPosition(
       position => {
         let My_cord = { latitude: position.coords.latitude, longitude: position.coords.longitude }
+      //  console.log('asdfggh',My_cord);
         setCurentCord(My_cord)
         setangle(position.coords.heading)
         setmyReson({
@@ -192,8 +204,8 @@ const setDriverLocation=(id,location,angle)=>{
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         })
+        dispatch(setCurentPosition(My_cord))
        setDriverLocation(userdetaile.userid.toString(),My_cord,position.coords.heading)
-        console.log('The curent popsition is',position);
       },
       error => {
         console.log('The curent error is',error);
@@ -292,16 +304,14 @@ const resetStacks=(page)=>{
    
     </View>
 
-
-
     <View style={{borderRadius:15,marginTop:10,backgroundColor:'#fff',shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowOffset: { width:0, height:3}, shadowRadius: 5,shadowOpacity: 1.0,justifyContent: 'center',
     elevation: 5,width:'100%',padding:15}}>
         
         <View style={{width:'100%',height:50,flexDirection:'row',justifyContent:'space-between'}}>
-<View>
+   <View>
   <Text style={{color:Mycolors.TEXT_COLOR,fontSize:14,fontWeight:'600'}}>Order number</Text>
-  <Text style={{color:Mycolors.ORANGE,fontSize:13,marginTop:3}}>JHF8983878446</Text>
+  <Text style={{color:Mycolors.ORANGE,fontSize:13,marginTop:3}}>{mapdata.notificationdata.id}</Text>
 </View>
 <View>
   <Text style={{color:Mycolors.TEXT_COLOR,fontSize:14,fontWeight:'600'}}>Job Status</Text>
@@ -317,10 +327,10 @@ const resetStacks=(page)=>{
 <Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>4.5</Text>
 </View>
 
-<Text style={{fontSize:14,color:Mycolors.TEXT_COLOR,textAlign:'center',fontWeight:'600',marginTop:5}}>Georie's Local</Text>
+<Text style={{fontSize:14,color:Mycolors.TEXT_COLOR,textAlign:'center',fontWeight:'600',marginTop:5}}>{mapdata.notificationdata.business_name}</Text>
 <View style={{flexDirection:'row',marginTop:10,alignSelf:'center'}}>
 <Text style={{fontSize:13,color:Mycolors.TEXT_COLOR,fontWeight:'600'}}>Address: </Text>
-<Text style={{fontSize:13,color:Mycolors.GrayColor,}}>Dallipur Tari Varanasi,UP,India</Text>
+<Text style={{fontSize:13,color:Mycolors.GrayColor,}}>{mapdata.notificationdata.address}</Text>
 <Image source={require('../../assets/layer_9.png')} style={{width:9,height:12,alignSelf:'center',left:5}}></Image>
 </View>
 
@@ -329,12 +339,12 @@ const resetStacks=(page)=>{
 img={require('../../assets/Envelope.png')}imgleft={10} imgheight={20} imgwidth={20} tit2left={10}
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.ORANGE} fontWeight={'500'} fontSize={13} marginVertical={10}/>
  
- <MyButtons title2="Call Restaurant" height={30} width={'45%'} borderRadius={5} press={()=>{}} 
+ <MyButtons title2="Call Restaurant" height={30} width={'45%'} borderRadius={5} press={()=>{
+  dialCall(mapdata.notificationdata.business_phone)
+ }} 
 img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} tit2left={10}
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN} fontWeight={'500'} fontSize={13} marginVertical={10}/>
- 
 </View>
-
 
         <View style={{width:'100%',flexDirection:'row',marginTop:10}}>
             <View>
@@ -349,20 +359,32 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
         </View>
 
         <View style={{width:'100%',flexDirection:'row',marginTop:25}}>
-            <View>
-              <Image source={require('../../assets/images/Ellipse.png')} style={{ width: 50, height: 50, top: -2, }}></Image>
-            </View>
-            <View style={{width:dimensions.SCREEN_WIDTH-100,left:16}}>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>Spicy Momos</Text>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, fontWeight: '600',marginVertical:5 }}>$19.89</Text>
-           <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Est Time: 09 mins</Text>
-           </View>
-          </View>
+
+        {/* {mapdata.notificationdata.items !=undefined  ?
+          mapdata.notificationdata.items.map((item, index) => {
+              return (
+                <>
+                  <View>
+                  <Image source={{uri:baseUrl+item.product_image} } style={{ width: 50, height: 50, top: -2, }}></Image>
+                  </View>
+                  <View style={{width:dimensions.SCREEN_WIDTH-100,left:16}}>
+                  <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>{item.product_name}</Text>
+                  <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, fontWeight: '600',marginVertical:5 }}>$ {item.item_total}</Text>
+                  <View style={{flexDirection:'row'}} >
+                  <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Est Time: 09 mins</Text>
+                  </View>
+                  </View>
+                </>
+              )
+            }
+            )
+            : null
+        } */}
+
+            
         </View>
    
     </View>
-
 
     <View style={{borderRadius:15,marginTop:10,backgroundColor:'#fff',shadowColor: 'rgba(0, 0, 0, 0.5)',
     shadowOffset: { width:0, height:3}, shadowRadius: 5,shadowOpacity: 1.0,justifyContent: 'center',
@@ -372,7 +394,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
 <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingHorizontal:15,paddingVertical:15,}}>
 <View style={{height:30,borderRadius:15,flexDirection:'row',alignItems:'center',}}>
 <Image source={require('../../assets/images/profileimg.png')} style={{ width: 30, height: 30, top: 5,left:3 }}></Image>
-<Text style={{color:Mycolors.TEXT_COLOR,fontWeight:'bold',fontSize:14,top:4,left:9}}>Jane Doe</Text>
+<Text style={{color:Mycolors.TEXT_COLOR,fontWeight:'bold',fontSize:14,top:4,left:9}}>{mapdata.notificationdata.user_name}</Text>
             </View>
 
 <View style={{height:39,width:80, borderRadius:15,flexDirection:'row',justifyContent:'space-between'}}>
@@ -380,7 +402,10 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
 img={require('../../assets/Envelope.png')} imgheight={20} imgwidth={20}
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.ORANGE}  />
  
-<MyButtons height={35} width={35} borderRadius={5} press={()=>{}} 
+<MyButtons height={35} width={35} borderRadius={5} press={()=>{
+dialCall(mapdata.notificationdata.phone)
+
+}} 
 img={require('../../assets/call.png')} imgheight={20} imgwidth={20} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN}   />
  
@@ -422,7 +447,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, }}>Order Pickup Location</Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>dtv varanasi</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>{mapdata.notificationdata.address}</Text>
            </View>
           </View>
 </View>
@@ -445,19 +470,19 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
 
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>Order Amount</Text>
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, }}>$19.89</Text>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, }}>$ {mapdata.notificationdata.paid_amount}</Text>
 </View>
 
 <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:8}}>
 <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>Tip Amount</Text>
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, }}>$1.89</Text>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, }}>$ 0</Text>
 </View>
 
 <View style={{ width: '100%', height: 0.9, backgroundColor: '#fee1be',marginTop:10}} />
 
 <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:8}}>
 <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13,fontWeight:'600'}}>Total Amount</Text>
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13,fontWeight:'600' }}>$1.89</Text>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13,fontWeight:'600' }}>$ {mapdata.notificationdata.paid_amount}</Text>
 </View>
 
 
@@ -468,10 +493,10 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, }}>Payment Status:: </Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Amount Paid $20.89 via online</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Amount Paid $ {mapdata.notificationdata.paid_amount} via online</Text>
            </View>
           </View>
-</View>
+</View> 
 
       </View>
 
