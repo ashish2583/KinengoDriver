@@ -110,7 +110,7 @@ const mapStyle = [
           customMapStyle={mapStyle}
           showsUserLocation={true}
           userLocationCalloutEnabled={true}
-          showsMyLocationButton={Platform.OS=='android'?false:true}
+          showsMyLocationButton={true}
           mapPadding={{ top: 0, right: 0, bottom:props.modlevisual ? props.modleHeight : 0, left: 0 }}
           showsScale={true}
           mapType={props.mapType}
@@ -121,18 +121,20 @@ const mapStyle = [
           showsIndoors={true}
           showsIndoorLevelPicker={true}
           onRegionChange={data=>props.onRegionChange ? props.onRegionChange(data) : null}
+          rotateEnabled={true}
+       
         >
       {props.markAPos ?
         <Marker
         coordinate={props.markAPos}
-        image={props.imageA ? props.imageA : null}
+        // image={props.imageA ? props.imageA : null}
         >
-         {/* <Image
+         <Image
                 source={props.imageA}
                 style={{width: 26, height: 28,
                   }}
                 resizeMode="contain"
-               />  */}
+               /> 
           </Marker>
        : 
        null
@@ -140,14 +142,14 @@ const mapStyle = [
      {props.markBPos ?
         <Marker
         coordinate={props.markBPos}
-        image={props.imageB ? props.imageB : null}
+        // image={props.imageB ? props.imageB : null}
           >
-                {/* <Image
+                <Image
                 source={props.imageB}
                 style={{width: 26, height: 28,
                   }}
                 resizeMode="contain"
-               />  */}
+               /> 
             </Marker>
        :
        null

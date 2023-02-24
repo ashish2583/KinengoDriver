@@ -14,7 +14,7 @@ import {CodeField,Cursor,useBlurOnFulfill,useClearByFocusCell,} from 'react-nati
 import {baseUrl,booking_start_ride,booking_verify_ride,driver_logout,booking_cancel_ride,requestGetApi,requestPostApi} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
-// import MyMapView from '../../component/MyMapView'
+ import MyMapView from '../../component/MyMapView'
 // import firestore from '@react-native-firebase/firestore'
 // import openMap from 'react-native-open-maps';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -58,6 +58,7 @@ const Home3 = (props) => {
       })
      
       useEffect(()=>{
+        console.log('hello ashish kumar verma',mapdata.startPosition);
         setmyReson({
           latitude: mapdata.startPosition.latitude, 
           longitude: mapdata.startPosition.longitude,
@@ -69,29 +70,32 @@ const Home3 = (props) => {
     },[])
 
 
+
     return(
     <SafeAreaView style={styles.container}>
 
-  {/* <View style={styles.mymapcontainer}>
+  <View style={styles.mymapcontainer}>
   <MyMapView
-  latitude={mapdata.startPosition.latitude}
-  longitude={mapdata.startPosition.longitude}
+  latitude={mapdata.curentPosition.latitude}
+  longitude={mapdata.curentPosition.longitude}
   mapType={mtype}
   modlevisual={modlevisual}
   modleHeight={290}  
-  markAPos={mapdata.curentCord}
+  markAPos={mapdata.curentPosition}
   markBPos={mapdata.startPosition}
   // mapDirectionOrigin={mapdata.startPosition}
   // mapDirectionDest={mapdata.destnationPosition}
-  mapDirectionOrigin={mapdata.curentCord}
+  mapDirectionOrigin={mapdata.curentPosition}
   mapDirectionDest={mapdata.startPosition}
   imageA={require('../../assets/MapPin.png')}
   imageB={require('../../assets/MapPin.png')}
-  region={myreson}
-  onRegionChange={(dd)=>{myresonChange(dd)} }
+  // region={myreson}
+  onRegionChange={(dd)=>{
+    // myresonChange(dd)
+    } }
    />
 
-   </View> */}
+   </View>
 
 <SafeAreaView>
   <TouchableOpacity style={{width:40,height:40,borderRadius:5,backgroundColor:'#fff',position:'absolute',left:15,top:15,justifyContent:'center'}}
