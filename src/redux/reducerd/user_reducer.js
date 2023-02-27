@@ -14,7 +14,7 @@ const initialState = {
     corp_user:null,
     dashdata:'',
     auth_token:null,
-    wallet_detail:{}
+    wallet_detail:null
 }
 
 
