@@ -6,7 +6,7 @@ import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
+import { setWalletDetails } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { baseUrl, driver_transaction, driver_earning, requestGetApi, requestPostApi } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
