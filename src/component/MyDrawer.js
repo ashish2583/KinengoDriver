@@ -75,9 +75,9 @@ const MyView=(props)=>{
 </View>
 
 <View style={{marginTop:25,alignSelf:'center',}}>
-<View style={{width:80,height:80,borderRadius:40,borderColor:Mycolors.BG_COLOR,borderWidth:3,alignSelf:'center'}}>
+<TouchableOpacity onPress={()=>{props.navigation.navigate('Myprofile')}} style={{width:80,height:80,borderRadius:40,borderColor:Mycolors.BG_COLOR,borderWidth:3,alignSelf:'center'}}>
 <Image source={{ uri: person_Image }} style={{width:'100%',height:'100%',alignSelf:'center',borderRadius:40}}></Image>
-</View>
+</TouchableOpacity>
 <View style={{alignSelf:'center'}}>
 <Text style={{color:Mycolors.BG_COLOR,fontSize:14,fontWeight:'600',textAlign:'center',marginTop:15}}>{name}</Text>
 <Text style={{color:Mycolors.BG_COLOR,fontSize:13,textAlign:'center',marginVertical:10}}>robert.fox@example.com</Text>

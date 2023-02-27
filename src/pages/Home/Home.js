@@ -150,7 +150,7 @@ const [fuleCost, setfuleCost] = useState('');
 const [fuleModle, setfuleModle] = useState(false);
 const [My_Alert, setMy_Alert] = useState(false)
 const [alert_sms, setalert_sms] = useState('')
-const [time, settime] = useState(20);
+const [time, settime] = useState(60);
 const timeCopy = useRef(60);
 const intervalID = useRef(0);
 
@@ -174,16 +174,16 @@ const intervalID = useRef(0);
     }
 
   function callAutoTimer() {
-    // intervalID.current = setInterval(() => {
-    //   settime(timeCopy.current - 1)
-    //   timeCopy.current = timeCopy.current - 1
-    //   console.log('s', timeCopy.current)
-    //   if (timeCopy.current <= 0 && timeCopy.current >= -1) {
-    //     console.log('Call Function !')
-    //       setmodlevisual(false)
-    //     clearInterval(intervalID.current);
-    //   }
-    // }, 1000);
+    intervalID.current = setInterval(() => {
+      settime(timeCopy.current - 1)
+      timeCopy.current = timeCopy.current - 1
+      console.log('s', timeCopy.current)
+      if (timeCopy.current <= 0 && timeCopy.current >= -1) {
+        console.log('Call Function !')
+          setmodlevisual(false)
+        clearInterval(intervalID.current);
+      }
+    }, 1000);
   }
   
  
