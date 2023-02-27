@@ -22,6 +22,7 @@ const MonyTransfer = (props) => {
   const[select1,setselect1]=useState('1')
   const[select2,setselect2]=useState('1')
   const [amount, setAmount] = useState('')
+  const [totalAmount, setTotalAmount] = useState('')
    const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
   useEffect( () => {
@@ -41,6 +42,7 @@ const MonyTransfer = (props) => {
       setLoading(false);
       console.log("updateWalletData the res==>>", responseJson);
       if (responseJson.headers.success == 1) {
+        setTotalAmount(responseJson.body.total)
         dispatch(setWalletDetails(responseJson.body.total))
       } else {
       }
@@ -102,7 +104,7 @@ const MonyTransfer = (props) => {
 <View style={{width:'92%',height:125,alignSelf:'center'}}>
 <Image source={require('../../assets/TotalEarningsfrom.png')} style={{ width: '100%', height: '100%'}} />
 <View style={{position:'absolute',top:'40%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>$2345</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${totalAmount}</Text>
 </View>
 <View style={{position:'absolute',top:'40%',right:30}}>
 <Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}} onPress={()=>{props.navigation.navigate('TransectionHistory')}}>History</Text>
