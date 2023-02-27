@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, driver_transaction, driver_earning_userid, requestGetApi, requestPostApi } from '../../WebApi/Service'
+import { baseUrl, driver_transaction, driver_earning, requestGetApi, requestPostApi } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
@@ -33,7 +33,7 @@ const MonyTransfer = (props) => {
     // const endPoint = `${driver_earning}/userid/${userdetaile?.driver_id}`
     try {
       const { responseJson, err } = await requestGetApi(
-        driver_earning_userid+userdetaile.driver_id,
+        driver_earning,
         '',
         "GET",
         userdetaile.token
@@ -41,7 +41,7 @@ const MonyTransfer = (props) => {
       setLoading(false);
       console.log("updateWalletData the res==>>", responseJson);
       if (responseJson.headers.success == 1) {
-        // dispatch(setWalletDetails())
+        dispatch(setWalletDetails(responseJson.body.total))
       } else {
       }
     } catch (error) {

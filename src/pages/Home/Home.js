@@ -17,7 +17,7 @@ import {setCurentPosition,setBidAmount,setNotificationData,setStartAddress,setDr
 import {setWalletDetails} from '../../redux/actions/user_action';
 import { Rating, AirbnbRating } from 'react-native-ratings';
 // import MyNetinfo from '../../component/MyNetinfo'
-import {baseUrl,driver_earning_userid,driver_ride_check_status,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
+import {baseUrl,driver_earning,driver_ride_check_status,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-toast-message';
 // import Toast from 'react-native-toast-message';
@@ -169,7 +169,7 @@ const intervalID = useRef(0);
     // const endPoint = `${driver_earning}/userid/${userdetaile?.driver_id}`
     try {
       const { responseJson, err } = await requestGetApi(
-        driver_earning_userid+userdetaile.driver_id,
+        driver_earning,
         '',
         "GET",
         userdetaile.token
@@ -177,7 +177,7 @@ const intervalID = useRef(0);
       setLoading(false);
       console.log("updateWalletData the res==>>", responseJson);
       if (responseJson.headers.success == 1) {
-        // dispatch(setWalletDetails())
+        dispatch(setWalletDetails(responseJson.body.total))
       } else {
       }
     } catch (error) {

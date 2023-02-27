@@ -20,7 +20,7 @@ export const driver_ride_status = 'driver/ride-status'
 export const driver_ride_check_status = 'driver/check-driver-status'
 export const driver_current_status = 'driver/current-status/id/'
 export const driver_transaction = 'driver/transaction'
-export const driver_earning_userid = 'driver/earning/userid/'
+export const driver_earning = 'driver/earning/'
 
 
 
