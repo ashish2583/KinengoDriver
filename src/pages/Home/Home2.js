@@ -8,9 +8,9 @@ import MapViewDirections from 'react-native-maps-directions';
 import { GoogleApiKey } from '../../WebApi/GoogleApiKey';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {  useSelector, useDispatch } from 'react-redux';
-import {setCurentPosition,setBidAmount,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
+import {setCurentPosition,setDriverRideStatus,setNotificationData,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
 import { Rating, AirbnbRating } from 'react-native-ratings';
-import {baseUrl,booking_bid_ride,booking_get_bid_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
+import {baseUrl,driver_ride_status,booking_get_bid_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 import HomeHeader from '../../component/HomeHeader';
 import MyAlert from '../../component/MyAlert'
@@ -137,10 +137,14 @@ const Home2 = (props) => {
   const [dateopen, setDateOpen] = useState(false);
   const [datevalue, setDateValue] = useState(null);
   const [ridedate, setRideDate] = useState([
-    {label: 'select Job Status', value: '00'},
-    {label: 'Ongoing', value: '05'}, 
-    {label: 'On Hold', value: '10'},
-    {label: 'Not recived', value: '15'},
+    {label: 'select Job Status', value: ''},
+    {label: 'On going', value: '0'}, 
+    {label: 'Food is not prepared', value: '4'},
+    {label: 'Waiting at restorent', value: '3'},
+    {label: 'On Hold', value: '5'},
+    {label: 'Cancel', value: '1'},
+    {label: 'Not recived', value: '6'},
+    {label: 'Delivered', value: '2'},
   ]);
   const [watch,setWatch]=useState('1')
   const [curentCord,setCurentCord]=useState({
@@ -148,11 +152,55 @@ const Home2 = (props) => {
     longitude: 83.7454171,
   })
   const [angle,setangle]=useState(45)
+  const [drvRideStatus,setdrvRideStatus]=useState('')
   useEffect(() => {
     frist()
-
+// setDateValue(mapdata.driverridestatus)
+  statusLable()
   }, [])
  
+const statusLable=()=>{
+  if(mapdata.driverridestatus==0){
+    setdrvRideStatus('On going')
+  }else if(mapdata.driverridestatus==1){
+    setdrvRideStatus('Cancel')
+  }else if(mapdata.driverridestatus==2){
+    setdrvRideStatus('Delivered')
+  }else if(mapdata.driverridestatus==3){
+    setdrvRideStatus('Waiting at restorent')
+  }else if(mapdata.driverridestatus==4){
+    setdrvRideStatus('Food is not prepared')
+  }else if(mapdata.driverridestatus==5){
+    setdrvRideStatus('On Hold')
+  }else if(mapdata.driverridestatus==6){
+    setdrvRideStatus('Not recived')
+  }else{
+    setdrvRideStatus('')
+  }
+}
+
+  const ChangeRideStatus = async (val) => {
+    var data = {
+      "driver_id": userdetaile.driver_id,
+      "ride_id": mapdata.notificationdata.ride_id,
+      "status": val,
+    }
+    const { responseJson, err } = await requestPostApi(driver_ride_status, data, 'POST', userdetaile.token)
+    setLoading(false)
+    console.log('the res==>>', responseJson)
+    if (responseJson.headers.success == 1) {
+      dispatch(setDriverRideStatus(val)) 
+      setDateValue(val)
+      statusLable()
+      setmodlevisual(false)
+    } else {
+      setalert_sms(err)
+      setMy_Alert(true)
+    }
+  }
+
+
+
   const frist=()=>{
     if(watch=='1'){
       myposition()
@@ -205,7 +253,7 @@ const setDriverLocation=(id,location,angle)=>{
           longitudeDelta: 0.0421,
         })
         dispatch(setCurentPosition(My_cord))
-       setDriverLocation(userdetaile.userid.toString(),My_cord,position.coords.heading)
+       setDriverLocation(userdetaile.driver_id.toString(),My_cord,position.coords.heading)
       },
       error => {
         console.log('The curent error is',error);
@@ -268,7 +316,7 @@ const resetStacks=(page)=>{
     <Toggle
   value={toggleValue}
   onPress={(newState) => {
-    setToggleValue(newState)
+    // setToggleValue(newState)
     console.log(newState);
   }}
   //  leftTitle="Veg"
@@ -315,7 +363,7 @@ const resetStacks=(page)=>{
 </View>
 <View>
   <Text style={{color:Mycolors.TEXT_COLOR,fontSize:14,fontWeight:'600'}}>Job Status</Text>
-  <Text style={{color:Mycolors.ORANGE,fontSize:13,marginTop:3}} onPress={()=>{setmodlevisual(true)}}>Ongoing </Text>
+  <Text style={{color:Mycolors.ORANGE,fontSize:13,marginTop:3}} onPress={()=>{setmodlevisual(true)}}>{drvRideStatus} </Text>
 </View>
 </View>
 
@@ -404,7 +452,6 @@ img={require('../../assets/Envelope.png')} imgheight={20} imgwidth={20}
  
 <MyButtons height={35} width={35} borderRadius={5} press={()=>{
 dialCall(mapdata.notificationdata.phone)
-
 }} 
 img={require('../../assets/call.png')} imgheight={20} imgwidth={20} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN}   />
@@ -533,9 +580,10 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
     setItems={(i)=>{setRideDate(i)}}
     placeholder="Select Status"
     onChangeValue={(value) => {
+      ChangeRideStatus(value)
       setDateValue(value)
-     
     }} 
+    listMode="MODAL"
     placeholderStyle={{
       color: Mycolors.TEXT_COLOR,
       // fontWeight: "bold"

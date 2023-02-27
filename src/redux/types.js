@@ -52,3 +52,6 @@ export const DASHDATA = "DASHDATA";
 
 export const AUTHTOKEN = "AUTHTOKEN";
 
+export const DRVRIDESTATUS = "DRVRIDESTATUS"; 
+
+

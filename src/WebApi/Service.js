@@ -16,11 +16,12 @@ export const auth_driver_signup = 'driver/signup'
 export const add_vichle = 'driver/add-vichle'
 export const driver_update_driver_location = 'driver/update-driver/location'
 export const driver_accept_ride_request=`driver/accept-ride-request`;
+export const driver_ride_status = 'driver/ride-status'
+export const driver_ride_check_status = 'driver/check-driver-status'
+export const driver_current_status = 'driver/current-status/id/'
 
 
-export const booking_verify_ride = 'booking/verify_ride'
-export const booking_cancel_ride = 'booking/cancel_ride'
-export const driver_current_location = 'driver/current_location'
+
 export const booking_ride_status = 'booking/ride_status'
 export const GET_QUESTIONS=`common/driver_questions`;
 export const GET_CAR_BRANDS=`common/vehicle_brand`;

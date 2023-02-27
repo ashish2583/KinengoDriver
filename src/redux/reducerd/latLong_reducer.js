@@ -13,7 +13,8 @@ const initialState = {
     notify:false,
     notificationdata:'',
     messagecount:0,
-    bidamount:''
+    bidamount:'',
+    driverridestatus:'0'
 }
 
 
@@ -60,6 +61,11 @@ export default (state = initialState ,action) => {
            return{
                ...state ,
                notify : action.notify,
+           }
+           case types.DRVRIDESTATUS :
+           return{
+               ...state ,
+               driverridestatus : action.driverridestatus,
            }
            case types.NOTIFICATIONDATA :
            return{

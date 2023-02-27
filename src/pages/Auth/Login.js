@@ -43,7 +43,7 @@ const Login = (props) => {
       setLoading(true)
       var data={
         "phone": mobile,
-        "device_id": "Acghvhhjv67bjkhln67vIvg778bhjcycD"
+        "device_id": mapdata.devicetoken
           }
       const { responseJson, err } = await requestPostApi(login, data, 'POST', '')
       setLoading(false)

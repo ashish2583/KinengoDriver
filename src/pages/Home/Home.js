@@ -13,10 +13,10 @@ import MapViewDirections from 'react-native-maps-directions';
 import { GoogleApiKey } from '../../WebApi/GoogleApiKey';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {  useSelector, useDispatch } from 'react-redux';
-import {setCurentPosition,setBidAmount,setNotificationData,setStartAddress,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
+import {setCurentPosition,setBidAmount,setNotificationData,setStartAddress,setDriverRideStatus,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
 import { Rating, AirbnbRating } from 'react-native-ratings';
 // import MyNetinfo from '../../component/MyNetinfo'
-import {baseUrl,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
+import {baseUrl,driver_ride_check_status,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-toast-message';
 // import Toast from 'react-native-toast-message';
@@ -33,7 +33,7 @@ const Home = (props) => {
  
 const [homeList,setHomeList]=useState([{id:'1',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'},{id:'2',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'},{id:'3',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'}])
 const [searchValue,setsearchValue]=useState('')
-const [toggleValue, setToggleValue] = useState(false);
+const [toggleValue, setToggleValue] = useState(true);
 const dispatch =  useDispatch();
 const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 const mapdata  = useSelector(state => state.maplocation)
@@ -157,7 +157,9 @@ const intervalID = useRef(0);
   useEffect( () => { 
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
-        senNoti()
+        //  senNoti()
+      checkStatus()
+       OnOff('1')
   }, [])
 
   const senNoti= async()=>{
@@ -172,7 +174,6 @@ const intervalID = useRef(0);
       let result= await SendNotification.SendNotification(notidata)
        // console.log('result')             
     }
-
   function callAutoTimer() {
     // intervalID.current = setInterval(() => {
     //   settime(timeCopy.current - 1)
@@ -186,19 +187,48 @@ const intervalID = useRef(0);
     // }, 1000);
   }
   
- 
-       const AcceptRideClick = async () => {
+  const checkStatus = async () => {
+    var data = {
+      "driver_id": userdetaile.driver_id,
+        }
+    setLoading(true)
+    const { responseJson, err } = await requestPostApi(driver_ride_check_status, data, 'POST', userdetaile.token)
+    setLoading(false)
+    console.log('the res checkStatus ==>>', responseJson)
+    if (responseJson.headers.success == 1) {
+     dispatch(setDriverRideStatus(responseJson.body.driver_ride_status)) 
+      if (responseJson.body.driver_ride_status != 2) {
+      dispatch(setNotificationData(responseJson.body.orderData))
+      var sp1=parseFloat(responseJson.body.orderData.lattitude) 
+      var sp2=parseFloat(responseJson.body.orderData.longitude) 
+      var dp1=parseFloat(responseJson.body.orderData.destination_lat) 
+      var dp2=parseFloat(responseJson.body.orderData.destination_long) 
+      console.log('eeeeeeeeeeeeeeee',{ latitude: sp1, longitude: sp2});
+      dispatch(setStartPosition({ latitude: sp1, longitude: sp2}))
+      dispatch(setDestnationPosition({ latitude: dp1, longitude: dp2}))
+      props.navigation.navigate('Home2', { from: 'home' })
+      }
+      
+
+    } else {
+      setalert_sms(err)
+      setMy_Alert(true)
+    }
+  }
+
+   const AcceptRideClick = async () => {
     // props.navigation.navigate('Home2', { from: 'home' })
     var data = {
-      "driver_id": userdetaile.userid,
+      "driver_id": userdetaile.driver_id,
       "ride_id": mapdata.notificationdata.ride_id,
-      "status": "1",
+      "status": "0",
       "created_date": "",
       "driver_arrived_time": "",
       "ride_start_time": "",
       "ride_end_time": "",
       "payment_id": ""
     }
+    setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_accept_ride_request, data, 'POST', userdetaile.token)
     setLoading(false)
     console.log('the res==>>', responseJson)
@@ -216,7 +246,7 @@ const intervalID = useRef(0);
       setalert_sms(err)
       setMy_Alert(true)
     }
-  }
+          }
 
 
   messaging().onNotificationOpenedApp(remoteMessage => {
@@ -282,7 +312,7 @@ const intervalID = useRef(0);
     var data = {
       "on_duty": flex
        }
-    const { responseJson, err } = await requestPostApi(driver_current_status+userdetaile.userid, data, 'PUT', userdetaile.token)
+    const { responseJson, err } = await requestPostApi(driver_current_status+userdetaile.driver_id, data, 'PUT', userdetaile.token)
     setLoading(false)
     console.log('the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
@@ -296,7 +326,7 @@ const intervalID = useRef(0);
   const UpdateLocation = async (datas,add) => {
       setLoading(true)
       var data = {
-        "id": userdetaile.userid,
+        "id": userdetaile.driver_id,
         "latitude": datas.latitude,
         "longitude":datas.longitude,
         "address" : add
@@ -437,7 +467,7 @@ const intervalID = useRef(0);
     <Toggle
   value={toggleValue}
   onPress={(newState) => {
-    OnOff(newState? 1 : 0)
+    OnOff(newState? 0 : 1)
     setToggleValue(newState)
     console.log(newState);
   }}

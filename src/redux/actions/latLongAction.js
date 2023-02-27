@@ -75,3 +75,10 @@ export const setBidAmount = (data) => {
         bidamount:data
     }
 }
+
+export const setDriverRideStatus = (data) => {
+    return {
+        type:types.DRVRIDESTATUS,
+        driverridestatus:data
+    }
+}
