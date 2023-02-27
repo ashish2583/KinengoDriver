@@ -8,124 +8,90 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, login, requestPostApi } from '../../WebApi/Service'
+import { baseUrl, driver_transaction, driver_earning_userid, requestGetApi, requestPostApi } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
+import moment from 'moment';
 
 const MonyTransfer = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
-  const mapdata = useSelector(state => state.maplocation)
-  const [email, setemail] = useState('')
-  const [pass, setpass] = useState('')
+  const userdetaile  = useSelector(state => state.user.user_details)
   const[select1,setselect1]=useState('1')
   const[select2,setselect2]=useState('1')
+  const [amount, setAmount] = useState('')
    const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
-  const [upData,setupData]=useState([
-    {
-      id: '1',
-      title: 'Hair Cut',
-      desc:'',
-      time:'10:00AM',
-      
-    },
-    {
-      id: '2',
-      title: 'Shaving',
-      desc:'',
-      time:'10:30AM',
-      
-    },
-    {
-      id: '3',
-      title: 'Facial',
-      desc:'',
-      time:'11:00AM',
-      
-    },
-    {
-      id: '4',
-      title: 'Hair Color',
-      desc:'',
-      time:'11:30AM',
-      
-    },
-    {
-      id: '5',
-      title: 'Hair wash',
-      desc:'',
-      time:'12:00PM',
-      
-    },
-    {
-      id: '6',
-      title: 'Beard style',
-      desc:'',
-      time:'12:30PM',
-      
-    },
-    {
-      id: '7',
-      title: 'Facial',
-      desc:'',
-      time:'01:00PM',
-      
-    },
-  ])
-  useEffect(()=>{
-   
-  },[]) 
+  useEffect( () => {
+    updateWalletData()
+  }, [])
 
-  const Login_Pressed=(data)=>{
-    AsyncStorage.setItem("kinengoDriver",JSON.stringify(data));
-    dispatch(saveUserResult(data))
-   }
-
-  const LoginPressed = async () => {
-    Login_Pressed()
-    var EmailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (email == '') {
-      Alert.alert('Enter email address');
-    } else if (!EmailReg.test(email)) {
-      Alert.alert('Enter valid email');
-    } else if (pass == '') {
-      Alert.alert('Enter password');
-    } else {
-      setLoading(true)
-      let formdata = new FormData();
-      formdata.append("email", email); 
-      formdata.append("password", pass);
-      // formdata.append("user_group", 3);
-      var data={
-        email:email,
-        password:pass
-      }
-      const { responseJson, err } = await requestPostApi(login, data, 'POST', '')
-      setLoading(false)
-      console.log('the res==>>', responseJson)
+  const updateWalletData = async () => {
+    setLoading(true)
+    // const endPoint = `${driver_earning}/userid/${userdetaile?.driver_id}`
+    try {
+      const { responseJson, err } = await requestGetApi(
+        driver_earning_userid+userdetaile.driver_id,
+        '',
+        "GET",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("updateWalletData the res==>>", responseJson);
       if (responseJson.headers.success == 1) {
-        Login_Pressed(responseJson.body)
+        // dispatch(setWalletDetails())
       } else {
-         setalert_sms(err)
-         setMy_Alert(true)
       }
+    } catch (error) {
+      setLoading(false)
+      console.log("updateWalletData error", error);
     }
-  }
+  
+}
 
-  const resetStacks = (page) => {
-    props.navigation.reset({
-      index: 0,
-      routes: [{ name: page }],
-      params: { resentotp: false },
-    });
-  }
-
-
-
-
+  const Validation = () => {
+    if (amount === "") {
+      Alert.alert("Please enter Amount");
+      return false;
+    } else {
+      return true;
+    }
+  };
+  const onMoneyTransfer = async () => {
+    if (!Validation()) {
+      return;
+    }
+    setLoading(true)
+    var data = {
+      // userid: userdetaile.driver_id,
+      // wallet_id: "1",
+      transaction_type: "",
+      transaction_date: moment().format("YYYY-MM-DD"),
+      transaction_detaills: "",
+      amount: amount,
+      status: "0",
+    };
+    console.log("onMoneyTransfer data", data);
+    try {
+      const { responseJson, err } = await requestPostApi(
+        driver_transaction,
+        data,
+        "POST",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("the res==>>", responseJson);
+      if (responseJson.headers.success == 1) {
+      } else {
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log("onMoneyTransfer error", error);
+    }
+  };
+  
   return (
     <SafeAreaView style={styles.container}>
        
@@ -145,7 +111,18 @@ const MonyTransfer = (props) => {
 
       <ScrollView style={{ paddingHorizontal: 20 }}>
         
-      <Text style={{ marginTop: 25, fontSize: 16, color: Mycolors.TEXT_COLOR,fontWeight:'600'}} >Cash-Out Option</Text>
+      <TextInput
+            value={amount}
+            onChangeText={(text) => {
+              setAmount(text)
+            }}
+            placeholder="Amount"
+            keyboardType='number-pad'
+            maxLength={6}
+            placeholderTextColor={Mycolors.GrayColor}
+            style={styles.input}
+          />
+      {/* <Text style={{ marginTop: 25, fontSize: 16, color: Mycolors.TEXT_COLOR,fontWeight:'600'}} >Cash-Out Option</Text>
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 
               <TouchableOpacity style={{width:'30%',padding:5,backgroundColor:select1=='1' ? '#fff':'#FFF8E2',marginTop:15,justifyContent:'center',
@@ -231,11 +208,10 @@ const MonyTransfer = (props) => {
                    
 
                 </TouchableOpacity>
-</View>
+</View> */}
     
-      <MyButtons title="Save" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={()=>{}} marginHorizontal={20} 
+      <MyButtons title="Submit" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={onMoneyTransfer} marginHorizontal={20} 
       titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
-     
       </ScrollView>
    
          {My_Alert ? <MyAlert sms={alert_sms} okPress={()=>{setMy_Alert(false)}} /> : null }

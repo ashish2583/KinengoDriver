@@ -13,7 +13,8 @@ const initialState = {
     vehicle_id:'',
     corp_user:null,
     dashdata:'',
-    auth_token:null
+    auth_token:null,
+    wallet_detail:{}
 }
 
 
@@ -92,6 +93,11 @@ export default (state = initialState ,action) => {
                     return {
                         ...state,
                         vehicle_id :action.vehicle_id
+                    }
+                case types.WALLETDETAILS :
+                    return {
+                        ...state,
+                        wallet_detail :action.wallet_detail
                     }
                     case types.SAVE_CORP_USER_RESULTS :
                     return {

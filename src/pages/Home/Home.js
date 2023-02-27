@@ -14,9 +14,10 @@ import { GoogleApiKey } from '../../WebApi/GoogleApiKey';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {  useSelector, useDispatch } from 'react-redux';
 import {setCurentPosition,setBidAmount,setNotificationData,setStartAddress,setDriverRideStatus,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
+import {setWalletDetails} from '../../redux/actions/user_action';
 import { Rating, AirbnbRating } from 'react-native-ratings';
 // import MyNetinfo from '../../component/MyNetinfo'
-import {baseUrl,driver_ride_check_status,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
+import {baseUrl,driver_earning_userid,driver_ride_check_status,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-toast-message';
 // import Toast from 'react-native-toast-message';
@@ -154,7 +155,8 @@ const [time, settime] = useState(20);
 const timeCopy = useRef(60);
 const intervalID = useRef(0);
 
-  useEffect( () => { 
+  useEffect( () => {
+    updateWalletData()
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
         //  senNoti()
@@ -162,6 +164,28 @@ const intervalID = useRef(0);
        OnOff('1')
   }, [])
 
+  const updateWalletData = async () => {
+    setLoading(true)
+    // const endPoint = `${driver_earning}/userid/${userdetaile?.driver_id}`
+    try {
+      const { responseJson, err } = await requestGetApi(
+        driver_earning_userid+userdetaile.driver_id,
+        '',
+        "GET",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("updateWalletData the res==>>", responseJson);
+      if (responseJson.headers.success == 1) {
+        // dispatch(setWalletDetails())
+      } else {
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log("updateWalletData error", error);
+    }
+  
+}
   const senNoti= async()=>{
     let notidata={
         'data': {"business_address": "Sector 57, Noida, Uttar Pradesh, India", "business_name": "Nile Technologies", "lattitude": "28.608600616455078", "longitude": "77.35099792480469", "notificationType": "rederequest", "order_id": "11", "ride_id": "1"},
