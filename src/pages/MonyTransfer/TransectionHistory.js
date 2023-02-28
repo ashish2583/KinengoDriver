@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, login, requestGetApi, driver_wallet_history } from '../../WebApi/Service'
+import { baseUrl, login, requestGetApi, driver_transaction_history } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
@@ -33,7 +33,7 @@ const TransectionHistory = (props) => {
     setLoading(true)
     try {
       const { responseJson, err } = await requestGetApi(
-        driver_wallet_history,
+        driver_transaction_history,
         "",
         "GET",
         userdetaile.token

@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState,useEffect } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView,FlatList, ScrollView,useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView,FlatList, ScrollView,useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity, ImageBackground } from 'react-native';
 import MyButtons from '../../component/MyButtons';
 import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
@@ -155,7 +155,24 @@ const Earning = (props) => {
 
 
 <View style={{width:'92%',height:125,alignSelf:'center'}}>
-<Image source={require('../../assets/TotalE.png')} style={{ width: '100%', height: '100%'}} />
+{/* <Image source={require('../../assets/TotalE.png')} style={{ width: '100%', height: '100%'}} /> */}
+<ImageBackground source={require('../../assets/images/yellow-header-image.png')} style={{ width: '100%', height: 113}} >
+  <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between',padding:20}}>
+    <View>
+      <Text style={styles.totalEarnings}>Total Earnings</Text>
+      <Text style={styles.totalAmount}>${userdetaile.wallet_detail}</Text>
+    </View>
+
+    <View style={{flexDirection:'row', alignItems:'center',justifyContent:'space-between'}}>
+      <TouchableOpacity style={styles.headerButton}>
+        <Text style={styles.buttonText}>Cash-Out</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>{props.navigation.navigate('TransectionHistory')}} style={[styles.headerButton, {marginLeft:15}]}>
+        <Text style={styles.buttonText}>History</Text>
+      </TouchableOpacity>
+    </View>
+  </View>
+</ImageBackground>
 
 </View>
 <View style={{  width: dimensions.SCREEN_WIDTH - 40 ,alignSelf:'center'}}>
@@ -277,6 +294,30 @@ const styles = StyleSheet.create({
     backgroundColor: Mycolors.BG_COLOR,
     top: 1
   },
+  totalEarnings:{
+    fontSize:14,
+    fontWeight:'800',
+    lineHeight:18
+  },
+  totalAmount:{
+    fontSize:26,
+    fontWeight:'700',
+    lineHeight:44
+  },
+  headerButton:{
+    backgroundColor:'#fff',
+    width:90,
+    height:29,
+    borderRadius:5,
+    alignItems:'center',
+    justifyContent:'center'
+  },
+  buttonText:{
+    color:Mycolors.filtercolor,
+    fontSize:12,
+    fontWeight:'400',
+    lineHeight:20
+  }
 });
 export default Earning
 

@@ -23,6 +23,7 @@ export const driver_transaction = 'driver/transaction'
 export const driver_earning = 'driver/earning/'
 export const driver_rides_history = 'driver/rides-history'
 export const driver_wallet_history = 'driver/wallet-history'
+export const driver_transaction_history = 'driver/transaction-history'
 
 
 
