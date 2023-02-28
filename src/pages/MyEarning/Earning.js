@@ -131,7 +131,7 @@ const Earning = (props) => {
           colors={[Mycolors.BG_LINEAR_START_COLOR, Mycolors.BG_LINEAR_END_COLOR]}
           style={{flex: 1,height:dimensions.SCREEN_HEIGHT}}
          > */}
-       <MyButtons title="Earnings" height={55} width={'100%'} alignSelf="center" imgpress={() => { props.navigation.goBack() }} marginHorizontal={20} 
+       <MyButtons title="Ride History" height={55} width={'100%'} alignSelf="center" imgpress={() => { props.navigation.goBack() }} marginHorizontal={20} 
        titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} img='left' imgtop={16} imgleft={10} imgheight={20} imgwidth={25}/>
 
 

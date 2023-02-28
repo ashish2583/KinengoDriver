@@ -188,7 +188,7 @@ const MonyTransfer = (props) => {
                 </TouchableOpacity>
 </View> */}
     
-      <MyButtons title="Submit" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={onMoneyTransfer} marginHorizontal={20} 
+      <MyButtons title="Send Request" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={onMoneyTransfer} marginHorizontal={20} 
       titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
       </ScrollView>
    
