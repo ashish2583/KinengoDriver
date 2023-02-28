@@ -17,6 +17,7 @@ import LinearGradient from 'react-native-linear-gradient'
 const TransectionHistory = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
+  const userdetaile  = useSelector(state => state.user.user_details)
   const mapdata = useSelector(state => state.maplocation)
   const [email, setemail] = useState('')
   const [pass, setpass] = useState('')
@@ -138,7 +139,7 @@ const TransectionHistory = (props) => {
 <View style={{width:'92%',height:125,alignSelf:'center'}}>
 <Image source={require('../../assets/TotalEarningsfrom.png')} style={{ width: '100%', height: '100%'}} />
 <View style={{position:'absolute',top:'40%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>$2345</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${userdetaile.wallet_detail}</Text>
    </View>
 </View>
 
