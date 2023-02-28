@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, login, requestPostApi } from '../../WebApi/Service'
+import { baseUrl, login, requestPostApi, requestGetApi, driver_rides_history} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
@@ -17,6 +17,7 @@ import LinearGradient from 'react-native-linear-gradient'
 const Earning = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
+  const userdetaile  = useSelector(state => state.user.user_details)
   const mapdata = useSelector(state => state.maplocation)
   const [email, setemail] = useState('')
   const [pass, setpass] = useState('')
@@ -75,9 +76,27 @@ const Earning = (props) => {
     },
   ])
   useEffect(()=>{
-   
+    getRideHistory()
   },[]) 
-
+  const getRideHistory = async () => {
+    setLoading(true)
+    try {
+      const { responseJson, err } = await requestGetApi(
+        driver_rides_history,
+        "",
+        "GET",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("getRideHistory the res==>>", responseJson);
+      if (responseJson.headers.success == 1) {
+      } else {
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log("onMoneyTransfer error", error);
+    }
+  };
   const Login_Pressed=(data)=>{
     AsyncStorage.setItem("kinengoDriver",JSON.stringify(data));
     dispatch(saveUserResult(data))

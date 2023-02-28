@@ -21,6 +21,8 @@ export const driver_ride_check_status = 'driver/check-driver-status'
 export const driver_current_status = 'driver/current-status/id/'
 export const driver_transaction = 'driver/transaction'
 export const driver_earning = 'driver/earning/'
+export const driver_rides_history = 'driver/rides-history'
+export const driver_wallet_history = 'driver/wallet-history'
 
 
 
