@@ -259,8 +259,12 @@ const MonyTransfer = (props) => {
           </View>
           </View>
 
-<View style={{position:'absolute',right:20,bottom:30}}>
+<View style={{position:'absolute',right:20,bottom:25}}>
 {/* <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>$20.89</Text> */}
+<View style={{flexDirection:'row', alignItems:'center'}}>
+<View style={{width:15,height:15,borderRadius:10,backgroundColor:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor}} />
+<Text style={{color:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor,fontSize:14,left:5}}>{item.status == '1' ? 'Successful' : 'Pending'}</Text>
+</View>
 <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : item.amount}</Text>
     </View>
 
