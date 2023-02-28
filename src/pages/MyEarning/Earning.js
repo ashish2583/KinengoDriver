@@ -216,7 +216,7 @@ const Earning = (props) => {
                      
                      <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5}}>
                       <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text>
-                      <View style={{flexDirection:'row'}}>
+                      <View style={{flexDirection:'row', alignItems:'center'}}>
                         <View style={{width:15,height:15,borderRadius:10,backgroundColor:'green'}} />
                         <Text style={{color:Mycolors.GREEN,fontSize:14,left:5}}>Successful</Text>
                       </View>
