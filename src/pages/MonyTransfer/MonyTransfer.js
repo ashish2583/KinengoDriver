@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { setWalletDetails } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, driver_transaction, driver_earning, requestGetApi, requestPostApi } from '../../WebApi/Service'
+import { baseUrl, driver_transaction, driver_earning, requestGetApi, requestPostApi, driver_transaction_history } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
@@ -25,8 +25,30 @@ const MonyTransfer = (props) => {
   const [totalAmount, setTotalAmount] = useState('')
    const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
-  useEffect( () => {
-  }, [])
+  const [upData,setupData]=useState([])
+  useEffect(()=>{
+    getTransactionHistory()
+  },[]) 
+  const getTransactionHistory = async () => {
+    setLoading(true)
+    try {
+      const { responseJson, err } = await requestGetApi(
+        driver_transaction_history,
+        "",
+        "GET",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("getTransactionHistory the res==>>", responseJson.body);
+      if (responseJson.headers.success == 1) {
+        setupData(responseJson.body?.slice(0, 3))
+      } else {
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log("getTransactionHistory error", error);
+    }
+  };
 
 
   const Validation = () => {
@@ -188,8 +210,66 @@ const MonyTransfer = (props) => {
                 </TouchableOpacity>
 </View> */}
     
+    <View style={{height:10}}></View>
+
       <MyButtons title="Send Request" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={onMoneyTransfer} marginHorizontal={20} 
-      titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
+      titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} />
+
+
+<View style={{width:'100%',alignSelf:'center',marginTop:25}}>
+<View style={styles.viewAllContainer}>
+<Text style={{ fontSize: 16, color: Mycolors.TEXT_COLOR,fontWeight:'600'}} >Transaction History</Text>
+<TouchableOpacity onPress={()=>{props.navigation.navigate('TransectionHistory')}}>
+  <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600', textDecorationLine: 'underline'}} >View All</Text>
+</TouchableOpacity>
+</View>
+          <FlatList
+                  data={upData}
+                //  horizontal={true}
+                 showsVerticalScrollIndicator={false}
+                  // numColumns={2}
+                  renderItem={({item,index})=>{
+                    return(
+                        <View style={{width:'100%',padding:15,marginHorizontal:5,backgroundColor:'#fff',marginBottom:15,
+                        shadowOffset: {
+                        width: 0,
+                        height: 3
+                      },
+                      shadowRadius: 1,
+                      shadowOpacity: 0.3,
+                     // justifyContent: 'center',
+                      elevation: 5,borderRadius:15}}>
+                     
+                     <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5}}>
+                      {/* <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text> */}
+                      <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
+                      <View style={{flexDirection:'row'}}>
+                        <Text style={{color:Mycolors.GrayColor,fontSize:13,left:5}}>{moment(item.created_date).format('DD MMM YYYY')}</Text>
+                      </View>
+                        </View>
+
+
+            <View style={{width:'100%',flexDirection:'row',marginVertical:5,paddingVertical:10}}>
+            <View>
+              <Image source={require('../../assets/images/Ellipse.png')} style={{ width: 50, height: 50, top: -2, }}></Image>
+            </View>
+            <View style={{width:dimensions.SCREEN_WIDTH-100,left:16,top:4}}>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14,fontWeight: '600',}}>Received From</Text>
+            <Text style={{ color: Mycolors.GrayColor, fontSize: 13, marginVertical:5 }}>Geores Local</Text>
+          </View>
+          </View>
+
+<View style={{position:'absolute',right:20,bottom:30}}>
+{/* <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>$20.89</Text> */}
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : item.amount}</Text>
+    </View>
+
+                </View>
+                    )
+                  }}
+                  keyExtractor={item => item.id}
+                />
+         </View>      
       </ScrollView>
    
          {My_Alert ? <MyAlert sms={alert_sms} okPress={()=>{setMy_Alert(false)}} /> : null }
@@ -223,6 +303,12 @@ const styles = StyleSheet.create({
     backgroundColor: Mycolors.BG_COLOR,
     top: 1
   },
+  viewAllContainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    marginBottom:10
+  }
 });
 export default MonyTransfer
 
