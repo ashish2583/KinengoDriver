@@ -197,7 +197,7 @@ const Earning = (props) => {
       <ScrollView style={{ paddingHorizontal: 20 }}>
         
 
-      <View style={{width:'100%',alignSelf:'center',marginTop:10}}>
+      <View style={{width:'100%',alignSelf:'center',marginTop:25}}>
           <FlatList
                   data={upData}
                 //  horizontal={true}
@@ -205,7 +205,7 @@ const Earning = (props) => {
                   // numColumns={2}
                   renderItem={({item,index})=>{
                     return(
-                        <View style={{width:'100%',padding:15,marginHorizontal:5,backgroundColor:'#fff',marginTop:15,
+                        <View style={{width:'100%',padding:15,marginHorizontal:5,backgroundColor:'#fff',marginBottom:15,
                         shadowOffset: {
                         width: 0,
                         height: 3
