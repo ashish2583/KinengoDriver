@@ -21,6 +21,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 Geocoder.init(GoogleApiKey);
 
 const EarningDetails = (props) => {
+  const {data} = props.route.params
   const dispatch =  useDispatch();
   const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
   const mapdata  = useSelector(state => state.maplocation)
@@ -174,17 +175,18 @@ const resetStacks=(page)=>{
       
 
 <View style={{width:90,height:90,borderRadius:80,alignSelf:'center',backgroundColor:'#000',justifyContent:'center'}}>
-<Image source={require('../../assets/cuate.png')} style={{width:35,height:35,alignSelf:'center'}}></Image>
+{/* <Image source={require('../../assets/cuate.png')} style={{width:35,height:35,alignSelf:'center'}}></Image> */}
+<Image source={{uri: data?.image}} style={{width:35,height:35,alignSelf:'center'}}></Image>
 </View>
 <View style={{alignSelf:'center',flexDirection:'row',marginTop:5}}>
 <Image source={require('../../assets/Star.png')} style={{width:20,height:20,alignSelf:'center'}}></Image>
 <Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>4.5</Text>
 </View>
 
-<Text style={{fontSize:14,color:Mycolors.TEXT_COLOR,textAlign:'center',fontWeight:'600',marginTop:5}}>Georie's Local</Text>
+<Text style={{fontSize:14,color:Mycolors.TEXT_COLOR,textAlign:'center',fontWeight:'600',marginTop:5}}>{data?.business_name}</Text>
 <View style={{flexDirection:'row',marginTop:10,alignSelf:'center'}}>
 <Text style={{fontSize:13,color:Mycolors.TEXT_COLOR,fontWeight:'600'}}>Address: </Text>
-<Text style={{fontSize:13,color:Mycolors.GrayColor,}}>Dallipur Tari Varanasi,UP,India</Text>
+<Text style={{fontSize:13,color:Mycolors.GrayColor,}}>{data?.business_address}</Text>
 <Image source={require('../../assets/layer_9.png')} style={{width:9,height:12,alignSelf:'center',left:5}}></Image>
 </View>
 
@@ -217,8 +219,8 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
               <Image source={require('../../assets/images/Ellipse.png')} style={{ width: 50, height: 50, top: -2, }}></Image>
             </View>
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:16}}>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>Spicy Momos</Text>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, fontWeight: '600',marginVertical:5 }}>$19.89</Text>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>{data?.name}</Text>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, fontWeight: '600',marginVertical:5 }}>${data.amount}</Text>
            <View style={{flexDirection:'row'}} >
            <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Est Time: 09 mins</Text>
            </View>
@@ -236,7 +238,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
 <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingHorizontal:15,paddingVertical:15,}}>
 <View style={{height:30,borderRadius:15,flexDirection:'row',alignItems:'center',}}>
 <Image source={require('../../assets/images/profileimg.png')} style={{ width: 30, height: 30, top: 5,left:3 }}></Image>
-<Text style={{color:Mycolors.TEXT_COLOR,fontWeight:'bold',fontSize:14,top:4,left:9}}>Jane Doe</Text>
+<Text style={{color:Mycolors.TEXT_COLOR,fontWeight:'bold',fontSize:14,top:4,left:9}}>{data.full_name}</Text>
             </View>
 
 <View style={{height:39,width:80, borderRadius:15,flexDirection:'row',justifyContent:'space-between'}}>
@@ -321,7 +323,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
 
 <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:8}}>
 <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13,fontWeight:'600'}}>Total Amount</Text>
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13,fontWeight:'600' }}>$1.89</Text>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13,fontWeight:'600' }}>${data.paid_amount}</Text>
 </View>
 
 
@@ -332,7 +334,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, }}>Payment Status:: </Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Amount Paid $20.89 via online</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Amount Paid ${data.paid_amount} via online</Text>
            </View>
           </View>
 </View>

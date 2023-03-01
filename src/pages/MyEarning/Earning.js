@@ -90,6 +90,7 @@ const Earning = (props) => {
       setLoading(false);
       console.log("getRideHistory the res==>>", responseJson);
       if (responseJson.headers.success == 1) {
+        setupData(responseJson.body)
       } else {
       }
     } catch (error) {
@@ -215,10 +216,11 @@ const Earning = (props) => {
                       elevation: 5,borderRadius:15}}>
                      
                      <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5}}>
-                      <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text>
+                      {/* <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text> */}
+                      <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
                       <View style={{flexDirection:'row', alignItems:'center'}}>
-                        <View style={{width:15,height:15,borderRadius:10,backgroundColor:'green'}} />
-                        <Text style={{color:Mycolors.GREEN,fontSize:14,left:5}}>Successful</Text>
+                        <View style={{width:15,height:15,borderRadius:10,backgroundColor:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor}} />
+                        <Text style={{color:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor,fontSize:14,left:5}}>{item.status == '1' ? 'Successful' : 'Pending'}</Text>
                       </View>
                         </View>
 
@@ -229,8 +231,8 @@ const Earning = (props) => {
               <Image source={require('../../assets/images/Ellipse.png')} style={{ width: 50, height: 50, top: -2, }}></Image>
             </View>
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:16,top:4}}>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>Spicy Momos</Text>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, fontWeight: '600',marginVertical:5 }}>$19.89</Text>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>{item.name}</Text>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, fontWeight: '600',marginVertical:5 }}>${item.amount}</Text>
           </View>
           </View>
 
@@ -240,7 +242,8 @@ const Earning = (props) => {
                   <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5,marginTop:10}}>
                      <View style={{flexDirection:'row',top:13}}>
                        <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,fontWeight:'600'}}>Delivered Time: </Text>
-                        <Text style={{color:Mycolors.GrayColor,fontSize:13,left:5}}>34 Mins</Text>
+                        {/* <Text style={{color:Mycolors.GrayColor,fontSize:13,left:5}}>34 Mins</Text> */}
+                        <Text style={{color:Mycolors.GrayColor,fontSize:13,left:5}}>{item.ride_time}</Text>
                       </View>
                    
                       <View style={{}}>
