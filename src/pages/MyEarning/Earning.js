@@ -142,6 +142,34 @@ const Earning = (props) => {
     });
   }
 
+  const getStatus = (id) => {
+    if(id == '0'){
+      return 'Ongoing'
+    } else if(id == '1'){
+      return 'Cancel'
+    } else if(id == '2'){
+      return 'Delivered'
+    } else if(id == '3'){
+      return 'Waiting at restaurant'
+    } else if(id == '4'){
+      return 'Food is not prepared'
+    }
+  }
+  const getColor = (id) => {
+    if(id == '0'){
+      return 'Ongoing'
+    } else if(id == '1'){
+      // return 'Cancel'
+      return Mycolors.RED
+    } else if(id == '2'){
+      // return 'Delivered'
+      return Mycolors.GREEN
+    } else if(id == '3'){
+      return 'Waiting at restaurant'
+    } else if(id == '4'){
+      return 'Food is not prepared'
+    }
+  }
 
 
 
@@ -220,7 +248,7 @@ const Earning = (props) => {
                       <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
                       <View style={{flexDirection:'row', alignItems:'center'}}>
                         <View style={{width:15,height:15,borderRadius:10,backgroundColor:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor}} />
-                        <Text style={{color:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor,fontSize:14,left:5}}>{item.status == '1' ? 'Successful' : 'Pending'}</Text>
+                        <Text style={{color:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor,fontSize:14,left:5}}>{getStatus(item.status)}</Text>
                       </View>
                         </View>
 

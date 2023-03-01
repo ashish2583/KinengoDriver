@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, FlatList, TouchableOpacity, Platform, Alert, PermissionsAndroid, ScrollView ,Keyboard} from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, FlatList, TouchableOpacity, Platform, Alert, PermissionsAndroid, ScrollView ,Keyboard, Linking} from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline, AnimatedRegion, Animated } from 'react-native-maps';
 import { Mycolors, dimensions } from '../../utility/Mycolors';
 import Geolocation from "react-native-geolocation-service";
@@ -158,6 +158,17 @@ const resetStacks=(page)=>{
     //  params: {items:data},
   });
  }
+ const callNow = () => {
+  if (Platform.OS === 'android') {
+    Linking.openURL(`tel:${data.phone}`);
+  } else {
+    Linking.openURL(`telprompt:${data.phone}`);
+  }
+};
+ const emailNow = () => {
+  const email = `dummy@email.com`
+  Linking.openURL(`mailto:${email}`)
+};
 
 
   return (
@@ -242,11 +253,11 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
             </View>
 
 <View style={{height:39,width:80, borderRadius:15,flexDirection:'row',justifyContent:'space-between'}}>
-<MyButtons  height={35} width={35} borderRadius={5} press={()=>{}} 
+<MyButtons  height={35} width={35} borderRadius={5} press={emailNow} 
 img={require('../../assets/Envelope.png')} imgheight={20} imgwidth={20}
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.ORANGE}  />
  
-<MyButtons height={35} width={35} borderRadius={5} press={()=>{}} 
+<MyButtons height={35} width={35} borderRadius={5} press={callNow} 
 img={require('../../assets/call.png')} imgheight={20} imgwidth={20} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN}   />
  
@@ -287,6 +298,17 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
             </View>
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, }}>Order Pickup Location</Text>
+           <View style={{flexDirection:'row'}} >
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>{data?.business_address}</Text>
+           </View>
+          </View>
+</View>
+<View style={{width:'100%',flexDirection:'row', marginTop:15}}>
+            <View>
+              <Image source={require('../../assets/MapPin.png')} style={{ width: 24, height: 27, top: 5,left:3 }}></Image>
+            </View>
+            <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
+              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, }}>Order Drop Location</Text>
            <View style={{flexDirection:'row'}} >
            <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>dtv varanasi</Text>
            </View>
