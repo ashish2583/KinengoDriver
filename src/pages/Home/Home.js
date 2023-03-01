@@ -157,7 +157,7 @@ const intervalID = useRef(0);
   useEffect( () => { 
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
-        senNoti()
+        // senNoti()
   }, [])
 
   const senNoti= async()=>{
@@ -262,7 +262,12 @@ const intervalID = useRef(0);
     //    "title": "KinenGo"}, "sentTime": 1677066019083, "ttl": 2419200}
   
     setmodlevisual(true)
-    callAutoTimer()
+    if(modlevisual != true){
+      callAutoTimer()
+    }else{
+      return false
+    }
+    
     // if(remoteMessage.notification.body!='new message'  && remoteMessage.notification.body!='Ride Cancelled By Customer'){
     // var dest_pos={latitude: parseInt(data.end_latitude), longitude: parseInt(data.end_longitude)}
     // var st_pos={latitude: parseInt(data.start_latitude), longitude: parseInt(data.start_longitude)}  

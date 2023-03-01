@@ -6,21 +6,26 @@ import Modal from 'react-native-modal';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import messaging from '@react-native-firebase/messaging';
 import { useSelector, useDispatch } from 'react-redux';
-import { requestPostApi, requestGetApi } from '../../WebApi/Service'
+import { requestPostApi, requestGetApi, driver_profile_update } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MyAlert from '../../component/MyAlert';
 // import Toast from 'react-native-simple-toast';
 import HomeHeader from '../../component/HomeHeader';
 import SerchInput from '../../component/SerchInput';
+import { setLoading,saveUserResult} from '../../redux/actions/user_action';
 
 const RcDetails = (props) => {
     const userdetaile = useSelector(state => state.user.user_details)
     const dispatch = useDispatch();
     const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    const [datas, setdatas] = useState([]);
+    const [datas, setdatas] = useState('');
 
-    const [fullname, setFullName] = useState('');
+    const [firstname, setFirstName] = useState(userdetaile.first_name ? userdetaile.first_name : '');
+    const [lastname, setLastname] = useState(userdetaile.last_name ? userdetaile.last_name : '');
+    const [mobileno, setMobileno] = useState(userdetaile.phone ? userdetaile.phone : '');
+    const [gender, setGender] = useState('');
+    const [address, setAddress] = useState(userdetaile.address ? userdetaile.address : '');
     const [loading, setLoading] = useState(false)
     const [My_Alert, setMy_Alert] = useState(false)
     const [alert_sms, setalert_sms] = useState('')
@@ -32,26 +37,59 @@ const RcDetails = (props) => {
         { id: '5', img: person_Image, title: 'GRECA Vegetarian Greek', lable: 'Table Booking', price: '$140.00', desc: 'Booking date and time: 21 July 2021, 11:00 AM' },
     ])
     useEffect(() => {
-
+        
     }, [])
+   
 
-
-    const design = (img, ti, tirateing, w, imgh, imgw, redious, press) => {
-        return (
-            <View style={{ alignItems: 'center', width: "32%", borderRadius: 15, height: 65, paddingHorizontal: 0 }}>
-                <TouchableOpacity onPress={press ? press : () => { }}
-                    style={{ width: 40, height: 40, justifyContent: 'center', borderRadius: redious }}>
-                    <Image source={img} style={{ width: imgw, height: imgh, overflow: 'hidden', alignSelf: 'center' }}></Image>
-                </TouchableOpacity>
-                <View style={{ alignItems: 'center', }}>
-                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#455A64' }}>{tirateing}</Text>
-                    <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C7C7C7' }}>{ti}</Text>
-                </View>
-
-            </View>
-
-        )
+    // const Profiledata = (datas) => {
+    //     console.log("Profiledata:>>>>>>>>", datas);
+    //     setFirstName(datas.full_name)
+    //     setEmail(datas.emailid)
+    //     setMobileno(datas.mobile)
+    //     setAddress(datas.address)
+    // }
+    const Editprofile = async () => {
+        // console.log("userdetaile RC Details", userdetaile);
+        setLoading(true)
+        var data = {
+            "first_name": firstname,
+            "last_name": lastname,
+            "mobile": mobileno,
+            "address": address,
+        }
+        const { responseJson, err } = await requestPostApi(driver_profile_update + userdetaile.driver_id, data, 'PUT', userdetaile.token)
+        setLoading(false)
+        // console.log('User Profile1 ==>>', responseJson)
+        if (responseJson.headers.success == 1) {
+            props.navigation.goBack()
+            console.log('objj==>>', responseJson.body)
+            AsyncStorage.setItem("kinengoDriver",JSON.stringify(responseJson.body));
+            dispatch(saveUserResult(responseJson.body))
+            // Profiledata(responseJson.body)
+            // setdatas(responseJson.body)
+        } else {
+            
+            setalert_sms(err)
+            setMy_Alert(true)
+        }
     }
+
+    // const design = (img, ti, tirateing, w, imgh, imgw, redious, press) => {
+    //     return (
+    //         <View style={{ alignItems: 'center', width: "32%", borderRadius: 15, height: 65, paddingHorizontal: 0 }}>
+    //             <TouchableOpacity onPress={press ? press : () => { }}
+    //                 style={{ width: 40, height: 40, justifyContent: 'center', borderRadius: redious }}>
+    //                 <Image source={img} style={{ width: imgw, height: imgh, overflow: 'hidden', alignSelf: 'center' }}></Image>
+    //             </TouchableOpacity>
+    //             <View style={{ alignItems: 'center', }}>
+    //                 <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#455A64' }}>{tirateing}</Text>
+    //                 <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C7C7C7' }}>{ti}</Text>
+    //             </View>
+
+    //         </View>
+
+    //     )
+    // }
     const CustomButtonDesign = (img, title, imgw, imgh, press) => {
         return (
             <View style={{
@@ -84,71 +122,71 @@ const RcDetails = (props) => {
             </View>
         )
     }
-const Boxdesign =(ti,boxh,onclick)=>{
-    return( <View style={{ width: dimensions.SCREEN_WIDTH - 40,  flexDirectionL:'row', }}>
-    <View style={{
-        height: boxh,
-        width: '100%',
-        // fontSize: 12,
-        flexDirectionL: 'row',
-        justifyContent: 'space-between',
-        // alignSelf: "center",
-        borderColor: 'transparent',
-        borderWidth: 1,
-        borderRadius: 10,
-        color: Mycolors.TEXT_COLOR,
-        paddingLeft: 10,
-        paddingRight: 10,
-        backgroundColor: '#FFFFFF',
-        top: 1
-    }}>
-        <View style={{ justifyContent: "space-between", alignItems: "center", flexDirection: "row", height: 60, }}> 
-        <Text style={{ fontSize: 14, fontWeight: '600', color: '#3E5869',width: '80%'}}>{ti}</Text>
-         <TouchableOpacity onPress={onclick ? onclick : () => { }} style={{ width: 41, height: 36,justifyContent: 'center',alignItems:"center"}}>
-         <Image source={require('../../assets/Details-edit-icon.png')} style={{ width: 60, height: 60, borderRadius: 60 / 2 }}></Image>
-         </TouchableOpacity>
-           
-                 
-            </View>
-       
-         
-    </View>
-    </View> 
-    )
-};
-    const MyorderDesign = (item) => {
-        return (
-            <View style={{
-                marginVertical: 10, marginHorizontal: 5, borderRadius: 5,
-                backgroundColor: '#fff',
-                shadowColor: 'rgba(0, 0, 0, 0.5)',
-                shadowOffset: {
-                    width: 0,
-                    height: 3
-                },
-                shadowRadius: 5,
-                shadowOpacity: 1.0,
-                justifyContent: 'center',
-                elevation: 5
-            }}>
-                <View style={{ width: '100%', padding: 10, flexDirection: 'row', alignItems: 'center', borderRadius: 5, overflow: 'hidden' }}>
-                    <View>
-                        <Image source={{ uri: item.img }} style={{ width: 45, height: 45, borderRadius: 25 }}></Image>
-                    </View>
-                    <View style={{ marginLeft: 10 }}>
-                        <Text style={{ fontSize: 13, fontWeight: '500', color: Mycolors.TEXT_COLOR }}>{item.title}</Text>
-                        <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 7 }}>
-                            <View style={{ paddingVertical: 3, paddingHorizontal: 8, borderRadius: 20, backgroundColor: '#D2F1CE', justifyContent: 'center' }}>
-                                <Text style={{ textAlign: 'center', fontSize: 11, color: '#29913B' }}>{item.lable}</Text>
-                            </View>
-                            <Text style={{ marginLeft: 20, fontSize: 13, fontWeight: '500' }}>{item.price}</Text>
-                        </View>
-                        <Text style={{ fontSize: 10, fontWeight: '500', color: '#29913B', marginTop: 8 }}>{item.desc}</Text>
-                    </View>
-                </View>
-            </View>
-        )
-    }
+    // const Boxdesign = (ti, boxh, onclick) => {
+    //     return (<View style={{ width: dimensions.SCREEN_WIDTH - 40, flexDirectionL: 'row', }}>
+    //         <View style={{
+    //             height: boxh,
+    //             width: '100%',
+    //             // fontSize: 12,
+    //             flexDirectionL: 'row',
+    //             justifyContent: 'space-between',
+    //             // alignSelf: "center",
+    //             borderColor: 'transparent',
+    //             borderWidth: 1,
+    //             borderRadius: 10,
+    //             color: Mycolors.TEXT_COLOR,
+    //             paddingLeft: 10,
+    //             paddingRight: 10,
+    //             backgroundColor: '#FFFFFF',
+    //             top: 1
+    //         }}>
+    //             <View style={{ justifyContent: "space-between", alignItems: "center", flexDirection: "row", height: 60, }}>
+    //                 <Text style={{ fontSize: 14, fontWeight: '600', color: '#3E5869', width: '80%' }}>{ti}</Text>
+    //                 <TouchableOpacity onPress={onclick ? onclick : () => { }} style={{ width: 41, height: 36, justifyContent: 'center', alignItems: "center" }}>
+    //                     <Image source={require('../../assets/Details-edit-icon.png')} style={{ width: 60, height: 60, borderRadius: 60 / 2 }}></Image>
+    //                 </TouchableOpacity>
+
+
+    //             </View>
+
+
+    //         </View>
+    //     </View>
+    //     )
+    // };
+    // const MyorderDesign = (item) => {
+    //     return (
+    //         <View style={{
+    //             marginVertical: 10, marginHorizontal: 5, borderRadius: 5,
+    //             backgroundColor: '#fff',
+    //             shadowColor: 'rgba(0, 0, 0, 0.5)',
+    //             shadowOffset: {
+    //                 width: 0,
+    //                 height: 3
+    //             },
+    //             shadowRadius: 5,
+    //             shadowOpacity: 1.0,
+    //             justifyContent: 'center',
+    //             elevation: 5
+    //         }}>
+    //             <View style={{ width: '100%', padding: 10, flexDirection: 'row', alignItems: 'center', borderRadius: 5, overflow: 'hidden' }}>
+    //                 <View>
+    //                     <Image source={{ uri: item.img }} style={{ width: 45, height: 45, borderRadius: 25 }}></Image>
+    //                 </View>
+    //                 <View style={{ marginLeft: 10 }}>
+    //                     <Text style={{ fontSize: 13, fontWeight: '500', color: Mycolors.TEXT_COLOR }}>{item.title}</Text>
+    //                     <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 7 }}>
+    //                         <View style={{ paddingVertical: 3, paddingHorizontal: 8, borderRadius: 20, backgroundColor: '#D2F1CE', justifyContent: 'center' }}>
+    //                             <Text style={{ textAlign: 'center', fontSize: 11, color: '#29913B' }}>{item.lable}</Text>
+    //                         </View>
+    //                         <Text style={{ marginLeft: 20, fontSize: 13, fontWeight: '500' }}>{item.price}</Text>
+    //                     </View>
+    //                     <Text style={{ fontSize: 10, fontWeight: '500', color: '#29913B', marginTop: 8 }}>{item.desc}</Text>
+    //                 </View>
+    //             </View>
+    //         </View>
+    //     )
+    // }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -185,7 +223,8 @@ const Boxdesign =(ti,boxh,onclick)=>{
                         </View>
                         <View style={{ height: 25, justifyContent: 'center', alignSelf: "center", marginTop: 7 }}>
                             <MyButtons title="Know More" height={25} width={80} borderRadius={5} press={() => {
-                                props.navigation.navigate('RegistrationDetails')}} fontSize={13}
+                                props.navigation.navigate('RegistrationDetails')
+                            }} fontSize={13}
                                 titlecolor={Mycolors.BG_COLOR} marginVertical={0} backgroundColor={'#FFD037'} />
                         </View>
 
@@ -221,7 +260,8 @@ const Boxdesign =(ti,boxh,onclick)=>{
                         </View>
                         <View style={{ height: 25, justifyContent: 'center', alignSelf: "center", marginTop: 7 }}>
                             <MyButtons title="Know More" height={25} width={80} borderRadius={5} press={() => {
-                                props.navigation.navigate('DrivingLicenceDetails')}} fontSize={13}
+                                props.navigation.navigate('DrivingLicenceDetails')
+                            }} fontSize={13}
                                 titlecolor={Mycolors.BG_COLOR} marginVertical={0} backgroundColor={'#FFD037'} />
                         </View>
                         {/* <View style={{ flexDirection: "row", width: '100%', justifyContent: "center", alignSelf: "center", alignItems: "center", }}>
@@ -236,32 +276,185 @@ const Boxdesign =(ti,boxh,onclick)=>{
 
                     </View>
                 </View>
+
                 <View style={{ alignItems: 'center', marginTop: 10, justifyContent: "center" }}>
                     {CustomButtonDesign(require('../../assets/Gov-ID-card-icon.png'), 'Government ID card', 40, 40, () => { props.navigation.navigate('') })}
 
                 </View>
 
                 <View style={{ width: '100%', height: 45, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 10, marginTop: 20 }}>
-                    <Text style={{ fontSize: 16, fontWeight: '600', color: '#455A64' }}>Full Name</Text>
+                    <Text style={{ fontSize: 16, fontWeight: '600', color: '#455A64' }}>First Name</Text>
 
                 </View>
-                {Boxdesign('Jane Smith',60,()=>{props.navigation.navigate('') })}
+                <View style={{ width: dimensions.SCREEN_WIDTH - 40, flexDirectionL: 'row', }}>
+                    <View style={{
+                        height: 60,
+                        width: '100%',
+                        // fontSize: 12,
+                        flexDirectionL: 'row',
+                        justifyContent: 'space-between',
+                        // alignSelf: "center",
+                        borderColor: 'transparent',
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        color: Mycolors.TEXT_COLOR,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        backgroundColor: '#FFFFFF',
+                        top: 1
+                    }}>
+                        <View style={{ justifyContent: "space-between", alignItems: "center", flexDirection: "row", height: 60, }}>
+                            <TextInput
+                                value={firstname}
+                                onChangeText={(text) => {
+                                    setFirstName(text)
+                                }}
+                                placeholder="First Name"
+                                placeholderTextColor={Mycolors.GrayColor}
+                                style={styles.inputbox}
+                            />
 
+                            {/* <TouchableOpacity onPress={() => { }} style={{ width: 41, height: 36, justifyContent: 'center', alignItems: "center" ,position:'absolute',right:0}}>
+                                <Image source={require('../../assets/Details-edit-icon.png')} style={{ width: 60, height: 60, borderRadius: 60 / 2 }}></Image>
+                            </TouchableOpacity> */}
+
+
+                        </View>
+
+
+                    </View>
+                </View>
+                {/* {Boxdesign('Jane Smith',60,()=>{props.navigation.navigate('') })} */}
+                <View style={{ width: '100%', height: 45, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 10, marginTop: 10 }}>
+                    <Text style={{ fontSize: 16, fontWeight: '600', color: '#455A64' }}>Last Name</Text>
+
+                </View>
+                <View style={{ width: dimensions.SCREEN_WIDTH - 40, flexDirectionL: 'row', }}>
+                    <View style={{
+                        height: 60,
+                        width: '100%',
+                        // fontSize: 12,
+                        flexDirectionL: 'row',
+                        justifyContent: 'space-between',
+                        // alignSelf: "center",
+                        borderColor: 'transparent',
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        color: Mycolors.TEXT_COLOR,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        backgroundColor: '#FFFFFF',
+                        top: 1
+                    }}>
+                        <View style={{ justifyContent: "space-between", alignItems: "center", flexDirection: "row", height: 60, }}>
+                            <TextInput
+                                value={lastname}
+                                onChangeText={(text) => {
+                                    setLastname(text)
+                                }}
+                                placeholder="Last Name"
+                                placeholderTextColor={Mycolors.GrayColor}
+                                style={styles.inputbox}
+                            />
+
+                            {/* <TouchableOpacity onPress={() => { }} style={{ width: 41, height: 36, justifyContent: 'center', alignItems: "center" ,position:'absolute',right:0}}>
+                                <Image source={require('../../assets/Details-edit-icon.png')} style={{ width: 60, height: 60, borderRadius: 60 / 2 }}></Image>
+                            </TouchableOpacity> */}
+
+
+                        </View>
+
+
+                    </View>
+                </View>
+                {/* {Boxdesign('Male', 60, () => { props.navigation.navigate('') })} */}
                 <View style={{ width: '100%', height: 45, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 10, marginTop: 10 }}>
                     <Text style={{ fontSize: 16, fontWeight: '600', color: '#455A64' }}>Mobile Number</Text>
 
                 </View>
-                {Boxdesign('+917983749857',60,()=>{props.navigation.navigate('') })}
-                <View style={{ width: '100%', height: 45, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 10, marginTop: 10 }}>
-                    <Text style={{ fontSize: 16, fontWeight: '600', color: '#455A64' }}>Gender</Text>
+                <View style={{ width: dimensions.SCREEN_WIDTH - 40, flexDirectionL: 'row', }}>
+                    <View style={{
+                        height: 60,
+                        width: '100%',
+                        // fontSize: 12,
+                        flexDirectionL: 'row',
+                        justifyContent: 'space-between',
+                        // alignSelf: "center",
+                        borderColor: 'transparent',
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        color: Mycolors.TEXT_COLOR,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        backgroundColor: '#FFFFFF',
+                        top: 1
+                    }}>
+                        <View style={{ justifyContent: "space-between", alignItems: "center", flexDirection: "row", height: 60, }}>
+                            <TextInput
+                                value={mobileno}
+                                onChangeText={(text) => {
+                                    setMobileno(text)
+                                }}
+                                placeholder="Mobile Number"
+                                placeholderTextColor={Mycolors.GrayColor}
+                                style={styles.inputbox}
+                            />
 
+                            {/* <TouchableOpacity onPress={() => { }} style={{ width: 41, height: 36, justifyContent: 'center', alignItems: "center" ,position:'absolute',right:0}}>
+                                <Image source={require('../../assets/Details-edit-icon.png')} style={{ width: 60, height: 60, borderRadius: 60 / 2 }}></Image>
+                            </TouchableOpacity> */}
+
+
+                        </View>
+
+
+                    </View>
                 </View>
-                {Boxdesign('Male',60,()=>{props.navigation.navigate('') })}
+                {/* {Boxdesign('+917983749857', 60, () => { props.navigation.navigate('') })} */}
+
                 <View style={{ width: '100%', height: 45, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 10, marginTop: 10 }}>
                     <Text style={{ fontSize: 16, fontWeight: '600', color: '#455A64' }}>Address</Text>
 
                 </View>
-                {Boxdesign('37, Across Mahalaxmi Complex, Binod, 46, Parui Cantt., Bakultala, Andaman and Nicobar, Pincode-725651',80,()=>{props.navigation.navigate('') })}
+                <View style={{ width: dimensions.SCREEN_WIDTH - 40, flexDirectionL: 'row', }}>
+                    <View style={{
+                        height: 60,
+                        width: '100%',
+                        // fontSize: 12,
+                        flexDirectionL: 'row',
+                        justifyContent: 'space-between',
+                        // alignSelf: "center",
+                        borderColor: 'transparent',
+                        borderWidth: 1,
+                        borderRadius: 10,
+                        color: Mycolors.TEXT_COLOR,
+                        paddingLeft: 10,
+                        paddingRight: 10,
+                        backgroundColor: '#FFFFFF',
+                        top: 1
+                    }}>
+                        <View style={{ justifyContent: "space-between", alignItems: "center", flexDirection: "row", height: 60, }}>
+                            <TextInput
+                                value={address}
+                                onChangeText={(text) => {
+                                    setAddress(text)
+                                }}
+                                placeholder="Address"
+                                placeholderTextColor={Mycolors.GrayColor}
+                                style={styles.inputbox}
+                            />
+
+                            {/* <TouchableOpacity onPress={() => { }} style={{ width: 41, height: 36, justifyContent: 'center', alignItems: "center" ,position:'absolute',right:0}}>
+                                <Image source={require('../../assets/Details-edit-icon.png')} style={{ width: 60, height: 60, borderRadius: 60 / 2 }}></Image>
+                            </TouchableOpacity> */}
+
+
+                        </View>
+
+
+                    </View>
+                </View>
+                {/* {Boxdesign('37, Across Mahalaxmi Complex, Binod, 46, Parui Cantt., Bakultala, Andaman and Nicobar, Pincode-725651', 80, () => { props.navigation.navigate('') })} */}
                 {/* <View style={{ width: dimensions.SCREEN_WIDTH - 40,  flexDirectionL:'row', }}>
                 <View style={{
                     height: 60,
@@ -302,11 +495,17 @@ const Boxdesign =(ti,boxh,onclick)=>{
                     />
 
             </View> */}
-            <View style={{ height: 40 }}></View>
 
+                <View style={{ height: 40 }}></View>
+                <MyButtons title="Save Changes" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => { Editprofile() }} marginHorizontal={20}
+                    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={10} />
+                <MyButtons title="Cancel" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => { }} marginHorizontal={20}
+                    titlecolor={Mycolors.TEXT_COLOR} backgroundColor={Mycolors.BG_COLOR} />
+                <View style={{ height: 40 }}></View>
+
+            </ScrollView>
             {My_Alert ? <MyAlert sms={alert_sms} okPress={() => { setMy_Alert(false) }} /> : null}
             {loading ? <Loader /> : null}
-        </ScrollView>
         </SafeAreaView >
     );
 }
