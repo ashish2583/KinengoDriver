@@ -13,6 +13,7 @@ import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const Earning = (props) => {
   const dispatch = useDispatch();
@@ -20,6 +21,17 @@ const Earning = (props) => {
   const userdetaile  = useSelector(state => state.user.user_details)
   const walletDetail  = useSelector(state => state.user.wallet_detail)
   const mapdata = useSelector(state => state.maplocation)
+  const [showDeliveryStatusModal, setShowDeliveryStatusModal] = useState(false);
+  const [dateopen, setDateOpen] = useState(false);
+  const [statusValue, setStatusValue] = useState('0');
+  const [rideStatuses, setRideStatuses] = useState([
+    {label: 'Select Status', value: '00'},
+    {label: 'Ongoing', value: '0'}, 
+    {label: 'Cancel', value: '1'},
+    {label: 'Delivered', value: '2'},
+    {label: 'Waiting at restaurant', value: '3'},
+    {label: 'Food is not prepared', value: '4'},
+  ]);
   const [email, setemail] = useState('')
   const [pass, setpass] = useState('')
   const[passView,setPassView]=useState(true)
@@ -249,10 +261,10 @@ const Earning = (props) => {
                      <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5}}>
                       {/* <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text> */}
                       <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
-                      <View style={{flexDirection:'row', alignItems:'center'}}>
+                      <TouchableOpacity onPress={()=>setShowDeliveryStatusModal(true)} style={{flexDirection:'row', alignItems:'center'}}>
                         <View style={{width:15,height:15,borderRadius:10,backgroundColor:getColor(item.status)}} />
                         <Text style={{color:getColor(item.status),fontSize:14,left:5}}>{getStatus(item.status)}</Text>
-                      </View>
+                      </TouchableOpacity>
                         </View>
 
      <View style={{ width: '100%', height: 1, backgroundColor: '#fee1be', marginTop:10}} />
@@ -299,6 +311,78 @@ const Earning = (props) => {
    
          {My_Alert ? <MyAlert sms={alert_sms} okPress={()=>{setMy_Alert(false)}} /> : null }
       {loading ? <Loader /> : null}
+
+      {showDeliveryStatusModal ?
+<View style={{width:dimensions.SCREEN_WIDTH,height:dimensions.SCREEN_HEIGHT,backgroundColor:'rgba(0,0,0,0.4)',position:'absolute',left:0,top:0}}>
+        <View style={{ height: 300, backgroundColor: '#fff', borderTopLeftRadius: 30, borderTopRightRadius: 30,position: 'absolute', bottom: 0, width: '100%',borderColor:'#fff',borderWidth:0.3,alignSelf:'center' }}>
+
+         
+<View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingHorizontal:20,paddingVertical:20,borderTopLeftRadius: 30, borderTopRightRadius: 30,}}>
+<Text style={{color:Mycolors.TEXT_COLOR,fontSize:14}}>Status</Text>
+</View>
+
+<View style={{width:'90%',marginTop:5,zIndex:999,borderColor:'gray',borderWidth:0.4,borderRadius:5,alignSelf:'center'}}> 
+   <DropDownPicker
+    open={dateopen}
+    value={statusValue}
+    items={rideStatuses}
+    setOpen={()=>{setDateOpen(!dateopen)}}
+    setValue={(v)=>{setStatusValue(v)}}
+    setItems={(i)=>{setRideStatuses(i)}}
+    placeholder="Select Status"
+    onChangeValue={(value) => {
+      setStatusValue(value)
+     
+    }} 
+    placeholderStyle={{
+      color: Mycolors.TEXT_COLOR,
+      // fontWeight: "bold"
+    }}
+    textStyle={{
+      color: Mycolors.TEXT_COLOR,
+    }}
+    style={{borderColor:'transparent',backgroundColor:Mycolors.BG_COLOR,}}
+    containerStyle={{
+      borderColor:'red'
+    }} 
+    disabledStyle={{
+      opacity: 0.5
+    }}
+    // labelStyle={{backgroundColor:'yellow'}}
+    dropDownContainerStyle={{
+      backgroundColor: Mycolors.BG_COLOR =='#fff' ? '#fff' :"rgb(50,50,50)",
+      borderColor:'transparent',
+      shadowColor: '#000000',
+      shadowOffset: {
+        width: 0,
+        height: 3
+      },
+      shadowRadius: 5,
+      shadowOpacity: 1.0,
+      elevation: 5,
+    }}
+  />
+   </View>
+
+<View style={{alignSelf:'center',width:'90%',marginTop:15}}>
+  <MyButtons title="Save" height={40} width={'100%'} borderRadius={5} press={()=>{setShowDeliveryStatusModal(false)}} 
+   titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} fontWeight={'600'} fontSize={14} marginVertical={10}/>
+    <MyButtons title="Cancel" height={40} width={'100%'} borderRadius={5} press={()=>{setShowDeliveryStatusModal(false)}} 
+   titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} fontWeight={'600'} fontSize={14} marginVertical={10}/>
+  
+</View>
+
+
+
+
+
+{/* </KeyboardAwareScrollView> */}
+
+        </View>
+
+</View>
+        : null
+      }
       {/* </LinearGradient> */}
     </SafeAreaView>
   );
