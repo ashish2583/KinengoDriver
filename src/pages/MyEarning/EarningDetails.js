@@ -166,8 +166,7 @@ const resetStacks=(page)=>{
   }
 };
  const emailNow = () => {
-  const email = `dummy@email.com`
-  Linking.openURL(`mailto:${email}`)
+  Linking.openURL(`mailto:${data.emailid}`)
 };
 
 
@@ -185,10 +184,12 @@ const resetStacks=(page)=>{
         
       
 
-<View style={{width:90,height:90,borderRadius:80,alignSelf:'center',backgroundColor:'#000',justifyContent:'center'}}>
-{/* <Image source={require('../../assets/cuate.png')} style={{width:35,height:35,alignSelf:'center'}}></Image> */}
+{/* <View style={{width:90,height:90,borderRadius:80,alignSelf:'center',backgroundColor:'#000',justifyContent:'center'}}>
 <Image source={{uri: data?.image}} style={{width:35,height:35,alignSelf:'center'}}></Image>
-</View>
+</View> */}
+{/* <View style={{width:90,height:90,borderRadius:80,alignSelf:'center',backgroundColor:'#000',justifyContent:'center'}}> */}
+<Image source={{uri: data?.image}} style={{width:109,height:109,borderRadius:109/2,alignSelf:'center'}}></Image>
+{/* </View> */}
 <View style={{alignSelf:'center',flexDirection:'row',marginTop:5}}>
 <Image source={require('../../assets/Star.png')} style={{width:20,height:20,alignSelf:'center'}}></Image>
 <Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>4.5</Text>
