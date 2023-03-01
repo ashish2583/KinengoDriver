@@ -157,7 +157,8 @@ const Earning = (props) => {
   }
   const getColor = (id) => {
     if(id == '0'){
-      return 'Ongoing'
+      // return 'Ongoing'
+      return Mycolors.GREEN
     } else if(id == '1'){
       // return 'Cancel'
       return Mycolors.RED
@@ -165,9 +166,10 @@ const Earning = (props) => {
       // return 'Delivered'
       return Mycolors.GREEN
     } else if(id == '3'){
-      return 'Waiting at restaurant'
+      // return 'Waiting at restaurant'
+      return Mycolors.filtercolor
     } else if(id == '4'){
-      return 'Food is not prepared'
+      return Mycolors.RED
     }
   }
 
@@ -247,8 +249,8 @@ const Earning = (props) => {
                       {/* <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text> */}
                       <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
                       <View style={{flexDirection:'row', alignItems:'center'}}>
-                        <View style={{width:15,height:15,borderRadius:10,backgroundColor:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor}} />
-                        <Text style={{color:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor,fontSize:14,left:5}}>{getStatus(item.status)}</Text>
+                        <View style={{width:15,height:15,borderRadius:10,backgroundColor:getColor(item.status)}} />
+                        <Text style={{color:getColor(item.status),fontSize:14,left:5}}>{getStatus(item.status)}</Text>
                       </View>
                         </View>
 
