@@ -18,6 +18,7 @@ const Earning = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
   const userdetaile  = useSelector(state => state.user.user_details)
+  const walletDetail  = useSelector(state => state.user.wallet_detail)
   const mapdata = useSelector(state => state.maplocation)
   const [email, setemail] = useState('')
   const [pass, setpass] = useState('')
@@ -191,11 +192,11 @@ const Earning = (props) => {
   <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between',padding:20}}>
     <View>
       <Text style={styles.totalEarnings}>Total Earnings</Text>
-      <Text style={styles.totalAmount}>${userdetaile.wallet_detail}</Text>
+      <Text style={styles.totalAmount}>${walletDetail}</Text>
     </View>
 
     <View style={{flexDirection:'row', alignItems:'center',justifyContent:'space-between'}}>
-      <TouchableOpacity style={styles.headerButton}>
+      <TouchableOpacity onPress={()=>{props.navigation.navigate('MonyTransfer')}} style={styles.headerButton}>
         <Text style={styles.buttonText}>Cash-Out</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={()=>{props.navigation.navigate('TransectionHistory')}} style={[styles.headerButton, {marginLeft:15}]}>
