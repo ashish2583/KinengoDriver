@@ -10,6 +10,7 @@ import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { baseUrl, login, requestPostApi,driver_ride_status, requestGetApi, driver_rides_history} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
+import { GoogleApiKey } from '../../WebApi/GoogleApiKey';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
@@ -164,7 +165,7 @@ const Earning = (props) => {
     if(id == '0'){
       return 'Ongoing'
     } else if(id == '1'){
-      return 'Cancel'
+      return 'Cancelled'
     } else if(id == '2'){
       return 'Delivered'
     } else if(id == '3'){
@@ -217,6 +218,10 @@ const Earning = (props) => {
   const openChangeStatusModal = (item) => {
     if(item.status == '2'){
       Alert.alert('Cannot change status because already delivered')
+      return
+    }
+    else if(item.status == '1'){
+      Alert.alert('Cannot change status because order is cancelled')
       return
     }
     setStatusValue(item.status)
@@ -433,7 +438,8 @@ const Earning = (props) => {
     style={styles.input}
   />:null}
 
-  <View style={{zIndex:-999,alignSelf: "center", width: "90%", position:'absolute', bottom:80  }}>
+  {/* <View style={{zIndex:-999,alignSelf: "center", width: "90%", position:'absolute', bottom:80  }}> */}
+  <View style={{zIndex:-999,alignSelf: "center", width: "90%", marginTop:30 }}>
     <MyButtons
       title="Save"
       height={40}

@@ -18,6 +18,7 @@ import LinearGradient from 'react-native-linear-gradient'
 const CELL_COUNT = 4;
 const Otp = (props) => {
   const dispatch =  useDispatch();
+  const mapdata = useSelector(state => state.maplocation)
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({value, cellCount: CELL_COUNT});
   const [mprops, getCellOnLayoutHandler] = useClearByFocusCell({
@@ -32,7 +33,7 @@ const Otp = (props) => {
     setLoading(true)
     var data={
       "phone": props.route.params.number,
-      "device_id": "Acghvhhjv67bjkhln67vIvg778bhjcycD",
+      "device_id": mapdata.devicetoken,
       "user_type": 4
        } 
     const { responseJson, err } = await requestPostApi(auth_send_otp, data, 'POST', '')

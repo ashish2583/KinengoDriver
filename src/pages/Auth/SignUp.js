@@ -17,6 +17,7 @@ import Loader from '../../WebApi/Loader';
 const SignUp = (props) => {
   const dispatch = useDispatch();
   const auth_token = useSelector(state => state.user.auth_token)
+  const mapdata = useSelector(state => state.maplocation)
   const [flag, setFlag] = useState('http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg')
   const [code, setcode] = useState('+1')
   const [isvisuable, setisvisuable] = useState(false)
@@ -47,7 +48,7 @@ const SignUp = (props) => {
     var data = {
       "country_code": code,
       "phone": number,
-      "device_id": "Acghvhhjv67bjkhln67vIvg778bhjcycD",
+      "device_id": mapdata.devicetoken,
       "user_type": 4,
       "screen_name": "SignUp"
     }

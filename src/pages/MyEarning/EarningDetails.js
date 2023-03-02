@@ -6,6 +6,7 @@ import Geolocation from "react-native-geolocation-service";
 import Geocoder from "react-native-geocoding";
 import MapViewDirections from 'react-native-maps-directions';
 import { GoogleApiKey } from '../../WebApi/GoogleApiKey';
+import { getApi } from '../../WebApi/Service'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {  useSelector, useDispatch } from 'react-redux';
 import {setCurentPosition,setBidAmount,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
@@ -125,7 +126,7 @@ const EarningDetails = (props) => {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   })
-  const [estTime,setestTime]=useState('')
+  const [estTime,setEstTime]=useState('')
   const [distance,setdistance]=useState('')
   const [fuleCost, setfuleCost] = useState('');
   const [fuleModle, setfuleModle] = useState(false);
@@ -142,12 +143,41 @@ const EarningDetails = (props) => {
     {label: 'On Hold', value: '10'},
     {label: 'Not recived', value: '15'},
   ]);
-
-  useEffect(() => {
-    // 
+  const [url, setUrl] = useState("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+data.lattitude+","+data.longitude+"&destinations="+data.destination_lat+","+data.destination_long+"&mode=driving"+"&units=imperial&key="+GoogleApiKey);
+  // const [url, setUrl] = useState(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=30.145292,74.199303&destinations=28.7041,77.1025&mode=driving&units=imperial&key=AIzaSyDBeSqFBgF2V-IXmJdeTM3ZZUYG_5nKm-g`)
   
+  useEffect(() => {
+    // console.log('google url', url);
+    calculateTravelTime()
   }, [])
- 
+    //function : get api
+  const googleGetApi = async (googleUrl = '') => {
+    const response = await fetch(googleUrl, {
+      method: "GET",
+      body:"",
+      headers:{},
+    }
+    )
+    let responseJson = await response.json();
+    return {responseJson:responseJson,err:null}
+  }
+  const calculateTravelTime = async () => {
+
+    setLoading(true)
+    const { responseJson, err } = await googleGetApi(url)
+    if(responseJson.rows[0].elements[0].status !== 'ZERO_RESULTS'){
+      // responseJson.rows[0].elements[0].duration['text']
+      setEstTime(responseJson.rows[0].elements[0].duration['text'])
+    }else{
+      Alert.alert('Zero results found')
+    }
+    setLoading(false)
+    console.log('calculateTravelTime res==>>', responseJson)
+    if (responseJson.headers.success == 1) {
+     } else {
+    }
+  
+  }
 
 
 const resetStacks=(page)=>{
@@ -234,7 +264,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
             <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>{data?.name}</Text>
             <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, fontWeight: '600',marginVertical:5 }}>${data.amount}</Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Est Time: 09 mins</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Est Time: {estTime}</Text>
            </View>
           </View>
         </View>
@@ -287,7 +317,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14,}}>Est. Time</Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>09 min</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>{estTime}</Text>
            </View>
           </View>
 </View>
