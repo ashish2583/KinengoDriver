@@ -36,6 +36,7 @@ const Earning = (props) => {
   const [email, setemail] = useState('')
   const [reason, setReason] = useState('')
   const [selectedRideId, setSelectedRideId] = useState('')
+  const [selectedStatus, setSelectedStatus] = useState('')
   const [pass, setpass] = useState('')
   const[passView,setPassView]=useState(true)
    const [My_Alert, setMy_Alert] = useState(false)
@@ -218,6 +219,7 @@ const Earning = (props) => {
       return
     }
     setSelectedRideId(item.ride_id)
+    setSelectedStatus(item.status)
     setShowDeliveryStatusModal(true)
   }
 
@@ -352,7 +354,7 @@ const Earning = (props) => {
         onSwipeComplete={(e) => {
           setShowDeliveryStatusModal(false)
         }}
-        onModalHide={()=>{setDateOpen(false); setReason('')}}
+        onModalHide={()=>{setDateOpen(false); setReason(''); setStatusValue(selectedStatus)}}
         
           scrollTo={() => {}}
           scrollOffset={1}
