@@ -196,9 +196,15 @@ const intervalID = useRef(0);
     setLoading(false)
     console.log('the res checkStatus ==>>', responseJson)
     if (responseJson.headers.success == 1) {
-     dispatch(setDriverRideStatus(responseJson.body.driver_ride_status)) 
+     dispatch(setDriverRideStatus(responseJson.body.driver_ride_status))  
       if (responseJson.body.driver_ride_status != 2) {
-      dispatch(setNotificationData(responseJson.body.orderData))
+      // dispatch(setNotificationData(responseJson.body.orderData))
+      dispatch(setNotificationData({...responseJson.body.orderData,
+        driver_ride_status:responseJson.body.driver_ride_status,
+        ride_id:responseJson.body.ride_id,
+        driver_id:responseJson.body.driver_id
+      }))
+
       var sp1=parseFloat(responseJson.body.orderData.lattitude) 
       var sp2=parseFloat(responseJson.body.orderData.longitude) 
       var dp1=parseFloat(responseJson.body.orderData.destination_lat) 
@@ -296,10 +302,10 @@ const intervalID = useRef(0);
     // if(remoteMessage.notification.body!='new message'  && remoteMessage.notification.body!='Ride Cancelled By Customer'){
     // var dest_pos={latitude: parseInt(data.end_latitude), longitude: parseInt(data.end_longitude)}
     // var st_pos={latitude: parseInt(data.start_latitude), longitude: parseInt(data.start_longitude)}  
-  //  dispatch(setDestnationAddress(data.business_address))
+    //  dispatch(setDestnationAddress(data.business_address))
     // dispatch(setDestnationPosition(dest_pos))
     // dispatch(setStartPosition(st_pos))
-   // dispatch(setStartAddress(data.start_location))
+    // dispatch(setStartAddress(data.start_location))
     dispatch(setNotificationData(data))
     // resetStacks('Home2')
   }else if(remoteMessage.notification.body=='new message'){
