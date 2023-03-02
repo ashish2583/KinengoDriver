@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, FlatList, Alert, TouchableOpacity, ScrollView, ImageBackground } from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView, TextInput, FlatList, Alert, TouchableOpacity, ScrollView, ImageBackground, RefreshControl } from 'react-native';
 import MyButtons from '../../component/MyButtons';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
 import Modal from 'react-native-modal';
@@ -25,6 +25,7 @@ const Myprofile = (props) => {
   const [loading, setLoading] = useState(false)
   const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
+  
   const [flData, setFtData] = useState([
     { id: '1', img: person_Image, title: 'GRECA Vegetarian Greek', lable: 'Table Booking', price: '$140.00', desc: 'Booking date and time: 21 July 2021, 11:00 AM' },
     { id: '2', img: person_Image, title: 'GRECA Vegetarian Greek', lable: 'Table Booking', price: '$140.00', desc: 'Booking date and time: 21 July 2021, 11:00 AM' },
@@ -35,90 +36,108 @@ const Myprofile = (props) => {
   useEffect(() => {
     getProfile()
   }, [])
+  const [refreshing, setRefreshing] = React.useState(false);
+  const checkcon = () => {
+    getProfile()
+  }
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
+  const onRefresh = React.useCallback(() => {
+    checkcon()
+    wait(2000).then(() => {
+
+      setRefreshing(false)
+
+    });
+  }, []);
+
+
   const openLibrary = async () => {
 
     let options = {
-        title: 'Select Image',
-        customButtons: [
-            {
-                name: 'customOptionKey',
-                title: 'Choose Photo from Custom Option'
-            },
-        ],
-        maxWidth: 500,
-        maxHeight: 500,
-        storageOptions: {
-            skipBackup: true,
-            path: 'images',
+      title: 'Select Image',
+      customButtons: [
+        {
+          name: 'customOptionKey',
+          title: 'Choose Photo from Custom Option'
         },
+      ],
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
     };
 
     launchImageLibrary(options, (image) => {
-        if (!image.didCancel) {
-            console.log('the ddd==', image.assets[0].uri)
-            var photo = {
-                uri: image.assets[0].uri,
-                type: "image/jpeg",
-                name: image.assets[0].fileName
-            };
-            console.log("photo", photo);
-            setpick(photo)
-            setfilepath(image)
-        }
-    })
-
-
-}
-const opencamera = async () => {
-  // setmodlevisual(false)
-
-  let options = {
-    title: 'Select Image',
-    customButtons: [
-      {
-        name: 'customOptionKey',
-        title: 'Choose Photo from Custom Option'
-      },
-    ],
-    mediaType:'video',
-    maxWidth: 500,
-    maxHeight: 500,
-    storageOptions: {
-      skipBackup: true,
-      path: 'images',
-    },
-  };
-  
-  if(true){
-    launchCamera(options, (video) => {
-      if (!video.didCancel) {
-        console.log('the ddd==', video)
-        var obj = {
-          uri: video.assets[0].uri,
-          type: "video/mp4",
-          name: video.assets[0].fileName
-        };
-        setcapturedVideo(obj)
-        setfilepath(video)
-      }
-  
-    })
-  }else{
-    launchCamera(options, (image) => {
       if (!image.didCancel) {
-        console.log('the ddd==', image)
+        console.log('the ddd==', image.assets[0].uri)
         var photo = {
           uri: image.assets[0].uri,
           type: "image/jpeg",
           name: image.assets[0].fileName
         };
+        console.log("photo", photo);
         setpick(photo)
         setfilepath(image)
       }
-  
     })
+
+
   }
-}
+  const opencamera = async () => {
+    // setmodlevisual(false)
+
+    let options = {
+      title: 'Select Image',
+      customButtons: [
+        {
+          name: 'customOptionKey',
+          title: 'Choose Photo from Custom Option'
+        },
+      ],
+      mediaType: 'video',
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    if (true) {
+      launchCamera(options, (video) => {
+        if (!video.didCancel) {
+          console.log('the ddd==', video)
+          var obj = {
+            uri: video.assets[0].uri,
+            type: "video/mp4",
+            name: video.assets[0].fileName
+          };
+          setcapturedVideo(obj)
+          setfilepath(video)
+        }
+
+      })
+    } else {
+      launchCamera(options, (image) => {
+        if (!image.didCancel) {
+          console.log('the ddd==', image)
+          var photo = {
+            uri: image.assets[0].uri,
+            type: "image/jpeg",
+            name: image.assets[0].fileName
+          };
+          setpick(photo)
+          setfilepath(image)
+        }
+
+      })
+    }
+  }
   const getProfile = async () => {
 
     setLoading(true)
@@ -135,7 +154,7 @@ const opencamera = async () => {
     }
   }
 
-  const design = (img, ti,dollor, tirateing, w, imgh, imgw, redious, press) => {
+  const design = (img, ti, dollor, tirateing, w, imgh, imgw, redious, press) => {
     return (
       <View style={{ alignItems: 'center', width: "22%", borderRadius: 15, height: 65, paddingHorizontal: 0 }}>
         <TouchableOpacity onPress={press ? press : () => { }}
@@ -144,7 +163,7 @@ const opencamera = async () => {
         </TouchableOpacity>
         <View style={{ alignItems: 'center', }}>
           <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#455A64' }}><Text style={{ fontSize: 14, fontWeight: 'bold', color: '#455A64' }}>{dollor}</Text>{tirateing}</Text>
-          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C7C7C7' }}>{ti}</Text>
+          <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C7C7C7',textAlign:'center'}}>{ti}</Text>
         </View>
 
       </View>
@@ -222,7 +241,16 @@ const opencamera = async () => {
     <SafeAreaView style={styles.container}>
       <MyButtons title="My Profile" height={55} width={'100%'} alignSelf="center" imgpress={() => { props.navigation.goBack() }} marginHorizontal={20}
         titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} img='left' imgtop={16} imgleft={10} imgheight={20} imgwidth={25} />
-      <ScrollView style={{ paddingHorizontal: 20 ,}}>
+      <ScrollView style={{ paddingHorizontal: 20, }}
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+
+          />
+        }
+      >
         <View style={{
           width: '99%', padding: 10, marginTop: 60, borderRadius: 30,
           backgroundColor: '#fff',
@@ -255,10 +283,10 @@ const opencamera = async () => {
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: "100%", top: -65 }}>
 
-            {design(require('../../assets/star-rating.png'), 'Rating','', '4.2', '45%', 25, 24, 20)}
-            {design(require('../../assets/order-icon.png'), 'Orders Completed','', datas.total_orders, '45%', 22, 26, 20)}
-            {design(require('../../assets/cal-icon.png'), 'Years', '2.4','', '45%', 21, 20, 20)}
-            {design(require('../../assets/Wallet-icon.png'), 'Monthly Salary','$',datas.monthly_salary, '45%', 26, 27, 20)}
+            {design(require('../../assets/star-rating.png'), 'Rating', '', '4.2', '45%', 25, 24, 20)}
+            {design(require('../../assets/order-icon.png'), 'Orders Completed', '', datas.total_orders, '45%', 22, 26, 20)}
+            {design(require('../../assets/cal-icon.png'), 'Years', '2.4', '', '45%', 21, 20, 20)}
+            {design(require('../../assets/Wallet-icon.png'), 'Monthly Salary', '$', datas.monthly_salary, '45%', 26, 27, 20)}
 
           </View>
           <View style={{ flexDirection: "row", width: '100%', justifyContent: "center", alignSelf: "center", alignItems: "center", top: -20 }}>
@@ -281,10 +309,10 @@ const opencamera = async () => {
 
         <View style={{ height: 40 }}></View>
 
-       
+
       </ScrollView>
       {My_Alert ? <MyAlert sms={alert_sms} okPress={() => { setMy_Alert(false) }} /> : null}
-        {loading ? <Loader /> : null}
+      {loading ? <Loader /> : null}
     </SafeAreaView>
   );
 }
