@@ -8,12 +8,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, login, requestPostApi, requestGetApi, driver_rides_history} from '../../WebApi/Service'
+import { baseUrl, login, requestPostApi,driver_ride_status, requestGetApi, driver_rides_history} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
 import DropDownPicker from 'react-native-dropdown-picker';
+import Modal from 'react-native-modal';
 
 const Earning = (props) => {
   const dispatch = useDispatch();
@@ -33,6 +34,8 @@ const Earning = (props) => {
     {label: 'Food is not prepared', value: '4'},
   ]);
   const [email, setemail] = useState('')
+  const [reason, setReason] = useState('')
+  const [selectedRideId, setSelectedRideId] = useState('')
   const [pass, setpass] = useState('')
   const[passView,setPassView]=useState(true)
    const [My_Alert, setMy_Alert] = useState(false)
@@ -186,7 +189,28 @@ const Earning = (props) => {
     }
   }
 
-
+  const ChangeRideStatus = async (status, notes = '') => {
+    // Alert.alert('ChangeRideStatus')
+    setLoading(false)
+    var data = {
+      "status": status,
+      "notes": notes,
+      "driver_id": userdetaile.driver_id,
+      "ride_id": selectedRideId,
+    }
+    // console.log('ChangeRideStatus data', data);
+    // return
+    const { responseJson, err } = await requestPostApi(driver_ride_status, data, 'POST', userdetaile.token)
+    setLoading(false)
+    console.log('ChangeRideStatus the res==>>', responseJson)
+    if (responseJson.headers.success == 1) {
+      setShowDeliveryStatusModal(false)
+      getRideHistory()
+    } else {
+      setalert_sms(err)
+      setMy_Alert(true)
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -261,7 +285,7 @@ const Earning = (props) => {
                      <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5}}>
                       {/* <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text> */}
                       <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
-                      <TouchableOpacity onPress={()=>setShowDeliveryStatusModal(true)} style={{flexDirection:'row', alignItems:'center'}}>
+                      <TouchableOpacity onPress={()=>{setSelectedRideId(item.ride_id);setShowDeliveryStatusModal(true)}} style={{flexDirection:'row', alignItems:'center'}}>
                         <View style={{width:15,height:15,borderRadius:10,backgroundColor:getColor(item.status)}} />
                         <Text style={{color:getColor(item.status),fontSize:14,left:5}}>{getStatus(item.status)}</Text>
                       </TouchableOpacity>
@@ -312,28 +336,43 @@ const Earning = (props) => {
          {My_Alert ? <MyAlert sms={alert_sms} okPress={()=>{setMy_Alert(false)}} /> : null }
       {loading ? <Loader /> : null}
 
-      {showDeliveryStatusModal ?
-<View style={{width:dimensions.SCREEN_WIDTH,height:dimensions.SCREEN_HEIGHT,backgroundColor:'rgba(0,0,0,0.4)',position:'absolute',left:0,top:0}}>
-        <View style={{ height: 300, backgroundColor: '#fff', borderTopLeftRadius: 30, borderTopRightRadius: 30,position: 'absolute', bottom: 0, width: '100%',borderColor:'#fff',borderWidth:0.3,alignSelf:'center' }}>
-
-         
-<View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingHorizontal:20,paddingVertical:20,borderTopLeftRadius: 30, borderTopRightRadius: 30,}}>
-<Text style={{color:Mycolors.TEXT_COLOR,fontSize:14}}>Status</Text>
-</View>
-
-<View style={{width:'90%',marginTop:5,zIndex:999,borderColor:'gray',borderWidth:0.4,borderRadius:5,alignSelf:'center'}}> 
-   <DropDownPicker
+      <Modal
+        isVisible={showDeliveryStatusModal}
+        swipeDirection="down"
+        onBackdropPress={()=>setShowDeliveryStatusModal(false)}
+        onSwipeComplete={(e) => {
+          setShowDeliveryStatusModal(false)
+        }}
+        onModalHide={()=>{setDateOpen(false); setReason('')}}
+        
+          scrollTo={() => {}}
+          scrollOffset={1}
+          propagateSwipe={true}
+        coverScreen={false}
+        backdropColor='transparent'
+        style={{ justifyContent: 'flex-end', margin: 0, backgroundColor: 'rgba(0,0,0,0.5)' }}
+      >
+        <View style={{ height: '50%', backgroundColor: '#fff', borderTopLeftRadius: 30, borderTopRightRadius: 30, padding: 20 }}>
+          {/* <ScrollView showsVerticalScrollIndicator={false} nestedScrollEnabled={true}> */}
+          
+          <View style={{height:400}}>
+          <DropDownPicker
     open={dateopen}
     value={statusValue}
     items={rideStatuses}
-    setOpen={()=>{setDateOpen(!dateopen)}}
-    setValue={(v)=>{setStatusValue(v)}}
-    setItems={(i)=>{setRideStatuses(i)}}
+    setOpen={() => {
+      setDateOpen(!dateopen);
+    }}
+    setValue={(v) => {
+      setStatusValue(v);
+    }}
+    setItems={(i) => {
+      setRideStatuses(i);
+    }}
     placeholder="Select Status"
     onChangeValue={(value) => {
-      setStatusValue(value)
-     
-    }} 
+      setStatusValue(value);
+    }}
     placeholderStyle={{
       color: Mycolors.TEXT_COLOR,
       // fontWeight: "bold"
@@ -341,48 +380,89 @@ const Earning = (props) => {
     textStyle={{
       color: Mycolors.TEXT_COLOR,
     }}
-    style={{borderColor:'transparent',backgroundColor:Mycolors.BG_COLOR,}}
+    style={{ zIndex:1,borderColor: "transparent", backgroundColor: Mycolors.BG_COLOR }}
     containerStyle={{
-      borderColor:'red'
-    }} 
+      borderColor: "red",
+    }}
     disabledStyle={{
-      opacity: 0.5
+      opacity: 0.5,
     }}
     // labelStyle={{backgroundColor:'yellow'}}
     dropDownContainerStyle={{
-      backgroundColor: Mycolors.BG_COLOR =='#fff' ? '#fff' :"rgb(50,50,50)",
-      borderColor:'transparent',
-      shadowColor: '#000000',
+      backgroundColor: Mycolors.BG_COLOR == "#fff" ? "#fff" : "rgb(50,50,50)",
+      borderColor: "transparent",
+      shadowColor: "#000000",
       shadowOffset: {
         width: 0,
-        height: 3
+        height: 3,
       },
       shadowRadius: 5,
       shadowOpacity: 1.0,
       elevation: 5,
     }}
   />
-   </View>
-
-<View style={{alignSelf:'center',width:'90%',marginTop:15}}>
-  <MyButtons title="Save" height={40} width={'100%'} borderRadius={5} press={()=>{setShowDeliveryStatusModal(false)}} 
-   titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} fontWeight={'600'} fontSize={14} marginVertical={10}/>
-    <MyButtons title="Cancel" height={40} width={'100%'} borderRadius={5} press={()=>{setShowDeliveryStatusModal(false)}} 
-   titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} fontWeight={'600'} fontSize={14} marginVertical={10}/>
   
-</View>
+  {statusValue === '1' ?
+  <TextInput
+    value={reason}
+    onChangeText={(text) => {
+      setReason(text)
+    }}
+    placeholder="Enter reason for cancellation"
+    placeholderTextColor={Mycolors.GrayColor}
+    style={styles.input}
+  />:null}
 
+  <View style={{alignSelf: "center", width: "90%",  bottom:-100, marginTop:100  }}>
+    <MyButtons
+      title="Save"
+      height={40}
+      width={"100%"}
+      borderRadius={5}
+      press={() => {
+        if(statusValue == '0'){
+          Alert.alert('Default status is ongoing')
+          return
+        }
+        if(statusValue == '1'){
+          if(reason === ''){
+            Alert.alert('Enter reason for cancellation')
+            return
+          }
+          ChangeRideStatus(statusValue,reason)
+        }else{
+          ChangeRideStatus(statusValue)
+        }
+        // setShowDeliveryStatusModal(false);
+      }}
+      titlecolor={Mycolors.BG_COLOR}
+      backgroundColor={Mycolors.signupButton}
+      fontWeight={"600"}
+      fontSize={14}
+      marginVertical={10}
+    />
+    <MyButtons
+      title="Cancel"
+      height={40}
+      width={"100%"}
+      borderRadius={5}
+      press={() => {
+        setShowDeliveryStatusModal(false);
+      }}
+      titlecolor={Mycolors.TEXT_COLOR}
+      backgroundColor={"transparent"}
+      fontWeight={"600"}
+      fontSize={14}
+      marginVertical={10}
+    />
+  </View>
+  </View>
+            {/* <View style={{width:100,height:100}} /> */}
+            {/* </ScrollView> */}
+           
+            </View>
+</Modal>
 
-
-
-
-{/* </KeyboardAwareScrollView> */}
-
-        </View>
-
-</View>
-        : null
-      }
       {/* </LinearGradient> */}
     </SafeAreaView>
   );
