@@ -155,6 +155,7 @@ const Home2 = (props) => {
   const [drvRideStatus,setdrvRideStatus]=useState('')
   useEffect(() => {
     frist()
+    console.log('mapdata.notificationdata', mapdata.notificationdata);
 // setDateValue(mapdata.driverridestatus)
   statusLable()
   }, [])
@@ -182,12 +183,14 @@ const statusLable=()=>{
   const ChangeRideStatus = async (val) => {
     var data = {
       "driver_id": userdetaile.driver_id,
-      "ride_id": mapdata.notificationdata.ride_id,
+      // "ride_id": mapdata.notificationdata.ride_id,
+      "ride_id": '4',
       "status": val,
     }
+    console.log('ChangeRideStatus data==>>', data)
     const { responseJson, err } = await requestPostApi(driver_ride_status, data, 'POST', userdetaile.token)
     setLoading(false)
-    console.log('the res==>>', responseJson)
+    console.log('ChangeRideStatus the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
       dispatch(setDriverRideStatus(val)) 
       setDateValue(val)

@@ -215,6 +215,7 @@ const intervalID = useRef(0);
     var data = {
       "driver_id": userdetaile.driver_id,
         }
+    console.log('data checkStatus ==>>', data)
     setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_ride_check_status, data, 'POST', userdetaile.token)
     setLoading(false)
@@ -222,7 +223,16 @@ const intervalID = useRef(0);
     if (responseJson.headers.success == 1) {
      dispatch(setDriverRideStatus(responseJson.body.driver_ride_status)) 
       if (responseJson.body.driver_ride_status != 2) {
-      dispatch(setNotificationData(responseJson.body.orderData))
+      console.log('strcuture de', {...responseJson.body.orderData, 
+        driver_ride_status:responseJson.body.driver_ride_status,
+        ride_id:responseJson.body.ride_id,
+        driver_id:responseJson.body.driver_id
+      });
+        dispatch(setNotificationData({...responseJson.body.orderData, 
+        driver_ride_status:responseJson.body.driver_ride_status,
+        ride_id:responseJson.body.ride_id,
+        driver_id:responseJson.body.driver_id
+      }))
       var sp1=parseFloat(responseJson.body.orderData.lattitude) 
       var sp2=parseFloat(responseJson.body.orderData.longitude) 
       var dp1=parseFloat(responseJson.body.orderData.destination_lat) 
@@ -255,7 +265,7 @@ const intervalID = useRef(0);
     setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_accept_ride_request, data, 'POST', userdetaile.token)
     setLoading(false)
-    console.log('the res==>>', responseJson)
+    console.log('AcceptRideClick the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
       dispatch(setNotificationData(responseJson.body))
       var sp1=parseFloat(responseJson.body.lattitude) 
