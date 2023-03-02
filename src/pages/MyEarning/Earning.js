@@ -430,7 +430,7 @@ const Earning = (props) => {
       borderRadius={5}
       press={() => {
         if(statusValue == '0'){
-          Alert.alert('Default status is ongoing')
+          Alert.alert('Cannot change status to Default status (Ongoing)')
           return
         }
         if(statusValue == '1'){
