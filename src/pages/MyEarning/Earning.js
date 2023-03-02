@@ -37,6 +37,7 @@ const Earning = (props) => {
   const [reason, setReason] = useState('')
   const [selectedRideId, setSelectedRideId] = useState('')
   const [selectedStatus, setSelectedStatus] = useState('')
+  const [selectedNotes, setSelectedNotes] = useState('')
   const [pass, setpass] = useState('')
   const[passView,setPassView]=useState(true)
    const [My_Alert, setMy_Alert] = useState(false)
@@ -218,8 +219,10 @@ const Earning = (props) => {
       Alert.alert('Cannot change status because already delivered')
       return
     }
+    setStatusValue(item.status)
     setSelectedRideId(item.ride_id)
     setSelectedStatus(item.status)
+    setSelectedNotes(item.notes)
     setShowDeliveryStatusModal(true)
   }
 
@@ -353,6 +356,12 @@ const Earning = (props) => {
         onBackdropPress={()=>setShowDeliveryStatusModal(false)}
         onSwipeComplete={(e) => {
           setShowDeliveryStatusModal(false)
+        }}
+        
+        onModalShow={()=>{
+          if(statusValue === '1'){
+            setReason(selectedNotes)
+          }
         }}
         onModalHide={()=>{setDateOpen(false); setReason(''); setStatusValue(selectedStatus)}}
         
