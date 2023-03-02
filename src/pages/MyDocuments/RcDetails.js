@@ -6,7 +6,7 @@ import Modal from 'react-native-modal';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import messaging from '@react-native-firebase/messaging';
 import { useSelector, useDispatch } from 'react-redux';
-import { requestPostApi, requestGetApi, driver_profile_update } from '../../WebApi/Service'
+import { requestPostApi, requestGetApi, driver_profile_update, driver_ID } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MyAlert from '../../component/MyAlert';
@@ -21,10 +21,10 @@ const RcDetails = (props) => {
     const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
     const [datas, setdatas] = useState('');
 
-    const [firstname, setFirstName] = useState(userdetaile.first_name ? userdetaile.first_name : '');
-    const [lastname, setLastname] = useState(userdetaile.last_name ? userdetaile.last_name : '');
+    const [firstname, setFirstName] = useState('');
+    const [lastname, setLastname] = useState('');
     const [mobileno, setMobileno] = useState(userdetaile.phone ? userdetaile.phone : '');
-    const [gender, setGender] = useState('');
+    // const [gender, setGender] = useState('');
     const [address, setAddress] = useState(userdetaile.address ? userdetaile.address : '');
     const [loading, setLoading] = useState(false)
     const [My_Alert, setMy_Alert] = useState(false)
@@ -37,17 +37,28 @@ const RcDetails = (props) => {
         { id: '5', img: person_Image, title: 'GRECA Vegetarian Greek', lable: 'Table Booking', price: '$140.00', desc: 'Booking date and time: 21 July 2021, 11:00 AM' },
     ])
     useEffect(() => {
-        
+        getProfile()
     }, [])
    
 
-    // const Profiledata = (datas) => {
-    //     console.log("Profiledata:>>>>>>>>", datas);
-    //     setFirstName(datas.full_name)
-    //     setEmail(datas.emailid)
-    //     setMobileno(datas.mobile)
-    //     setAddress(datas.address)
-    // }
+    const getProfile = async () => {
+        console.log("userdetaile RC Details", userdetaile);
+        setLoading(true)
+        const { responseJson, err } = await requestGetApi(driver_ID + userdetaile.driver_id, '', 'GET', userdetaile.token)
+        setLoading(false)
+        console.log('User RC DEtail==>>', responseJson)
+        if (responseJson.headers.success == 1) {
+          console.log('objj==>>', responseJson.body)
+       
+          setFirstName(responseJson.body.first_name)
+          setLastname(responseJson.body.last_name)
+          setMobileno(responseJson.body.phone)
+          setAddress(responseJson.body.address)
+        } else {
+          setalert_sms(err)
+          setMy_Alert(true)
+        }
+      }
     const Editprofile = async () => {
         // console.log("userdetaile RC Details", userdetaile);
         setLoading(true)
@@ -59,12 +70,12 @@ const RcDetails = (props) => {
         }
         const { responseJson, err } = await requestPostApi(driver_profile_update + userdetaile.driver_id, data, 'PUT', userdetaile.token)
         setLoading(false)
-        // console.log('User Profile1 ==>>', responseJson)
+        console.log('User Profile1 ==>>', responseJson)
         if (responseJson.headers.success == 1) {
-            props.navigation.goBack()
+            // props.navigation.goBack()
             console.log('objj==>>', responseJson.body)
-            AsyncStorage.setItem("kinengoDriver",JSON.stringify(responseJson.body));
-            dispatch(saveUserResult(responseJson.body))
+            // AsyncStorage.setItem("kinengoDriver",JSON.stringify(responseJson.body));
+            // dispatch(saveUserResult(responseJson.body))
             // Profiledata(responseJson.body)
             // setdatas(responseJson.body)
         } else {

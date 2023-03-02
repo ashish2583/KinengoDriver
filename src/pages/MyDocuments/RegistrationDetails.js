@@ -21,8 +21,8 @@ const RegistrationDetails = (props) => {
   const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
   const [datas, setdatas] = useState("");
 
-  const [vehicleno, setVehicleno] = useState(datas.vichel_number   ? datas.vichel_number : '');
-  const [vehiclecolor, setVehiclecolor] = useState(datas.vichel_color   ? datas.vichel_color : '');
+  const [vehicleno, setVehicleno] = useState('');
+  const [vehiclecolor, setVehiclecolor] = useState('');
   const [loading, setLoading] = useState(false)
   const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
@@ -33,7 +33,6 @@ const RegistrationDetails = (props) => {
   console.log("datas---RegistrationDetails", datas.vichel_number);
   console.log("datas--->>", datas.vichel_color);
   useEffect(() => {
-    
     getProfile()
   }, [])
   const opencamera = async () => {
@@ -271,11 +270,12 @@ const RegistrationDetails = (props) => {
     setLoading(true)
     const { responseJson, err } = await requestGetApi(driver_ID + userdetaile.driver_id, '', 'GET', userdetaile.token)
     setLoading(false)
-    console.log('User Profile data==>>', responseJson, userdetaile.driver_id)
+    console.log('User Profile data==>>', responseJson)
     if (responseJson.headers.success == 1) {
       console.log('objj==>>', responseJson.body)
-      setdatas(responseJson.body)
-
+      // setdatas(responseJson.body)
+      setVehicleno(responseJson.body.vichel_number)
+      setVehiclecolor(responseJson.body.vichel_color)
     } else {
       setalert_sms(err)
       setMy_Alert(true)

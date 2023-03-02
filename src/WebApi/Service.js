@@ -16,11 +16,18 @@ export const auth_driver_signup = 'driver/signup'
 export const add_vichle = 'driver/add-vichle'
 export const driver_update_driver_location = 'driver/update-driver/location'
 export const driver_accept_ride_request = `driver/accept-ride-request`;
+export const common_countries = `common/countries`;
+export const common_state = `common/states?country_id=`;
+export const driver_ID = 'driver/id/';
+export const driver_profile_update = 'driver/profile-update/id/';
+export const driver_change_password = 'driver/change-password/userid/';
+export const driver_update_vehicle = 'driver/update-vichle/id/';
+export const password_forgot = 'auth/password/forgot';
+export const Password_otp = 'auth/password/otp';
+export const password_change = 'auth/password/change'
+export const UserID_login = 'auth/login';
 
 
-export const booking_verify_ride = 'booking/verify_ride'
-export const booking_cancel_ride = 'booking/cancel_ride'
-export const driver_current_location = 'driver/current_location'
 export const booking_ride_status = 'booking/ride_status'
 export const GET_QUESTIONS = `common/driver_questions`;
 export const GET_CAR_BRANDS = `common/vehicle_brand`;
@@ -56,12 +63,7 @@ export const driver_fuel_cost = 'driver/fuel_cost'   //
 export const driver_referral_earning = 'driver/referral_earning'
 export const driver_change_account_status = 'driver/change_account_status'
 
-export const common_countries = `common/countries`;
-export const common_state = `common/states?country_id=`;
-export const driver_ID = 'driver/id/';
-export const driver_profile_update = 'driver/profile-update/id/';
-export const driver_change_password = 'driver/change-password/userid/';
-export const driver_update_vehicle = 'driver/update-vichle/id/';
+
 
 export const requestPostApi = async (endPoint, body, method, token) => {
   console.log('the token is :-', token)

@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, login, requestPostApi } from '../../WebApi/Service'
+import { baseUrl, login, requestPostApi, UserID_login } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
@@ -44,7 +44,7 @@ const Login = (props) => {
       setLoading(true)
       var data = {
         "phone": mobile,
-        "device_id": "Acghvhhjv67bjkhln67vIvg778bhjcycD"
+        "device_id": mapdata.devicetoken
       }
       const { responseJson, err } = await requestPostApi(login, data, 'POST', '')
       setLoading(false)
@@ -56,6 +56,36 @@ const Login = (props) => {
         setMy_Alert(true)
       }
     }
+  }
+
+  const LoginWithUserid = async () => {
+
+    if (email == '') {
+      Alert.alert('Enter Valid Email');
+    } else if (pass == '') {
+      Alert.alert('Enter Valid Password');
+    }
+    else {
+      setLoading(true)
+      var data = {
+        "email": email,
+        "password": pass
+      }
+      const { responseJson, err } = await requestPostApi(UserID_login, data, 'POST', '')
+      setLoading(false)
+      console.log('the res==>>', responseJson)
+      if (responseJson.headers.success == 1) {
+        props.navigation.navigate('Otp')
+        LoginPress(responseJson.body)
+      } else {
+        setalert_sms(err)
+        setMy_Alert(true)
+      }
+    }
+  }
+  const LoginPress = (data) => {
+    AsyncStorage.setItem("kinengoDriver", JSON.stringify(data));
+    dispatch(saveUserResult(data))
   }
 
   const resetStacks = (page) => {
@@ -124,7 +154,7 @@ const Login = (props) => {
         {/* <Text style={{ marginTop: 0, fontSize: 13, color: Mycolors.TEXT_COLOR, textAlign: 'center' }} onPress={() => { }}></Text> */}
 
 
-        <MyButtons title="Sign In" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => { LoginPressed() }} marginHorizontal={20}
+        <MyButtons title="Sign In" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => { LoginWithUserid() }} marginHorizontal={20}
           titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
 
         <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.GrayColor, textAlign: 'center' }}>--------or--------</Text>
@@ -159,7 +189,7 @@ const Login = (props) => {
               <Image resizeMode='cover' source={require('../../assets/cutRed.png')} style={{ width: 30, height: 30, overflow: 'hidden', alignSelf: 'center', }}></Image>
             </TouchableOpacity>
 
-            <Text style={{marginLeft:28, marginTop: '5%', fontSize: 18, color: Mycolors.TEXT_COLOR }}>Enter Mobile Number</Text>
+            <Text style={{ marginLeft: 28, marginTop: '5%', fontSize: 18, color: Mycolors.TEXT_COLOR }}>Enter Mobile Number</Text>
             <View style={{ width: dimensions.SCREEN_WIDTH - 40, marginTop: 20, justifyContent: "center", alignItems: "center", marginHorizontal: 10, }}>
 
               <TextInput

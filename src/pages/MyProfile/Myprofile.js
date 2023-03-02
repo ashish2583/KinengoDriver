@@ -135,15 +135,15 @@ const opencamera = async () => {
     }
   }
 
-  const design = (img, ti, tirateing, w, imgh, imgw, redious, press) => {
+  const design = (img, ti,dollor, tirateing, w, imgh, imgw, redious, press) => {
     return (
-      <View style={{ alignItems: 'center', width: "32%", borderRadius: 15, height: 65, paddingHorizontal: 0 }}>
+      <View style={{ alignItems: 'center', width: "22%", borderRadius: 15, height: 65, paddingHorizontal: 0 }}>
         <TouchableOpacity onPress={press ? press : () => { }}
           style={{ width: 40, height: 40, justifyContent: 'center', borderRadius: redious }}>
           <Image source={img} style={{ width: imgw, height: imgh, overflow: 'hidden', alignSelf: 'center' }}></Image>
         </TouchableOpacity>
         <View style={{ alignItems: 'center', }}>
-          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#455A64' }}>{tirateing}</Text>
+          <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#455A64' }}><Text style={{ fontSize: 14, fontWeight: 'bold', color: '#455A64' }}>{dollor}</Text>{tirateing}</Text>
           <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#C7C7C7' }}>{ti}</Text>
         </View>
 
@@ -255,9 +255,10 @@ const opencamera = async () => {
           </View>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: "100%", top: -65 }}>
 
-            {design(require('../../assets/star-rating.png'), 'Rating', '4.2', '45%', 25, 24, 20)}
-            {design(require('../../assets/order-icon.png'), 'Orders Completed', '4.2', '45%', 22, 26, 20, () => { props.navigation.navigate('') })}
-            {design(require('../../assets/cal-icon.png'), 'Years', '2.4', '45%', 21, 20, 20)}
+            {design(require('../../assets/star-rating.png'), 'Rating','', '4.2', '45%', 25, 24, 20)}
+            {design(require('../../assets/order-icon.png'), 'Orders Completed','', datas.total_orders, '45%', 22, 26, 20)}
+            {design(require('../../assets/cal-icon.png'), 'Years', '2.4','', '45%', 21, 20, 20)}
+            {design(require('../../assets/Wallet-icon.png'), 'Monthly Salary','$',datas.monthly_salary, '45%', 26, 27, 20)}
 
           </View>
           <View style={{ flexDirection: "row", width: '100%', justifyContent: "center", alignSelf: "center", alignItems: "center", top: -20 }}>
