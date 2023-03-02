@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-toast-message';
 import messaging from '@react-native-firebase/messaging';
+import SendNotification from '../../component/SendNotification';
 
 const Welcome = (props) => {
   
@@ -26,7 +27,21 @@ const Welcome = (props) => {
    });
     };
 
+  const senNoti= async(tok)=>{
+    console.log('hiihiiii')
+      let notidata={
+        'data': {},
+        'title':'Message from kiningo driver',
+        'body': 'new message',
+       // 'token':'cxHj6Y-nQla1KsGRx3LJDJ:APA91bGkoGHr_DHvfMIycmP_b5pKmjRXY4jzfLnGUGLni4QZg5rXaHWZWBrCzyTGEMZ-c31tOIJWvM3os6b1lI-MhTt9z1o-d97lCJmnPf26fZssGQ4pQwVcoAQbN9FT579TSWC77AiV'
+      //  'token':mapdata.notificationdata.device_id
+      'token':tok
+
+      }
   
+      let result= await SendNotification.SendNotification(notidata)
+       // console.log('result')
+    }
 
   return (
   

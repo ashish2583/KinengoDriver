@@ -150,14 +150,14 @@ const [fuleCost, setfuleCost] = useState('');
 const [fuleModle, setfuleModle] = useState(false);
 const [My_Alert, setMy_Alert] = useState(false)
 const [alert_sms, setalert_sms] = useState('')
-const [time, settime] = useState(20);
+const [time, settime] = useState(60);
 const timeCopy = useRef(60);
 const intervalID = useRef(0);
 
   useEffect( () => { 
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
-        //  senNoti()
+        //  // senNoti()
       checkStatus()
        OnOff('1')
   }, [])
@@ -175,16 +175,16 @@ const intervalID = useRef(0);
        // console.log('result')             
     }
   function callAutoTimer() {
-    // intervalID.current = setInterval(() => {
-    //   settime(timeCopy.current - 1)
-    //   timeCopy.current = timeCopy.current - 1
-    //   console.log('s', timeCopy.current)
-    //   if (timeCopy.current <= 0 && timeCopy.current >= -1) {
-    //     console.log('Call Function !')
-    //       setmodlevisual(false)
-    //     clearInterval(intervalID.current);
-    //   }
-    // }, 1000);
+    intervalID.current = setInterval(() => {
+      settime(timeCopy.current - 1)
+      timeCopy.current = timeCopy.current - 1
+      console.log('s', timeCopy.current)
+      if (timeCopy.current <= 0 && timeCopy.current >= -1) {
+        console.log('Call Function !')
+          setmodlevisual(false)
+        clearInterval(intervalID.current);
+      }
+    }, 1000);
   }
   
   const checkStatus = async () => {
@@ -298,7 +298,12 @@ const intervalID = useRef(0);
     //    "title": "KinenGo"}, "sentTime": 1677066019083, "ttl": 2419200}
   
     setmodlevisual(true)
-    callAutoTimer()
+    if(modlevisual != true){
+      callAutoTimer()
+    }else{
+      return false
+    }
+    
     // if(remoteMessage.notification.body!='new message'  && remoteMessage.notification.body!='Ride Cancelled By Customer'){
     // var dest_pos={latitude: parseInt(data.end_latitude), longitude: parseInt(data.end_longitude)}
     // var st_pos={latitude: parseInt(data.start_latitude), longitude: parseInt(data.start_longitude)}  

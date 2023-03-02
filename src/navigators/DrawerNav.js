@@ -9,6 +9,7 @@ import EarningStack from './EarningStack';
 import ProfileStack from './ProfileStack';
 import MonyTransferStack from './MonyTransferStack';
 import Help from '../pages/Help/Help';
+import Reward from '../pages/Reward/Reward';
 const DrawerNav = (props) => {
   const Drawer = createDrawerNavigator();
      return(
@@ -23,6 +24,7 @@ const DrawerNav = (props) => {
       <Drawer.Screen name="Earning" component={EarningStack} />
       <Drawer.Screen name="Myprofile" component={ProfileStack} />
       <Drawer.Screen name="MonyTransfer" component={MonyTransferStack} />
+      <Drawer.Screen name="Reward" component={Reward} />
       <Drawer.Screen name="Help" component={Help} />
     </Drawer.Navigator>
      );
