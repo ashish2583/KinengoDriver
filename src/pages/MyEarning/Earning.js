@@ -413,7 +413,7 @@ const Earning = (props) => {
     style={styles.input}
   />:null}
 
-  <View style={{alignSelf: "center", width: "90%",  bottom:-100, marginTop:100  }}>
+  <View style={{zIndex:-999,alignSelf: "center", width: "90%", position:'absolute', bottom:80  }}>
     <MyButtons
       title="Save"
       height={40}
@@ -487,10 +487,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     color: Mycolors.TEXT_COLOR,
-    paddingLeft: 20,
+    paddingLeft: 10,
     paddingRight: 10,
+    marginTop:20,
     backgroundColor: Mycolors.BG_COLOR,
-    top: 1
+    top: 1,
+    zIndex:-999
   },
   totalEarnings:{
     fontSize:14,
