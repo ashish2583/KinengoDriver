@@ -212,6 +212,15 @@ const Earning = (props) => {
     }
   }
 
+  const openChangeStatusModal = (item) => {
+    if(item.status == '2'){
+      Alert.alert('Cannot change status because already delivered')
+      return
+    }
+    setSelectedRideId(item.ride_id)
+    setShowDeliveryStatusModal(true)
+  }
+
   return (
     <SafeAreaView style={styles.container}>
         {/* <LinearGradient
@@ -285,7 +294,7 @@ const Earning = (props) => {
                      <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5}}>
                       {/* <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text> */}
                       <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
-                      <TouchableOpacity onPress={()=>{setSelectedRideId(item.ride_id);setShowDeliveryStatusModal(true)}} style={{flexDirection:'row', alignItems:'center'}}>
+                      <TouchableOpacity onPress={()=>openChangeStatusModal(item)} style={{flexDirection:'row', alignItems:'center'}}>
                         <View style={{width:15,height:15,borderRadius:10,backgroundColor:getColor(item.status)}} />
                         <Text style={{color:getColor(item.status),fontSize:14,left:5}}>{getStatus(item.status)}</Text>
                       </TouchableOpacity>
