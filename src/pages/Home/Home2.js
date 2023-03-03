@@ -119,13 +119,13 @@ const Home2 = (props) => {
   const [biddata,setbiddata]=useState([])
   const [bidCheck,setBidCheck]=useState(false)
   const [loading,setLoading]=useState(false)
+  const [estTime,setEstTime]=useState('')
   const [myreson,setmyReson]=useState({
     latitude: 26.4788922, 
     longitude: 83.7454171,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   })
-  const [estTime,setestTime]=useState('')
   const [distance,setdistance]=useState('')
   const [fuleCost, setfuleCost] = useState('');
   const [fuleModle, setfuleModle] = useState(false);
@@ -161,7 +161,35 @@ const Home2 = (props) => {
 // setDateValue(mapdata.driverridestatus)
   statusLable(mapdata.driverridestatus)
   }, [])
- 
+ //function : get api
+ const googleGetApi = async (googleUrl = '') => {
+  const response = await fetch(googleUrl, {
+    method: "GET",
+    body:"",
+    headers:{},
+  }
+  )
+  let responseJson = await response.json();
+  return {responseJson:responseJson,err:null}
+}
+const calculateTravelTime = async (originLat, originLong) => {
+  const url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+originLat+","+originLong+"&destinations="+mapdata.destnationPosition.latitude+","+mapdata.destnationPosition.longitude+"&mode=driving"+"&units=imperial&key="+GoogleApiKey
+  setLoading(true)
+  const { responseJson, err } = await googleGetApi(url)
+  console.log('calculateTravelTime responseJson', responseJson);
+  if(responseJson.rows[0].elements[0].status !== 'ZERO_RESULTS' || responseJson.rows[0].elements[0].status !== 'NOT_FOUND'){
+    // responseJson.rows[0].elements[0].duration['text']
+    setEstTime(responseJson.rows[0].elements[0].duration['text'])
+  }else{
+    Alert.alert('Zero results found')
+  }
+  setLoading(false)
+  console.log('calculateTravelTime res==>>', responseJson)
+  if (responseJson.headers.success == 1) {
+   } else {
+  }
+
+}
 const statusLable=(val)=>{
   if(val==0){
     setdrvRideStatus('On the way to restaurant')
@@ -257,6 +285,7 @@ const setDriverLocation=(id,location,angle)=>{
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         })
+        calculateTravelTime(My_cord.latitude, My_cord.longitude)
         dispatch(setCurentPosition(My_cord))
        setDriverLocation(userdetaile.driver_id.toString(),My_cord,position.coords.heading)
       },
