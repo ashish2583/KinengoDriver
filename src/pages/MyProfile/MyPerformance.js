@@ -215,7 +215,7 @@ const MyPerformance = (props) => {
                     {/* {design(require('../../assets/star-rating.png'), require('../../assets/Lightbulb-icon.png'), 'Average rating in last 2 weeks', '4.2', '45%', 25, 25, 20, () => { props.navigation.navigate('') })} */}
                     {design(require('../../assets/star-rating.png'), require('../../assets/Lightbulb-icon.png'), 'Average rating in last 2 weeks', datas.avg_rating === undefined ? '0' : datas.avg_rating, '45%', 25, 25, 20, () => { props.navigation.navigate('') })}
                     {design(require('../../assets/order-icon.png'), require('../../assets/Lightbulb-icon.png'), 'Cancellation in last 2 weeks', `${datas.total_completed_orders === undefined ? '0' : datas.total_completed_orders} Orders`, '45%', 22, 26, 20, () => { props.navigation.navigate('') })}
-                    {design(require('../../assets/CircleWavyCheck.png'),require('../../assets/Lightbulb-icon.png'), 'Completion percentage in last 2 weeks', `${datas.total_completed_orders === undefined ? '100%':datas.total_completed_orders/datas.total_orders*100}%`, '45%', 29, 29, 20, () => { props.navigation.navigate('') })}
+                    {design(require('../../assets/CircleWavyCheck.png'),require('../../assets/Lightbulb-icon.png'), 'Completion percentage in last 2 weeks', `${datas.total_completed_orders === undefined ? '100':datas.total_completed_orders/datas.total_orders*100}%`, '45%', 29, 29, 20, () => { props.navigation.navigate('') })}
 
                 </View>
 
