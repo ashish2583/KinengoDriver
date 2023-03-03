@@ -196,7 +196,7 @@ const intervalID = useRef(0);
   const senNoti= async()=>{
     let notidata={
         'data': {"business_address": "Sector 57, Noida, Uttar Pradesh, India", "business_name": "Nile Technologies", "lattitude": "28.608600616455078", "longitude": "77.35099792480469", "notificationType": "rederequest", "order_id": "11", "ride_id": "1"},
-        'title':'Message from kiningo driver',
+        'title':'Message from KinenGo driver',
         'body': 'You have a new ride',
        // 'token':'cxHj6Y-nQla1KsGRx3LJDJ:APA91bGkoGHr_DHvfMIycmP_b5pKmjRXY4jzfLnGUGLni4QZg5rXaHWZWBrCzyTGEMZ-c31tOIJWvM3os6b1lI-MhTt9z1o-d97lCJmnPf26fZssGQ4pQwVcoAQbN9FT579TSWC77AiV'
        //  'token':mapdata.notificationdata.device_id 

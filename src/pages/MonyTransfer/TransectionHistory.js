@@ -176,7 +176,7 @@ const TransectionHistory = (props) => {
 
 <View style={{position:'absolute',right:20,bottom:30}}>
 {/* <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>$20.89</Text> */}
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : item.amount}</Text>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : parseFloat(Number(item.amount).toFixed(3))}</Text>
     </View>
 
                 </View>

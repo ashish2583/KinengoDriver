@@ -101,8 +101,9 @@ const MonyTransfer = (props) => {
         userdetaile.token
       );
       setLoading(false);
-      console.log("the res==>>", responseJson);
+      console.log("onMoneyTransfer the res==>>", responseJson);
       if (responseJson.headers.success == 1) {
+        getTransactionHistory()
       } else {
       }
     } catch (error) {
