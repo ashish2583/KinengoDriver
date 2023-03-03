@@ -43,57 +43,7 @@ const Earning = (props) => {
   const[passView,setPassView]=useState(true)
    const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
-  const [upData,setupData]=useState([
-    {
-      id: '1',
-      title: 'Hair Cut',
-      desc:'',
-      time:'10:00AM',
-      
-    },
-    {
-      id: '2',
-      title: 'Shaving',
-      desc:'',
-      time:'10:30AM',
-      
-    },
-    {
-      id: '3',
-      title: 'Facial',
-      desc:'',
-      time:'11:00AM',
-      
-    },
-    {
-      id: '4',
-      title: 'Hair Color',
-      desc:'',
-      time:'11:30AM',
-      
-    },
-    {
-      id: '5',
-      title: 'Hair wash',
-      desc:'',
-      time:'12:00PM',
-      
-    },
-    {
-      id: '6',
-      title: 'Beard style',
-      desc:'',
-      time:'12:30PM',
-      
-    },
-    {
-      id: '7',
-      title: 'Facial',
-      desc:'',
-      time:'01:00PM',
-      
-    },
-  ])
+  const [upData,setupData]=useState([])
   useEffect(()=>{
     getRideHistory()
   },[]) 
