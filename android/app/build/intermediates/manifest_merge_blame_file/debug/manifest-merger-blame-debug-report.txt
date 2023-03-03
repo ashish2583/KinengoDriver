@@ -9,628 +9,628 @@
 9        android:targetSdkVersion="33" />
 10
 11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-11-->/Users/macmini/KinengoDriver/android/app/src/debug/AndroidManifest.xml:5:5-77
-11-->/Users/macmini/KinengoDriver/android/app/src/debug/AndroidManifest.xml:5:22-75
+11-->C:\nile\Kin\KinengoDriver\android\app\src\debug\AndroidManifest.xml:5:5-77
+11-->C:\nile\Kin\KinengoDriver\android\app\src\debug\AndroidManifest.xml:5:22-75
 12    <uses-permission android:name="android.permission.VIBRATE" />
-12-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:3:5-66
-12-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:3:22-63
+12-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:3:5-66
+12-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:3:22-63
 13    <uses-permission android:name="android.permission.INTERNET" />
-13-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:4:5-67
-13-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:4:22-64
+13-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:4:5-67
+13-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:4:22-64
 14    <uses-permission android:name="android.permission.CAMERA" />
-14-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:5:5-64
-14-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:5:22-62
+14-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:5:5-64
+14-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:5:22-62
 15    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-15-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:6:5-80
-15-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:6:22-78
+15-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:6:5-80
+15-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:6:22-78
 16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-16-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:7:5-79
-16-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:7:22-77
+16-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:7:5-79
+16-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:7:22-77
 17    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-17-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:8:5-70
-17-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:8:22-68
+17-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:8:5-70
+17-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:8:22-68
 18    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-18-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:9:5-75
-18-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:9:22-72
+18-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:9:5-75
+18-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:9:22-72
 19    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
-19-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:10:5-80
-19-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:10:22-78
+19-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:10:5-80
+19-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:10:22-78
 20    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-20-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:11:5-78
-20-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:11:22-76
+20-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:11:5-78
+20-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:11:22-76
 21    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-21-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:12:5-80
-21-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:12:22-78
+21-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:12:5-80
+21-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:12:22-78
 22    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
-22-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:13:5-88
-22-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:13:22-85
+22-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:13:5-88
+22-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:13:22-85
 23    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-23-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:14:5-79
-23-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:14:22-76
+23-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:14:5-79
+23-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:14:22-76
 24    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-24-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:15:5-72
-24-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:15:22-69
+24-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:15:5-72
+24-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:15:22-69
 25    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
-25-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:16:5-74
-25-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:16:22-71
+25-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:16:5-74
+25-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:16:22-71
 26    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-26-->[com.facebook.flipper:flipper:0.125.0] /Users/macmini/.gradle/caches/transforms-3/3b52310e0e3fc0beeef4808dce2ede06/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:5-76
-26-->[com.facebook.flipper:flipper:0.125.0] /Users/macmini/.gradle/caches/transforms-3/3b52310e0e3fc0beeef4808dce2ede06/transformed/jetified-flipper-0.125.0/AndroidManifest.xml:16:22-73
+26-->[com.facebook.flipper:flipper:0.125.0] C:\Users\dell\.gradle\caches\transforms-3\3b52310e0e3fc0beeef4808dce2ede06\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:16:5-76
+26-->[com.facebook.flipper:flipper:0.125.0] C:\Users\dell\.gradle\caches\transforms-3\3b52310e0e3fc0beeef4808dce2ede06\transformed\jetified-flipper-0.125.0\AndroidManifest.xml:16:22-73
 27    <uses-permission android:name="android.permission.WAKE_LOCK" />
-27-->[:react-native-firebase_auth] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:5-68
-27-->[:react-native-firebase_auth] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/auth/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:22-65
+27-->[:react-native-firebase_auth] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\auth\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-68
+27-->[:react-native-firebase_auth] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\auth\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:22-65
 28    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-28-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:27:5-81
-28-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:27:22-78
+28-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:27:5-81
+28-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:27:22-78
 29    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-29-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:28:5-77
-29-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:28:22-74
+29-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:28:5-77
+29-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:28:22-74
 30
 31    <uses-feature
-31-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:26:5-28:35
+31-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:26:5-28:35
 32        android:glEsVersion="0x00020000"
-32-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:27:9-41
+32-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:27:9-41
 33        android:required="true" />
-33-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:28:9-32
+33-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:28:9-32
 34
 35    <queries>
-35-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:30:5-34:15
+35-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:30:5-34:15
 36
 37        <!-- Needs to be explicitly declared on Android R+ -->
 38        <package android:name="com.google.android.apps.maps" />
-38-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:33:9-64
-38-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:33:18-61
+38-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:33:9-64
+38-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:33:18-61
 39    </queries>
 40
 41    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-41-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:25:5-77
-41-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:25:22-74
+41-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:25:5-77
+41-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:25:22-74
 42    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- for android -->
-42-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:28:5-82
-42-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:28:22-79
+42-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:28:5-82
+42-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:28:22-79
 43    <!-- <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/> -->
 44    <!-- <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS"/> -->
 45    <!-- <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" /> -->
 46    <!-- <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" /> -->
 47    <!-- for Samsung -->
 48    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
-48-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:5-86
-48-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:19:22-83
+48-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:19:5-86
+48-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:19:22-83
 49    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" /> <!-- for htc -->
-49-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:5-87
-49-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:20:22-84
+49-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:20:5-87
+49-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:20:22-84
 50    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
-50-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:5-81
-50-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:23:22-78
+50-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:23:5-81
+50-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:23:22-78
 51    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" /> <!-- for sony -->
-51-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:5-83
-51-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:24:22-80
+51-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:24:5-83
+51-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:24:22-80
 52    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
-52-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:5-88
-52-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:27:22-85
+52-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:27:5-88
+52-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:27:22-85
 53    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" /> <!-- for apex -->
-53-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:5-92
-53-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:28:22-89
+53-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:28:5-92
+53-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:28:22-89
 54    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" /> <!-- for solid -->
-54-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:5-84
-54-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:31:22-81
+54-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:31:5-84
+54-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:31:22-81
 55    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" /> <!-- for huawei -->
-55-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:5-83
-55-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:34:22-80
+55-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:34:5-83
+55-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:34:22-80
 56    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
-56-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:5-91
-56-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:37:22-88
+56-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:37:5-91
+56-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:37:22-88
 57    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
-57-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:5-92
-57-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:38:22-89
+57-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:38:5-92
+57-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:38:22-89
 58    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" /> <!-- for ZUK -->
-58-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:5-93
-58-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:39:22-90
+58-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:39:5-93
+58-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:39:22-90
 59    <uses-permission android:name="android.permission.READ_APP_BADGE" /> <!-- for OPPO -->
-59-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:5-73
-59-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:42:22-70
+59-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:42:5-73
+59-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:42:22-70
 60    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS" />
-60-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:5-82
-60-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:45:22-79
+60-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:45:5-82
+60-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:45:22-79
 61    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS" /> <!-- for EvMe -->
-61-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:5-83
-61-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:46:22-80
+61-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:46:5-83
+61-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:46:22-80
 62    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ" />
-62-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:5-88
-62-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:49:22-85
+62-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:49:5-88
+62-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:49:22-85
 63    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE" />
-63-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:5-89
-63-->[me.leolin:ShortcutBadger:1.1.22] /Users/macmini/.gradle/caches/transforms-3/077f54d88b2dd80f96b3a67997a215a2/transformed/jetified-ShortcutBadger-1.1.22/AndroidManifest.xml:50:22-86
+63-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:50:5-89
+63-->[me.leolin:ShortcutBadger:1.1.22] C:\Users\dell\.gradle\caches\transforms-3\077f54d88b2dd80f96b3a67997a215a2\transformed\jetified-ShortcutBadger-1.1.22\AndroidManifest.xml:50:22-86
 64
 65    <application
-65-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:17:5-39:19
+65-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:17:5-39:19
 66        android:name="com.kinengodriver.MainApplication"
-66-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:18:7-38
+66-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:18:7-38
 67        android:allowBackup="false"
-67-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:22:7-34
+67-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:22:7-34
 68        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-68-->[androidx.core:core:1.7.0] /Users/macmini/.gradle/caches/transforms-3/04d427402dec0c95423f34d523bb4ec2/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+68-->[androidx.core:core:1.7.0] C:\Users\dell\.gradle\caches\transforms-3\04d427402dec0c95423f34d523bb4ec2\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 69        android:debuggable="true"
 70        android:icon="@mipmap/ic_launcher"
-70-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:20:7-41
+70-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:20:7-41
 71        android:label="@string/app_name"
-71-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:19:7-39
+71-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:19:7-39
 72        android:roundIcon="@mipmap/ic_launcher_round"
-72-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:21:7-52
+72-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:21:7-52
 73        android:theme="@style/AppTheme"
-73-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:23:7-38
+73-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:23:7-38
 74        android:usesCleartextTraffic="true" >
-74-->/Users/macmini/KinengoDriver/android/app/src/debug/AndroidManifest.xml:8:9-44
+74-->C:\nile\Kin\KinengoDriver\android\app\src\debug\AndroidManifest.xml:8:9-44
 75        <activity
-75-->/Users/macmini/KinengoDriver/android/app/src/debug/AndroidManifest.xml:11:9-111
+75-->C:\nile\Kin\KinengoDriver\android\app\src\debug\AndroidManifest.xml:11:9-111
 76            android:name="com.facebook.react.devsupport.DevSettingsActivity"
-76-->/Users/macmini/KinengoDriver/android/app/src/debug/AndroidManifest.xml:11:19-83
+76-->C:\nile\Kin\KinengoDriver\android\app\src\debug\AndroidManifest.xml:11:19-83
 77            android:exported="false" />
-77-->/Users/macmini/KinengoDriver/android/app/src/debug/AndroidManifest.xml:11:84-108
+77-->C:\nile\Kin\KinengoDriver\android\app\src\debug\AndroidManifest.xml:11:84-108
 78
 79        <meta-data
-79-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:24:10-26:63
+79-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:24:10-26:63
 80            android:name="com.google.android.geo.API_KEY"
-80-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:25:6-51
+80-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:25:6-51
 81            android:value="AIzaSyDBeSqFBgF2V-IXmJdeTM3ZZUYG_5nKm-g" />
-81-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:26:6-61
+81-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:26:6-61
 82
 83        <activity
-83-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:27:7-38:18
+83-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:27:7-38:18
 84            android:name="com.kinengodriver.MainActivity"
-84-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:28:9-37
+84-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:28:9-37
 85            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-85-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:30:9-118
+85-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:30:9-118
 86            android:exported="true"
-86-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:33:9-32
+86-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:33:9-32
 87            android:label="@string/app_name"
-87-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:29:9-41
+87-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:29:9-41
 88            android:launchMode="singleTask"
-88-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:31:9-40
+88-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:31:9-40
 89            android:windowSoftInputMode="adjustResize" >
-89-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:32:9-51
+89-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:32:9-51
 90            <intent-filter>
-90-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:34:9-37:25
+90-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:34:9-37:25
 91                <action android:name="android.intent.action.MAIN" />
-91-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:35:13-65
-91-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:35:21-62
+91-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:35:13-65
+91-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:35:21-62
 92
 93                <category android:name="android.intent.category.LAUNCHER" />
-93-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:36:13-73
-93-->/Users/macmini/KinengoDriver/android/app/src/main/AndroidManifest.xml:36:23-70
+93-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:36:13-73
+93-->C:\nile\Kin\KinengoDriver\android\app\src\main\AndroidManifest.xml:36:23-70
 94            </intent-filter>
 95        </activity>
 96
 97        <service
-97-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:9-16:40
+97-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:9-16:40
 98            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingHeadlessService"
-98-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-103
+98-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-103
 99            android:exported="false" />
-99-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-37
+99-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-37
 100        <service
-100-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:9-23:19
+100-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-23:19
 101            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingService"
-101-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-95
+101-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-95
 102            android:exported="false" >
-102-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:19:13-37
+102-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-37
 103            <intent-filter>
-103-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-22:29
+103-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-22:29
 104                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-104-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:17-78
-104-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:25-75
+104-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:17-78
+104-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:25-75
 105            </intent-filter>
 106        </service>
 107
 108        <receiver
-108-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:9-32:20
+108-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:25:9-32:20
 109            android:name="io.invertase.firebase.messaging.ReactNativeFirebaseMessagingReceiver"
-109-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-96
+109-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-96
 110            android:exported="true"
-110-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-36
+110-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:27:13-36
 111            android:permission="com.google.android.c2dm.permission.SEND" >
-111-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-73
+111-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:28:13-73
 112            <intent-filter>
-112-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-31:29
+112-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-31:29
 113                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-113-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:17-81
-113-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:25-78
+113-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:30:17-81
+113-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:30:25-78
 114            </intent-filter>
 115        </receiver>
 116
 117        <meta-data
-117-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:34:9-36:36
+117-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:34:9-36:36
 118            android:name="firebase_messaging_auto_init_enabled"
-118-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:35:13-64
+118-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:35:13-64
 119            android:value="true" />
-119-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:36:13-33
+119-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:36:13-33
 120        <meta-data
-120-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:37:9-39:32
+120-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:37:9-39:32
 121            android:name="com.google.firebase.messaging.default_notification_channel_id"
-121-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:38:13-89
+121-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:38:13-89
 122            android:value="" />
-122-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:39:13-29
+122-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:39:13-29
 123        <meta-data
-123-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:40:9-42:47
+123-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:40:9-42:47
 124            android:name="com.google.firebase.messaging.default_notification_color"
-124-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:41:13-84
+124-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:41:13-84
 125            android:resource="@color/white" />
-125-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:42:13-44
+125-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:42:13-44
 126        <meta-data
-126-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:9-13:36
+126-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-13:36
 127            android:name="app_data_collection_default_enabled"
-127-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-63
+127-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-63
 128            android:value="true" />
-128-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-33
+128-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-33
 129
 130        <service
-130-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:9-23:19
+130-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-23:19
 131            android:name="com.google.firebase.components.ComponentDiscoveryService"
-131-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:13-84
+131-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-84
 132            android:directBootAware="true"
-132-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:13-43
+132-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:13-43
 133            android:exported="false" >
-133-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:18:13-37
+133-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-37
 134            <meta-data
-134-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-22:85
+134-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-22:85
 135                android:name="com.google.firebase.components:io.invertase.firebase.app.ReactNativeFirebaseAppRegistrar"
-135-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:17-120
+135-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:17-120
 136                android:value="com.google.firebase.components.ComponentRegistrar" />
-136-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:22:17-82
+136-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:22:17-82
 137            <meta-data
-137-->[com.google.firebase:firebase-firestore:24.4.1] /Users/macmini/.gradle/caches/transforms-3/3a302dcd1d2c13e4ad0a8a7c534b643e/transformed/jetified-firebase-firestore-24.4.1/AndroidManifest.xml:19:13-21:85
+137-->[com.google.firebase:firebase-firestore:24.4.1] C:\Users\dell\.gradle\caches\transforms-3\3a302dcd1d2c13e4ad0a8a7c534b643e\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:19:13-21:85
 138                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-138-->[com.google.firebase:firebase-firestore:24.4.1] /Users/macmini/.gradle/caches/transforms-3/3a302dcd1d2c13e4ad0a8a7c534b643e/transformed/jetified-firebase-firestore-24.4.1/AndroidManifest.xml:20:17-111
+138-->[com.google.firebase:firebase-firestore:24.4.1] C:\Users\dell\.gradle\caches\transforms-3\3a302dcd1d2c13e4ad0a8a7c534b643e\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:20:17-111
 139                android:value="com.google.firebase.components.ComponentRegistrar" />
-139-->[com.google.firebase:firebase-firestore:24.4.1] /Users/macmini/.gradle/caches/transforms-3/3a302dcd1d2c13e4ad0a8a7c534b643e/transformed/jetified-firebase-firestore-24.4.1/AndroidManifest.xml:21:17-82
+139-->[com.google.firebase:firebase-firestore:24.4.1] C:\Users\dell\.gradle\caches\transforms-3\3a302dcd1d2c13e4ad0a8a7c534b643e\transformed\jetified-firebase-firestore-24.4.1\AndroidManifest.xml:21:17-82
 140            <meta-data
-140-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:55:13-57:85
+140-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:55:13-57:85
 141                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-141-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:56:17-119
+141-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:56:17-119
 142                android:value="com.google.firebase.components.ComponentRegistrar" />
-142-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:57:17-82
+142-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:57:17-82
 143            <meta-data
-143-->[com.google.firebase:firebase-dynamic-links:21.1.0] /Users/macmini/.gradle/caches/transforms-3/e90ea460c5d9f4f078d3fc456991ebdd/transformed/jetified-firebase-dynamic-links-21.1.0/AndroidManifest.xml:26:13-28:85
+143-->[com.google.firebase:firebase-dynamic-links:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\e90ea460c5d9f4f078d3fc456991ebdd\transformed\jetified-firebase-dynamic-links-21.1.0\AndroidManifest.xml:26:13-28:85
 144                android:name="com.google.firebase.components:com.google.firebase.dynamiclinks.internal.FirebaseDynamicLinkRegistrar"
-144-->[com.google.firebase:firebase-dynamic-links:21.1.0] /Users/macmini/.gradle/caches/transforms-3/e90ea460c5d9f4f078d3fc456991ebdd/transformed/jetified-firebase-dynamic-links-21.1.0/AndroidManifest.xml:27:17-133
+144-->[com.google.firebase:firebase-dynamic-links:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\e90ea460c5d9f4f078d3fc456991ebdd\transformed\jetified-firebase-dynamic-links-21.1.0\AndroidManifest.xml:27:17-133
 145                android:value="com.google.firebase.components.ComponentRegistrar" />
-145-->[com.google.firebase:firebase-dynamic-links:21.1.0] /Users/macmini/.gradle/caches/transforms-3/e90ea460c5d9f4f078d3fc456991ebdd/transformed/jetified-firebase-dynamic-links-21.1.0/AndroidManifest.xml:28:17-82
+145-->[com.google.firebase:firebase-dynamic-links:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\e90ea460c5d9f4f078d3fc456991ebdd\transformed\jetified-firebase-dynamic-links-21.1.0\AndroidManifest.xml:28:17-82
 146            <meta-data
-146-->[com.google.firebase:firebase-storage:20.1.0] /Users/macmini/.gradle/caches/transforms-3/151be1882363927cf0b61c3e750845d6/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:32:13-34:85
+146-->[com.google.firebase:firebase-storage:20.1.0] C:\Users\dell\.gradle\caches\transforms-3\151be1882363927cf0b61c3e750845d6\transformed\jetified-firebase-storage-20.1.0\AndroidManifest.xml:32:13-34:85
 147                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-147-->[com.google.firebase:firebase-storage:20.1.0] /Users/macmini/.gradle/caches/transforms-3/151be1882363927cf0b61c3e750845d6/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:33:17-107
+147-->[com.google.firebase:firebase-storage:20.1.0] C:\Users\dell\.gradle\caches\transforms-3\151be1882363927cf0b61c3e750845d6\transformed\jetified-firebase-storage-20.1.0\AndroidManifest.xml:33:17-107
 148                android:value="com.google.firebase.components.ComponentRegistrar" />
-148-->[com.google.firebase:firebase-storage:20.1.0] /Users/macmini/.gradle/caches/transforms-3/151be1882363927cf0b61c3e750845d6/transformed/jetified-firebase-storage-20.1.0/AndroidManifest.xml:34:17-82
+148-->[com.google.firebase:firebase-storage:20.1.0] C:\Users\dell\.gradle\caches\transforms-3\151be1882363927cf0b61c3e750845d6\transformed\jetified-firebase-storage-20.1.0\AndroidManifest.xml:34:17-82
 149            <meta-data
-149-->[com.google.firebase:firebase-database:20.1.0] /Users/macmini/.gradle/caches/transforms-3/d643b2be24734d298833b728a863f4c5/transformed/jetified-firebase-database-20.1.0/AndroidManifest.xml:31:13-33:85
+149-->[com.google.firebase:firebase-database:20.1.0] C:\Users\dell\.gradle\caches\transforms-3\d643b2be24734d298833b728a863f4c5\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:31:13-33:85
 150                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-150-->[com.google.firebase:firebase-database:20.1.0] /Users/macmini/.gradle/caches/transforms-3/d643b2be24734d298833b728a863f4c5/transformed/jetified-firebase-database-20.1.0/AndroidManifest.xml:32:17-109
+150-->[com.google.firebase:firebase-database:20.1.0] C:\Users\dell\.gradle\caches\transforms-3\d643b2be24734d298833b728a863f4c5\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:32:17-109
 151                android:value="com.google.firebase.components.ComponentRegistrar" />
-151-->[com.google.firebase:firebase-database:20.1.0] /Users/macmini/.gradle/caches/transforms-3/d643b2be24734d298833b728a863f4c5/transformed/jetified-firebase-database-20.1.0/AndroidManifest.xml:33:17-82
+151-->[com.google.firebase:firebase-database:20.1.0] C:\Users\dell\.gradle\caches\transforms-3\d643b2be24734d298833b728a863f4c5\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:33:17-82
 152            <meta-data
-152-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:67:13-69:85
+152-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:67:13-69:85
 153                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-153-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:68:17-109
+153-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:68:17-109
 154                android:value="com.google.firebase.components.ComponentRegistrar" />
-154-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:69:17-82
+154-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:69:17-82
 155            <meta-data
-155-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/macmini/.gradle/caches/transforms-3/0755d4008664141097c38d56372312b5/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:27:13-29:85
+155-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\dell\.gradle\caches\transforms-3\0755d4008664141097c38d56372312b5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:27:13-29:85
 156                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-156-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/macmini/.gradle/caches/transforms-3/0755d4008664141097c38d56372312b5/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:28:17-115
+156-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\dell\.gradle\caches\transforms-3\0755d4008664141097c38d56372312b5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:28:17-115
 157                android:value="com.google.firebase.components.ComponentRegistrar" />
-157-->[com.google.firebase:firebase-datatransport:18.1.7] /Users/macmini/.gradle/caches/transforms-3/0755d4008664141097c38d56372312b5/transformed/jetified-firebase-datatransport-18.1.7/AndroidManifest.xml:29:17-82
+157-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\dell\.gradle\caches\transforms-3\0755d4008664141097c38d56372312b5\transformed\jetified-firebase-datatransport-18.1.7\AndroidManifest.xml:29:17-82
 158            <meta-data
-158-->[com.google.firebase:firebase-installations:17.1.0] /Users/macmini/.gradle/caches/transforms-3/7a2b2dd4131133e1a184d84238d0eccd/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:17:13-19:85
+158-->[com.google.firebase:firebase-installations:17.1.0] C:\Users\dell\.gradle\caches\transforms-3\7a2b2dd4131133e1a184d84238d0eccd\transformed\jetified-firebase-installations-17.1.0\AndroidManifest.xml:17:13-19:85
 159                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-159-->[com.google.firebase:firebase-installations:17.1.0] /Users/macmini/.gradle/caches/transforms-3/7a2b2dd4131133e1a184d84238d0eccd/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:18:17-127
+159-->[com.google.firebase:firebase-installations:17.1.0] C:\Users\dell\.gradle\caches\transforms-3\7a2b2dd4131133e1a184d84238d0eccd\transformed\jetified-firebase-installations-17.1.0\AndroidManifest.xml:18:17-127
 160                android:value="com.google.firebase.components.ComponentRegistrar" />
-160-->[com.google.firebase:firebase-installations:17.1.0] /Users/macmini/.gradle/caches/transforms-3/7a2b2dd4131133e1a184d84238d0eccd/transformed/jetified-firebase-installations-17.1.0/AndroidManifest.xml:19:17-82
+160-->[com.google.firebase:firebase-installations:17.1.0] C:\Users\dell\.gradle\caches\transforms-3\7a2b2dd4131133e1a184d84238d0eccd\transformed\jetified-firebase-installations-17.1.0\AndroidManifest.xml:19:17-82
 161        </service>
 162
 163        <provider
-163-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:25:9-29:38
+163-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:25:9-29:38
 164            android:name="io.invertase.firebase.app.ReactNativeFirebaseAppInitProvider"
-164-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:26:13-88
+164-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-88
 165            android:authorities="com.kinengodriver.reactnativefirebaseappinitprovider"
-165-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:27:13-86
+165-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:27:13-86
 166            android:exported="false"
-166-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:28:13-37
+166-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:28:13-37
 167            android:initOrder="99" />
-167-->[:react-native-firebase_app] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/app/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-35
+167-->[:react-native-firebase_app] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\app\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-35
 168        <provider
-168-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
+168-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
 169            android:name="com.imagepicker.ImagePickerProvider"
-169-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-63
+169-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-63
 170            android:authorities="com.kinengodriver.imagepickerprovider"
-170-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-71
+170-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-71
 171            android:exported="false"
-171-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
+171-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
 172            android:grantUriPermissions="true" >
-172-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
+172-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
 173            <meta-data
-173-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:70
+173-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:70
 174                android:name="android.support.FILE_PROVIDER_PATHS"
-174-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-67
+174-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
 175                android:resource="@xml/imagepicker_provider_paths" />
-175-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-67
+175-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
 176        </provider>
 177        <provider
-177-->[:react-native-webview] /Users/macmini/KinengoDriver/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:10:9-18:20
+177-->[:react-native-webview] C:\nile\Kin\KinengoDriver\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-18:20
 178            android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider"
-178-->[:react-native-webview] /Users/macmini/KinengoDriver/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:11:13-83
+178-->[:react-native-webview] C:\nile\Kin\KinengoDriver\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-83
 179            android:authorities="com.kinengodriver.fileprovider"
-179-->[:react-native-webview] /Users/macmini/KinengoDriver/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:12:13-64
+179-->[:react-native-webview] C:\nile\Kin\KinengoDriver\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-64
 180            android:exported="false"
-180-->[:react-native-webview] /Users/macmini/KinengoDriver/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:13:13-37
+180-->[:react-native-webview] C:\nile\Kin\KinengoDriver\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-37
 181            android:grantUriPermissions="true" >
-181-->[:react-native-webview] /Users/macmini/KinengoDriver/node_modules/react-native-webview/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:14:13-47
+181-->[:react-native-webview] C:\nile\Kin\KinengoDriver\node_modules\react-native-webview\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-47
 182            <meta-data
-182-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:15:13-17:70
+182-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-17:70
 183                android:name="android.support.FILE_PROVIDER_PATHS"
-183-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:16:17-67
+183-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:17-67
 184                android:resource="@xml/file_provider_paths" />
-184-->[:react-native-image-picker] /Users/macmini/KinengoDriver/node_modules/react-native-image-picker/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:17:17-67
+184-->[:react-native-image-picker] C:\nile\Kin\KinengoDriver\node_modules\react-native-image-picker\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
 185        </provider>
 186        <provider
-186-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:31:9-39:20
+186-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:31:9-39:20
 187            android:name="androidx.startup.InitializationProvider"
-187-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:32:13-67
+187-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:32:13-67
 188            android:authorities="com.kinengodriver.androidx-startup"
-188-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:33:13-68
+188-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:33:13-68
 189            android:exported="false" >
-189-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:34:13-37
+189-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:34:13-37
 190            <meta-data
-190-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:36:13-38:52
+190-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:36:13-38:52
 191                android:name="androidx.work.WorkManagerInitializer"
-191-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:37:17-68
+191-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:37:17-68
 192                android:value="androidx.startup" />
-192-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:38:17-49
+192-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:38:17-49
 193            <meta-data
-193-->[androidx.emoji2:emoji2:1.0.0] /Users/macmini/.gradle/caches/transforms-3/30d5586e1a0799093d86ea189e131ea6/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+193-->[androidx.emoji2:emoji2:1.0.0] C:\Users\dell\.gradle\caches\transforms-3\30d5586e1a0799093d86ea189e131ea6\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
 194                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-194-->[androidx.emoji2:emoji2:1.0.0] /Users/macmini/.gradle/caches/transforms-3/30d5586e1a0799093d86ea189e131ea6/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:32:17-75
+194-->[androidx.emoji2:emoji2:1.0.0] C:\Users\dell\.gradle\caches\transforms-3\30d5586e1a0799093d86ea189e131ea6\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
 195                android:value="androidx.startup" />
-195-->[androidx.emoji2:emoji2:1.0.0] /Users/macmini/.gradle/caches/transforms-3/30d5586e1a0799093d86ea189e131ea6/transformed/jetified-emoji2-1.0.0/AndroidManifest.xml:33:17-49
+195-->[androidx.emoji2:emoji2:1.0.0] C:\Users\dell\.gradle\caches\transforms-3\30d5586e1a0799093d86ea189e131ea6\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
 196            <meta-data
-196-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/macmini/.gradle/caches/transforms-3/b176e43b616f6432ba0e11a3599afc66/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+196-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\dell\.gradle\caches\transforms-3\b176e43b616f6432ba0e11a3599afc66\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
 197                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-197-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/macmini/.gradle/caches/transforms-3/b176e43b616f6432ba0e11a3599afc66/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+197-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\dell\.gradle\caches\transforms-3\b176e43b616f6432ba0e11a3599afc66\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
 198                android:value="androidx.startup" />
-198-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/macmini/.gradle/caches/transforms-3/b176e43b616f6432ba0e11a3599afc66/transformed/jetified-lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+198-->[androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\dell\.gradle\caches\transforms-3\b176e43b616f6432ba0e11a3599afc66\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
 199        </provider>
 200
 201        <service
-201-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:41:9-46:35
+201-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:41:9-46:35
 202            android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"
-202-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:42:13-88
+202-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:42:13-88
 203            android:directBootAware="false"
-203-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:43:13-44
+203-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:43:13-44
 204            android:enabled="@bool/enable_system_alarm_service_default"
-204-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:44:13-72
+204-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:44:13-72
 205            android:exported="false" />
-205-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:45:13-37
+205-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:45:13-37
 206        <service
-206-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:47:9-53:35
+206-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:47:9-53:35
 207            android:name="androidx.work.impl.background.systemjob.SystemJobService"
-207-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:48:13-84
+207-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:48:13-84
 208            android:directBootAware="false"
-208-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:49:13-44
+208-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:49:13-44
 209            android:enabled="@bool/enable_system_job_service_default"
-209-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:50:13-70
+209-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:50:13-70
 210            android:exported="true"
-210-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:51:13-36
+210-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:51:13-36
 211            android:permission="android.permission.BIND_JOB_SERVICE" />
-211-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:52:13-69
+211-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:52:13-69
 212        <service
-212-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:54:9-59:35
+212-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:54:9-59:35
 213            android:name="androidx.work.impl.foreground.SystemForegroundService"
-213-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:55:13-81
+213-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:55:13-81
 214            android:directBootAware="false"
-214-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:56:13-44
+214-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:56:13-44
 215            android:enabled="@bool/enable_system_foreground_service_default"
-215-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:57:13-77
+215-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:57:13-77
 216            android:exported="false" />
-216-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:58:13-37
+216-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:58:13-37
 217
 218        <receiver
-218-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:61:9-66:35
+218-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:61:9-66:35
 219            android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"
-219-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:62:13-88
+219-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:62:13-88
 220            android:directBootAware="false"
-220-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:63:13-44
+220-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:63:13-44
 221            android:enabled="true"
-221-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:64:13-35
+221-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:64:13-35
 222            android:exported="false" />
-222-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:65:13-37
+222-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:65:13-37
 223        <receiver
-223-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:67:9-77:20
+223-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:67:9-77:20
 224            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy"
-224-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:68:13-106
+224-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:68:13-106
 225            android:directBootAware="false"
-225-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:69:13-44
+225-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:69:13-44
 226            android:enabled="false"
-226-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:70:13-36
+226-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:70:13-36
 227            android:exported="false" >
-227-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:71:13-37
+227-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:71:13-37
 228            <intent-filter>
-228-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:73:13-76:29
+228-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:73:13-76:29
 229                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
-229-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:17-87
-229-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:74:25-84
+229-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:74:17-87
+229-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:74:25-84
 230                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED" />
-230-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:17-90
-230-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:75:25-87
+230-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:75:17-90
+230-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:75:25-87
 231            </intent-filter>
 232        </receiver>
 233        <receiver
-233-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:78:9-88:20
+233-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:78:9-88:20
 234            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy"
-234-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:79:13-104
+234-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:79:13-104
 235            android:directBootAware="false"
-235-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:80:13-44
+235-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:80:13-44
 236            android:enabled="false"
-236-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:81:13-36
+236-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:81:13-36
 237            android:exported="false" >
-237-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:82:13-37
+237-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:82:13-37
 238            <intent-filter>
-238-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:84:13-87:29
+238-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:84:13-87:29
 239                <action android:name="android.intent.action.BATTERY_OKAY" />
-239-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:17-77
-239-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:85:25-74
+239-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:85:17-77
+239-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:85:25-74
 240                <action android:name="android.intent.action.BATTERY_LOW" />
-240-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:17-76
-240-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:86:25-73
+240-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:86:17-76
+240-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:86:25-73
 241            </intent-filter>
 242        </receiver>
 243        <receiver
-243-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:89:9-99:20
+243-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:89:9-99:20
 244            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy"
-244-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:90:13-104
+244-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:90:13-104
 245            android:directBootAware="false"
-245-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:91:13-44
+245-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:91:13-44
 246            android:enabled="false"
-246-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:92:13-36
+246-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:92:13-36
 247            android:exported="false" >
-247-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:93:13-37
+247-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:93:13-37
 248            <intent-filter>
-248-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:95:13-98:29
+248-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:95:13-98:29
 249                <action android:name="android.intent.action.DEVICE_STORAGE_LOW" />
-249-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:17-83
-249-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:96:25-80
+249-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:96:17-83
+249-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:96:25-80
 250                <action android:name="android.intent.action.DEVICE_STORAGE_OK" />
-250-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:17-82
-250-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:97:25-79
+250-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:97:17-82
+250-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:97:25-79
 251            </intent-filter>
 252        </receiver>
 253        <receiver
-253-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:100:9-109:20
+253-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:100:9-109:20
 254            android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy"
-254-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:101:13-103
+254-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:101:13-103
 255            android:directBootAware="false"
-255-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:102:13-44
+255-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:102:13-44
 256            android:enabled="false"
-256-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:103:13-36
+256-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:103:13-36
 257            android:exported="false" >
-257-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:104:13-37
+257-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:104:13-37
 258            <intent-filter>
-258-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:106:13-108:29
+258-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:106:13-108:29
 259                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-259-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:17-79
-259-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:107:25-76
+259-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:107:17-79
+259-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:107:25-76
 260            </intent-filter>
 261        </receiver>
 262        <receiver
-262-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:110:9-121:20
+262-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:110:9-121:20
 263            android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver"
-263-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:111:13-88
+263-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:111:13-88
 264            android:directBootAware="false"
-264-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:112:13-44
+264-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:112:13-44
 265            android:enabled="false"
-265-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:113:13-36
+265-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:113:13-36
 266            android:exported="false" >
-266-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:114:13-37
+266-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:114:13-37
 267            <intent-filter>
-267-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:116:13-120:29
+267-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:116:13-120:29
 268                <action android:name="android.intent.action.BOOT_COMPLETED" />
-268-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:117:17-79
-268-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:117:25-76
+268-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:117:17-79
+268-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:117:25-76
 269                <action android:name="android.intent.action.TIME_SET" />
-269-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:17-73
-269-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:118:25-70
+269-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:118:17-73
+269-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:118:25-70
 270                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
-270-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:17-81
-270-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:119:25-78
+270-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:119:17-81
+270-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:119:25-78
 271            </intent-filter>
 272        </receiver>
 273        <receiver
-273-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:122:9-131:20
+273-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:122:9-131:20
 274            android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver"
-274-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:123:13-99
+274-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:123:13-99
 275            android:directBootAware="false"
-275-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:124:13-44
+275-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:124:13-44
 276            android:enabled="@bool/enable_system_alarm_service_default"
-276-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:125:13-72
+276-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:125:13-72
 277            android:exported="false" >
-277-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:126:13-37
+277-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:126:13-37
 278            <intent-filter>
-278-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:128:13-130:29
+278-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:128:13-130:29
 279                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies" />
-279-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:17-98
-279-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:129:25-95
+279-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:129:17-98
+279-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:129:25-95
 280            </intent-filter>
 281        </receiver>
 282        <receiver
-282-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:132:9-142:20
+282-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:132:9-142:20
 283            android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver"
-283-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:133:13-78
+283-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:133:13-78
 284            android:directBootAware="false"
-284-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:134:13-44
+284-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:134:13-44
 285            android:enabled="true"
-285-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:135:13-35
+285-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:135:13-35
 286            android:exported="true"
-286-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:136:13-36
+286-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:136:13-36
 287            android:permission="android.permission.DUMP" >
-287-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:137:13-57
+287-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:137:13-57
 288            <intent-filter>
-288-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:139:13-141:29
+288-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:139:13-141:29
 289                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS" />
-289-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:17-88
-289-->[androidx.work:work-runtime:2.7.1] /Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/AndroidManifest.xml:140:25-85
+289-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:140:17-88
+289-->[androidx.work:work-runtime:2.7.1] C:\Users\dell\.gradle\caches\transforms-3\589fb362c4e98b66a2c2a748981b3f4d\transformed\work-runtime-2.7.1\AndroidManifest.xml:140:25-85
 290            </intent-filter>
 291        </receiver>
 292
 293        <service
-293-->[androidx.room:room-runtime:2.2.5] /Users/macmini/.gradle/caches/transforms-3/957a21d778e806c79257c451088bc049/transformed/room-runtime-2.2.5/AndroidManifest.xml:25:9-28:40
+293-->[androidx.room:room-runtime:2.2.5] C:\Users\dell\.gradle\caches\transforms-3\957a21d778e806c79257c451088bc049\transformed\room-runtime-2.2.5\AndroidManifest.xml:25:9-28:40
 294            android:name="androidx.room.MultiInstanceInvalidationService"
-294-->[androidx.room:room-runtime:2.2.5] /Users/macmini/.gradle/caches/transforms-3/957a21d778e806c79257c451088bc049/transformed/room-runtime-2.2.5/AndroidManifest.xml:26:13-74
+294-->[androidx.room:room-runtime:2.2.5] C:\Users\dell\.gradle\caches\transforms-3\957a21d778e806c79257c451088bc049\transformed\room-runtime-2.2.5\AndroidManifest.xml:26:13-74
 295            android:directBootAware="true"
-295-->[androidx.room:room-runtime:2.2.5] /Users/macmini/.gradle/caches/transforms-3/957a21d778e806c79257c451088bc049/transformed/room-runtime-2.2.5/AndroidManifest.xml:27:13-43
+295-->[androidx.room:room-runtime:2.2.5] C:\Users\dell\.gradle\caches\transforms-3\957a21d778e806c79257c451088bc049\transformed\room-runtime-2.2.5\AndroidManifest.xml:27:13-43
 296            android:exported="false" />
-296-->[androidx.room:room-runtime:2.2.5] /Users/macmini/.gradle/caches/transforms-3/957a21d778e806c79257c451088bc049/transformed/room-runtime-2.2.5/AndroidManifest.xml:28:13-37
+296-->[androidx.room:room-runtime:2.2.5] C:\Users\dell\.gradle\caches\transforms-3\957a21d778e806c79257c451088bc049\transformed\room-runtime-2.2.5\AndroidManifest.xml:28:13-37
 297
 298        <activity
-298-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:23:9-27:75
+298-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:23:9-27:75
 299            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-299-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:24:13-93
+299-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:24:13-93
 300            android:excludeFromRecents="true"
-300-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:25:13-46
+300-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:25:13-46
 301            android:exported="false"
-301-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:26:13-37
+301-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:26:13-37
 302            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-302-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:27:13-72
+302-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:27:13-72
 303        <!--
 304            Service handling Google Sign-In user revocation. For apps that do not integrate with
 305            Google Sign-In, this service will never be started.
 306        -->
 307        <service
-307-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:33:9-37:51
+307-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:33:9-37:51
 308            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-308-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:34:13-89
+308-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:34:13-89
 309            android:exported="true"
-309-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:35:13-36
+309-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:35:13-36
 310            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-310-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:36:13-107
+310-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:36:13-107
 311            android:visibleToInstantApps="true" /> <!-- Needs to be explicitly declared on P+ -->
-311-->[com.google.android.gms:play-services-auth:20.3.0] /Users/macmini/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/AndroidManifest.xml:37:13-48
+311-->[com.google.android.gms:play-services-auth:20.3.0] C:\Users\dell\.gradle\caches\transforms-3\e104cb2417f79a570c640e9a531879ac\transformed\jetified-play-services-auth-20.3.0\AndroidManifest.xml:37:13-48
 312        <uses-library
-312-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:39:9-41:40
+312-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:39:9-41:40
 313            android:name="org.apache.http.legacy"
-313-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:40:13-50
+313-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:40:13-50
 314            android:required="false" />
-314-->[com.google.android.gms:play-services-maps:18.0.2] /Users/macmini/.gradle/caches/transforms-3/56b45dfe142193144e8c43ab452e4196/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:41:13-37
+314-->[com.google.android.gms:play-services-maps:18.0.2] C:\Users\dell\.gradle\caches\transforms-3\56b45dfe142193144e8c43ab452e4196\transformed\jetified-play-services-maps-18.0.2\AndroidManifest.xml:41:13-37
 315
 316        <receiver
-316-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:31:9-38:20
+316-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:31:9-38:20
 317            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-317-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:32:13-78
+317-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:32:13-78
 318            android:exported="true"
-318-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:33:13-36
+318-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:33:13-36
 319            android:permission="com.google.android.c2dm.permission.SEND" >
-319-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:34:13-73
+319-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:34:13-73
 320            <intent-filter>
-320-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:29:13-31:29
+320-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-31:29
 321                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-321-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:17-81
-321-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:30:25-78
+321-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:30:17-81
+321-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:30:25-78
 322            </intent-filter>
 323        </receiver>
 324        <!--
@@ -638,149 +638,149 @@
 326             but set to not exported to explicitly avoid allowing another app to call it.
 327        -->
 328        <service
-328-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:44:9-51:19
+328-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:44:9-51:19
 329            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-329-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:45:13-82
+329-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:45:13-82
 330            android:directBootAware="true"
-330-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:46:13-43
+330-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:46:13-43
 331            android:exported="false" >
-331-->[com.google.firebase:firebase-messaging:23.1.1] /Users/macmini/.gradle/caches/transforms-3/846056637b4fc7af522a9e821057b433/transformed/jetified-firebase-messaging-23.1.1/AndroidManifest.xml:47:13-37
+331-->[com.google.firebase:firebase-messaging:23.1.1] C:\Users\dell\.gradle\caches\transforms-3\846056637b4fc7af522a9e821057b433\transformed\jetified-firebase-messaging-23.1.1\AndroidManifest.xml:47:13-37
 332            <intent-filter android:priority="-500" >
-332-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:20:13-22:29
+332-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-22:29
 333                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-333-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:17-78
-333-->[:react-native-firebase_messaging] /Users/macmini/KinengoDriver/node_modules/@react-native-firebase/messaging/android/build/intermediates/merged_manifest/debug/AndroidManifest.xml:21:25-75
+333-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:17-78
+333-->[:react-native-firebase_messaging] C:\nile\Kin\KinengoDriver\node_modules\@react-native-firebase\messaging\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:25-75
 334            </intent-filter>
 335        </service>
 336
 337        <activity
-337-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:27:9-44:20
+337-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:27:9-44:20
 338            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-338-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:28:13-80
+338-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:28:13-80
 339            android:excludeFromRecents="true"
-339-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:29:13-46
+339-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:29:13-46
 340            android:exported="true"
-340-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:30:13-36
+340-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:30:13-36
 341            android:launchMode="singleTask"
-341-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:31:13-44
+341-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:31:13-44
 342            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-342-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:32:13-72
+342-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:32:13-72
 343            <intent-filter>
-343-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:33:13-43:29
+343-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:33:13-43:29
 344                <action android:name="android.intent.action.VIEW" />
-344-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:17-69
-344-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:25-66
+344-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:34:17-69
+344-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:34:25-66
 345
 346                <category android:name="android.intent.category.DEFAULT" />
-346-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:17-76
-346-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:27-73
+346-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:36:17-76
+346-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:36:27-73
 347                <category android:name="android.intent.category.BROWSABLE" />
-347-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:17-78
-347-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:27-75
+347-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:37:17-78
+347-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:37:27-75
 348
 349                <data
-349-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:39:17-42:51
+349-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:39:17-42:51
 350                    android:host="firebase.auth"
-350-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:40:21-49
+350-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:40:21-49
 351                    android:path="/"
-351-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:41:21-37
+351-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:41:21-37
 352                    android:scheme="genericidp" />
-352-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:42:21-48
+352-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:42:21-48
 353            </intent-filter>
 354        </activity>
 355        <activity
-355-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:45:9-62:20
+355-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:45:9-62:20
 356            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-356-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:46:13-79
+356-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:46:13-79
 357            android:excludeFromRecents="true"
-357-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:47:13-46
+357-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:47:13-46
 358            android:exported="true"
-358-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:48:13-36
+358-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:48:13-36
 359            android:launchMode="singleTask"
-359-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:49:13-44
+359-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:49:13-44
 360            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-360-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:50:13-72
+360-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:50:13-72
 361            <intent-filter>
-361-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:51:13-61:29
+361-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:51:13-61:29
 362                <action android:name="android.intent.action.VIEW" />
-362-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:17-69
-362-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:34:25-66
+362-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:34:17-69
+362-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:34:25-66
 363
 364                <category android:name="android.intent.category.DEFAULT" />
-364-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:17-76
-364-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:36:27-73
+364-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:36:17-76
+364-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:36:27-73
 365                <category android:name="android.intent.category.BROWSABLE" />
-365-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:17-78
-365-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:37:27-75
+365-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:37:17-78
+365-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:37:27-75
 366
 367                <data
-367-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:39:17-42:51
+367-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:39:17-42:51
 368                    android:host="firebase.auth"
-368-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:40:21-49
+368-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:40:21-49
 369                    android:path="/"
-369-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:41:21-37
+369-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:41:21-37
 370                    android:scheme="recaptcha" />
-370-->[com.google.firebase:firebase-auth:21.1.0] /Users/macmini/.gradle/caches/transforms-3/6d93ed3189b973d8d70c40c13e86fac3/transformed/jetified-firebase-auth-21.1.0/AndroidManifest.xml:42:21-48
+370-->[com.google.firebase:firebase-auth:21.1.0] C:\Users\dell\.gradle\caches\transforms-3\6d93ed3189b973d8d70c40c13e86fac3\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:42:21-48
 371            </intent-filter>
 372        </activity>
 373        <activity
-373-->[com.google.android.gms:play-services-base:18.1.0] /Users/macmini/.gradle/caches/transforms-3/9b97e7375216bb012bcb7a39025b3084/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:9-22:45
+373-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\dell\.gradle\caches\transforms-3\9b97e7375216bb012bcb7a39025b3084\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
 374            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-374-->[com.google.android.gms:play-services-base:18.1.0] /Users/macmini/.gradle/caches/transforms-3/9b97e7375216bb012bcb7a39025b3084/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:20:19-85
+374-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\dell\.gradle\caches\transforms-3\9b97e7375216bb012bcb7a39025b3084\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:20:19-85
 375            android:exported="false"
-375-->[com.google.android.gms:play-services-base:18.1.0] /Users/macmini/.gradle/caches/transforms-3/9b97e7375216bb012bcb7a39025b3084/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:22:19-43
+375-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\dell\.gradle\caches\transforms-3\9b97e7375216bb012bcb7a39025b3084\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:22:19-43
 376            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-376-->[com.google.android.gms:play-services-base:18.1.0] /Users/macmini/.gradle/caches/transforms-3/9b97e7375216bb012bcb7a39025b3084/transformed/jetified-play-services-base-18.1.0/AndroidManifest.xml:21:19-78
+376-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\dell\.gradle\caches\transforms-3\9b97e7375216bb012bcb7a39025b3084\transformed\jetified-play-services-base-18.1.0\AndroidManifest.xml:21:19-78
 377
 378        <provider
-378-->[com.google.firebase:firebase-common:20.2.0] /Users/macmini/.gradle/caches/transforms-3/db71fc1ee4b44ed5614272cdf67713c5/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:25:9-30:39
+378-->[com.google.firebase:firebase-common:20.2.0] C:\Users\dell\.gradle\caches\transforms-3\db71fc1ee4b44ed5614272cdf67713c5\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:25:9-30:39
 379            android:name="com.google.firebase.provider.FirebaseInitProvider"
-379-->[com.google.firebase:firebase-common:20.2.0] /Users/macmini/.gradle/caches/transforms-3/db71fc1ee4b44ed5614272cdf67713c5/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:26:13-77
+379-->[com.google.firebase:firebase-common:20.2.0] C:\Users\dell\.gradle\caches\transforms-3\db71fc1ee4b44ed5614272cdf67713c5\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:26:13-77
 380            android:authorities="com.kinengodriver.firebaseinitprovider"
-380-->[com.google.firebase:firebase-common:20.2.0] /Users/macmini/.gradle/caches/transforms-3/db71fc1ee4b44ed5614272cdf67713c5/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:27:13-72
+380-->[com.google.firebase:firebase-common:20.2.0] C:\Users\dell\.gradle\caches\transforms-3\db71fc1ee4b44ed5614272cdf67713c5\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:27:13-72
 381            android:directBootAware="true"
-381-->[com.google.firebase:firebase-common:20.2.0] /Users/macmini/.gradle/caches/transforms-3/db71fc1ee4b44ed5614272cdf67713c5/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:28:13-43
+381-->[com.google.firebase:firebase-common:20.2.0] C:\Users\dell\.gradle\caches\transforms-3\db71fc1ee4b44ed5614272cdf67713c5\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:28:13-43
 382            android:exported="false"
-382-->[com.google.firebase:firebase-common:20.2.0] /Users/macmini/.gradle/caches/transforms-3/db71fc1ee4b44ed5614272cdf67713c5/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:29:13-37
+382-->[com.google.firebase:firebase-common:20.2.0] C:\Users\dell\.gradle\caches\transforms-3\db71fc1ee4b44ed5614272cdf67713c5\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:29:13-37
 383            android:initOrder="100" />
-383-->[com.google.firebase:firebase-common:20.2.0] /Users/macmini/.gradle/caches/transforms-3/db71fc1ee4b44ed5614272cdf67713c5/transformed/jetified-firebase-common-20.2.0/AndroidManifest.xml:30:13-36
+383-->[com.google.firebase:firebase-common:20.2.0] C:\Users\dell\.gradle\caches\transforms-3\db71fc1ee4b44ed5614272cdf67713c5\transformed\jetified-firebase-common-20.2.0\AndroidManifest.xml:30:13-36
 384
 385        <meta-data
-385-->[com.google.android.gms:play-services-basement:18.1.0] /Users/macmini/.gradle/caches/transforms-3/02adbba73d6ec46ace4e8e9e7114b753/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:21:9-23:69
+385-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\dell\.gradle\caches\transforms-3\02adbba73d6ec46ace4e8e9e7114b753\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
 386            android:name="com.google.android.gms.version"
-386-->[com.google.android.gms:play-services-basement:18.1.0] /Users/macmini/.gradle/caches/transforms-3/02adbba73d6ec46ace4e8e9e7114b753/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:22:13-58
+386-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\dell\.gradle\caches\transforms-3\02adbba73d6ec46ace4e8e9e7114b753\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
 387            android:value="@integer/google_play_services_version" />
-387-->[com.google.android.gms:play-services-basement:18.1.0] /Users/macmini/.gradle/caches/transforms-3/02adbba73d6ec46ace4e8e9e7114b753/transformed/jetified-play-services-basement-18.1.0/AndroidManifest.xml:23:13-66
+387-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\dell\.gradle\caches\transforms-3\02adbba73d6ec46ace4e8e9e7114b753\transformed\jetified-play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
 388
 389        <service
-389-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/macmini/.gradle/caches/transforms-3/ae241e0ea1caf3552ce4d9dd56a06839/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:28:9-34:19
+389-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\ae241e0ea1caf3552ce4d9dd56a06839\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:28:9-34:19
 390            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-390-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/macmini/.gradle/caches/transforms-3/ae241e0ea1caf3552ce4d9dd56a06839/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:29:13-103
+390-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\ae241e0ea1caf3552ce4d9dd56a06839\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:29:13-103
 391            android:exported="false" >
-391-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/macmini/.gradle/caches/transforms-3/ae241e0ea1caf3552ce4d9dd56a06839/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:30:13-37
+391-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\ae241e0ea1caf3552ce4d9dd56a06839\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:30:13-37
 392            <meta-data
-392-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/macmini/.gradle/caches/transforms-3/ae241e0ea1caf3552ce4d9dd56a06839/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:31:13-33:39
+392-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\ae241e0ea1caf3552ce4d9dd56a06839\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:31:13-33:39
 393                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-393-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/macmini/.gradle/caches/transforms-3/ae241e0ea1caf3552ce4d9dd56a06839/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:32:17-94
+393-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\ae241e0ea1caf3552ce4d9dd56a06839\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:32:17-94
 394                android:value="cct" />
-394-->[com.google.android.datatransport:transport-backend-cct:3.1.8] /Users/macmini/.gradle/caches/transforms-3/ae241e0ea1caf3552ce4d9dd56a06839/transformed/jetified-transport-backend-cct-3.1.8/AndroidManifest.xml:33:17-36
+394-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\ae241e0ea1caf3552ce4d9dd56a06839\transformed\jetified-transport-backend-cct-3.1.8\AndroidManifest.xml:33:17-36
 395        </service>
 396        <service
-396-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/macmini/.gradle/caches/transforms-3/94027eb6f1d52802cc928805d5b009d8/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:26:9-30:19
+396-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\94027eb6f1d52802cc928805d5b009d8\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:26:9-30:19
 397            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-397-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/macmini/.gradle/caches/transforms-3/94027eb6f1d52802cc928805d5b009d8/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:27:13-117
+397-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\94027eb6f1d52802cc928805d5b009d8\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:27:13-117
 398            android:exported="false"
-398-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/macmini/.gradle/caches/transforms-3/94027eb6f1d52802cc928805d5b009d8/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:28:13-37
+398-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\94027eb6f1d52802cc928805d5b009d8\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:28:13-37
 399            android:permission="android.permission.BIND_JOB_SERVICE" >
-399-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/macmini/.gradle/caches/transforms-3/94027eb6f1d52802cc928805d5b009d8/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:29:13-69
+399-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\94027eb6f1d52802cc928805d5b009d8\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:29:13-69
 400        </service>
 401
 402        <receiver
-402-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/macmini/.gradle/caches/transforms-3/94027eb6f1d52802cc928805d5b009d8/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:32:9-34:40
+402-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\94027eb6f1d52802cc928805d5b009d8\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:32:9-34:40
 403            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-403-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/macmini/.gradle/caches/transforms-3/94027eb6f1d52802cc928805d5b009d8/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:33:13-132
+403-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\94027eb6f1d52802cc928805d5b009d8\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:33:13-132
 404            android:exported="false" />
-404-->[com.google.android.datatransport:transport-runtime:3.1.8] /Users/macmini/.gradle/caches/transforms-3/94027eb6f1d52802cc928805d5b009d8/transformed/jetified-transport-runtime-3.1.8/AndroidManifest.xml:34:13-37
+404-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\dell\.gradle\caches\transforms-3\94027eb6f1d52802cc928805d5b009d8\transformed\jetified-transport-runtime-3.1.8\AndroidManifest.xml:34:13-37
 405    </application>
 406
 407</manifest>

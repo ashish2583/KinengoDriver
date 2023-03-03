@@ -4,7 +4,7 @@
             "outputFile": "com.kinengodriver.app-mergeDebugResources-37:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "/Users/macmini/.gradle/caches/transforms-3/26ad38889b3be41cbbd612345c0557ea/transformed/material-1.1.0/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\dell\\.gradle\\caches\\transforms-3\\26ad38889b3be41cbbd612345c0557ea\\transformed\\material-1.1.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,6",
                         "startColumns": "4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/macmini/.gradle/caches/transforms-3/6e785dd70db23465d53821ae66ec9e10/transformed/cardview-1.0.0/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\dell\\.gradle\\caches\\transforms-3\\6e785dd70db23465d53821ae66ec9e10\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -42,7 +42,17 @@
                     }
                 },
                 {
-                    "source": "/Users/macmini/.gradle/caches/transforms-3/0384065138861ac0b574232dc17bca12/transformed/appcompat-1.4.1/res/values-v23/values-v23.xml",
+                    "source": "C:\\Users\\dell\\.gradle\\caches\\transforms-3\\589fb362c4e98b66a2c2a748981b3f4d\\transformed\\work-runtime-2.7.1\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,121",
+                        "endColumns": "65,62",
+                        "endOffsets": "116,179"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\dell\\.gradle\\caches\\transforms-3\\0384065138861ac0b574232dc17bca12\\transformed\\appcompat-1.4.1\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -58,16 +68,6 @@
                         "endLines": "4,5,6,7,21,35,36,37,40,44,45,46,47,51",
                         "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
                         "endOffsets": "314,449,524,611,1349,2099,2218,2345,2567,2791,2906,3013,3126,3356"
-                    }
-                },
-                {
-                    "source": "/Users/macmini/.gradle/caches/transforms-3/589fb362c4e98b66a2c2a748981b3f4d/transformed/work-runtime-2.7.1/res/values-v23/values-v23.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,121",
-                        "endColumns": "65,62",
-                        "endOffsets": "116,179"
                     }
                 }
             ]

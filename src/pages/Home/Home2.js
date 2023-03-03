@@ -138,12 +138,13 @@ const Home2 = (props) => {
   const [datevalue, setDateValue] = useState(null);
   const [ridedate, setRideDate] = useState([
     {label: 'select Job Status', value: ''},
-    {label: 'On going', value: '0'}, 
-    {label: 'Food is not prepared', value: '4'},
-    {label: 'Waiting at restorent', value: '3'},
-    {label: 'On Hold', value: '5'},
+    {label: 'On the way to restaurant', value: '0'}, 
+    {label: 'Waiting at the restaurant', value: '3'},
+    // {label: 'Food is not prepared', value: '4'},
+    {label: 'On the way to deliver', value: '5'},
+    // {label: 'On Hold', value: '5'},
     {label: 'Cancel', value: '1'},
-    {label: 'Not recived', value: '6'},
+    // {label: 'Not recived', value: '6'},
     {label: 'Delivered', value: '2'},
   ]);
   const [watch,setWatch]=useState('1')
@@ -168,7 +169,7 @@ const statusLable=()=>{
   }else if(mapdata.driverridestatus==2){
     setdrvRideStatus('Delivered')
   }else if(mapdata.driverridestatus==3){
-    setdrvRideStatus('Waiting at restorent')
+    setdrvRideStatus('Waiting at the restaurant')
   }else if(mapdata.driverridestatus==4){
     setdrvRideStatus('Food is not prepared')
   }else if(mapdata.driverridestatus==5){
@@ -196,6 +197,9 @@ const statusLable=()=>{
       setDateValue(val)
       statusLable()
       setmodlevisual(false)
+      if(val == '2'){
+        props.navigation.navigate('Home')
+      }
     } else {
       setalert_sms(err)
       setMy_Alert(true)

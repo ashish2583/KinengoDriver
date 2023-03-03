@@ -31,7 +31,7 @@ const Earning = (props) => {
     {label: 'Ongoing', value: '0'}, 
     {label: 'Cancel', value: '1'},
     {label: 'Delivered', value: '2'},
-    {label: 'Waiting at restaurant', value: '3'},
+    {label: 'Waiting at the restaurant', value: '3'},
     {label: 'Food is not prepared', value: '4'},
   ]);
   const [email, setemail] = useState('')
@@ -169,7 +169,7 @@ const Earning = (props) => {
     } else if(id == '2'){
       return 'Delivered'
     } else if(id == '3'){
-      return 'Waiting at restaurant'
+      return 'Waiting at the restaurant'
     } else if(id == '4'){
       return 'Food is not prepared'
     }
@@ -185,7 +185,7 @@ const Earning = (props) => {
       // return 'Delivered'
       return Mycolors.GREEN
     } else if(id == '3'){
-      // return 'Waiting at restaurant'
+      // return 'Waiting at the restaurant'
       return Mycolors.filtercolor
     } else if(id == '4'){
       return Mycolors.RED
