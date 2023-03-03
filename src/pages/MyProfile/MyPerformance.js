@@ -84,6 +84,7 @@ const MyPerformance = (props) => {
         }
     }
     const design = (img, img1, ti, tirateing, w, imgh, imgw, redious, press) => {
+        console.log('tirateing', tirateing);
         return (
             <View style={{
                 width: '99%', marginTop: 20, borderRadius: 20,
@@ -212,9 +213,9 @@ const MyPerformance = (props) => {
                 <View style={{   justifyContent: 'space-between', alignItems: 'center', width: "100%" }}>
 
                     {/* {design(require('../../assets/star-rating.png'), require('../../assets/Lightbulb-icon.png'), 'Average rating in last 2 weeks', '4.2', '45%', 25, 25, 20, () => { props.navigation.navigate('') })} */}
-                    {design(require('../../assets/star-rating.png'), require('../../assets/Lightbulb-icon.png'), 'Average rating in last 2 weeks', datas.avg_rating, '45%', 25, 25, 20, () => { props.navigation.navigate('') })}
-                    {design(require('../../assets/order-icon.png'), require('../../assets/Lightbulb-icon.png'), 'Cancellation in last 2 weeks', `${datas.total_completed_orders} Orders`, '45%', 22, 26, 20, () => { props.navigation.navigate('') })}
-                    {design(require('../../assets/CircleWavyCheck.png'),require('../../assets/Lightbulb-icon.png'), 'Completion percentage in last 2 weeks', `${datas.total_completed_orders/datas.total_orders*100}%`, '45%', 29, 29, 20, () => { props.navigation.navigate('') })}
+                    {design(require('../../assets/star-rating.png'), require('../../assets/Lightbulb-icon.png'), 'Average rating in last 2 weeks', datas.avg_rating === undefined ? '0' : datas.avg_rating, '45%', 25, 25, 20, () => { props.navigation.navigate('') })}
+                    {design(require('../../assets/order-icon.png'), require('../../assets/Lightbulb-icon.png'), 'Cancellation in last 2 weeks', `${datas.total_completed_orders === undefined ? '0' : datas.total_completed_orders} Orders`, '45%', 22, 26, 20, () => { props.navigation.navigate('') })}
+                    {design(require('../../assets/CircleWavyCheck.png'),require('../../assets/Lightbulb-icon.png'), 'Completion percentage in last 2 weeks', `${datas.total_completed_orders === undefined ? '100%':datas.total_completed_orders/datas.total_orders*100}%`, '45%', 29, 29, 20, () => { props.navigation.navigate('') })}
 
                 </View>
 
