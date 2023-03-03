@@ -164,6 +164,12 @@ const intervalID = useRef(0);
       checkStatus()
        OnOff('1')
   }, [])
+  useEffect(() => {
+    const unsubscribe = props.navigation.addListener('blur', () => {
+      setmodlevisual(false)
+    });
+    return unsubscribe;
+  }, [props.navigation]);
 
   const updateWalletData = async () => {
     setLoading(true)
@@ -220,7 +226,7 @@ const intervalID = useRef(0);
     setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_ride_check_status, data, 'POST', userdetaile.token)
     setLoading(false)
-    console.log('the res driver_ride_check_status ==>>', responseJson)
+    console.log('the res driver_ride_checkstatus ==>>', responseJson)
     if (responseJson.headers.success == 1) {
      dispatch(setDriverRideStatus(responseJson.body.driver_ride_status))  
       if (responseJson.body.driver_ride_status != 2) {
@@ -269,6 +275,7 @@ const intervalID = useRef(0);
     setLoading(false)
     console.log('AcceptRideClick the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
+      dispatch(setDriverRideStatus(0))
       dispatch(setNotificationData(responseJson.body))
       var sp1=parseFloat(responseJson.body.lattitude) 
       var sp2=parseFloat(responseJson.body.longitude) 
