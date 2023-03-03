@@ -14,9 +14,10 @@ import { GoogleApiKey } from '../../WebApi/GoogleApiKey';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {  useSelector, useDispatch } from 'react-redux';
 import {setCurentPosition,setBidAmount,setNotificationData,setStartAddress,setDriverRideStatus,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
+import {setWalletDetails} from '../../redux/actions/user_action';
 import { Rating, AirbnbRating } from 'react-native-ratings';
 // import MyNetinfo from '../../component/MyNetinfo'
-import {baseUrl,driver_ride_check_status,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
+import {baseUrl,driver_earning,driver_ride_check_status,driver_accept_ride_request,driver_update_driver_location,driver_current_status,driver_fuel_cost,booking_bid_price,requestGetApi,requestPostApi} from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-toast-message';
 // import Toast from 'react-native-toast-message';
@@ -154,7 +155,8 @@ const [time, settime] = useState(60);
 const timeCopy = useRef(60);
 const intervalID = useRef(0);
 
-  useEffect( () => { 
+  useEffect( () => {
+    updateWalletData()
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
         //  // senNoti()
@@ -162,6 +164,28 @@ const intervalID = useRef(0);
        OnOff('1')
   }, [])
 
+  const updateWalletData = async () => {
+    setLoading(true)
+    // const endPoint = `${driver_earning}/userid/${userdetaile?.driver_id}`
+    try {
+      const { responseJson, err } = await requestGetApi(
+        driver_earning,
+        '',
+        "GET",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("updateWalletData the res==>>", responseJson);
+      if (responseJson.headers.success == 1) {
+        dispatch(setWalletDetails(responseJson.body.total))
+      } else {
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log("updateWalletData error", error);
+    }
+  
+}
   const senNoti= async()=>{
     let notidata={
         'data': {"business_address": "Sector 57, Noida, Uttar Pradesh, India", "business_name": "Nile Technologies", "lattitude": "28.608600616455078", "longitude": "77.35099792480469", "notificationType": "rederequest", "order_id": "11", "ride_id": "1"},
@@ -191,6 +215,7 @@ const intervalID = useRef(0);
     var data = {
       "driver_id": userdetaile.driver_id,
         }
+    console.log('data checkStatus ==>>', data)
     setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_ride_check_status, data, 'POST', userdetaile.token)
     setLoading(false)
@@ -198,13 +223,16 @@ const intervalID = useRef(0);
     if (responseJson.headers.success == 1) {
      dispatch(setDriverRideStatus(responseJson.body.driver_ride_status))  
       if (responseJson.body.driver_ride_status != 2) {
-      // dispatch(setNotificationData(responseJson.body.orderData))
-      dispatch(setNotificationData({...responseJson.body.orderData,
+      console.log('strcuture de', {...responseJson.body.orderData, 
+        driver_ride_status:responseJson.body.driver_ride_status,
+        ride_id:responseJson.body.ride_id,
+        driver_id:responseJson.body.driver_id
+      });
+        dispatch(setNotificationData({...responseJson.body.orderData, 
         driver_ride_status:responseJson.body.driver_ride_status,
         ride_id:responseJson.body.ride_id,
         driver_id:responseJson.body.driver_id
       }))
-
       var sp1=parseFloat(responseJson.body.orderData.lattitude) 
       var sp2=parseFloat(responseJson.body.orderData.longitude) 
       var dp1=parseFloat(responseJson.body.orderData.destination_lat) 
@@ -237,7 +265,7 @@ const intervalID = useRef(0);
     setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_accept_ride_request, data, 'POST', userdetaile.token)
     setLoading(false)
-    console.log('the res==>>', responseJson)
+    console.log('AcceptRideClick the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
       dispatch(setNotificationData(responseJson.body))
       var sp1=parseFloat(responseJson.body.lattitude) 

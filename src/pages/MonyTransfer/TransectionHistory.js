@@ -8,76 +8,48 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, login, requestPostApi } from '../../WebApi/Service'
+import { baseUrl, login, requestGetApi, driver_transaction_history } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
+import moment from 'moment';
 
 const TransectionHistory = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
+  const userdetaile  = useSelector(state => state.user.user_details)
+  const walletDetail  = useSelector(state => state.user.wallet_detail)
   const mapdata = useSelector(state => state.maplocation)
   const [email, setemail] = useState('')
   const [pass, setpass] = useState('')
   const[passView,setPassView]=useState(true)
    const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
-  const [upData,setupData]=useState([
-    {
-      id: '1',
-      title: 'Hair Cut',
-      desc:'',
-      time:'10:00AM',
-      
-    },
-    {
-      id: '2',
-      title: 'Shaving',
-      desc:'',
-      time:'10:30AM',
-      
-    },
-    {
-      id: '3',
-      title: 'Facial',
-      desc:'',
-      time:'11:00AM',
-      
-    },
-    {
-      id: '4',
-      title: 'Hair Color',
-      desc:'',
-      time:'11:30AM',
-      
-    },
-    {
-      id: '5',
-      title: 'Hair wash',
-      desc:'',
-      time:'12:00PM',
-      
-    },
-    {
-      id: '6',
-      title: 'Beard style',
-      desc:'',
-      time:'12:30PM',
-      
-    },
-    {
-      id: '7',
-      title: 'Facial',
-      desc:'',
-      time:'01:00PM',
-      
-    },
-  ])
+  const [upData,setupData]=useState([])
   useEffect(()=>{
-   
+    getTransactionHistory()
   },[]) 
-
+  const getTransactionHistory = async () => {
+    setLoading(true)
+    try {
+      const { responseJson, err } = await requestGetApi(
+        driver_transaction_history,
+        "",
+        "GET",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("getTransactionHistory the res==>>", responseJson);
+      if (responseJson.headers.success == 1) {
+        setupData(responseJson.body)
+      } else {
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log("getTransactionHistory error", error);
+    }
+  };
   const Login_Pressed=(data)=>{
     AsyncStorage.setItem("kinengoDriver",JSON.stringify(data));
     dispatch(saveUserResult(data))
@@ -138,7 +110,7 @@ const TransectionHistory = (props) => {
 <View style={{width:'92%',height:125,alignSelf:'center'}}>
 <Image source={require('../../assets/TotalEarningsfrom.png')} style={{ width: '100%', height: '100%'}} />
 <View style={{position:'absolute',top:'40%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>$2345</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${walletDetail}</Text>
    </View>
 </View>
 
@@ -165,7 +137,7 @@ const TransectionHistory = (props) => {
       <ScrollView style={{ paddingHorizontal: 20 }}>
         
 
-      <View style={{width:'100%',alignSelf:'center',marginTop:10}}>
+      <View style={{width:'100%',alignSelf:'center',marginTop:25}}>
           <FlatList
                   data={upData}
                 //  horizontal={true}
@@ -173,7 +145,7 @@ const TransectionHistory = (props) => {
                   // numColumns={2}
                   renderItem={({item,index})=>{
                     return(
-                        <View style={{width:'100%',padding:15,marginHorizontal:5,backgroundColor:'#fff',marginTop:15,
+                        <View style={{width:'100%',padding:15,marginHorizontal:5,backgroundColor:'#fff',marginBottom:15,
                         shadowOffset: {
                         width: 0,
                         height: 3
@@ -184,9 +156,10 @@ const TransectionHistory = (props) => {
                       elevation: 5,borderRadius:15}}>
                      
                      <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5}}>
-                      <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text>
+                      {/* <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text> */}
+                      <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
                       <View style={{flexDirection:'row'}}>
-                        <Text style={{color:Mycolors.GrayColor,fontSize:13,left:5}}>12 Sep 2022</Text>
+                        <Text style={{color:Mycolors.GrayColor,fontSize:13,left:5}}>{moment(item.created_date).format('DD MMM YYYY')}</Text>
                       </View>
                         </View>
 
@@ -196,13 +169,14 @@ const TransectionHistory = (props) => {
               <Image source={require('../../assets/images/Ellipse.png')} style={{ width: 50, height: 50, top: -2, }}></Image>
             </View>
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:16,top:4}}>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14,fontWeight: '600',}}>Recived From</Text>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14,fontWeight: '600',}}>Received From</Text>
             <Text style={{ color: Mycolors.GrayColor, fontSize: 13, marginVertical:5 }}>Geores Local</Text>
           </View>
           </View>
 
 <View style={{position:'absolute',right:20,bottom:30}}>
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>$20.89</Text>
+{/* <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>$20.89</Text> */}
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : item.amount}</Text>
     </View>
 
                 </View>

@@ -46,6 +46,8 @@ export const SELECTEDCARTAB = "SELECTEDCARTAB";
 
 export const VEHICLEID = "VEHICLEID";
 
+export const WALLETDETAILS = "WALLETDETAILS";
+
 export const DRVID = "DRVID";  
 
 export const DASHDATA = "DASHDATA";

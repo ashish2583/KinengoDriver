@@ -163,5 +163,11 @@ export const setDashBoardData = (data) => {
         dash_data:data
     }
 }
+export const setWalletDetails = (data) => {
+    return {
+        type:types.WALLETDETAILS,
+        wallet_detail:data
+    }
+}
 
 

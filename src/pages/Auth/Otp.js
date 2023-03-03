@@ -17,7 +17,7 @@ import LinearGradient from 'react-native-linear-gradient'
 
 const CELL_COUNT = 4;
 const Otp = (props) => {
-  const dispatch = useDispatch();
+  const dispatch =  useDispatch();
   const mapdata = useSelector(state => state.maplocation)
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });

@@ -36,6 +36,10 @@ local.properties
 
 # node.js
 #
+<<<<<<< HEAD
+=======
+**node_modules
+>>>>>>> cca66a5f3e38941b39ec73b03074dde78e839370
 node_modules/
 npm-debug.log
 yarn-error.log
@@ -61,3 +65,7 @@ yarn-error.log
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+<<<<<<< HEAD
+=======
+node_modules
+>>>>>>> cca66a5f3e38941b39ec73b03074dde78e839370

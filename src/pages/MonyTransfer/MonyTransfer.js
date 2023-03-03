@@ -6,126 +6,114 @@ import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
-import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
+import { setWalletDetails } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, login, requestPostApi } from '../../WebApi/Service'
+import { baseUrl, driver_transaction, driver_earning, requestGetApi, requestPostApi, driver_transaction_history } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
+import moment from 'moment';
 
 const MonyTransfer = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
-  const mapdata = useSelector(state => state.maplocation)
-  const [email, setemail] = useState('')
-  const [pass, setpass] = useState('')
+  const userdetaile  = useSelector(state => state.user.user_details)
+  const walletDetail  = useSelector(state => state.user.wallet_detail)
   const[select1,setselect1]=useState('1')
   const[select2,setselect2]=useState('1')
+  const [amount, setAmount] = useState('')
+  const [totalAmount, setTotalAmount] = useState('')
    const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
-  const [upData,setupData]=useState([
-    {
-      id: '1',
-      title: 'Hair Cut',
-      desc:'',
-      time:'10:00AM',
-      
-    },
-    {
-      id: '2',
-      title: 'Shaving',
-      desc:'',
-      time:'10:30AM',
-      
-    },
-    {
-      id: '3',
-      title: 'Facial',
-      desc:'',
-      time:'11:00AM',
-      
-    },
-    {
-      id: '4',
-      title: 'Hair Color',
-      desc:'',
-      time:'11:30AM',
-      
-    },
-    {
-      id: '5',
-      title: 'Hair wash',
-      desc:'',
-      time:'12:00PM',
-      
-    },
-    {
-      id: '6',
-      title: 'Beard style',
-      desc:'',
-      time:'12:30PM',
-      
-    },
-    {
-      id: '7',
-      title: 'Facial',
-      desc:'',
-      time:'01:00PM',
-      
-    },
-  ])
+  const [upData,setupData]=useState([])
   useEffect(()=>{
-   
+    getTransactionHistory()
   },[]) 
-
-  const Login_Pressed=(data)=>{
-    AsyncStorage.setItem("kinengoDriver",JSON.stringify(data));
-    dispatch(saveUserResult(data))
-   }
-
-  const LoginPressed = async () => {
-    Login_Pressed()
-    var EmailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (email == '') {
-      Alert.alert('Enter email address');
-    } else if (!EmailReg.test(email)) {
-      Alert.alert('Enter valid email');
-    } else if (pass == '') {
-      Alert.alert('Enter password');
-    } else {
-      setLoading(true)
-      let formdata = new FormData();
-      formdata.append("email", email); 
-      formdata.append("password", pass);
-      // formdata.append("user_group", 3);
-      var data={
-        email:email,
-        password:pass
-      }
-      const { responseJson, err } = await requestPostApi(login, data, 'POST', '')
-      setLoading(false)
-      console.log('the res==>>', responseJson)
+  const getTransactionHistory = async () => {
+    setLoading(true)
+    try {
+      const { responseJson, err } = await requestGetApi(
+        driver_transaction_history,
+        "",
+        "GET",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("getTransactionHistory the res==>>", responseJson.body);
       if (responseJson.headers.success == 1) {
-        Login_Pressed(responseJson.body)
+        setupData(responseJson.body?.slice(0, 3))
       } else {
-         setalert_sms(err)
-         setMy_Alert(true)
       }
+    } catch (error) {
+      setLoading(false)
+      console.log("getTransactionHistory error", error);
+    }
+  };
+
+
+  const Validation = () => {
+    if (amount === "") {
+      Alert.alert("Please enter Amount");
+      return false;
+    } else {
+      return true;
+    }
+  };
+  const onMoneyTransfer = async () => {
+    if (!Validation()) {
+      return;
+    }
+    setLoading(true)
+    var data = {
+      // userid: userdetaile.driver_id,
+      // wallet_id: "1",
+      transaction_type: "",
+      transaction_date: moment().format("YYYY-MM-DD"),
+      transaction_detaills: "",
+      amount: amount,
+      status: "0",
+    };
+    console.log("onMoneyTransfer data", data);
+    try {
+      const { responseJson, err } = await requestPostApi(
+        driver_transaction,
+        data,
+        "POST",
+        userdetaile.token
+      );
+      setLoading(false);
+      console.log("the res==>>", responseJson);
+      if (responseJson.headers.success == 1) {
+      } else {
+      }
+    } catch (error) {
+      setLoading(false)
+      console.log("onMoneyTransfer error", error);
+    }
+  };
+  
+  const getStatus = (id) => {
+    if(id == '0'){
+      return 'Pending'
+    } else if(id == '1'){
+      return 'Successful'
+    } else if(id == '2'){
+      return 'Rejected'
+    } 
+  }
+  const getColor = (id) => {
+    if(id == '0'){
+      // return 'Ongoing'
+      return Mycolors.filtercolor
+    } else if(id == '1'){
+      // return 'Cancel'
+      return Mycolors.GREEN
+    } else if(id == '2'){
+      // return 'Delivered'
+      return Mycolors.RED
     }
   }
-
-  const resetStacks = (page) => {
-    props.navigation.reset({
-      index: 0,
-      routes: [{ name: page }],
-      params: { resentotp: false },
-    });
-  }
-
-
-
-
   return (
     <SafeAreaView style={styles.container}>
        
@@ -136,7 +124,7 @@ const MonyTransfer = (props) => {
 <View style={{width:'92%',height:125,alignSelf:'center'}}>
 <Image source={require('../../assets/TotalEarningsfrom.png')} style={{ width: '100%', height: '100%'}} />
 <View style={{position:'absolute',top:'40%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>$2345</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${walletDetail}</Text>
 </View>
 <View style={{position:'absolute',top:'40%',right:30}}>
 <Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}} onPress={()=>{props.navigation.navigate('TransectionHistory')}}>History</Text>
@@ -145,7 +133,18 @@ const MonyTransfer = (props) => {
 
       <ScrollView style={{ paddingHorizontal: 20 }}>
         
-      <Text style={{ marginTop: 25, fontSize: 16, color: Mycolors.TEXT_COLOR,fontWeight:'600'}} >Cash-Out Option</Text>
+      <TextInput
+            value={amount}
+            onChangeText={(text) => {
+              setAmount(text)
+            }}
+            placeholder="Amount"
+            keyboardType='number-pad'
+            maxLength={6}
+            placeholderTextColor={Mycolors.GrayColor}
+            style={styles.input}
+          />
+      {/* <Text style={{ marginTop: 25, fontSize: 16, color: Mycolors.TEXT_COLOR,fontWeight:'600'}} >Cash-Out Option</Text>
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 
               <TouchableOpacity style={{width:'30%',padding:5,backgroundColor:select1=='1' ? '#fff':'#FFF8E2',marginTop:15,justifyContent:'center',
@@ -231,11 +230,72 @@ const MonyTransfer = (props) => {
                    
 
                 </TouchableOpacity>
-</View>
+</View> */}
     
-      <MyButtons title="Save" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={()=>{}} marginHorizontal={20} 
-      titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
-     
+    <View style={{height:10}}></View>
+
+      <MyButtons title="Send Request" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={onMoneyTransfer} marginHorizontal={20} 
+      titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} />
+
+
+<View style={{width:'100%',alignSelf:'center',marginTop:25}}>
+<View style={styles.viewAllContainer}>
+<Text style={{ fontSize: 16, color: Mycolors.TEXT_COLOR,fontWeight:'600'}} >Transaction History</Text>
+<TouchableOpacity onPress={()=>{props.navigation.navigate('TransectionHistory')}}>
+  <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600', textDecorationLine: 'underline'}} >View All</Text>
+</TouchableOpacity>
+</View>
+          <FlatList
+                  data={upData}
+                //  horizontal={true}
+                 showsVerticalScrollIndicator={false}
+                  // numColumns={2}
+                  renderItem={({item,index})=>{
+                    return(
+                        <View style={{width:'100%',padding:15,marginHorizontal:5,backgroundColor:'#fff',marginBottom:15,
+                        shadowOffset: {
+                        width: 0,
+                        height: 3
+                      },
+                      shadowRadius: 1,
+                      shadowOpacity: 0.3,
+                     // justifyContent: 'center',
+                      elevation: 5,borderRadius:15}}>
+                     
+                     <View style={{width:'100%',flexDirection:'row',justifyContent:'space-between',paddingHorizontal:5}}>
+                      {/* <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#JHF9085325466</Text> */}
+                      <Text style={{color:Mycolors.filtercolor,fontSize:14,fontWeight:'600'}}>#{item.id}</Text>
+                      <View style={{flexDirection:'row'}}>
+                        <Text style={{color:Mycolors.GrayColor,fontSize:13,left:5}}>{moment(item.created_date).format('DD MMM YYYY')}</Text>
+                      </View>
+                        </View>
+
+
+            <View style={{width:'100%',flexDirection:'row',marginVertical:5,paddingVertical:10}}>
+            <View>
+              <Image source={require('../../assets/images/Ellipse.png')} style={{ width: 50, height: 50, top: -2, }}></Image>
+            </View>
+            <View style={{width:dimensions.SCREEN_WIDTH-100,left:16,top:4}}>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14,fontWeight: '600',}}>Received From</Text>
+            <Text style={{ color: Mycolors.GrayColor, fontSize: 13, marginVertical:5 }}>Geores Local</Text>
+          </View>
+          </View>
+
+<View style={{position:'absolute',right:20,bottom:25}}>
+{/* <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>$20.89</Text> */}
+<View style={{flexDirection:'row', alignItems:'center'}}>
+<View style={{width:15,height:15,borderRadius:10,backgroundColor:getColor(item.status)}} />
+<Text style={{color:getColor(item.status),fontSize:14,left:5}}>{getStatus(item.status)}</Text>
+</View>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : item.amount}</Text>
+    </View>
+
+                </View>
+                    )
+                  }}
+                  keyExtractor={item => item.id}
+                />
+         </View>      
       </ScrollView>
    
          {My_Alert ? <MyAlert sms={alert_sms} okPress={()=>{setMy_Alert(false)}} /> : null }
@@ -269,6 +329,12 @@ const styles = StyleSheet.create({
     backgroundColor: Mycolors.BG_COLOR,
     top: 1
   },
+  viewAllContainer:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    marginBottom:10
+  }
 });
 export default MonyTransfer
 
