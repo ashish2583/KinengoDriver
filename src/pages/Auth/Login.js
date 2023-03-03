@@ -75,7 +75,7 @@ const Login = (props) => {
       setLoading(false)
       console.log('the res==>>', responseJson)
       if (responseJson.headers.success == 1) {
-        props.navigation.navigate('Otp')
+        // props.navigation.navigate('Otp')
         LoginPress(responseJson.body)
       } else {
         setalert_sms(err)

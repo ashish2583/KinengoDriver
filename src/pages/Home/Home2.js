@@ -137,15 +137,17 @@ const Home2 = (props) => {
   const [dateopen, setDateOpen] = useState(false);
   const [datevalue, setDateValue] = useState(null);
   const [ridedate, setRideDate] = useState([
-    {label: 'select Job Status', value: ''},
-    {label: 'On going', value: '0'}, 
-    {label: 'Food is not prepared', value: '4'},
-    {label: 'Waiting at restorent', value: '3'},
-    {label: 'On Hold', value: '5'},
+    // {label: 'select Job Status', value: ''},
+    {label: 'On the way to restaurant', value: '0'}, 
+    {label: 'Waiting at the restaurant', value: '3'},
+    // {label: 'Food is not prepared', value: '4'},
+    {label: 'On the way to deliver', value: '5'},
+    // {label: 'On Hold', value: '5'},
     {label: 'Cancel', value: '1'},
-    {label: 'Not recived', value: '6'},
+    // {label: 'Not recived', value: '6'},
     {label: 'Delivered', value: '2'},
   ]);
+
   const [watch,setWatch]=useState('1')
   const [curentCord,setCurentCord]=useState({
     latitude: 26.4788922, 
@@ -157,34 +159,30 @@ const Home2 = (props) => {
     frist()
     console.log('mapdata.notificationdata', mapdata.notificationdata);
 // setDateValue(mapdata.driverridestatus)
-  statusLable()
+  statusLable(mapdata.driverridestatus)
   }, [])
  
-const statusLable=()=>{
-  if(mapdata.driverridestatus==0){
-    setdrvRideStatus('On going')
-  }else if(mapdata.driverridestatus==1){
+const statusLable=(val)=>{
+  if(val==0){
+    setdrvRideStatus('On the way to restaurant')
+  }else if(val==1){
     setdrvRideStatus('Cancel')
-  }else if(mapdata.driverridestatus==2){
+  }else if(val==2){
     setdrvRideStatus('Delivered')
-  }else if(mapdata.driverridestatus==3){
-    setdrvRideStatus('Waiting at restorent')
-  }else if(mapdata.driverridestatus==4){
-    setdrvRideStatus('Food is not prepared')
-  }else if(mapdata.driverridestatus==5){
-    setdrvRideStatus('On Hold')
-  }else if(mapdata.driverridestatus==6){
-    setdrvRideStatus('Not recived')
+  }else if(val==3){
+    setdrvRideStatus('Waiting at the restaurant')
+  }else if(val==5){
+    setdrvRideStatus('On the way to deliver')
   }else{
     setdrvRideStatus('')
   }
 }
 
   const ChangeRideStatus = async (val) => {
+
     var data = {
       "driver_id": userdetaile.driver_id,
-      // "ride_id": mapdata.notificationdata.ride_id,
-      "ride_id": '4',
+      "ride_id": mapdata.notificationdata.ride_id,
       "status": val,
     }
     console.log('ChangeRideStatus data==>>', data)
@@ -194,8 +192,11 @@ const statusLable=()=>{
     if (responseJson.headers.success == 1) {
       dispatch(setDriverRideStatus(val)) 
       setDateValue(val)
-      statusLable()
+      statusLable(val)
       setmodlevisual(false)
+      if(val=='2' || val=='1'){
+        props.navigation.navigate('Home')
+      }
     } else {
       setalert_sms(err)
       setMy_Alert(true)
@@ -316,11 +317,11 @@ const resetStacks=(page)=>{
     <Text style={{left:15,color:Mycolors.TEXT_COLOR,fontSize:13,fontWeight:'bold'}}>DUTY</Text>
     </View>
  
-    <Toggle
+    {/* <Toggle
   value={toggleValue}
   onPress={(newState) => {
     // setToggleValue(newState)
-    console.log(newState);
+    console.log(true);
   }}
   //  leftTitle="Veg"
   // rightTitle="Non-Veg"
@@ -348,8 +349,8 @@ const resetStacks=(page)=>{
     backgroundColor:'#fff',
   }}
   containerStyle={{width:60,height:40}}
-/>
-  
+/> */}
+  <Text style={{color:'green'}}>Online</Text>
 
     </TouchableOpacity>
    
@@ -375,7 +376,7 @@ const resetStacks=(page)=>{
 </View>
 <View style={{alignSelf:'center',flexDirection:'row',marginTop:5}}>
 <Image source={require('../../assets/Star.png')} style={{width:20,height:20,alignSelf:'center'}}></Image>
-<Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>4.5</Text>
+<Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>3.8</Text>
 </View>
 
 <Text style={{fontSize:14,color:Mycolors.TEXT_COLOR,textAlign:'center',fontWeight:'600',marginTop:5}}>{mapdata.notificationdata.business_name}</Text>
@@ -397,7 +398,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN} fontWeight={'500'} fontSize={13} marginVertical={10}/>
 </View>
 
-        <View style={{width:'100%',flexDirection:'row',marginTop:10}}>
+        {/* <View style={{width:'100%',flexDirection:'row',marginTop:10}}>
             <View>
               <Image source={require('../../assets/Group6430.png')} style={{ width: 35, height: 25, top: 2,left:3 }}></Image>
             </View>
@@ -407,7 +408,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
            <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Order will be ready for pickup in 15 mins</Text>
            </View>
           </View>
-        </View>
+        </View> */}
 
         <View style={{width:'100%',flexDirection:'row',marginTop:25}}>
 

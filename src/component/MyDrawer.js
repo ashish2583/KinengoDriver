@@ -79,8 +79,8 @@ const MyView=(props)=>{
 <Image source={{ uri: person_Image }} style={{width:'100%',height:'100%',alignSelf:'center',borderRadius:40}}></Image>
 </TouchableOpacity>
 <View style={{alignSelf:'center'}}>
-<Text style={{color:Mycolors.BG_COLOR,fontSize:14,fontWeight:'600',textAlign:'center',marginTop:15}}>{name}</Text>
-<Text style={{color:Mycolors.BG_COLOR,fontSize:13,textAlign:'center',marginVertical:10}}>robert.fox@example.com</Text>
+<Text style={{color:Mycolors.BG_COLOR,fontSize:14,fontWeight:'600',textAlign:'center',marginTop:15}}>{userdetaile.first_name +' '+userdetaile.last_name}</Text>
+<Text style={{color:Mycolors.BG_COLOR,fontSize:13,textAlign:'center',marginVertical:10}}>{userdetaile.emailid}</Text>
 </View>
 </View>
 

@@ -34,7 +34,7 @@ const Home = (props) => {
  
 const [homeList,setHomeList]=useState([{id:'1',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'},{id:'2',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'},{id:'3',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'}])
 const [searchValue,setsearchValue]=useState('')
-const [toggleValue, setToggleValue] = useState(true);
+const [toggleValue, setToggleValue] = useState(false);
 const dispatch =  useDispatch();
 const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 const mapdata  = useSelector(state => state.maplocation)
@@ -130,6 +130,7 @@ const [startPos, setStartPos] = useState({ "latitude": 0, "longitude": 0 })
 const [c_cord,setC_Cord] = useState(false)
 const [myaddress,setMyaddress] = useState('')
 const [bid,setBid]=useState('')
+const walletDetail  = useSelector(state => state.user.wallet_detail)
 const [curentCord,setCurentCord]=useState({
   latitude: 26.4788922, 
   longitude: 83.7454171,
@@ -159,7 +160,7 @@ const intervalID = useRef(0);
     updateWalletData()
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
-        //  // senNoti()
+        //  senNoti()
       checkStatus()
        OnOff('1')
   }, [])
@@ -199,18 +200,18 @@ const intervalID = useRef(0);
        // console.log('result')             
     }
   function callAutoTimer() {
-    intervalID.current = setInterval(() => {
-      settime(timeCopy.current - 1)
-      timeCopy.current = timeCopy.current - 1
-      console.log('s', timeCopy.current)
-      if (timeCopy.current <= 0 && timeCopy.current >= -1) {
-        console.log('Call Function !')
-          setmodlevisual(false)
-        clearInterval(intervalID.current);
-      }
-    }, 1000);
+    // intervalID.current = setInterval(() => {
+    //   settime(timeCopy.current - 1)
+    //   timeCopy.current = timeCopy.current - 1
+    //   console.log('s', timeCopy.current)
+    //   if (timeCopy.current <= 0 && timeCopy.current >= -1) {
+    //     console.log('Call Function !')
+    //       setmodlevisual(false)
+    //     clearInterval(intervalID.current);
+    //   }
+    // }, 1000);
   }
-  
+   
   const checkStatus = async () => {
     var data = {
       "driver_id": userdetaile.driver_id,
@@ -219,7 +220,7 @@ const intervalID = useRef(0);
     setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_ride_check_status, data, 'POST', userdetaile.token)
     setLoading(false)
-    console.log('the res checkStatus ==>>', responseJson)
+    console.log('the res driver_ride_check_status ==>>', responseJson)
     if (responseJson.headers.success == 1) {
      dispatch(setDriverRideStatus(responseJson.body.driver_ride_status))  
       if (responseJson.body.driver_ride_status != 2) {
@@ -506,7 +507,7 @@ const intervalID = useRef(0);
     <Toggle
   value={toggleValue}
   onPress={(newState) => {
-    OnOff(newState? 0 : 1)
+    OnOff(newState? 1 : 0)
     setToggleValue(newState)
     console.log(newState);
   }}
@@ -515,7 +516,7 @@ const intervalID = useRef(0);
   trackBarStyle={{
     borderColor: "gray",
     width:55,height:25,
-    backgroundColor:toggleValue?'gray':'green'
+    backgroundColor:toggleValue?'green':'gray'
   }}
   
   trackBar={{
@@ -545,12 +546,12 @@ const intervalID = useRef(0);
     <View style={{alignItems:'center',marginTop:20}}>
     <Image source={require('../../assets/TotalEarningsfromKarryGO.png')} style={{width:'100%',height:150,}}></Image>
    <View style={{position:'absolute',top:'32%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>$2345</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${parseFloat(Number(walletDetail).toFixed(3))}</Text>
    </View>
     </View>
-{toggleValue ?
+{! toggleValue ?
     <View style={{alignItems:'center',width:'95%',alignSelf:'center'}}>
-    <Image source={require('../../assets/homeGroup.png')} style={{width:'100%',height:260,}}></Image>
+    <Image source={require('../../assets/homeGroup.png')} style={{width:'100%',height:270,}}></Image>
     <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,textAlign:'center',marginTop:20}}>You’re currently OFF DUTY, Please go ON DUTY to Start Earning</Text>
     </View>
     :
