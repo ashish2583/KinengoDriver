@@ -551,7 +551,7 @@ const intervalID = useRef(0);
     </View>
 {toggleValue ?
     <View style={{alignItems:'center',width:'95%',alignSelf:'center'}}>
-    <Image source={require('../../assets/homeGroup.png')} style={{width:'100%',height:260,}}></Image>
+    <Image source={require('../../assets/homeGroup.png')} style={{width:'100%',height:270,}}></Image>
     <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,textAlign:'center',marginTop:20}}>You’re currently OFF DUTY, Please go ON DUTY to Start Earning</Text>
     </View>
     :
