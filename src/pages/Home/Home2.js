@@ -154,28 +154,25 @@ const Home2 = (props) => {
   })
   const [angle,setangle]=useState(45)
   const [drvRideStatus,setdrvRideStatus]=useState('')
+  const [reason, setReason] = useState('')
   useEffect(() => {
     frist()
     console.log('mapdata.notificationdata', mapdata.notificationdata);
 // setDateValue(mapdata.driverridestatus)
-  statusLable()
+  statusLable(mapdata.driverridestatus)
   }, [])
  
-const statusLable=()=>{
-  if(mapdata.driverridestatus==0){
-    setdrvRideStatus('On going')
-  }else if(mapdata.driverridestatus==1){
+const statusLable=(val)=>{
+  if(val==0){
+    setdrvRideStatus('On the way to restaurant')
+  }else if(val==1){
     setdrvRideStatus('Cancel')
-  }else if(mapdata.driverridestatus==2){
+  }else if(val==2){
     setdrvRideStatus('Delivered')
-  }else if(mapdata.driverridestatus==3){
+  }else if(val==3){
     setdrvRideStatus('Waiting at the restaurant')
-  }else if(mapdata.driverridestatus==4){
-    setdrvRideStatus('Food is not prepared')
-  }else if(mapdata.driverridestatus==5){
-    setdrvRideStatus('On Hold')
-  }else if(mapdata.driverridestatus==6){
-    setdrvRideStatus('Not recived')
+  }else if(val==5){
+    setdrvRideStatus('On the way to deliver')
   }else{
     setdrvRideStatus('')
   }
@@ -184,8 +181,9 @@ const statusLable=()=>{
   const ChangeRideStatus = async (val) => {
     var data = {
       "driver_id": userdetaile.driver_id,
-      // "ride_id": mapdata.notificationdata.ride_id,
-      "ride_id": '4',
+      "notes": val == '1' ? reason : '',
+      "ride_id": mapdata.notificationdata.ride_id,
+      // "ride_id": '4',
       "status": val,
     }
     console.log('ChangeRideStatus data==>>', data)
@@ -195,7 +193,7 @@ const statusLable=()=>{
     if (responseJson.headers.success == 1) {
       dispatch(setDriverRideStatus(val)) 
       setDateValue(val)
-      statusLable()
+      statusLable(val)
       setmodlevisual(false)
       if(val == '2'){
         props.navigation.navigate('Home')
@@ -230,7 +228,7 @@ const setDriverLocation=(id,location,angle)=>{
       Angle: angle,
     })
     .then(() => {
-      console.log('User added!');
+      // console.log('User added!');
     });
   }
   
@@ -285,6 +283,17 @@ const resetStacks=(page)=>{
   });
  }
 
+ const openModalVisual = () => {
+  if(mapdata.driverridestatus == '2'){
+    Alert.alert('Cannot change status because already delivered')
+    return
+  }
+  else if(mapdata.driverridestatus == '1'){
+    Alert.alert('Cannot change status because order is cancelled')
+    return
+  }
+  setmodlevisual(true)
+ }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -370,7 +379,7 @@ const resetStacks=(page)=>{
 </View>
 <View>
   <Text style={{color:Mycolors.TEXT_COLOR,fontSize:14,fontWeight:'600'}}>Job Status</Text>
-  <Text style={{color:Mycolors.ORANGE,fontSize:13,marginTop:3}} onPress={()=>{setmodlevisual(true)}}>{drvRideStatus} </Text>
+  <Text style={{color:Mycolors.ORANGE,fontSize:13,marginTop:3}} onPress={openModalVisual}>{drvRideStatus} </Text>
 </View>
 </View>
 
@@ -570,7 +579,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
  
      {modlevisual ?
 <View style={{width:dimensions.SCREEN_WIDTH,height:dimensions.SCREEN_HEIGHT,backgroundColor:'rgba(0,0,0,0.4)',position:'absolute',left:0,top:0}}>
-        <View style={{ height: 300, backgroundColor: '#fff', borderTopLeftRadius: 30, borderTopRightRadius: 30,position: 'absolute', bottom: 0, width: '100%',borderColor:'#fff',borderWidth:0.3,alignSelf:'center' }}>
+        <View style={{ height: 350, backgroundColor: '#fff', borderTopLeftRadius: 30, borderTopRightRadius: 30,position: 'absolute', bottom: 0, width: '100%',borderColor:'#fff',borderWidth:0.3,alignSelf:'center' }}>
 
          
 <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingHorizontal:20,paddingVertical:20,borderTopLeftRadius: 30, borderTopRightRadius: 30,}}>
@@ -587,7 +596,6 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
     setItems={(i)=>{setRideDate(i)}}
     placeholder="Select Status"
     onChangeValue={(value) => {
-      ChangeRideStatus(value)
       setDateValue(value)
     }} 
     listMode="MODAL"
@@ -619,9 +627,33 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
     }}
   />
    </View>
-
+   {datevalue === '1' ?
+  <TextInput
+    value={reason}
+    onChangeText={(text) => {
+      setReason(text)
+    }}
+    placeholder="Enter reason for cancellation"
+    placeholderTextColor={Mycolors.GrayColor}
+    style={styles.input}
+  />:null}
 <View style={{alignSelf:'center',width:'90%',marginTop:15}}>
-  <MyButtons title="Save" height={40} width={'100%'} borderRadius={5} press={()=>{setmodlevisual(false)}} 
+  <MyButtons title="Save" height={40} width={'100%'} borderRadius={5} press={()=>{
+  if(datevalue == '0'){
+    Alert.alert('Cannot change status to Default status (Ongoing)')
+    return
+  }
+  if(datevalue == '1'){
+    if(reason === ''){
+      Alert.alert('Enter reason for cancellation')
+      return
+    }
+    ChangeRideStatus(datevalue)
+  }else{
+    ChangeRideStatus(datevalue)
+  }
+  setmodlevisual(false)
+  }} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} fontWeight={'600'} fontSize={14} marginVertical={10}/>
     <MyButtons title="Cancel" height={40} width={'100%'} borderRadius={5} press={()=>{setmodlevisual(false)}} 
    titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} fontWeight={'600'} fontSize={14} marginVertical={10}/>
@@ -684,11 +716,15 @@ const styles = StyleSheet.create({
 
   },
   input: {
-    height: 45,
-    width: '100%',
+    height: 55,
+    width: '90%',
+    alignSelf:'center',
+    marginTop:15,
     fontSize: 16,
-    borderColor: null,
-    borderRadius: 10,
+    borderColor: 'transparent',
+    borderWidth:1,
+    borderRadius: 5,
+    backgroundColor: Mycolors.BG_COLOR,
     color: Mycolors.TEXT_COLOR,
      paddingLeft: 7,
     paddingRight: 5,
