@@ -4,7 +4,11 @@
             "outputFile": "com.kinengodriver.app-mergeDebugResources-37:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\dell\\.gradle\\caches\\transforms-3\\e104cb2417f79a570c640e9a531879ac\\transformed\\jetified-play-services-auth-20.3.0\\res\\values-watch-v20\\values.xml",
+=======
+                    "source": "/Users/ashish/.gradle/caches/transforms-3/e104cb2417f79a570c640e9a531879ac/transformed/jetified-play-services-auth-20.3.0/res/values-watch-v20/values.xml",
+>>>>>>> 32bb03141eb65412770f78a0f8c4d4255f1ef65e
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +25,11 @@
                     }
                 },
                 {
+<<<<<<< HEAD
                     "source": "C:\\Users\\dell\\.gradle\\caches\\transforms-3\\0384065138861ac0b574232dc17bca12\\transformed\\appcompat-1.4.1\\res\\values-watch-v20\\values-watch-v20.xml",
+=======
+                    "source": "/Users/ashish/.gradle/caches/transforms-3/0384065138861ac0b574232dc17bca12/transformed/appcompat-1.4.1/res/values-watch-v20/values-watch-v20.xml",
+>>>>>>> 32bb03141eb65412770f78a0f8c4d4255f1ef65e
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

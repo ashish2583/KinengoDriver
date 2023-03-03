@@ -10,8 +10,6 @@ import { setLoading, saveUserToken, saveUserResult, saveCorporateUserResult } fr
 import { baseUrl, login, auth_send_otp, verify_otp, requestPostApi, Password_otp } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 import * as types from '../../redux/types'
-
-// import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
 import LinearGradient from 'react-native-linear-gradient'
 

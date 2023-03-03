@@ -147,6 +147,7 @@ const Home2 = (props) => {
     // {label: 'Not recived', value: '6'},
     {label: 'Delivered', value: '2'},
   ]);
+
   const [watch,setWatch]=useState('1')
   const [curentCord,setCurentCord]=useState({
     latitude: 26.4788922, 
@@ -207,6 +208,7 @@ const statusLable=(val)=>{
 }
 
   const ChangeRideStatus = async (val) => {
+
     var data = {
       "driver_id": userdetaile.driver_id,
       "notes": val == '1' ? reason : '',
@@ -223,7 +225,7 @@ const statusLable=(val)=>{
       setDateValue(val)
       statusLable(val)
       setmodlevisual(false)
-      if(val == '2'){
+      if(val=='2' || val=='1'){
         props.navigation.navigate('Home')
       }
     } else {
@@ -358,11 +360,11 @@ const resetStacks=(page)=>{
     <Text style={{left:15,color:Mycolors.TEXT_COLOR,fontSize:13,fontWeight:'bold'}}>DUTY</Text>
     </View>
  
-    <Toggle
+    {/* <Toggle
   value={toggleValue}
   onPress={(newState) => {
     // setToggleValue(newState)
-    console.log(newState);
+    console.log(true);
   }}
   //  leftTitle="Veg"
   // rightTitle="Non-Veg"
@@ -390,8 +392,8 @@ const resetStacks=(page)=>{
     backgroundColor:'#fff',
   }}
   containerStyle={{width:60,height:40}}
-/>
-  
+/> */}
+  <Text style={{color:'green'}}>Online</Text>
 
     </TouchableOpacity>
    
@@ -417,7 +419,7 @@ const resetStacks=(page)=>{
 </View>
 <View style={{alignSelf:'center',flexDirection:'row',marginTop:5}}>
 <Image source={require('../../assets/Star.png')} style={{width:20,height:20,alignSelf:'center'}}></Image>
-<Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>4.5</Text>
+<Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>3.8</Text>
 </View>
 
 <Text style={{fontSize:14,color:Mycolors.TEXT_COLOR,textAlign:'center',fontWeight:'600',marginTop:5}}>{mapdata.notificationdata.business_name}</Text>
@@ -439,7 +441,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN} fontWeight={'500'} fontSize={13} marginVertical={10}/>
 </View>
 
-        <View style={{width:'100%',flexDirection:'row',marginTop:10}}>
+        {/* <View style={{width:'100%',flexDirection:'row',marginTop:10}}>
             <View>
               <Image source={require('../../assets/Group6430.png')} style={{ width: 35, height: 25, top: 2,left:3 }}></Image>
             </View>
@@ -449,7 +451,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
            <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Order will be ready for pickup in 15 mins</Text>
            </View>
           </View>
-        </View>
+        </View> */}
 
         <View style={{width:'100%',flexDirection:'row',marginTop:25}}>
 
