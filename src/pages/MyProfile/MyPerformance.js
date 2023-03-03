@@ -6,7 +6,7 @@ import Modal from 'react-native-modal';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 // import messaging from '@react-native-firebase/messaging';
 import { useSelector, useDispatch } from 'react-redux';
-import { requestPostApi, requestGetApi } from '../../WebApi/Service'
+import { requestPostApi, requestGetApi, driver_performance } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MyAlert from '../../component/MyAlert';
@@ -31,10 +31,29 @@ const MyPerformance = (props) => {
         { id: '5', img: person_Image, title: 'GRECA Vegetarian Greek', lable: 'Table Booking', price: '$140.00', desc: 'Booking date and time: 21 July 2021, 11:00 AM' },
     ])
     useEffect(() => {
-
+        getPerformaceData()
     }, [])
 
 
+    const getPerformaceData = async () => {
+
+        setLoading(true)
+        const { responseJson, err } = await requestGetApi(driver_performance, '', 'GET', userdetaile.token)
+        setLoading(false)
+        console.log('getPerformaceData the res==>>', responseJson)
+        if (responseJson.headers.success == 1) {
+            setdatas(responseJson.body[0])
+            // setdatas({
+            //     "avg_rating": 4.2,
+            //     "total_cancel_orders": 10,
+            //     "total_completed_orders": 10,
+            //     "total_orders": 20
+            // })
+        } else {
+            setalert_sms(err)
+            setMy_Alert(true)
+        }
+    }
     const getProfile = async () => {
 
         setLoading(true)
@@ -192,9 +211,10 @@ const MyPerformance = (props) => {
 
                 <View style={{   justifyContent: 'space-between', alignItems: 'center', width: "100%" }}>
 
-                    {design(require('../../assets/star-rating.png'), require('../../assets/Lightbulb-icon.png'), 'Average rating in last 2 weeks', '4.2', '45%', 25, 25, 20, () => { props.navigation.navigate('') })}
-                    {design(require('../../assets/order-icon.png'), require('../../assets/Lightbulb-icon.png'), 'Cancellation in last 2 weeks', '85 Orders', '45%', 22, 26, 20, () => { props.navigation.navigate('') })}
-                    {design(require('../../assets/CircleWavyCheck.png'),require('../../assets/Lightbulb-icon.png'), 'Completion percentage in last 2 weeks', '76%', '45%', 29, 29, 20, () => { props.navigation.navigate('') })}
+                    {/* {design(require('../../assets/star-rating.png'), require('../../assets/Lightbulb-icon.png'), 'Average rating in last 2 weeks', '4.2', '45%', 25, 25, 20, () => { props.navigation.navigate('') })} */}
+                    {design(require('../../assets/star-rating.png'), require('../../assets/Lightbulb-icon.png'), 'Average rating in last 2 weeks', datas.avg_rating, '45%', 25, 25, 20, () => { props.navigation.navigate('') })}
+                    {design(require('../../assets/order-icon.png'), require('../../assets/Lightbulb-icon.png'), 'Cancellation in last 2 weeks', `${datas.total_completed_orders} Orders`, '45%', 22, 26, 20, () => { props.navigation.navigate('') })}
+                    {design(require('../../assets/CircleWavyCheck.png'),require('../../assets/Lightbulb-icon.png'), 'Completion percentage in last 2 weeks', `${datas.total_completed_orders/datas.total_orders*100}%`, '45%', 29, 29, 20, () => { props.navigation.navigate('') })}
 
                 </View>
 

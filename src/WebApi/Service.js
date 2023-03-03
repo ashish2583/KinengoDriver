@@ -24,6 +24,7 @@ export const driver_earning = 'driver/earning/'
 export const driver_rides_history = 'driver/rides-history'
 export const driver_wallet_history = 'driver/wallet-history'
 export const driver_transaction_history = 'driver/transaction-history'
+export const driver_performance = 'driver/performance'
 
 export const common_countries = `common/countries`;
 export const common_state = `common/states?country_id=`;
