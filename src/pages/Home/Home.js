@@ -199,16 +199,16 @@ const intervalID = useRef(0);
        // console.log('result')             
     }
   function callAutoTimer() {
-    intervalID.current = setInterval(() => {
-      settime(timeCopy.current - 1)
-      timeCopy.current = timeCopy.current - 1
-      console.log('s', timeCopy.current)
-      if (timeCopy.current <= 0 && timeCopy.current >= -1) {
-        console.log('Call Function !')
-          setmodlevisual(false)
-        clearInterval(intervalID.current);
-      }
-    }, 1000);
+    // intervalID.current = setInterval(() => {
+    //   settime(timeCopy.current - 1)
+    //   timeCopy.current = timeCopy.current - 1
+    //   console.log('s', timeCopy.current)
+    //   if (timeCopy.current <= 0 && timeCopy.current >= -1) {
+    //     console.log('Call Function !')
+    //       setmodlevisual(false)
+    //     clearInterval(intervalID.current);
+    //   }
+    // }, 1000);
   }
   
   const checkStatus = async () => {
@@ -238,6 +238,7 @@ const intervalID = useRef(0);
       var dp1=parseFloat(responseJson.body.orderData.destination_lat) 
       var dp2=parseFloat(responseJson.body.orderData.destination_long) 
       console.log('eeeeeeeeeeeeeeee',{ latitude: sp1, longitude: sp2});
+      console.log('setDestnationPosition', { latitude: dp1, longitude: dp2});
       dispatch(setStartPosition({ latitude: sp1, longitude: sp2}))
       dispatch(setDestnationPosition({ latitude: dp1, longitude: dp2}))
       props.navigation.navigate('Home2', { from: 'home' })

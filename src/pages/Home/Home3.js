@@ -59,6 +59,7 @@ const Home3 = (props) => {
      
       useEffect(()=>{
         console.log('hello ashish kumar verma',mapdata.startPosition);
+        console.log('mapdata.driverridestatus', mapdata.driverridestatus)
         setmyReson({
           latitude: mapdata.startPosition.latitude, 
           longitude: mapdata.startPosition.longitude,
@@ -82,11 +83,11 @@ const Home3 = (props) => {
   modlevisual={modlevisual}
   modleHeight={290}  
   markAPos={mapdata.curentPosition}
-  markBPos={mapdata.startPosition}
+  markBPos={mapdata.driverridestatus ==0 ? mapdata.startPosition : mapdata.destnationPosition}
   // mapDirectionOrigin={mapdata.startPosition}
   // mapDirectionDest={mapdata.destnationPosition}
   mapDirectionOrigin={mapdata.curentPosition}
-  mapDirectionDest={mapdata.startPosition}
+  mapDirectionDest={mapdata.driverridestatus ==0 ? mapdata.startPosition : mapdata.destnationPosition}
   imageA={require('../../assets/MapPin.png')}
   imageB={require('../../assets/MapPin.png')}
   // region={myreson}
