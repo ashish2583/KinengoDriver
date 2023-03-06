@@ -170,13 +170,14 @@ const Home2 = (props) => {
     headers:{},
   }
   )
-  let responseJson = await response.json();
+  let responseJson = response.json();
   return {responseJson:responseJson,err:null}
 }
 const calculateTravelTime = async (originLat, originLong) => {
   const url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+originLat+","+originLong+"&destinations="+mapdata.destnationPosition.latitude+","+mapdata.destnationPosition.longitude+"&mode=driving"+"&units=imperial&key="+GoogleApiKey
   setLoading(true)
   const { responseJson, err } = await googleGetApi(url)
+  setLoading(false)
   console.log('calculateTravelTime responseJson', responseJson);
   if(responseJson.rows[0].elements[0].status !== 'ZERO_RESULTS' || responseJson.rows[0].elements[0].status !== 'NOT_FOUND'){
     // responseJson.rows[0].elements[0].duration['text']
@@ -184,7 +185,6 @@ const calculateTravelTime = async (originLat, originLong) => {
   }else{
     Alert.alert('Zero results found')
   }
-  setLoading(false)
   console.log('calculateTravelTime res==>>', responseJson)
   if (responseJson.headers.success == 1) {
    } else {
