@@ -158,6 +158,7 @@ const Home2 = (props) => {
   const [reason, setReason] = useState('')
   useEffect(() => {
     frist()
+    getPosition()
     console.log('mapdata.notificationdata', mapdata.notificationdata);
 // setDateValue(mapdata.driverridestatus)
   statusLable(mapdata.driverridestatus)
@@ -287,9 +288,37 @@ const setDriverLocation=(id,location,angle)=>{
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         })
-        calculateTravelTime(My_cord.latitude, My_cord.longitude)
         dispatch(setCurentPosition(My_cord))
        setDriverLocation(userdetaile.driver_id.toString(),My_cord,position.coords.heading)
+      },
+      error => {
+        console.log('The curent error is',error);
+        // Alert.alert(error.message.toString());
+      },
+      {
+        showLocationDialog: true,
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 0
+      }
+    );
+  }
+  const getPosition = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        let My_cord = { latitude: position.coords.latitude, longitude: position.coords.longitude }
+      //  console.log('asdfggh',My_cord);
+        // setCurentCord(My_cord)
+        // setangle(position.coords.heading)
+        // setmyReson({
+        //   latitude: position.coords.latitude, 
+        //   longitude: position.coords.longitude,
+        //   latitudeDelta: 0.0922,
+        //   longitudeDelta: 0.0421,
+        // })
+        calculateTravelTime(My_cord.latitude, My_cord.longitude)
+      //   dispatch(setCurentPosition(My_cord))
+      //  setDriverLocation(userdetaile.driver_id.toString(),My_cord,position.coords.heading)
       },
       error => {
         console.log('The curent error is',error);
