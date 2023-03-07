@@ -251,7 +251,6 @@ const statusLable=(val)=>{
       // "ride_id": '4',
       "status": val,
     }
-    setLoading(true)
     if(val === '2'){
       data['ride_distance'] = estDistance
     }
