@@ -160,7 +160,7 @@ const intervalID = useRef(0);
     updateWalletData()
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
-         senNoti()
+        //  senNoti()
       checkStatus()
        OnOff('1')
   }, [])
