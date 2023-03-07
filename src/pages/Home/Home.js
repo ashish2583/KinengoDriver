@@ -300,7 +300,8 @@ const intervalID = useRef(0);
       dispatch(setDestnationPosition({ latitude: dp1, longitude: dp2}))
       props.navigation.navigate('Home2', { from: 'home' })
     } else {
-      setalert_sms(err)
+      // setalert_sms(err)
+      setalert_sms(responseJson.headers.message)
       setMy_Alert(true)
     }
           }
@@ -347,7 +348,7 @@ const intervalID = useRef(0);
     //   "from": "984454687422", "messageId": "0:1677066019102075%2e068bdc2e068bdc", 
     //   "notification": {"android": {"sound": "default"}, "body": "You have a new ride",
     //    "title": "KinenGo"}, "sentTime": 1677066019083, "ttl": 2419200}
-  
+    settime(30)
     setmodlevisual(true)
     if(modlevisual != true){
       callAutoTimer()
