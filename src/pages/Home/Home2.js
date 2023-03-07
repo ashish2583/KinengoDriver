@@ -120,6 +120,7 @@ const Home2 = (props) => {
   const [bidCheck,setBidCheck]=useState(false)
   const [loading,setLoading]=useState(false)
   const [estTime,setEstTime]=useState('')
+  const [estDistance,setEstDistance]=useState('')
   const [myreson,setmyReson]=useState({
     latitude: 26.4788922, 
     longitude: 83.7454171,
@@ -159,6 +160,7 @@ const Home2 = (props) => {
   useEffect(() => {
     frist()
     getPosition()
+    calculateTravelTime2()
     console.log('mapdata.notificationdata', mapdata.notificationdata);
 // setDateValue(mapdata.driverridestatus)
   statusLable(mapdata.driverridestatus)
@@ -179,14 +181,46 @@ const calculateTravelTime = async (originLat, originLong) => {
   setLoading(true)
   const { responseJson, err } = await googleGetApi(url)
   setLoading(false)
-  console.log('calculateTravelTime responseJson', responseJson);
-  if(responseJson.rows[0].elements[0].status !== 'ZERO_RESULTS' || responseJson.rows[0].elements[0].status !== 'NOT_FOUND'){
-    // responseJson.rows[0].elements[0].duration['text']
-    setEstTime(responseJson.rows[0].elements[0].duration['text'])
-  }else{
-    Alert.alert('Zero results found')
-  }
+  const promise1 = Promise.resolve(responseJson)
+  promise1.then((value)=>{
+    console.log(value)
+    console.log('calculateTravelTime responseJson', value);
+    if(value.rows[0].elements[0].status === 'OK'){
+      // value.rows[0].elements[0].duration['text']
+      setEstTime(value.rows[0].elements[0].duration['text'])
+    }else{
+      Alert.alert('Zero results found')
+    }
+  })
+  // if(responseJson.rows[0].elements[0].status !== 'ZERO_RESULTS' || responseJson.rows[0].elements[0].status !== 'NOT_FOUND'){
+  //   // responseJson.rows[0].elements[0].duration['text']
+  //   setEstTime(responseJson.rows[0].elements[0].duration['text'])
+  // }else{
+  //   Alert.alert('Zero results found')
+  // }
   console.log('calculateTravelTime res==>>', responseJson)
+  if (responseJson.headers.success == 1) {
+   } else {
+  }
+
+}
+const calculateTravelTime2 = async () => {
+  const url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+mapdata.notificationdata.lattitude+","+mapdata.notificationdata.longitude+"&destinations="+mapdata.notificationdata.destination_lat +","+mapdata.notificationdata.destination_long+"&mode=driving"+"&units=imperial&key="+GoogleApiKey
+  setLoading(true)
+  const { responseJson, err } = await googleGetApi(url)
+  setLoading(false)
+  const promise1 = Promise.resolve(responseJson)
+  promise1.then((value)=>{
+    console.log(value)
+    console.log('calculateTravelTime2 responseJson', value);
+    if(value.rows[0].elements[0].status === 'OK'){
+      // value.rows[0].elements[0].duration['text']
+      setEstDistance(value.rows[0].elements[0].distance['text']?.replace(' mi', ''))
+    }else{
+      Alert.alert('Zero results found')
+    }
+  })
+  console.log('calculateTravelTime2 res==>>', responseJson)
   if (responseJson.headers.success == 1) {
    } else {
   }
@@ -217,7 +251,12 @@ const statusLable=(val)=>{
       // "ride_id": '4',
       "status": val,
     }
+    setLoading(true)
+    if(val === '2'){
+      data['ride_distance'] = estDistance
+    }
     console.log('ChangeRideStatus data==>>', data)
+    setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_ride_status, data, 'POST', userdetaile.token)
     setLoading(false)
     console.log('ChangeRideStatus the res==>>', responseJson)
@@ -557,7 +596,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14,}}>Est. Time</Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>09 min</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>{estTime}</Text>
            </View>
           </View>
 </View>
