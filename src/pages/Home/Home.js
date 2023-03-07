@@ -152,7 +152,7 @@ const [fuleCost, setfuleCost] = useState('');
 const [fuleModle, setfuleModle] = useState(false);
 const [My_Alert, setMy_Alert] = useState(false)
 const [alert_sms, setalert_sms] = useState('')
-const [time, settime] = useState(60);
+const [time, settime] = useState(30);
 const timeCopy = useRef(60);
 const intervalID = useRef(0);
 
@@ -160,17 +160,31 @@ const intervalID = useRef(0);
     updateWalletData()
     console.log('userdetaileuserdetaile==>>',userdetaile);
     requestACCESS_FINE_LOCATIONPermission()
-        //  senNoti()
+         senNoti()
       checkStatus()
        OnOff('1')
   }, [])
+  useEffect( () => {
+    if(modlevisual){
+      if(time < 0){
+        setmodlevisual(false)
+      }
+      if(time < 0){
+        return
+      }
+      const timeoutFunction = setInterval(decrementTime, 1000)
+      return () => clearInterval(timeoutFunction);
+    }
+  }, [modlevisual, decrementTime, time])
   useEffect(() => {
     const unsubscribe = props.navigation.addListener('blur', () => {
       setmodlevisual(false)
     });
     return unsubscribe;
   }, [props.navigation]);
-
+  const decrementTime =  React.useCallback(() => {
+    settime((oldTime) => oldTime-1)
+  },[])
   const updateWalletData = async () => {
     setLoading(true)
     // const endPoint = `${driver_earning}/userid/${userdetaile?.driver_id}`
