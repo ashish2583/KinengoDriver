@@ -34,7 +34,7 @@ const Home = (props) => {
  
 const [homeList,setHomeList]=useState([{id:'1',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'},{id:'2',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'},{id:'3',bgImage:require('../../assets/homeImg.png'),text:'We Repair All Makes & Models of Air Conditioners',title:'Add Service'}])
 const [searchValue,setsearchValue]=useState('')
-const [toggleValue, setToggleValue] = useState(true);
+const [toggleValue, setToggleValue] = useState(false);
 const dispatch =  useDispatch();
 const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
 const mapdata  = useSelector(state => state.maplocation)
@@ -130,6 +130,7 @@ const [startPos, setStartPos] = useState({ "latitude": 0, "longitude": 0 })
 const [c_cord,setC_Cord] = useState(false)
 const [myaddress,setMyaddress] = useState('')
 const [bid,setBid]=useState('')
+const walletDetail  = useSelector(state => state.user.wallet_detail)
 const [curentCord,setCurentCord]=useState({
   latitude: 26.4788922, 
   longitude: 83.7454171,
@@ -151,7 +152,7 @@ const [fuleCost, setfuleCost] = useState('');
 const [fuleModle, setfuleModle] = useState(false);
 const [My_Alert, setMy_Alert] = useState(false)
 const [alert_sms, setalert_sms] = useState('')
-const [time, settime] = useState(20);
+const [time, settime] = useState(30);
 const timeCopy = useRef(60);
 const intervalID = useRef(0);
 
@@ -163,7 +164,27 @@ const intervalID = useRef(0);
       checkStatus()
        OnOff('1')
   }, [])
-
+  useEffect( () => {
+    if(modlevisual){
+      if(time < 0){
+        setmodlevisual(false)
+      }
+      if(time < 0){
+        return
+      }
+      const timeoutFunction = setInterval(decrementTime, 1000)
+      return () => clearInterval(timeoutFunction);
+    }
+  }, [modlevisual, decrementTime, time])
+  useEffect(() => {
+    const unsubscribe = props.navigation.addListener('blur', () => {
+      setmodlevisual(false)
+    });
+    return unsubscribe;
+  }, [props.navigation]);
+  const decrementTime =  React.useCallback(() => {
+    settime((oldTime) => oldTime-1)
+  },[])
   const updateWalletData = async () => {
     setLoading(true)
     // const endPoint = `${driver_earning}/userid/${userdetaile?.driver_id}`
@@ -189,7 +210,7 @@ const intervalID = useRef(0);
   const senNoti= async()=>{
     let notidata={
         'data': {"business_address": "Sector 57, Noida, Uttar Pradesh, India", "business_name": "Nile Technologies", "lattitude": "28.608600616455078", "longitude": "77.35099792480469", "notificationType": "rederequest", "order_id": "11", "ride_id": "1"},
-        'title':'Message from kiningo driver',
+        'title':'Message from KinenGo driver',
         'body': 'You have a new ride',
        // 'token':'cxHj6Y-nQla1KsGRx3LJDJ:APA91bGkoGHr_DHvfMIycmP_b5pKmjRXY4jzfLnGUGLni4QZg5rXaHWZWBrCzyTGEMZ-c31tOIJWvM3os6b1lI-MhTt9z1o-d97lCJmnPf26fZssGQ4pQwVcoAQbN9FT579TSWC77AiV'
        //  'token':mapdata.notificationdata.device_id 
@@ -210,24 +231,35 @@ const intervalID = useRef(0);
     //   }
     // }, 1000);
   }
-  
+   
   const checkStatus = async () => {
     var data = {
       "driver_id": userdetaile.driver_id,
         }
+    console.log('data checkStatus ==>>', data)
     setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_ride_check_status, data, 'POST', userdetaile.token)
     setLoading(false)
-    console.log('the res checkStatus ==>>', responseJson)
+    console.log('the res driver_ride_checkstatus ==>>', responseJson)
     if (responseJson.headers.success == 1) {
-     dispatch(setDriverRideStatus(responseJson.body.driver_ride_status)) 
+     dispatch(setDriverRideStatus(responseJson.body.driver_ride_status))  
       if (responseJson.body.driver_ride_status != 2) {
-      dispatch(setNotificationData(responseJson.body.orderData))
+      console.log('strcuture de', {...responseJson.body.orderData, 
+        driver_ride_status:responseJson.body.driver_ride_status,
+        ride_id:responseJson.body.ride_id,
+        driver_id:responseJson.body.driver_id
+      });
+        dispatch(setNotificationData({...responseJson.body.orderData, 
+        driver_ride_status:responseJson.body.driver_ride_status,
+        ride_id:responseJson.body.ride_id,
+        driver_id:responseJson.body.driver_id
+      }))
       var sp1=parseFloat(responseJson.body.orderData.lattitude) 
       var sp2=parseFloat(responseJson.body.orderData.longitude) 
       var dp1=parseFloat(responseJson.body.orderData.destination_lat) 
       var dp2=parseFloat(responseJson.body.orderData.destination_long) 
       console.log('eeeeeeeeeeeeeeee',{ latitude: sp1, longitude: sp2});
+      console.log('setDestnationPosition', { latitude: dp1, longitude: dp2});
       dispatch(setStartPosition({ latitude: sp1, longitude: sp2}))
       dispatch(setDestnationPosition({ latitude: dp1, longitude: dp2}))
       props.navigation.navigate('Home2', { from: 'home' })
@@ -255,8 +287,9 @@ const intervalID = useRef(0);
     setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_accept_ride_request, data, 'POST', userdetaile.token)
     setLoading(false)
-    console.log('the res==>>', responseJson)
+    console.log('AcceptRideClick the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
+      dispatch(setDriverRideStatus(0))
       dispatch(setNotificationData(responseJson.body))
       var sp1=parseFloat(responseJson.body.lattitude) 
       var sp2=parseFloat(responseJson.body.longitude) 
@@ -267,7 +300,8 @@ const intervalID = useRef(0);
       dispatch(setDestnationPosition({ latitude: dp1, longitude: dp2}))
       props.navigation.navigate('Home2', { from: 'home' })
     } else {
-      setalert_sms(err)
+      // setalert_sms(err)
+      setalert_sms(responseJson.headers.message)
       setMy_Alert(true)
     }
           }
@@ -314,16 +348,21 @@ const intervalID = useRef(0);
     //   "from": "984454687422", "messageId": "0:1677066019102075%2e068bdc2e068bdc", 
     //   "notification": {"android": {"sound": "default"}, "body": "You have a new ride",
     //    "title": "KinenGo"}, "sentTime": 1677066019083, "ttl": 2419200}
-  
+    settime(30)
     setmodlevisual(true)
-    callAutoTimer()
+    if(modlevisual != true){
+      callAutoTimer()
+    }else{
+      return false
+    }
+    
     // if(remoteMessage.notification.body!='new message'  && remoteMessage.notification.body!='Ride Cancelled By Customer'){
     // var dest_pos={latitude: parseInt(data.end_latitude), longitude: parseInt(data.end_longitude)}
     // var st_pos={latitude: parseInt(data.start_latitude), longitude: parseInt(data.start_longitude)}  
-  //  dispatch(setDestnationAddress(data.business_address))
+    //  dispatch(setDestnationAddress(data.business_address))
     // dispatch(setDestnationPosition(dest_pos))
     // dispatch(setStartPosition(st_pos))
-   // dispatch(setStartAddress(data.start_location))
+    // dispatch(setStartAddress(data.start_location))
     dispatch(setNotificationData(data))
     // resetStacks('Home2')
   }else if(remoteMessage.notification.body=='new message'){
@@ -491,7 +530,7 @@ const intervalID = useRef(0);
     <Toggle
   value={toggleValue}
   onPress={(newState) => {
-    OnOff(newState? 0 : 1)
+    OnOff(newState? 1 : 0)
     setToggleValue(newState)
     console.log(newState);
   }}
@@ -500,7 +539,7 @@ const intervalID = useRef(0);
   trackBarStyle={{
     borderColor: "gray",
     width:55,height:25,
-    backgroundColor:toggleValue?'gray':'green'
+    backgroundColor:toggleValue?'green':'gray'
   }}
   
   trackBar={{
@@ -530,12 +569,12 @@ const intervalID = useRef(0);
     <View style={{alignItems:'center',marginTop:20}}>
     <Image source={require('../../assets/TotalEarningsfromKarryGO.png')} style={{width:'100%',height:150,}}></Image>
    <View style={{position:'absolute',top:'32%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>$2345</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${parseFloat(Number(walletDetail).toFixed(3))}</Text>
    </View>
     </View>
-{toggleValue ?
+{! toggleValue ?
     <View style={{alignItems:'center',width:'95%',alignSelf:'center'}}>
-    <Image source={require('../../assets/homeGroup.png')} style={{width:'100%',height:260,}}></Image>
+    <Image source={require('../../assets/homeGroup.png')} style={{width:'100%',height:270,}}></Image>
     <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,textAlign:'center',marginTop:20}}>You’re currently OFF DUTY, Please go ON DUTY to Start Earning</Text>
     </View>
     :

@@ -119,13 +119,14 @@ const Home2 = (props) => {
   const [biddata,setbiddata]=useState([])
   const [bidCheck,setBidCheck]=useState(false)
   const [loading,setLoading]=useState(false)
+  const [estTime,setEstTime]=useState('')
+  const [estDistance,setEstDistance]=useState('')
   const [myreson,setmyReson]=useState({
     latitude: 26.4788922, 
     longitude: 83.7454171,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   })
-  const [estTime,setestTime]=useState('')
   const [distance,setdistance]=useState('')
   const [fuleCost, setfuleCost] = useState('');
   const [fuleModle, setfuleModle] = useState(false);
@@ -138,14 +139,16 @@ const Home2 = (props) => {
   const [datevalue, setDateValue] = useState(null);
   const [ridedate, setRideDate] = useState([
     {label: 'select Job Status', value: ''},
-    {label: 'On going', value: '0'}, 
-    {label: 'Food is not prepared', value: '4'},
-    {label: 'Waiting at restorent', value: '3'},
-    {label: 'On Hold', value: '5'},
+    {label: 'On the way to restaurant', value: '0'}, 
+    {label: 'Waiting at the restaurant', value: '3'},
+    // {label: 'Food is not prepared', value: '4'},
+    {label: 'On the way to deliver', value: '5'},
+    // {label: 'On Hold', value: '5'},
     {label: 'Cancel', value: '1'},
-    {label: 'Not recived', value: '6'},
+    // {label: 'Not recived', value: '6'},
     {label: 'Delivered', value: '2'},
   ]);
+
   const [watch,setWatch]=useState('1')
   const [curentCord,setCurentCord]=useState({
     latitude: 26.4788922, 
@@ -153,46 +156,117 @@ const Home2 = (props) => {
   })
   const [angle,setangle]=useState(45)
   const [drvRideStatus,setdrvRideStatus]=useState('')
+  const [reason, setReason] = useState('')
   useEffect(() => {
     frist()
+    getPosition()
+    calculateTravelTime2()
+    console.log('mapdata.notificationdata', mapdata.notificationdata);
 // setDateValue(mapdata.driverridestatus)
-  statusLable()
+  statusLable(mapdata.driverridestatus)
   }, [])
- 
-const statusLable=()=>{
-  if(mapdata.driverridestatus==0){
-    setdrvRideStatus('On going')
-  }else if(mapdata.driverridestatus==1){
+ //function : get api
+ const googleGetApi = async (googleUrl = '') => {
+  const response = await fetch(googleUrl, {
+    method: "GET",
+    body:"",
+    headers:{},
+  }
+  )
+  let responseJson = response.json();
+  return {responseJson:responseJson,err:null}
+}
+const calculateTravelTime = async (originLat, originLong) => {
+  const url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+originLat+","+originLong+"&destinations="+mapdata.destnationPosition.latitude+","+mapdata.destnationPosition.longitude+"&mode=driving"+"&units=imperial&key="+GoogleApiKey
+  setLoading(true)
+  const { responseJson, err } = await googleGetApi(url)
+  setLoading(false)
+  const promise1 = Promise.resolve(responseJson)
+  promise1.then((value)=>{
+    console.log(value)
+    console.log('calculateTravelTime responseJson', value);
+    if(value.rows[0].elements[0].status === 'OK'){
+      // value.rows[0].elements[0].duration['text']
+      setEstTime(value.rows[0].elements[0].duration['text'])
+    }else{
+      Alert.alert('Zero results found')
+    }
+  })
+  // if(responseJson.rows[0].elements[0].status !== 'ZERO_RESULTS' || responseJson.rows[0].elements[0].status !== 'NOT_FOUND'){
+  //   // responseJson.rows[0].elements[0].duration['text']
+  //   setEstTime(responseJson.rows[0].elements[0].duration['text'])
+  // }else{
+  //   Alert.alert('Zero results found')
+  // }
+  console.log('calculateTravelTime res==>>', responseJson)
+  if (responseJson.headers.success == 1) {
+   } else {
+  }
+
+}
+const calculateTravelTime2 = async () => {
+  const url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins="+mapdata.notificationdata.lattitude+","+mapdata.notificationdata.longitude+"&destinations="+mapdata.notificationdata.destination_lat +","+mapdata.notificationdata.destination_long+"&mode=driving"+"&units=imperial&key="+GoogleApiKey
+  setLoading(true)
+  const { responseJson, err } = await googleGetApi(url)
+  setLoading(false)
+  const promise1 = Promise.resolve(responseJson)
+  promise1.then((value)=>{
+    console.log(value)
+    console.log('calculateTravelTime2 responseJson', value);
+    if(value.rows[0].elements[0].status === 'OK'){
+      // value.rows[0].elements[0].duration['text']
+      setEstDistance(value.rows[0].elements[0].distance['text']?.replace(' mi', ''))
+    }else{
+      Alert.alert('Zero results found')
+    }
+  })
+  console.log('calculateTravelTime2 res==>>', responseJson)
+  if (responseJson.headers.success == 1) {
+   } else {
+  }
+
+}
+const statusLable=(val)=>{
+  if(val==0){
+    setdrvRideStatus('On the way to restaurant')
+  }else if(val==1){
     setdrvRideStatus('Cancel')
-  }else if(mapdata.driverridestatus==2){
+  }else if(val==2){
     setdrvRideStatus('Delivered')
-  }else if(mapdata.driverridestatus==3){
-    setdrvRideStatus('Waiting at restorent')
-  }else if(mapdata.driverridestatus==4){
-    setdrvRideStatus('Food is not prepared')
-  }else if(mapdata.driverridestatus==5){
-    setdrvRideStatus('On Hold')
-  }else if(mapdata.driverridestatus==6){
-    setdrvRideStatus('Not recived')
+  }else if(val==3){
+    setdrvRideStatus('Waiting at the restaurant')
+  }else if(val==5){
+    setdrvRideStatus('On the way to deliver')
   }else{
     setdrvRideStatus('')
   }
 }
 
   const ChangeRideStatus = async (val) => {
+
     var data = {
       "driver_id": userdetaile.driver_id,
+      "notes": val == '1' ? reason : '',
       "ride_id": mapdata.notificationdata.ride_id,
+      // "ride_id": '4',
       "status": val,
     }
+    if(val === '2'){
+      data['ride_distance'] = estDistance
+    }
+    console.log('ChangeRideStatus data==>>', data)
+    setLoading(true)
     const { responseJson, err } = await requestPostApi(driver_ride_status, data, 'POST', userdetaile.token)
     setLoading(false)
-    console.log('the res==>>', responseJson)
+    console.log('ChangeRideStatus the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
       dispatch(setDriverRideStatus(val)) 
       setDateValue(val)
-      statusLable()
+      statusLable(val)
       setmodlevisual(false)
+      if(val=='2' || val=='1'){
+        props.navigation.navigate('Home')
+      }
     } else {
       setalert_sms(err)
       setMy_Alert(true)
@@ -223,7 +297,7 @@ const setDriverLocation=(id,location,angle)=>{
       Angle: angle,
     })
     .then(() => {
-      console.log('User added!');
+      // console.log('User added!');
     });
   }
   
@@ -267,6 +341,35 @@ const setDriverLocation=(id,location,angle)=>{
       }
     );
   }
+  const getPosition = () => {
+    Geolocation.getCurrentPosition(
+      position => {
+        let My_cord = { latitude: position.coords.latitude, longitude: position.coords.longitude }
+      //  console.log('asdfggh',My_cord);
+        // setCurentCord(My_cord)
+        // setangle(position.coords.heading)
+        // setmyReson({
+        //   latitude: position.coords.latitude, 
+        //   longitude: position.coords.longitude,
+        //   latitudeDelta: 0.0922,
+        //   longitudeDelta: 0.0421,
+        // })
+        calculateTravelTime(My_cord.latitude, My_cord.longitude)
+      //   dispatch(setCurentPosition(My_cord))
+      //  setDriverLocation(userdetaile.driver_id.toString(),My_cord,position.coords.heading)
+      },
+      error => {
+        console.log('The curent error is',error);
+        // Alert.alert(error.message.toString());
+      },
+      {
+        showLocationDialog: true,
+        enableHighAccuracy: true,
+        timeout: 20000,
+        maximumAge: 0
+      }
+    );
+  }
 
 
 const resetStacks=(page)=>{
@@ -278,6 +381,17 @@ const resetStacks=(page)=>{
   });
  }
 
+ const openModalVisual = () => {
+  if(mapdata.driverridestatus == '2'){
+    Alert.alert('Cannot change status because already delivered')
+    return
+  }
+  else if(mapdata.driverridestatus == '1'){
+    Alert.alert('Cannot change status because order is cancelled')
+    return
+  }
+  setmodlevisual(true)
+ }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -313,11 +427,11 @@ const resetStacks=(page)=>{
     <Text style={{left:15,color:Mycolors.TEXT_COLOR,fontSize:13,fontWeight:'bold'}}>DUTY</Text>
     </View>
  
-    <Toggle
+    {/* <Toggle
   value={toggleValue}
   onPress={(newState) => {
     // setToggleValue(newState)
-    console.log(newState);
+    console.log(true);
   }}
   //  leftTitle="Veg"
   // rightTitle="Non-Veg"
@@ -345,8 +459,8 @@ const resetStacks=(page)=>{
     backgroundColor:'#fff',
   }}
   containerStyle={{width:60,height:40}}
-/>
-  
+/> */}
+  <Text style={{color:'green'}}>Online</Text>
 
     </TouchableOpacity>
    
@@ -363,7 +477,7 @@ const resetStacks=(page)=>{
 </View>
 <View>
   <Text style={{color:Mycolors.TEXT_COLOR,fontSize:14,fontWeight:'600'}}>Job Status</Text>
-  <Text style={{color:Mycolors.ORANGE,fontSize:13,marginTop:3}} onPress={()=>{setmodlevisual(true)}}>{drvRideStatus} </Text>
+  <Text style={{color:Mycolors.ORANGE,fontSize:13,marginTop:3}} onPress={openModalVisual}>{drvRideStatus} </Text>
 </View>
 </View>
 
@@ -372,7 +486,7 @@ const resetStacks=(page)=>{
 </View>
 <View style={{alignSelf:'center',flexDirection:'row',marginTop:5}}>
 <Image source={require('../../assets/Star.png')} style={{width:20,height:20,alignSelf:'center'}}></Image>
-<Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>4.5</Text>
+<Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>3.8</Text>
 </View>
 
 <Text style={{fontSize:14,color:Mycolors.TEXT_COLOR,textAlign:'center',fontWeight:'600',marginTop:5}}>{mapdata.notificationdata.business_name}</Text>
@@ -394,7 +508,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN} fontWeight={'500'} fontSize={13} marginVertical={10}/>
 </View>
 
-        <View style={{width:'100%',flexDirection:'row',marginTop:10}}>
+        {/* <View style={{width:'100%',flexDirection:'row',marginTop:10}}>
             <View>
               <Image source={require('../../assets/Group6430.png')} style={{ width: 35, height: 25, top: 2,left:3 }}></Image>
             </View>
@@ -404,7 +518,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
            <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Order will be ready for pickup in 15 mins</Text>
            </View>
           </View>
-        </View>
+        </View> */}
 
         <View style={{width:'100%',flexDirection:'row',marginTop:25}}>
 
@@ -481,7 +595,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14,}}>Est. Time</Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>09 min</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>{estTime}</Text>
            </View>
           </View>
 </View>
@@ -563,7 +677,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
  
      {modlevisual ?
 <View style={{width:dimensions.SCREEN_WIDTH,height:dimensions.SCREEN_HEIGHT,backgroundColor:'rgba(0,0,0,0.4)',position:'absolute',left:0,top:0}}>
-        <View style={{ height: 300, backgroundColor: '#fff', borderTopLeftRadius: 30, borderTopRightRadius: 30,position: 'absolute', bottom: 0, width: '100%',borderColor:'#fff',borderWidth:0.3,alignSelf:'center' }}>
+        <View style={{ height: 350, backgroundColor: '#fff', borderTopLeftRadius: 30, borderTopRightRadius: 30,position: 'absolute', bottom: 0, width: '100%',borderColor:'#fff',borderWidth:0.3,alignSelf:'center' }}>
 
          
 <View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingHorizontal:20,paddingVertical:20,borderTopLeftRadius: 30, borderTopRightRadius: 30,}}>
@@ -580,7 +694,6 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
     setItems={(i)=>{setRideDate(i)}}
     placeholder="Select Status"
     onChangeValue={(value) => {
-      ChangeRideStatus(value)
       setDateValue(value)
     }} 
     listMode="MODAL"
@@ -612,9 +725,33 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
     }}
   />
    </View>
-
+   {datevalue === '1' ?
+  <TextInput
+    value={reason}
+    onChangeText={(text) => {
+      setReason(text)
+    }}
+    placeholder="Enter reason for cancellation"
+    placeholderTextColor={Mycolors.GrayColor}
+    style={styles.input}
+  />:null}
 <View style={{alignSelf:'center',width:'90%',marginTop:15}}>
-  <MyButtons title="Save" height={40} width={'100%'} borderRadius={5} press={()=>{setmodlevisual(false)}} 
+  <MyButtons title="Save" height={40} width={'100%'} borderRadius={5} press={()=>{
+  if(datevalue == '0'){
+    Alert.alert('Cannot change status to Default status (Ongoing)')
+    return
+  }
+  if(datevalue == '1'){
+    if(reason === ''){
+      Alert.alert('Enter reason for cancellation')
+      return
+    }
+    ChangeRideStatus(datevalue)
+  }else{
+    ChangeRideStatus(datevalue)
+  }
+  setmodlevisual(false)
+  }} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} fontWeight={'600'} fontSize={14} marginVertical={10}/>
     <MyButtons title="Cancel" height={40} width={'100%'} borderRadius={5} press={()=>{setmodlevisual(false)}} 
    titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} fontWeight={'600'} fontSize={14} marginVertical={10}/>
@@ -677,11 +814,15 @@ const styles = StyleSheet.create({
 
   },
   input: {
-    height: 45,
-    width: '100%',
+    height: 55,
+    width: '90%',
+    alignSelf:'center',
+    marginTop:15,
     fontSize: 16,
-    borderColor: null,
-    borderRadius: 10,
+    borderColor: 'transparent',
+    borderWidth:1,
+    borderRadius: 5,
+    backgroundColor: Mycolors.BG_COLOR,
     color: Mycolors.TEXT_COLOR,
      paddingLeft: 7,
     paddingRight: 5,

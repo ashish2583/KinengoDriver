@@ -9,7 +9,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveUserResult, saveUserToken, setUserType } from '../../redux/actions/user_action';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-import { baseUrl, login, requestPostApi } from '../../WebApi/Service'
+import { baseUrl, login, password_change, requestPostApi } from '../../WebApi/Service'
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
@@ -28,7 +28,7 @@ const ResetPassword = (props) => {
   const [alert_sms, setalert_sms] = useState('')
 
   useEffect(()=>{
-   
+    console.log("reset psswd:",props.route.params.emailid);
   },[]) 
 
   const Login_Pressed=(data)=>{
@@ -37,32 +37,28 @@ const ResetPassword = (props) => {
    }
 
   const LoginPressed = async () => {
-   
-    var EmailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (email == '') {
-      Alert.alert('Enter email address');
-    } else if (!EmailReg.test(email)) {
-      Alert.alert('Enter valid email');
-    } else if (pass == '') {
-      Alert.alert('Enter password');
-    } else {
+    
+    if (pass == '') {
+      Alert.alert('Enter New Password');
+    }else if (cpass == '') {
+      Alert.alert('Enter Confirm Password');
+    }
+    else {
       setLoading(true)
-      let formdata = new FormData();
-      formdata.append("email", email); 
-      formdata.append("password", pass);
-      // formdata.append("user_group", 3);
-      var data={
-        email:email,
-        password:pass
+      var data = {
+        "emailid": props.route.params.emailid,
+        "password" : pass,
+        "confirm_password" : cpass
       }
-      const { responseJson, err } = await requestPostApi(login, data, 'POST', '')
+      const { responseJson, err } = await requestPostApi(password_change, data, 'POST', '')
       setLoading(false)
       console.log('the res==>>', responseJson)
       if (responseJson.headers.success == 1) {
-        Login_Pressed(responseJson.body)
+        Alert.alert('',responseJson.headers.message)
+        props.navigation.navigate('Login')
       } else {
-         setalert_sms(err)
-         setMy_Alert(true)
+        setalert_sms(err)
+        setMy_Alert(true)
       }
     }
   }

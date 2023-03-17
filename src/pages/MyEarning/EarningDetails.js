@@ -6,6 +6,7 @@ import Geolocation from "react-native-geolocation-service";
 import Geocoder from "react-native-geocoding";
 import MapViewDirections from 'react-native-maps-directions';
 import { GoogleApiKey } from '../../WebApi/GoogleApiKey';
+import { getApi } from '../../WebApi/Service'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import {  useSelector, useDispatch } from 'react-redux';
 import {setCurentPosition,setBidAmount,setDestnationAddress,setStartPosition,setDestnationPosition} from '../../redux/actions/latLongAction';
@@ -125,7 +126,7 @@ const EarningDetails = (props) => {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   })
-  const [estTime,setestTime]=useState('')
+  const [estTime,setEstTime]=useState('')
   const [distance,setdistance]=useState('')
   const [fuleCost, setfuleCost] = useState('');
   const [fuleModle, setfuleModle] = useState(false);
@@ -142,12 +143,53 @@ const EarningDetails = (props) => {
     {label: 'On Hold', value: '10'},
     {label: 'Not recived', value: '15'},
   ]);
-
-  useEffect(() => {
-    // 
+  const [url, setUrl] = useState("https://maps.googleapis.com/maps/api/distancematrix/json?origins="+data.lattitude+","+data.longitude+"&destinations="+data.destination_lat+","+data.destination_long+"&mode=driving"+"&units=imperial&key="+GoogleApiKey);
+  // const [url, setUrl] = useState(`https://maps.googleapis.com/maps/api/distancematrix/json?origins=30.145292,74.199303&destinations=28.7041,77.1025&mode=driving&units=imperial&key=AIzaSyDBeSqFBgF2V-IXmJdeTM3ZZUYG_5nKm-g`)
   
+  useEffect(() => {
+    // console.log('google url', url);
+    calculateTravelTime()
   }, [])
- 
+    //function : get api
+  const googleGetApi = async (googleUrl = '') => {
+    const response = await fetch(googleUrl, {
+      method: "GET",
+      body:"",
+      headers:{},
+    }
+    )
+    let responseJson = response.json();
+    return {responseJson:responseJson,err:null}
+  }
+  const calculateTravelTime = async () => {
+
+    setLoading(true)
+    const { responseJson, err } = await googleGetApi(url)
+    setLoading(false)
+    console.log('earnings calculateTravelTime responseJson', responseJson);
+    const promise1 = Promise.resolve(responseJson)
+    promise1.then((value)=>{
+      console.log(value)
+      console.log('calculateTravelTime responseJson', value);
+      if(value.rows[0].elements[0].status === 'OK'){
+        // value.rows[0].elements[0].duration['text']
+        setEstTime(value.rows[0].elements[0].duration['text'])
+      }else{
+        Alert.alert('Zero results found')
+      }
+    })
+    // if(responseJson.rows[0].elements[0].status === 'OK'){
+    //   // responseJson.rows[0].elements[0].duration['text']
+    //   setEstTime(responseJson.rows[0].elements[0].duration['text'])
+    // }else{
+    //   Alert.alert('Zero results found')
+    // }
+    console.log('calculateTravelTime res==>>', responseJson)
+    if (responseJson.headers.success == 1) {
+     } else {
+    }
+  
+  }
 
 
 const resetStacks=(page)=>{
@@ -166,8 +208,7 @@ const resetStacks=(page)=>{
   }
 };
  const emailNow = () => {
-  const email = `dummy@email.com`
-  Linking.openURL(`mailto:${email}`)
+  Linking.openURL(`mailto:${data.emailid}`)
 };
 
 
@@ -185,10 +226,12 @@ const resetStacks=(page)=>{
         
       
 
-<View style={{width:90,height:90,borderRadius:80,alignSelf:'center',backgroundColor:'#000',justifyContent:'center'}}>
-{/* <Image source={require('../../assets/cuate.png')} style={{width:35,height:35,alignSelf:'center'}}></Image> */}
+{/* <View style={{width:90,height:90,borderRadius:80,alignSelf:'center',backgroundColor:'#000',justifyContent:'center'}}>
 <Image source={{uri: data?.image}} style={{width:35,height:35,alignSelf:'center'}}></Image>
-</View>
+</View> */}
+{/* <View style={{width:90,height:90,borderRadius:80,alignSelf:'center',backgroundColor:'#000',justifyContent:'center'}}> */}
+<Image source={{uri: data?.image}} style={{width:109,height:109,borderRadius:109/2,alignSelf:'center'}}></Image>
+{/* </View> */}
 <View style={{alignSelf:'center',flexDirection:'row',marginTop:5}}>
 <Image source={require('../../assets/Star.png')} style={{width:20,height:20,alignSelf:'center'}}></Image>
 <Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>4.5</Text>
@@ -233,7 +276,7 @@ img={require('../../assets/call.png')}imgleft={10} imgheight={20} imgwidth={20} 
             <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12,}}>{data?.name}</Text>
             <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, fontWeight: '600',marginVertical:5 }}>${data.amount}</Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Est Time: 09 mins</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:2}}>Est Time: {estTime}</Text>
            </View>
           </View>
         </View>
@@ -286,7 +329,7 @@ img={require('../../assets/call.png')} imgheight={20} imgwidth={20}
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14,}}>Est. Time</Text>
            <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>09 min</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>{estTime}</Text>
            </View>
           </View>
 </View>

@@ -19,6 +19,7 @@ const TransectionHistory = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
   const userdetaile  = useSelector(state => state.user.user_details)
+  const walletDetail  = useSelector(state => state.user.wallet_detail)
   const mapdata = useSelector(state => state.maplocation)
   const [email, setemail] = useState('')
   const [pass, setpass] = useState('')
@@ -109,7 +110,7 @@ const TransectionHistory = (props) => {
 <View style={{width:'92%',height:125,alignSelf:'center'}}>
 <Image source={require('../../assets/TotalEarningsfrom.png')} style={{ width: '100%', height: '100%'}} />
 <View style={{position:'absolute',top:'40%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${userdetaile.wallet_detail}</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${walletDetail}</Text>
    </View>
 </View>
 
@@ -175,7 +176,7 @@ const TransectionHistory = (props) => {
 
 <View style={{position:'absolute',right:20,bottom:30}}>
 {/* <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>$20.89</Text> */}
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : item.amount}</Text>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : parseFloat(Number(item.amount).toFixed(3))}</Text>
     </View>
 
                 </View>

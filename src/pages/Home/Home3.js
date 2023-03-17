@@ -59,6 +59,7 @@ const Home3 = (props) => {
      
       useEffect(()=>{
         console.log('hello ashish kumar verma',mapdata.startPosition);
+        console.log('mapdata.driverridestatus', mapdata.driverridestatus)
         setmyReson({
           latitude: mapdata.startPosition.latitude, 
           longitude: mapdata.startPosition.longitude,
@@ -82,11 +83,13 @@ const Home3 = (props) => {
   modlevisual={modlevisual}
   modleHeight={290}  
   markAPos={mapdata.curentPosition}
-  markBPos={mapdata.startPosition}
+  // markBPos={mapdata.startPosition}
+  markBPos={mapdata.driverridestatus ==0 ? mapdata.startPosition : mapdata.destnationPosition}
   // mapDirectionOrigin={mapdata.startPosition}
   // mapDirectionDest={mapdata.destnationPosition}
   mapDirectionOrigin={mapdata.curentPosition}
-  mapDirectionDest={mapdata.startPosition}
+  // mapDirectionDest={mapdata.startPosition}
+  mapDirectionDest={mapdata.driverridestatus ==0 ? mapdata.startPosition : mapdata.destnationPosition}
   imageA={require('../../assets/MapPin.png')}
   imageB={require('../../assets/MapPin.png')}
   // region={myreson}
@@ -121,10 +124,10 @@ const Home3 = (props) => {
               <Image source={require('../../assets/images/profileimg.png')} style={{ width: 60, height: 60,}}></Image>
             </View>
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20,top:8}}>
-              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 15,fontWeight:'600'}}>Geories Local</Text>
+              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 15,fontWeight:'600'}}>{mapdata.notificationdata.user_name}</Text>
            <View style={{flexDirection:'row'}} >
            <Image source={require('../../assets/Star.png')} style={{ width: 16, height: 16,top:6}}></Image>
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,top:5,left:5,fontWeight:'600'}}>4.5</Text>
+           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,top:5,left:5,fontWeight:'600'}}>3.8</Text>
            </View>
           </View>
             </View>

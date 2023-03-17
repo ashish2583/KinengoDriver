@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable prettier/prettier */
 import React, { useState,useEffect } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView,useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView,useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity ,PermissionsAndroid,Platform} from 'react-native';
 import MyButtons from '../../component/MyButtons';
 import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
@@ -13,7 +13,8 @@ import { baseUrl,auth_driver_signup,add_vichle, login, requestPostApi } from '..
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
 import MyAlert from '../../component/MyAlert';
-import LinearGradient from 'react-native-linear-gradient'
+import LinearGradient from 'react-native-linear-gradient';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 const VehicleDetail = (props) => {
   const dispatch = useDispatch();
@@ -23,11 +24,110 @@ const VehicleDetail = (props) => {
   const auth_token = useSelector(state => state.user.auth_token)
   const [My_Alert, setMy_Alert] = useState(false)
   const [alert_sms, setalert_sms] = useState('')
+  const [pick, setpick] = useState('');
+  const [filepath, setfilepath] = useState(null);
+  const [pick1, setpick1] = useState('');
+  const [filepath1, setfilepath1] = useState(null);
 
   useEffect(()=>{
    
   },[]) 
+  const opencamera = async () => {
+    let options = {
+      title: 'Select Image',
+      customButtons: [
+        {
+          name: 'customOptionKey',
+          title: 'Choose Photo from Custom Option'
+        },
+      ],
+      mediaType:'image',
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    
+    
+     launchCamera(options, (image) => {
+        if (!image.didCancel) {
+          console.log('the ddd==', image)
+          var photo = {
+            uri: image.assets[0].uri,
+            type: "image/jpeg",
+            name: image.assets[0].fileName
+          };
+          setpick(photo)
+          setfilepath(image)
+        }
+    
+      })
+    
+  }
+  const checkCameraPermission = async () => {
+    if (Platform.OS === 'ios') {
+        opencamera();
+    } else {
+      try {
+        const granted = await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.CAMERA,
+          {
+            title: 'Camera Permission Required',
+            message:
+              'Application needs access to your camera to click your profile image',
+          },
+        );
+        if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            opencamera();
+          console.log('Camera Permission Granted.');
+        } else {
+          // dispatch(showToast({Text: 'Camera Permission Not Granted'}));
+        //   Toast.show('Camera Permission Not Granted', Toast.SHORT)
+          Alert.alert('Error', 'Camera Permission Not Granted');
+        }
+      } catch (err) {
+        // To handle permission related exception
+        console.log('ERROR' + err);
+      }
+    }
+  };
 
+  const opencamera1 = async () => {
+    let options = {
+      title: 'Select Image',
+      customButtons: [
+        {
+          name: 'customOptionKey',
+          title: 'Choose Photo from Custom Option'
+        },
+      ],
+      mediaType:'image',
+      maxWidth: 500,
+      maxHeight: 500,
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    
+    
+     launchCamera(options, (image) => {
+        if (!image.didCancel) {
+          console.log('the ddd==', image)
+          var photo = {
+            uri: image.assets[0].uri,
+            type: "image/jpeg",
+            name: image.assets[0].fileName
+          };
+          setpick1(photo)
+          setfilepath1(image)
+        }
+    
+      })
+    
+  }
   const Login_Pressed=(data)=>{
     AsyncStorage.setItem("kinengoDriver",JSON.stringify(data));
     dispatch(saveUserResult(data))
@@ -112,7 +212,7 @@ const VehicleDetail = (props) => {
 
        </View>
 
-       <TouchableOpacity style={{  width: dimensions.SCREEN_WIDTH - 40 ,marginTop:15,height:50,flexDirection:'row',justifyContent:'space-between',alignItems:'center',backgroundColor:'#FFEDB5',paddingHorizontal:13}}>
+       <TouchableOpacity onPress={()=>{checkCameraPermission()}} style={{  width: dimensions.SCREEN_WIDTH - 40 ,marginTop:15,height:50,flexDirection:'row',justifyContent:'space-between',alignItems:'center',backgroundColor:'#FFEDB5',paddingHorizontal:13}}>
         <View style={{flexDirection:'row'}}>
         <Image source={require('../../assets/submit1.png')} style={{ width:35,height:35}} />
        <Text style={{fontSize:13,color:Mycolors.LoginButton,marginLeft:10,top:8}}>Upload Driving License</Text>
@@ -122,7 +222,20 @@ const VehicleDetail = (props) => {
         </View>
        </TouchableOpacity>
 
-       <TouchableOpacity style={{  width: dimensions.SCREEN_WIDTH - 40 ,marginTop:15,height:50,flexDirection:'row',justifyContent:'space-between',alignItems:'center',backgroundColor:'#FFEDB5',paddingHorizontal:13}}>
+       {
+                        pick != "" ? 
+                        ( <View style={{ width: 130, alignSelf: "flex-start", height: 80,borderRadius: 10,marginTop:25   }}>
+                        <TouchableOpacity onPress={(()=>{setpick('')})} style={{position:'absolute',right:-20,top:-20 }}>
+                        <Image resizeMode='cover' source={require('../../assets/cutRed.png')} style={{ width:30, height: 30, overflow: 'hidden', alignSelf: 'center',}}></Image>
+                        </TouchableOpacity>
+                       <Image resizeMode='cover' source={{uri:pick.uri}} style={{ width: "100%", height: "100%", overflow: 'hidden', alignSelf: 'center',borderRadius: 10,}}></Image>
+                       </View>)
+                       :
+                       null
+                    }
+
+
+       <TouchableOpacity onPress={()=>{opencamera1()}} style={{  width: dimensions.SCREEN_WIDTH - 40 ,marginTop:15,height:50,flexDirection:'row',justifyContent:'space-between',alignItems:'center',backgroundColor:'#FFEDB5',paddingHorizontal:13}}>
         <View style={{flexDirection:'row'}}>
         <Image source={require('../../assets/submit1.png')} style={{ width:35,height:35}} />
        <Text style={{fontSize:13,color:Mycolors.LoginButton,marginLeft:10,top:8}}>Upload Vehicle Registration</Text>
@@ -133,6 +246,17 @@ const VehicleDetail = (props) => {
        </TouchableOpacity>
 
 
+       {
+                        pick1 != "" ? 
+                        ( <View style={{ width: 130, alignSelf: "flex-start", height: 80,borderRadius: 10,marginTop:25   }}>
+                        <TouchableOpacity onPress={(()=>{setpick1('')})} style={{position:'absolute',right:-20,top:-20 }}>
+                        <Image resizeMode='cover' source={require('../../assets/cutRed.png')} style={{ width:30, height: 30, overflow: 'hidden', alignSelf: 'center',}}></Image>
+                        </TouchableOpacity>
+                       <Image resizeMode='cover' source={{uri:pick.uri}} style={{ width: "100%", height: "100%", overflow: 'hidden', alignSelf: 'center',borderRadius: 10,}}></Image>
+                       </View>)
+                       :
+                       null
+                    }
       <MyButtons title="Continue" height={45} width={'100%'} borderRadius={5} alignSelf="center" press={()=>{signupPressed()}} marginHorizontal={20} 
       titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
      

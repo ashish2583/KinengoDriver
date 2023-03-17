@@ -75,12 +75,12 @@ const MyView=(props)=>{
 </View>
 
 <View style={{marginTop:25,alignSelf:'center',}}>
-<View style={{width:80,height:80,borderRadius:40,borderColor:Mycolors.BG_COLOR,borderWidth:3,alignSelf:'center'}}>
+<TouchableOpacity onPress={()=>{props.navigation.navigate('Myprofile')}} style={{width:80,height:80,borderRadius:40,borderColor:Mycolors.BG_COLOR,borderWidth:3,alignSelf:'center'}}>
 <Image source={{ uri: person_Image }} style={{width:'100%',height:'100%',alignSelf:'center',borderRadius:40}}></Image>
-</View>
+</TouchableOpacity>
 <View style={{alignSelf:'center'}}>
-<Text style={{color:Mycolors.BG_COLOR,fontSize:14,fontWeight:'600',textAlign:'center',marginTop:15}}>{name}</Text>
-<Text style={{color:Mycolors.BG_COLOR,fontSize:13,textAlign:'center',marginVertical:10}}>robert.fox@example.com</Text>
+<Text style={{color:Mycolors.BG_COLOR,fontSize:14,fontWeight:'600',textAlign:'center',marginTop:15}}>{userdetaile.first_name +' '+userdetaile.last_name}</Text>
+<Text style={{color:Mycolors.BG_COLOR,fontSize:13,textAlign:'center',marginVertical:10}}>{userdetaile.emailid}</Text>
 </View>
 </View>
 
@@ -89,10 +89,10 @@ const MyView=(props)=>{
 
 <View style={{width:'100%',alignSelf:'center',marginTop:30,}}>
 
- <MyView name="Earning" touch={()=>{props.navigation.navigate('Earning')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:25,height:25,}} desc={'See All Your Earnings In One Place'}/>  
- <MyView name="Money Transfer" touch={()=>{props.navigation.navigate('MonyTransfer')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:25,height:25,}} desc={'See All Your Earnings In One Place'}/>              
- <MyView name="Reward" touch={()=>{}} img={require('../assets/Group6541.png')} imgstyle={{width:25,height:25,}} desc={'Insurance And Discounts'}/>        
- <MyView name="Help" touch={()=>{props.navigation.navigate('Help')}} img={require('../assets/Group64164.png')} imgstyle={{width:25,height:25,}} desc={'Get Support, Accident Insurance'}/>        
+ <MyView name="Earning" touch={()=>{props.navigation.navigate('Earning')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>  
+ <MyView name="Money Transfer" touch={()=>{props.navigation.navigate('MonyTransfer')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>              
+ <MyView name="Reward" touch={()=>{props.navigation.navigate('Reward')}} img={require('../assets/Group6541.png')} imgstyle={{width:26,height:27,}} desc={'Insurance And Discounts'}/>        
+ <MyView name="Help" touch={()=>{props.navigation.navigate('Help')}} img={require('../assets/Group64164.png')} imgstyle={{width:27,height:26,}} desc={'Get Support, Accident Insurance'}/>        
 
 </View>
 
@@ -104,7 +104,7 @@ const MyView=(props)=>{
   setalert_sms('Are you sure want to logout?')
   setMy_Alert(true)
 }}>
-<Image source={require('../assets/Power.png')} style={{width:18,height:18}}></Image>
+<Image source={require('../assets/Power.png')} style={{width:18,height:20}}></Image>
 <Text style={{marginLeft:8,color:Mycolors.TEXT_COLOR,fontSize:13}}>Logout</Text>
 </TouchableOpacity>
 <View>

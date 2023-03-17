@@ -17,10 +17,7 @@ target 'KinengoDriver' do
   
   
   config = use_native_modules!
-#  pod 'Google-Maps-iOS-Utils', :git => 'https://github.com/Simon-TechForm/google-maps-ios-utils.git', :branch => 'feat/support-apple-silicon'
-#
-#  rn_maps_path = '../node_modules/react-native-maps'
-#  pod 'react-native-google-maps', :path => rn_maps_path
+
 
   rn_maps_path = '../node_modules/react-native-maps'
   pod 'react-native-google-maps', :path => rn_maps_path
@@ -84,11 +81,8 @@ $static_library = [
   
       :mac_catalyst_enabled => false
     )
-#    installer.pods_project.targets.each do |target|
-#        target.build_configurations.each do |config|
-#          config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = "arm64"
-#        end
-#      end
+
+
         installer.pods_project.targets.each do |target|
           target.build_configurations.each do |config|
             config.build_settings['EXCLUDED_ARCHS[sdk=iphonesimulator*]'] = "arm64"

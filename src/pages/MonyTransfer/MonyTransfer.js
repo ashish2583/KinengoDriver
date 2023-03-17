@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState,useEffect } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView,FlatList, ScrollView,useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet,RefreshControl, SafeAreaView,FlatList, ScrollView,useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity } from 'react-native';
 import MyButtons from '../../component/MyButtons';
 import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
@@ -19,6 +19,7 @@ const MonyTransfer = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false)
   const userdetaile  = useSelector(state => state.user.user_details)
+  const walletDetail  = useSelector(state => state.user.wallet_detail)
   const[select1,setselect1]=useState('1')
   const[select2,setselect2]=useState('1')
   const [amount, setAmount] = useState('')
@@ -29,6 +30,24 @@ const MonyTransfer = (props) => {
   useEffect(()=>{
     getTransactionHistory()
   },[]) 
+
+  const [refreshing, setRefreshing] = React.useState(false);
+  const checkcon = () => {
+    getTransactionHistory()
+  }
+  const wait = (timeout) => {
+    return new Promise(resolve => setTimeout(resolve, timeout));
+  }
+
+  const onRefresh = React.useCallback(() => {
+    checkcon()
+    wait(2000).then(() => {
+
+      setRefreshing(false)
+
+    });
+  }, []);
+
   const getTransactionHistory = async () => {
     setLoading(true)
     try {
@@ -82,8 +101,9 @@ const MonyTransfer = (props) => {
         userdetaile.token
       );
       setLoading(false);
-      console.log("the res==>>", responseJson);
+      console.log("onMoneyTransfer the res==>>", responseJson);
       if (responseJson.headers.success == 1) {
+        getTransactionHistory()
       } else {
       }
     } catch (error) {
@@ -92,6 +112,27 @@ const MonyTransfer = (props) => {
     }
   };
   
+  const getStatus = (id) => {
+    if(id == '0'){
+      return 'Pending'
+    } else if(id == '1'){
+      return 'Successful'
+    } else if(id == '2'){
+      return 'Rejected'
+    } 
+  }
+  const getColor = (id) => {
+    if(id == '0'){
+      // return 'Ongoing'
+      return Mycolors.filtercolor
+    } else if(id == '1'){
+      // return 'Cancel'
+      return Mycolors.GREEN
+    } else if(id == '2'){
+      // return 'Delivered'
+      return Mycolors.RED
+    }
+  }
   return (
     <SafeAreaView style={styles.container}>
        
@@ -102,14 +143,22 @@ const MonyTransfer = (props) => {
 <View style={{width:'92%',height:125,alignSelf:'center'}}>
 <Image source={require('../../assets/TotalEarningsfrom.png')} style={{ width: '100%', height: '100%'}} />
 <View style={{position:'absolute',top:'40%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${userdetaile.wallet_detail}</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${parseFloat(Number(walletDetail).toFixed(3))}</Text>
 </View>
 <View style={{position:'absolute',top:'40%',right:30}}>
 <Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}} onPress={()=>{props.navigation.navigate('TransectionHistory')}}>History</Text>
 </View>
 </View>
 
-      <ScrollView style={{ paddingHorizontal: 20 }}>
+      <ScrollView style={{ paddingHorizontal: 20 }}
+       refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+
+          />
+        }
+      >
         
       <TextInput
             value={amount}
@@ -262,10 +311,10 @@ const MonyTransfer = (props) => {
 <View style={{position:'absolute',right:20,bottom:25}}>
 {/* <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>$20.89</Text> */}
 <View style={{flexDirection:'row', alignItems:'center'}}>
-<View style={{width:15,height:15,borderRadius:10,backgroundColor:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor}} />
-<Text style={{color:item.status == '1' ? Mycolors.GREEN:Mycolors.filtercolor,fontSize:14,left:5}}>{item.status == '1' ? 'Successful' : 'Pending'}</Text>
+<View style={{width:15,height:15,borderRadius:10,backgroundColor:getColor(item.status)}} />
+<Text style={{color:getColor(item.status),fontSize:14,left:5}}>{getStatus(item.status)}</Text>
 </View>
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : item.amount}</Text>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 :  parseFloat(Number(item.amount).toFixed(3))}</Text>
     </View>
 
                 </View>
