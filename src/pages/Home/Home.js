@@ -243,7 +243,7 @@ const intervalID = useRef(0);
     console.log('the res driver_ride_checkstatus ==>>', responseJson)
     if (responseJson.headers.success == 1) {
      dispatch(setDriverRideStatus(responseJson.body.driver_ride_status))  
-      if (responseJson.body.driver_ride_status != 2) {
+      if (responseJson.body.driver_ride_status != 2 && responseJson.body.driver_ride_status != 1) {
       console.log('strcuture de', {...responseJson.body.orderData, 
         driver_ride_status:responseJson.body.driver_ride_status,
         ride_id:responseJson.body.ride_id,
