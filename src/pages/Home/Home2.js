@@ -484,10 +484,14 @@ const resetStacks=(page)=>{
 <View style={{width:90,height:90,borderRadius:80,alignSelf:'center',backgroundColor:'#000',justifyContent:'center'}}>
 <Image source={require('../../assets/cuate.png')} style={{width:35,height:35,alignSelf:'center'}}></Image>
 </View>
-<View style={{alignSelf:'center',flexDirection:'row',marginTop:5}}>
-<Image source={require('../../assets/Star.png')} style={{width:20,height:20,alignSelf:'center'}}></Image>
-<Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>3.8</Text>
-</View>
+{mapdata.notificationdata.rating !== null ?
+  <View style={{alignSelf:'center',flexDirection:'row',marginTop:5}}>
+  <Image source={require('../../assets/Star.png')} style={{width:20,height:20,alignSelf:'center'}}></Image>
+  <Text style={{fontSize:13,top:2,left:5,color:Mycolors.TEXT_COLOR}}>3.8</Text>
+  </View>
+ :
+ <View style={{height:10}} />
+ }
 
 <Text style={{fontSize:14,color:Mycolors.TEXT_COLOR,textAlign:'center',fontWeight:'600',marginTop:5}}>{mapdata.notificationdata.business_name}</Text>
 <View style={{flexDirection:'row',marginTop:10,alignSelf:'center'}}>
