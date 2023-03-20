@@ -573,10 +573,10 @@ const intervalID = useRef(0);
    </View>
     </View>
 {! toggleValue ?
-    <View style={{alignItems:'center',width:'95%',alignSelf:'center'}}>
-    <Image source={require('../../assets/homeGroup.png')} style={{width:'100%',height:270,}}></Image>
-    <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,textAlign:'center',marginTop:20}}>You’re currently OFF DUTY, Please go ON DUTY to Start Earning</Text>
-    </View>
+    <View style={{ alignItems: 'center', width: '92%', alignSelf: 'center', marginTop: 40 }}>
+    <Image source={require('../../assets/homeGroup.png')} style={{ width: '100%', height: 260, }}></Image>
+    <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, textAlign: 'center', marginTop: 20 }}>You're currently OFF DUTY, Please go ON DUTY to Start Earning</Text>
+  </View>
     :
     <View style={{alignItems:'center',width:'95%',alignSelf:'center',borderRadius:10,overflow:'hidden'}}>
    
@@ -633,120 +633,101 @@ const intervalID = useRef(0);
 
 
 {modlevisual ?
-<View style={{width:dimensions.SCREEN_WIDTH,height:'100%',backgroundColor:'rgba(0,0,0,0.4)',position:'absolute',left:0,bottom:0,top:0,right:0,flex:1}}>
-        <View style={{ height: 300, backgroundColor: '#fff', borderRadius: 30, borderTopRightRadius: 30,position: 'absolute', bottom: 40, width: '95%',borderColor:'#fff',borderWidth:0.3,alignSelf:'center' }}>
-
-          {/* <View style={{ width: 100, height: 30, position: 'absolute', top: 0, zIndex: 999, alignSelf: 'center', borderRadius: 5 }}>
+  <View style={{ width: dimensions.SCREEN_WIDTH, height: '100%', backgroundColor: 'rgba(0,0,0,0.4)', position: 'absolute', left: 0, bottom: 0, top: 0, right: 0, flex: 1 }}>
+          <View style={{ height: dimensions.SCREEN_HEIGHT * 52 / 100, backgroundColor: '#fff', borderTopLeftRadius: 15, borderTopRightRadius: 15, position: 'absolute', bottom: 0, width: '99%', borderColor: '#fff', borderWidth: 0.3, alignSelf: 'center' }}>
+            {/* <View style={{ width: 100, height: 30, position: 'absolute', top: 0, zIndex: 999, alignSelf: 'center', borderRadius: 5 }}>
             <TouchableOpacity onPress={() => { setmodlevisual(false) }}style={{ width: 50, height:4,backgroundColor:Mycolors.GrayColor,borderRadius:17,marginTop:10 ,alignSelf:'center'}}>
             </TouchableOpacity>
           </View> */}
-
-           
-<View style={{flexDirection:'row',width:'100%',alignItems:'center',justifyContent:'space-between',paddingHorizontal:20,paddingVertical:20,borderTopLeftRadius: 30, borderTopRightRadius: 30,}}>
-<Text style={{color:Mycolors.TEXT_COLOR,fontWeight:'bold',fontSize:15}}>Please Accept Your Order</Text>
-          <View style={{ width: '50%', alignItems: 'flex-end', paddingHorizontal: 20, }}>
-                <Text style={{ color: Mycolors.TEXT_COLOR, fontWeight: 'bold', fontSize: 16 }}>{time}</Text>
+            <View style={{ position: 'absolute', right: -4, top: 90,  }}>
+              <Image resizeMode='cover' source={require('../../assets/Accept-mobile-ride.png')} style={{ width: 110, height: 60, overflow: 'hidden', alignSelf: 'center', }}></Image>
+            </View>
+            <View style={{ flexDirection: 'row', width: '100%', alignItems: 'center', justifyContent: 'space-between', paddingHorizontal: 20, paddingVertical: 3,marginTop:15 }}>
+              <View style={{ flexDirection: 'column' }}>
+                <Text style={{ marginLeft: 0, marginTop: '6%', fontSize: 21, color: '#B4B4B4', }}>Please</Text>
+                <Text style={{ top:-4, fontSize: 30, color: Mycolors.TEXT_COLOR, fontWeight: 'bold' }}>Accept Your Order</Text>
               </View>
-            <View style={{width:30,height:30,borderRadius:15,}}>
-
+              <View style={{ width:30, alignItems: 'flex-end', right:-30,top:-15 }}>
+                <Text style={{ color: Mycolors.TEXT_COLOR, fontWeight: 'bold', fontSize: 17 }}>{time}</Text>
+              </View>
+              <View style={{ width: 30, height: 30, borderRadius: 15, }}>
+              </View>
             </View>
-
-</View>
-<View style={{ width: '100%', height: 0.5, backgroundColor: '#fee1be',marginTop:35,top:-30 }} />
-
-
-<View style={{
-            width: '97%',
-           // height: 60,
-            top:-25,
-            //  flexDirection: 'row', 
-             borderRadius: 10,
-             padding:10,
-           alignSelf:'center',
-            backgroundColor: Mycolors.BG_COLOR,
-             }}>
-
-         
-<View style={{width:'100%',height:50,flexDirection:'row'}}>
-            <View>
-              <Image source={require('../../assets/Clock.png')} style={{ width: 24, height: 27, top: 5,left:3 }}></Image>
+            {/* <View style={{ width: '100%', height: 0.5, backgroundColor: '#FEE1BE', marginTop: 35, top: -30 }} /> */}
+            <View style={{
+              width: '97%',
+              // height: 60,
+              top: 35,
+              //  flexDirection: 'row',
+              borderRadius: 10,
+              padding: 10,
+              alignSelf: 'center',
+              // backgroundColor: Mycolors.BG_COLOR,
+            }}>
+              <View style={{ width: '100%', height: 50, flexDirection: 'row' }}>
+                <View>
+                  <Image source={require('../../assets/Clock.png')} style={{ width: 24, height: 27, top: 5, left: 3 }}></Image>
+                </View>
+                <View style={{ width: dimensions.SCREEN_WIDTH - 100, left: 20 }}>
+                  <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, fontWeight: '600', }}>Est. Time</Text>
+                  <View style={{ flexDirection: 'row' }} >
+                    <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 5 }}>09 min</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={{ width: '100%', flexDirection: 'row' }}>
+                <View>
+                  <Image source={require('../../assets/MapPin.png')} style={{ width: 24, height: 27, top: 5, left: 3 }}></Image>
+                </View>
+                <View style={{ width: dimensions.SCREEN_WIDTH - 100, left: 20 }}>
+                  <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, fontWeight: '600', }}>Order Pickup Location</Text>
+                  <View style={{ flexDirection: 'row' }} >
+                    <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 5 }}>{mapdata.notificationdata.business_address}</Text>
+                  </View>
+                </View>
+              </View>
             </View>
-            <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
-              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, fontWeight: '600', }}>Est. Time</Text>
-           <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>09 min</Text>
-           </View>
+            {/* <View style={{ width: '100%', height: 0.5, backgroundColor: '#FEE1BE', top: 5 }} /> */}
+            <View style={{ width: '80%', height: 40, flexDirection: 'row', justifyContent: 'space-between', alignSelf: 'center', marginTop: 80 }}>
+              <TouchableOpacity style={{
+                flexDirection: 'row', alignItems: 'center', borderRadius: 50, backgroundColor: '#60D244', paddingHorizontal: 15, width: '47%', justifyContent: 'center'
+                , shadowColor: Mycolors.TEXT_COLOR,
+                shadowOffset: {
+                  width: 0,
+                  height: 3
+                },
+                shadowRadius: 5,
+                shadowOpacity: 1.0,
+                elevation: 5
+              }} onPress={() => {
+                //  getBidAmount()
+                //  setBidCheck(true)
+                AcceptRideClick()
+                // props.navigation.navigate('Home2',{from:'home'})
+              }}>
+                <Text style={{ color: Mycolors.BG_COLOR, fontSize: 13, fontWeight: 'bold', marginLeft: 5 }}>Accept</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{
+                flexDirection: 'row', alignItems: 'center', borderRadius: 50, backgroundColor: '#F3392B', paddingHorizontal: 15, width: '47%', justifyContent: 'center', borderColor: Mycolors.ORANGE, borderWidth: 0.5
+                , shadowColor: Mycolors.TEXT_COLOR,
+                shadowOffset: {
+                  width: 0,
+                  height: 3
+                },
+                shadowRadius: 5,
+                shadowOpacity: 1.0,
+                elevation: 5
+              }}
+                onPress={() => {
+                  setmodlevisual(false)
+                  // resetStacks('Home')
+                  //  props.navigation.navigate('Home3',{from:'home2'})
+                }}>
+                <Text style={{ color: Mycolors.BG_COLOR, fontSize: 13, fontWeight: 'bold', marginLeft: 5 }}>Reject</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-</View>
-
-<View style={{width:'100%',flexDirection:'row'}}>
-            <View>
-              <Image source={require('../../assets/MapPin.png')} style={{ width: 24, height: 27, top: 5,left:3 }}></Image>
-            </View>
-            <View style={{width:dimensions.SCREEN_WIDTH-100,left:20}}>
-              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, fontWeight: '600', }}>Order Pickup Location</Text>
-           <View style={{flexDirection:'row'}} >
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:11,top:5}}>{mapdata.notificationdata.business_address}</Text>
-           </View>
-          </View>
-</View>
-
-
         </View>
-
-  <View style={{ width: '100%', height: 0.5, backgroundColor: '#fee1be',top:-5 }} />
-
-
-
-
-
-
-
-<View style={{width:'80%',height:40,flexDirection:'row',justifyContent:'space-between',alignSelf:'center',marginTop:20}}>
-<TouchableOpacity style={{flexDirection:'row',alignItems:'center',borderRadius:50,backgroundColor:'#60D244',paddingHorizontal:15,width:'47%',justifyContent:'center'
-,            shadowColor: Mycolors.TEXT_COLOR,
-            shadowOffset: {
-              width: 0,
-              height: 3
-            },
-            shadowRadius: 5,
-            shadowOpacity: 1.0,
-          
-            elevation: 5
-}} onPress={()=>{
-//  getBidAmount()
-//  setBidCheck(true)
-AcceptRideClick()
-// props.navigation.navigate('Home2',{from:'home'})
-  }}>
-<Text style={{color:Mycolors.BG_COLOR,fontSize:13,fontWeight:'bold',marginLeft:5}}>Accept</Text>
-</TouchableOpacity>
-
-<TouchableOpacity style={{flexDirection:'row',alignItems:'center',borderRadius:50,backgroundColor:'#F3392B',paddingHorizontal:15,width:'47%',justifyContent:'center',borderColor:Mycolors.ORANGE,borderWidth:0.5
-, shadowColor: Mycolors.TEXT_COLOR,
-shadowOffset: {
-  width: 0,
-  height: 3
-},
-shadowRadius: 5,
-shadowOpacity: 1.0,
-
-elevation: 5
-}}
- onPress={()=>{
-  setmodlevisual(false)
-  // resetStacks('Home')
-  //  props.navigation.navigate('Home3',{from:'home2'})
-   }}> 
-<Text style={{color:Mycolors.BG_COLOR,fontSize:13,fontWeight:'bold',marginLeft:5}}>Reject</Text>
-</TouchableOpacity>
-
-</View>
-
-
-        </View>
-
-</View>
         : null
       }
 

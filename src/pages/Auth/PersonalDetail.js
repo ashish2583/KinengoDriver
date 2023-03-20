@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView, useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView, useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity, ImageBackground } from 'react-native';
 import MyButtons from '../../component/MyButtons';
 import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
@@ -94,23 +94,23 @@ const PersonalDetail = (props) => {
     console.log('the res countries==>>', responseJson)
     if (responseJson.headers.success == 1) {
       setCountryitems(responseJson.body)
-     } else {
+    } else {
       setalert_sms(err)
       setMy_Alert(true)
     }
-  
+
   }
 
   const stateclicked = async (ids) => {
     console.log("abjfgak//////", ids);
-    
+
     setLoading(true)
-    const { responseJson, err } = await requestGetApi(common_state+ids, '', 'GET', '')
+    const { responseJson, err } = await requestGetApi(common_state + ids, '', 'GET', '')
     setLoading(false)
     console.log('the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
       setStateitems(responseJson.body)
-       
+
     } else {
       setalert_sms(err)
       setMy_Alert(true)
@@ -135,14 +135,20 @@ const PersonalDetail = (props) => {
           colors={[Mycolors.BG_LINEAR_START_COLOR, Mycolors.BG_LINEAR_END_COLOR]}
           style={{flex: 1,height:dimensions.SCREEN_HEIGHT}}
          > */}
-      <MyButtons title="Sign Up" height={55} width={'100%'} alignSelf="center" imgpress={() => { props.navigation.goBack() }} marginHorizontal={20}
+      <MyButtons title="Sign Up" height={55} width={'100%'} alignSelf="center" imgpress={() => { resetStacks('SignUp') }} marginHorizontal={20}
         titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} img='left' imgtop={16} imgleft={10} imgheight={20} imgwidth={25} />
 
+      <ImageBackground
+        source={require('../../assets/LoginBackground-image.png')}
+        style={StyleSheet.absoluteFill}
+        width="100%"
+        height="100%"
+      />
       <ScrollView style={{ paddingHorizontal: 20 }}>
 
 
-        <Text style={{ marginTop: 20, fontSize: 25, color: Mycolors.TEXT_COLOR }}>Personal Details</Text>
-        <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter Details to Sign up</Text>
+        <Text style={{ marginTop: 20, fontSize: 30, color: Mycolors.TEXT_COLOR ,fontWeight:'bold' }}>Personal Details</Text>
+        <Text style={{ marginTop: 3, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter Details to Sign up</Text>
         <View style={{ width: dimensions.SCREEN_WIDTH - 40, marginTop: 30 }}>
 
           <TextInput
@@ -203,7 +209,7 @@ const PersonalDetail = (props) => {
             onSelectItem={(itm) => {
               setCountrycode(itm.value)
               stateclicked(itm.value)
-              
+
               console.log("yoyo item:", itm);
             }}
             // onChangeValue={(value) => {
@@ -219,7 +225,7 @@ const PersonalDetail = (props) => {
             textStyle={{
               color: Mycolors.TEXT_COLOR,
             }}
-            style={{ borderColor: 'transparent', backgroundColor: Mycolors.BG_COLOR, paddingLeft: 18 }}
+            style={{ borderColor: 'transparent', backgroundColor: Mycolors.BG_COLOR, paddingLeft: 18,paddingRight:15  }}
             containerStyle={{
               borderColor: 'red'
             }}
@@ -260,7 +266,7 @@ const PersonalDetail = (props) => {
             open={openstate}
             setOpen={setOpenstate}
             items={Stateitems.map(item => ({ label: item?.name, value: item?.id }))}
-         
+
             value={valuestate}
             setValue={setValuestate}
             maxHeight={240}
@@ -295,8 +301,9 @@ const PersonalDetail = (props) => {
             }}
             textStyle={{
               color: Mycolors.TEXT_COLOR,
+              
             }}
-            style={{ borderColor: 'transparent', backgroundColor: Mycolors.BG_COLOR, paddingLeft: 18 }}
+            style={{ borderColor: 'transparent', backgroundColor: Mycolors.BG_COLOR, paddingLeft: 18,paddingRight:15 }}
             containerStyle={{
               borderColor: 'red'
             }}
@@ -358,9 +365,9 @@ const PersonalDetail = (props) => {
             style={[styles.input, { paddingRight: 50 }]}
             secureTextEntry={passView ? true : false}
           />
-          <View style={{ position: 'absolute', right: 10, top: 18 }}>
+          <View style={{ position: 'absolute', right: 17, top: 18 }}>
             <TouchableOpacity onPress={() => { setPassView(!passView) }}>
-              <Image source={passView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 35, height: 22 }} />
+              <Image source={passView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 22, height: 22 }} />
             </TouchableOpacity>
           </View>
         </View>
@@ -377,21 +384,23 @@ const PersonalDetail = (props) => {
             style={[styles.input, { paddingRight: 50 }]}
             secureTextEntry={cpassView ? true : false}
           />
-          <View style={{ position: 'absolute', right: 10, top: 18 }}>
+          <View style={{ position: 'absolute', right: 17, top: 18 }}>
             <TouchableOpacity onPress={() => { setcPassView(!cpassView) }}>
-              <Image source={cpassView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 35, height: 22 }} />
+              <Image source={cpassView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 22, height: 22 }} />
             </TouchableOpacity>
           </View>
         </View>
 
-        <MyButtons title="Continue" height={45} width={'100%'} borderRadius={5} alignSelf="center" press={() => {
+       
+
+      </ScrollView>
+      <View style={{ bottom: 10, width: '100%', paddingHorizontal: 20 }}>
+        <MyButtons title="Continue" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => {
+         
           signupPressed()
         }} marginHorizontal={20}
           titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
-
-
-      </ScrollView>
-
+</View>
 
       {My_Alert ? <MyAlert sms={alert_sms} okPress={() => { setMy_Alert(false) }} /> : null}
       {loading ? <Loader /> : null}

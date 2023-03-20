@@ -182,8 +182,8 @@ const VehicleDetail = (props) => {
       <ScrollView style={{ paddingHorizontal: 20 }}>
         
 
-        <Text style={{ marginTop: 20, fontSize: 25, color: Mycolors.TEXT_COLOR }}>Vehicle Details</Text>
-        <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter Details to Sign up</Text>
+        <Text style={{ marginTop: 20, fontSize: 30, color: Mycolors.TEXT_COLOR, fontWeight:'bold' }}>Vehicle Details</Text>
+        <Text style={{ marginTop: 3, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter Details to Sign up</Text>
         <View style={{  width: dimensions.SCREEN_WIDTH - 40 ,marginTop:30}}>
          
          <TextInput
@@ -257,11 +257,12 @@ const VehicleDetail = (props) => {
                        :
                        null
                     }
-      <MyButtons title="Continue" height={45} width={'100%'} borderRadius={5} alignSelf="center" press={()=>{signupPressed()}} marginHorizontal={20} 
-      titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
-     
-    
+                   
       </ScrollView>
+      <View style={{ bottom: 20, width: '100%', paddingHorizontal: 20 }}>
+      <MyButtons title="Continue" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={()=>{signupPressed()}} marginHorizontal={20} 
+      titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
+     </View>
     
 
          {My_Alert ? <MyAlert sms={alert_sms} okPress={()=>{setMy_Alert(false)}} /> : null }

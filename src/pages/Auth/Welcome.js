@@ -68,7 +68,7 @@ const Welcome = (props) => {
     <Image source={require('../../assets/images/sp2.png')} style={{width:'100%',height:'100%',}}></Image>
     </View>
 <View style={{alignSelf:'center',position:'absolute',bottom:120,width:'90%'}}>
-  <MyButtons title="Sign In" height={40} width={'100%'} borderRadius={5} press={()=>{
+  <MyButtons title="Sign In" height={50} width={'100%'} borderRadius={5} press={()=>{
    
     props.navigation.navigate('Login')
     }} 
@@ -77,7 +77,7 @@ const Welcome = (props) => {
 </View>
     
 <View style={{alignSelf:'center',position:'absolute',bottom:60,width:'90%'}}>
-  <MyButtons title="Sign Up" height={40} width={'100%'} borderRadius={5} press={()=>{props.navigation.navigate('SignUp')}} 
+  <MyButtons title="Sign Up" height={50} width={'100%'} borderRadius={5} press={()=>{props.navigation.navigate('SignUp')}} 
    titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} fontWeight={'600'} fontSize={14} marginVertical={10}/>
    
 </View>

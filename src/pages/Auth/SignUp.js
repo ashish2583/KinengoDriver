@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image, SafeAreaView, ScrollView, TextInput, Keyboard, Alert, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, SafeAreaView, ScrollView, TextInput, Keyboard, Alert, TouchableOpacity,ImageBackground } from 'react-native';
 import MyButtons from '../../component/MyButtons';
 import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
@@ -63,7 +63,14 @@ const SignUp = (props) => {
     }
 
   }
-
+  const resetStacks = (page) => {
+    props.navigation.reset({
+      index: 0,
+      routes: [{ name: page }],
+      params: { resentotp: false },
+    });
+    // props.navigation.goBack()
+  }
 
   const signupPressed = async () => {
     // props.navigation.navigate('PersonalDetail') 
@@ -149,24 +156,30 @@ const SignUp = (props) => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <MyButtons title="Sign Up" height={55} width={'100%'} alignSelf="center" imgpress={() => { props.navigation.goBack() }} marginHorizontal={20}
+      <MyButtons title="Sign Up" height={55} width={'100%'} alignSelf="center" imgpress={() => { resetStacks('Login') }} marginHorizontal={20}
         titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} img='left' imgtop={16} imgleft={10} imgheight={20} imgwidth={25} />
 
+<ImageBackground
+        source={require('../../assets/LoginBackground-image.png')}
+        style={StyleSheet.absoluteFill}
+        width="100%"
+        height="100%"
+      />
       <ScrollView style={{ paddingHorizontal: 20 }}>
 
 
-        <Text style={{ marginTop: '15%', fontSize: 25, color: Mycolors.TEXT_COLOR }}>Create your account</Text>
-        <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter details to sign up</Text>
+        <Text style={{ marginTop: '15%', fontSize: 30, color: Mycolors.TEXT_COLOR, fontWeight: 'bold' }}>Create your account</Text>
+        <Text style={{ marginTop: 3, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter details to sign up</Text>
 
 
-        <View style={{ width: dimensions.SCREEN_WIDTH - 40, marginTop: 20 }}>
+        <View style={{ width: dimensions.SCREEN_WIDTH - 40, marginTop: 40 }}>
 
           <TextInput
             value={fristname}
             onChangeText={(text) => {
               setfristname(text)
             }}
-            placeholder="Frist Name"
+            placeholder="First Name"
             placeholderTextColor={Mycolors.GrayColor}
             style={styles.input}
           />
@@ -205,7 +218,7 @@ const SignUp = (props) => {
           </View> */}
         </View>
 
-        <View style={{ flexDirection: 'row', width: dimensions.SCREEN_WIDTH - 40, marginTop: 20, alignItems: 'center', borderRadius: 5, alignSelf: 'center', backgroundColor: "white",height:55 }}>
+        <View style={{ flexDirection: 'row', width: dimensions.SCREEN_WIDTH - 40, marginTop: 20, alignItems: 'center', borderRadius: 5, alignSelf: 'center', backgroundColor: "white", height: 55 }}>
 
           <View style={{ width: 120, height: 50, borderTopLeftRadius: 5, borderBottomLeftRadius: 5, zIndex: 999, }}>
             {isvisuable ?
@@ -230,7 +243,7 @@ const SignUp = (props) => {
               {/* </ScrollView> */}
             </View>
           </View>
-          <View style={{ width: dimensions.SCREEN_WIDTH *0.60,flexDirection:"row",left:-20 }}>
+          <View style={{ width: dimensions.SCREEN_WIDTH * 0.60, flexDirection: "row", left: -20 }}>
 
             <TextInput
               value={number}
@@ -241,7 +254,8 @@ const SignUp = (props) => {
               placeholderTextColor={Mycolors.GrayColor}
               keyboardType="number-pad"
               maxLength={10}
-              style={{ height: 55,
+              style={{
+                height: 55,
                 width: '100%',
                 // fontSize: 12,
                 borderColor: 'transparent',
@@ -251,26 +265,29 @@ const SignUp = (props) => {
                 // paddingLeft: 10,
                 // paddingRight: 10,
                 backgroundColor: Mycolors.BG_COLOR,
-                top: 0}}
+                top: 0
+              }}
             />
-            <View style={{ position: 'absolute', right: 10, top: 18 }}>
+            <View style={{ position: 'absolute', right: 3, top: 0,justifyContent:'center',alignItems:'center',height:55 }}>
               <TouchableOpacity onPress={() => {
                 SendOtps('phone')
-              }} style={{ backgroundColor: Mycolors.LoginButton, paddingHorizontal: 8, borderRadius: 3 }}>
-                <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13 }}>Verify</Text>
+              }} style={{ backgroundColor: Mycolors.LoginButton, paddingHorizontal: 8, borderRadius: 30,height:30 ,alignItems:'center',justifyContent:'center',}}>
+                <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13,paddingHorizontal:5 }}>Verify</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
-        <MyButtons title="Continue" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => {
-          // props.navigation.navigate('PersonalDetail') 
-          signupPressed()
-        }} marginHorizontal={20}
-          titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
 
+        
 
       </ScrollView>
-
+      <View style={{ bottom: 20, width: '100%', paddingHorizontal: 20 }}>
+          <MyButtons title="Continue" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => {
+            props.navigation.navigate('PersonalDetail') 
+            signupPressed()
+          }} marginHorizontal={20}
+            titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
+        </View>
 
       {My_Alert ? <MyAlert sms={alert_sms} okPress={() => { setMy_Alert(false) }} /> : null}
       {loading ? <Loader /> : null}
@@ -282,7 +299,7 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: Mycolors.DrawerBGcolor
+    // backgroundColor: Mycolors.DrawerBGcolor
   },
   inputView: {
     width: dimensions.SCREEN_WIDTH - 40, marginTop: 10
@@ -295,10 +312,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 5,
     color: Mycolors.TEXT_COLOR,
-    paddingLeft: 10,
+    paddingLeft: 20,
     paddingRight: 10,
     backgroundColor: Mycolors.BG_COLOR,
     top: 1
+  
   },
 });
 export default SignUp

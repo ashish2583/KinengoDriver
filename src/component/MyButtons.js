@@ -72,6 +72,7 @@ const MyButtons = (props) => {
                 }}>{props.title2}</Text>
             : null }
  </LinearGradient>
+ <View style={{ borderColor: '#E8E7E9', borderWidth: 1, borderStyle: 'solid', }} />
         </TouchableOpacity>
        
     )
