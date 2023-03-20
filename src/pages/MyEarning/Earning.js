@@ -197,7 +197,7 @@ const Earning = (props) => {
   <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-between',padding:20}}>
     <View>
       <Text style={styles.totalEarnings}>Total Earnings</Text>
-      <Text style={styles.totalAmount}>${walletDetail}</Text>
+      <Text style={styles.totalAmount}>${parseFloat(Number(walletDetail).toFixed(3))}</Text>
     </View>
 
     <View style={{flexDirection:'row', alignItems:'center',justifyContent:'space-between'}}>
@@ -224,7 +224,7 @@ const Earning = (props) => {
            style={[styles.input,{paddingRight: 50}]}
          
          />
-         <View style={{position:'absolute',right:1,top:1,backgroundColor:Mycolors.filtercolor,width:50,height:55,justifyContent:'center',borderRadius:5}}>
+         <View style={{position:'absolute',right:1,top:21,backgroundColor:Mycolors.filtercolor,width:50,height:55,justifyContent:'center',borderRadius:5}}>
            <TouchableOpacity onPress={()=>{props.navigation.navigate('EarningFilter')}}>
            <Image source={require('../../assets/Vectorfilte.png')} style={{ width: 30, height: 30,alignSelf:'center'}} />
            </TouchableOpacity>
