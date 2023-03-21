@@ -86,8 +86,8 @@ const ResetPassword = (props) => {
       <ScrollView style={{ paddingHorizontal: 20 }}>
         
 
-        <Text style={{ marginTop: '15%', fontSize: 25, color: Mycolors.TEXT_COLOR }}>Reset Password</Text>
-        <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter your new password and confirm it</Text>
+        <Text style={{ marginTop: '15%', fontSize: 30, color: Mycolors.TEXT_COLOR ,fontWeight: 'bold'}}>Reset Password</Text>
+        <Text style={{ marginTop: 3, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter your new password and confirm it</Text>
 
 
         <View style={{  width: dimensions.SCREEN_WIDTH - 40 ,marginTop:50}}>
@@ -102,9 +102,9 @@ const ResetPassword = (props) => {
               style={[styles.input,{paddingRight: 50}]}
               secureTextEntry={passView ? true : false}
             />
-            <View style={{position:'absolute',right:10,top:18}}>
+            <View style={{position:'absolute',right:17,top:18}}>
               <TouchableOpacity onPress={()=>{setPassView(!passView)}}>
-              <Image source={passView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 35, height: 22}} />
+              <Image source={passView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 22, height: 22}} />
               </TouchableOpacity>
             </View>
           </View>
@@ -121,18 +121,18 @@ const ResetPassword = (props) => {
            style={[styles.input,{paddingRight: 50}]}
            secureTextEntry={cpassView ? true : false}
          />
-         <View style={{position:'absolute',right:10,top:18}}>
+         <View style={{position:'absolute',right:17,top:18}}>
            <TouchableOpacity onPress={()=>{setcPassView(!cpassView)}}>
-           <Image source={cpassView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 35, height: 22}} />
+           <Image source={cpassView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 22, height: 22}} />
            </TouchableOpacity>
          </View>
        </View>
-
+       
+      </ScrollView>
+      <View style={{ position: "absolute", bottom: 20, width: '100%', paddingHorizontal: 20 }}>
       <MyButtons title="Save password" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={()=>{LoginPressed()}} marginHorizontal={20} 
       titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={40} />
-   
-      </ScrollView>
-   
+   </View>
 
          {My_Alert ? <MyAlert sms={alert_sms} okPress={()=>{setMy_Alert(false)}} /> : null }
       {loading ? <Loader /> : null}

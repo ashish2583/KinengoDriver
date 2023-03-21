@@ -124,7 +124,7 @@ const MonyTransfer = (props) => {
 <View style={{width:'92%',height:125,alignSelf:'center'}}>
 <Image source={require('../../assets/TotalEarningsfrom.png')} style={{ width: '100%', height: '100%'}} />
 <View style={{position:'absolute',top:'40%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${walletDetail}</Text>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${parseFloat(Number(walletDetail).toFixed(3))}</Text>
 </View>
 <View style={{position:'absolute',top:'40%',right:30}}>
 <Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}} onPress={()=>{props.navigation.navigate('TransectionHistory')}}>History</Text>
@@ -287,7 +287,7 @@ const MonyTransfer = (props) => {
 <View style={{width:15,height:15,borderRadius:10,backgroundColor:getColor(item.status)}} />
 <Text style={{color:getColor(item.status),fontSize:14,left:5}}>{getStatus(item.status)}</Text>
 </View>
-<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : item.amount}</Text>
+<Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, marginVertical:5,fontWeight: '600'}}>${item.amount === null ? 0 : parseFloat(Number(item.amount).toFixed(3))}</Text>
     </View>
 
                 </View>

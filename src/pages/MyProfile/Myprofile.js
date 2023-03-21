@@ -14,6 +14,7 @@ import MyAlert from '../../component/MyAlert';
 import HomeHeader from '../../component/HomeHeader';
 import SerchInput from '../../component/SerchInput';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
+import moment from 'moment';
 
 const Myprofile = (props) => {
   const userdetaile = useSelector(state => state.user.user_details)
@@ -35,6 +36,7 @@ const Myprofile = (props) => {
   ])
   useEffect(() => {
     getProfile()
+    console.log("DATe:::::::",driverworking);
   }, [])
   const [refreshing, setRefreshing] = React.useState(false);
   const checkcon = () => {
@@ -53,6 +55,10 @@ const Myprofile = (props) => {
     });
   }, []);
 
+ const driverworking = ()=>{
+
+moment(moment()).diff(moment(datas.created_date.slice(1, 10)), 'months', true)
+ }
 
   const openLibrary = async () => {
 

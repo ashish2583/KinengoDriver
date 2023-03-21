@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView, useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView, useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity, ImageBackground } from 'react-native';
 import MyButtons from '../../component/MyButtons';
 import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
@@ -73,14 +73,20 @@ const ForgotPassword = (props) => {
           colors={[Mycolors.BG_LINEAR_START_COLOR, Mycolors.BG_LINEAR_END_COLOR]}
           style={{flex: 1,height:dimensions.SCREEN_HEIGHT}}
          > */}
+      <ImageBackground
+        source={require('../../assets/LoginBackground-image.png')}
+        style={StyleSheet.absoluteFill}
+        width="100%"
+        height="100%"
+      />
       <MyButtons title="Forgot Password" height={55} width={'100%'} alignSelf="center" imgpress={() => { props.navigation.goBack() }} marginHorizontal={20}
         titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} img='left' imgtop={16} imgleft={10} imgheight={20} imgwidth={25} />
 
       <ScrollView style={{ paddingHorizontal: 20 }}>
 
 
-        <Text style={{ marginTop: '15%', fontSize: 25, color: Mycolors.TEXT_COLOR }}>Forgot Password</Text>
-        <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter Email or Phone Number associated with this Account</Text>
+        <Text style={{ marginTop: '15%', fontSize: 30, color: Mycolors.TEXT_COLOR, fontWeight: 'bold' }}>Forgot Password</Text>
+        <Text style={{ marginTop: 3, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Enter Email or Phone Number associated with this Account</Text>
 
 
         <View style={{ width: dimensions.SCREEN_WIDTH - 40, marginTop: 50 }}>
@@ -98,10 +104,12 @@ const ForgotPassword = (props) => {
         </View>
 
 
+
+      </ScrollView>
+      <View style={{ position: "absolute", bottom: 20, width: '100%', paddingHorizontal: 20 }}>
         <MyButtons title="Reset Password" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => { ResetPressed() }} marginHorizontal={20}
           titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={40} />
-      </ScrollView>
-
+      </View>
 
       {My_Alert ? <MyAlert sms={alert_sms} okPress={() => { setMy_Alert(false) }} /> : null}
       {loading ? <Loader /> : null}

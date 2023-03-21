@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { useState, useEffect } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView, useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity } from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView, ScrollView, useColorScheme, Alert, TextInput, Keyboard, TouchableOpacity, ImageBackground } from 'react-native';
 import MyButtons from '../../component/MyButtons';
 import MyInputText from '../../component/MyInputText';
 import { dimensions, Mycolors } from '../../utility/Mycolors';
@@ -75,7 +75,7 @@ const Login = (props) => {
       setLoading(false)
       console.log('the res==>>', responseJson)
       if (responseJson.headers.success == 1) {
-        props.navigation.navigate('Otp')
+        // props.navigation.navigate('Login')
         LoginPress(responseJson.body)
       } else {
         setalert_sms(err)
@@ -105,14 +105,21 @@ const Login = (props) => {
           colors={[Mycolors.BG_LINEAR_START_COLOR, Mycolors.BG_LINEAR_END_COLOR]}
           style={{flex: 1,height:dimensions.SCREEN_HEIGHT}}
          > */}
+      <ImageBackground
+        source={require('../../assets/LoginBackground-image.png')}
+        style={StyleSheet.absoluteFill}
+        width="100%"
+        height="100%"
+      />
       <MyButtons title="Sign In" height={55} width={'100%'} alignSelf="center" imgpress={() => { props.navigation.goBack() }} marginHorizontal={20}
         titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} img='left' imgtop={16} imgleft={10} imgheight={20} imgwidth={25} />
+      {/* <View style={{ borderColor: '#E8E7E9', borderWidth: 1, borderStyle: 'solid', }} /> */}
 
       <ScrollView style={{ paddingHorizontal: 20 }}>
 
 
-        <Text style={{ marginTop: '15%', fontSize: 25, color: Mycolors.TEXT_COLOR }}>Welcome</Text>
-        <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Please sign in to continue.</Text>
+        <Text style={{ marginTop: '20%', fontSize: 30, color: Mycolors.TEXT_COLOR, fontWeight: 'bold' }}>Welcome</Text>
+        <Text style={{ marginTop: 0, fontSize: 13, color: Mycolors.TEXT_COLOR }}>Please sign in to continue.</Text>
 
 
         <View style={{ width: dimensions.SCREEN_WIDTH - 40, marginTop: 50 }}>
@@ -144,9 +151,9 @@ const Login = (props) => {
             style={[styles.input, { paddingRight: 50 }]}
             secureTextEntry={passView ? true : false}
           />
-          <View style={{ position: 'absolute', right: 10, top: 18 }}>
+          <View style={{ position: 'absolute', right: 17, top: 18 }}>
             <TouchableOpacity onPress={() => { setPassView(!passView) }}>
-              <Image source={passView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 35, height: 22 }} />
+              <Image source={passView ? require('../../assets/hide.png') : require('../../assets/view.png')} style={{ width: 22, height: 22 }} />
             </TouchableOpacity>
           </View>
         </View>
@@ -154,13 +161,17 @@ const Login = (props) => {
         {/* <Text style={{ marginTop: 0, fontSize: 13, color: Mycolors.TEXT_COLOR, textAlign: 'center' }} onPress={() => { }}></Text> */}
 
 
-        <MyButtons title="Sign In" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => { LoginWithUserid() }} marginHorizontal={20}
+        <MyButtons title="Sign In" height={50} width={'100%'} borderRadius={5} alignSelf="center" press={() => { LoginWithUserid() }} marginHorizontal={20} fontSize={16}
           titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
 
-        <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.GrayColor, textAlign: 'center' }}>--------or--------</Text>
-        <TouchableOpacity onPress={() => { setmodlevisual(true) }} style={{}}>
+        <Text style={{ marginTop: 1, fontSize: 13, color: Mycolors.GrayColor, textAlign: 'center' }}>--------or--------</Text>
+
+
+        <MyButtons title="Login with Mobile Number" height={50} width={'100%'} borderRadius={5} borderColor={Mycolors.signupButton} borderWidth={0.6} alignSelf="center" press={() => { setmodlevisual(true) }} marginHorizontal={20} fontWeight={600}
+          titlecolor={'black'} backgroundColor={Mycolors.BG_COLOR} marginVertical={20} fontSize={16} />
+        {/* <TouchableOpacity onPress={() => { setmodlevisual(true) }} style={{}}>
           <Text style={{ marginTop: 20, fontSize: 13, color: 'blue', textAlign: 'center', textDecorationLine: "underline" }}>Login with Mobile Number</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
         {/* <View style={{ width: '100%', height: 40, flexDirection: 'row', alignSelf: 'center', justifyContent: 'center', marginTop: 15 }}>
           <TouchableOpacity>
             <Image source={require('../../assets/gh.png')} style={{ width: 70, height: 70 }} />
@@ -176,21 +187,28 @@ const Login = (props) => {
       </ScrollView>
       <View style={{ flexDirection: 'row', alignSelf: 'center', top: -30 }}>
         <Text style={[styles.textStyle, { color: Mycolors.TEXT_COLOR }]}
-          onPress={() => { resetStacks('SignUp') }}>New user?</Text>
-        <Text style={[styles.textStyle, { color: Mycolors.signupButton, textDecorationLine: 'underline' }]}
+          onPress={() => { resetStacks('SignUp') }}>New user ?</Text>
+
+        <Text style={[styles.textStyle, { color: Mycolors.signupButton, fontWeight: '500' }]}
           onPress={() => { resetStacks('SignUp') }}> Register now</Text>
+
+
       </View>
 
       {modlevisual ?
         <View style={{ width: dimensions.SCREEN_WIDTH, height: '100%', backgroundColor: 'rgba(0,0,0,0.4)', position: 'absolute', left: 0, bottom: 0, top: 0, right: 0, flex: 1 }}>
-          <View style={{ height: 240, backgroundColor: '#F8F8F8', borderRadius: 30, borderTopRightRadius: 30, position: 'absolute', bottom: 40, width: '95%', borderColor: '#fff', borderWidth: 0.3, alignSelf: 'center' }}>
+          <View style={{ height: dimensions.SCREEN_HEIGHT * 47 / 100, backgroundColor: '#F8F8F8', borderTopLeftRadius: 15, borderTopRightRadius: 15, position: 'absolute', bottom: 0, width: '99%', borderColor: '#fff', borderWidth: 0.3, alignSelf: 'center' }}>
 
             <TouchableOpacity onPress={(() => { setmodlevisual(false) })} style={{ position: 'absolute', right: 15, top: 15 }}>
               <Image resizeMode='cover' source={require('../../assets/cutRed.png')} style={{ width: 30, height: 30, overflow: 'hidden', alignSelf: 'center', }}></Image>
             </TouchableOpacity>
 
-            <Text style={{ marginLeft: 28, marginTop: '5%', fontSize: 18, color: Mycolors.TEXT_COLOR }}>Enter Mobile Number</Text>
-            <View style={{ width: dimensions.SCREEN_WIDTH - 40, marginTop: 20, justifyContent: "center", alignItems: "center", marginHorizontal: 10, }}>
+            <View style={{ position: 'absolute', right: 1, top: 75 }}>
+              <Image resizeMode='cover' source={require('../../assets/mobile-icon.png')} style={{ width: 85, height: 42, overflow: 'hidden', alignSelf: 'center', }}></Image>
+            </View>
+            <Text style={{ marginLeft: 25, marginTop: '14%', fontSize: 21, color: '#B4B4B4', }}>Enter </Text>
+            <Text style={{ marginLeft: 25, fontSize: 30, color: Mycolors.TEXT_COLOR, fontWeight: 'bold' }}>Mobile Number</Text>
+            <View style={{ width: dimensions.SCREEN_WIDTH - 40, marginTop: 30, justifyContent: "center", alignItems: "center", marginHorizontal: 16, }}>
 
               <TextInput
                 value={mobile}
@@ -205,7 +223,7 @@ const Login = (props) => {
 
                   width: '95%',
                   // fontSize: 12,
-                  borderColor: 'transparent',
+                  borderColor: '#B4B4B4',
                   borderWidth: 1,
                   borderRadius: 5,
                   color: Mycolors.TEXT_COLOR,
@@ -218,9 +236,11 @@ const Login = (props) => {
 
             </View>
 
+            <View style={{ marginTop: 10 ,}}>
+              <MyButtons title="Verify with OTP" height={50} width={'87%'} borderRadius={5} alignSelf="center" press={() => { LoginPressed() }} marginHorizontal={20}
+                titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
+            </View>
 
-            <MyButtons title="Verify with OTP" height={50} width={'90%'} borderRadius={5} alignSelf="center" press={() => { LoginPressed() }} marginHorizontal={20}
-              titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} marginVertical={20} />
 
 
 

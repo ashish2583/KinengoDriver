@@ -17,7 +17,7 @@ import LinearGradient from 'react-native-linear-gradient'
 
 const CELL_COUNT = 4;
 const Otp = (props) => {
-  const dispatch =  useDispatch();
+  const dispatch = useDispatch();
   const mapdata = useSelector(state => state.maplocation)
   const [value, setValue] = useState('');
   const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
@@ -125,8 +125,8 @@ const Otp = (props) => {
 
       <ScrollView style={{ paddingHorizontal: 20 }}>
 
-        <Text style={{ marginTop: '15%', fontSize: 25, color: Mycolors.TEXT_COLOR, textAlign: 'center' }}>{props.route.params.from == 'email' ? 'Verify Email Address' : props.route.params.from == 'phone' ? 'Verify Phone Number' : props.route.params.from == 'forgotPassword' ? 'Verification Code' : ''}</Text>
-        <Text style={{ marginTop: 15, fontSize: 13, color: Mycolors.TEXT_COLOR, textAlign: 'center' }}>{props.route.params.from == 'email' ? 'Please enter 4 digit verification code we sent to your register Email' : props.route.params.from == 'phone' ? 'Please enter 4 digit verification code we sent to your  Phone Number' : props.route.params.from == 'forgotPassword' ? 'Please enter 4 digit verification code we sent to your register Email and Phone Number' : ''} OTP {props.route.params.otp}</Text>
+        <Text style={{ marginTop: '15%', fontSize: 30, color: Mycolors.TEXT_COLOR, textAlign: 'center',fontWeight: 'bold' }}>{props.route.params.from == 'email' ? 'Verify Email Address' : props.route.params.from == 'phone' ? 'Verify Phone Number' : props.route.params.from == 'forgotPassword' ? 'Verification Code' : ''}</Text>
+        <Text style={{ marginTop: 3, fontSize: 13, color: Mycolors.TEXT_COLOR, textAlign: 'center' }}>{props.route.params.from == 'email' ? 'Please enter 4 digit verification code we sent to your register Email' : props.route.params.from == 'phone' ? 'Please enter 4 digit verification code we sent to your  Phone Number' : props.route.params.from == 'forgotPassword' ? 'Please enter 4 digit verification code we sent to your register Email and Phone Number' : ''} OTP {props.route.params.otp}</Text>
 
         <View style={{ width: '100%', height: 100, marginTop: 20, zIndex: 999 }}>
           <CodeField
@@ -159,7 +159,11 @@ const Otp = (props) => {
           <Text style={[styles.textStyle, { color: Mycolors.signupButton, textDecorationLine: 'underline' }]}
             onPress={() => { SendOtps() }}> Resend</Text>
         </View>
-        <MyButtons title="Verify" height={45} width={'100%'} borderRadius={5} press={() => {
+
+
+      </ScrollView>
+      <View style={{ position: "absolute", bottom: 20, width: '100%', paddingHorizontal: 20 }}>
+        <MyButtons title="Verify" height={50} width={'100%'} borderRadius={5} press={() => {
           if (props.route.params.from == 'forgotPassword') {
             optclickedForgot()
           } else {
@@ -168,10 +172,7 @@ const Otp = (props) => {
 
         }}
           titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} fontWeight={'600'} fontSize={14} marginVertical={20} />
-
-
-      </ScrollView>
-
+      </View>
 
       {My_Alert ? <MyAlert sms={alert_sms} okPress={() => { setMy_Alert(false) }} /> : null}
       {loading ? <Loader /> : null}
@@ -198,9 +199,10 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    // borderColor: Mycolors.TEXT_COLOR,
-    // borderWidth: 1,
-    backgroundColor: Mycolors.OTPBOX_Color,
+    borderRadius:10,
+    borderColor: '#B4B4B4',
+    borderWidth: 1,
+    backgroundColor: 'white',
 
   },
   cellText: {

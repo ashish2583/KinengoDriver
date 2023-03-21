@@ -158,20 +158,32 @@ const EarningDetails = (props) => {
       headers:{},
     }
     )
-    let responseJson = await response.json();
+    let responseJson = response.json();
     return {responseJson:responseJson,err:null}
   }
   const calculateTravelTime = async () => {
 
     setLoading(true)
     const { responseJson, err } = await googleGetApi(url)
-    if(responseJson.rows[0].elements[0].status !== 'ZERO_RESULTS'){
-      // responseJson.rows[0].elements[0].duration['text']
-      setEstTime(responseJson.rows[0].elements[0].duration['text'])
-    }else{
-      Alert.alert('Zero results found')
-    }
     setLoading(false)
+    console.log('earnings calculateTravelTime responseJson', responseJson);
+    const promise1 = Promise.resolve(responseJson)
+    promise1.then((value)=>{
+      console.log(value)
+      console.log('calculateTravelTime responseJson', value);
+      if(value.rows[0].elements[0].status === 'OK'){
+        // value.rows[0].elements[0].duration['text']
+        setEstTime(value.rows[0].elements[0].duration['text'])
+      }else{
+        Alert.alert('Zero results found')
+      }
+    })
+    // if(responseJson.rows[0].elements[0].status === 'OK'){
+    //   // responseJson.rows[0].elements[0].duration['text']
+    //   setEstTime(responseJson.rows[0].elements[0].duration['text'])
+    // }else{
+    //   Alert.alert('Zero results found')
+    // }
     console.log('calculateTravelTime res==>>', responseJson)
     if (responseJson.headers.success == 1) {
      } else {

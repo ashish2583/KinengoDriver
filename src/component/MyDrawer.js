@@ -68,7 +68,7 @@ const MyView=(props)=>{
           style={{flex: 1,height:dimensions.SCREEN_HEIGHT,}}
          >
 <View style={{backgroundColor:'#FFC40C',width:'100%'}}>
-<View style={{width:25,height:25,justifyContent:'center',alignSelf:'flex-start',left:10,top:5}}>
+<View style={{width:28,height:26,justifyContent:'center',alignSelf:'flex-start',left:15,top:15}}>
   <TouchableOpacity onPress={()=>{props.navigation.closeDrawer()}}>
     <Image source={require('../assets/ArrowLeft.png')} style={{width:22,height:22,}}></Image>
   </TouchableOpacity>
@@ -79,15 +79,15 @@ const MyView=(props)=>{
 <Image source={{ uri: person_Image }} style={{width:'100%',height:'100%',alignSelf:'center',borderRadius:40}}></Image>
 </TouchableOpacity>
 <View style={{alignSelf:'center'}}>
-<Text style={{color:Mycolors.BG_COLOR,fontSize:14,fontWeight:'600',textAlign:'center',marginTop:15}}>{name}</Text>
-<Text style={{color:Mycolors.BG_COLOR,fontSize:13,textAlign:'center',marginVertical:10}}>robert.fox@example.com</Text>
+<Text style={{color:Mycolors.BG_COLOR,fontSize:14,fontWeight:'600',textAlign:'center',marginTop:6}}>{userdetaile.first_name +' '+userdetaile.last_name}</Text>
+<Text style={{color:Mycolors.BG_COLOR,fontSize:13,textAlign:'center',marginVertical:2,marginBottom:8}}>{userdetaile.emailid}</Text>
 </View>
 </View>
 
 </View>
 <ScrollView style={{flex:1, paddingLeft:30,paddingVertical:10,paddingRight:10}}> 
 
-<View style={{width:'100%',alignSelf:'center',marginTop:30,}}>
+<View style={{width:'100%',alignSelf:'center',marginTop:0,}}>
 
  <MyView name="Earning" touch={()=>{props.navigation.navigate('Earning')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>  
  <MyView name="Money Transfer" touch={()=>{props.navigation.navigate('MonyTransfer')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>              

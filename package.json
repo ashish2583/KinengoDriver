@@ -62,7 +62,7 @@
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^13.8.0",
     "react-native-svg-transformer": "^1.0.0",
-    "react-native-toast-message": "^2.1.5",
+    "react-native-toast-message": "^2.1.6",
     "react-native-toggle-element": "^2.0.1",
     "react-native-vector-icons": "^9.2.0",
     "react-native-view-more-text": "^2.2.0",

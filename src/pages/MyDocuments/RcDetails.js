@@ -13,7 +13,7 @@ import MyAlert from '../../component/MyAlert';
 // import Toast from 'react-native-simple-toast';
 import HomeHeader from '../../component/HomeHeader';
 import SerchInput from '../../component/SerchInput';
-import { setLoading,saveUserResult} from '../../redux/actions/user_action';
+import { setLoading, saveUserResult } from '../../redux/actions/user_action';
 
 const RcDetails = (props) => {
     const userdetaile = useSelector(state => state.user.user_details)
@@ -39,7 +39,7 @@ const RcDetails = (props) => {
     useEffect(() => {
         getProfile()
     }, [])
-   
+
 
     const getProfile = async () => {
         console.log("userdetaile RC Details", userdetaile);
@@ -48,17 +48,17 @@ const RcDetails = (props) => {
         setLoading(false)
         console.log('User RC DEtail==>>', responseJson)
         if (responseJson.headers.success == 1) {
-          console.log('objj==>>', responseJson.body)
-       
-          setFirstName(responseJson.body.first_name)
-          setLastname(responseJson.body.last_name)
-          setMobileno(responseJson.body.phone)
-          setAddress(responseJson.body.address)
+            console.log('objj==>>', responseJson.body)
+
+            setFirstName(responseJson.body.first_name)
+            setLastname(responseJson.body.last_name)
+            setMobileno(responseJson.body.phone)
+            setAddress(responseJson.body.address)
         } else {
-          setalert_sms(err)
-          setMy_Alert(true)
+            setalert_sms(err)
+            setMy_Alert(true)
         }
-      }
+    }
     const Editprofile = async () => {
         // console.log("userdetaile RC Details", userdetaile);
         setLoading(true)
@@ -79,7 +79,7 @@ const RcDetails = (props) => {
             // Profiledata(responseJson.body)
             // setdatas(responseJson.body)
         } else {
-            
+
             setalert_sms(err)
             setMy_Alert(true)
         }
@@ -263,8 +263,7 @@ const RcDetails = (props) => {
 
                             </View>
                             <View style={{ justifyContent: "center", width: '95%', alignItems: 'center', marginTop: 5 }}>
-                                <Text style={{ color: 'Mycolors.TEXT_COLOR', fontSize: 13, fontWeight: '600', textAlign: "center" }}>Vehicle Driving Licence
-                                </Text>
+                                <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, fontWeight: '600', textAlign: "center" }}>Vehicle Driving Licence</Text>
 
                             </View>
 
