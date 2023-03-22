@@ -45,13 +45,14 @@ const Earning = (props) => {
   const [alert_sms, setalert_sms] = useState('')
   const [upData,setupData]=useState([])
   useEffect(()=>{
+    console.log('userdetaile.token', userdetaile.token);
     getRideHistory()
   },[]) 
   const getRideHistory = async () => {
     setLoading(true)
     try {
       const { responseJson, err } = await requestGetApi(
-        driver_rides_history,
+        driver_rides_history + '?status=1',
         "",
         "GET",
         userdetaile.token

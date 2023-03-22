@@ -27,6 +27,7 @@ import MyMapView from '../../component/MyMapView'
 import MyAlert from '../../component/MyAlert'
 import messaging from '@react-native-firebase/messaging';
 import SendNotification from '../../component/SendNotification';
+import moment from 'moment';
 
 Geolocation.setRNConfiguration(GoogleApiKey); 
 Geocoder.init(GoogleApiKey);
@@ -278,9 +279,9 @@ const intervalID = useRef(0);
       "driver_id": userdetaile.driver_id,
       "ride_id": mapdata.notificationdata.ride_id,
       "status": "0",
-      "created_date": "",
+      "created_date": moment().format('YYYY-MM-DD'),
       "driver_arrived_time": "",
-      "ride_start_time": "",
+      "ride_start_time": moment().format("hh:mm:ss a"),
       "ride_end_time": "",
       "payment_id": ""
     }

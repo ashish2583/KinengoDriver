@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, Text, StyleSheet, SafeAreaView, Linking, TextInput, FlatList, TouchableOpacity, Platform, Alert, PermissionsAndroid, ScrollView, Keyboard } from 'react-native';
+import { View, Image, Text, StyleSheet, SafeAreaView, Linking, TextInput, FlatList, TouchableOpacity, Platform, Alert, PermissionsAndroid, ScrollView, Keyboard, BackHandler } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Polyline, AnimatedRegion, Animated } from 'react-native-maps';
 import { Mycolors, dimensions } from '../../utility/Mycolors';
 import Geolocation from "react-native-geolocation-service";
@@ -18,6 +18,7 @@ import Toggle from "react-native-toggle-element";
 import MyButtons from '../../component/MyButtons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import firestore from '@react-native-firebase/firestore'
+import Toast from 'react-native-toast-message';
 
 Geocoder.init(GoogleApiKey);
 
@@ -136,7 +137,7 @@ const Home2 = (props) => {
   const [loder, setLoder] = useState(false)
   const [modlevisual, setmodlevisual] = useState(false);
   const [dateopen, setDateOpen] = useState(false);
-  const [datevalue, setDateValue] = useState(null);
+  const [datevalue, setDateValue] = useState(mapdata.driverridestatus);
   const [ridedate, setRideDate] = useState([
     { label: 'select Job Status', value: '' },
     { label: 'On the way to restaurant', value: '0' },
@@ -165,6 +166,26 @@ const Home2 = (props) => {
     // setDateValue(mapdata.driverridestatus)
     statusLable(mapdata.driverridestatus)
   }, [])
+  useEffect(() => {
+    const backAction = () => {
+      console.log('datevalue', datevalue);
+      console.log('check back', !(datevalue == '1' || datevalue == '2'));
+      if(!(datevalue == '1' || datevalue == '2')){
+        // Alert.alert('Please deliver this order to receive new orders.')
+        Toast.show({text1: 'Please deliver this order to receive new orders.'})
+        // return true;
+      }else{
+        // return true;
+      }
+      return true
+    };
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction,
+    );
+
+    return () => backHandler.remove();
+  }, []);
   //function : get api
   const googleGetApi = async (googleUrl = '') => {
     const response = await fetch(googleUrl, {
