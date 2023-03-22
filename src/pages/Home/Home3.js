@@ -75,7 +75,8 @@ const Home3 = (props) => {
     },[])
 
     const sendEmail = () => {
-      const email = showVendorDetails ? mapdata.notificationdata.business_emailid : mapdata.notificationdata.emailid
+      const email = showVendorDetails ? mapdata.notificationdata.business_email : mapdata.notificationdata.emailid
+      console.log('sendEmail email', email);
       Linking.openURL(`mailto:${email}`)
     }
     const dialCall = () => {
@@ -128,11 +129,11 @@ const Home3 = (props) => {
 </SafeAreaView>
   
 <SafeAreaView>
-  {/* <TouchableOpacity style={{width:'78%',height:40,borderRadius:5,backgroundColor:'#fff',position:'absolute',left:65,top:15,alignItems:'center',flexDirection:'row'}}
+  <TouchableOpacity style={{width:'78%',height:40,borderRadius:5,backgroundColor:'#fff',position:'absolute',left:65,top:15,alignItems:'center',flexDirection:'row'}}
   onPress={()=>{}}>
   <Image source={require('../../assets/MapPin.png')} style={{ width: 25, height: 22,left:9}}></Image>
    <Text style={{left:15,color:'gray',fontSize:13}}>Varanasi India</Text>
-  </TouchableOpacity> */}
+  </TouchableOpacity>
 
 </SafeAreaView>
 
