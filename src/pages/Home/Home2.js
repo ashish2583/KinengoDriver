@@ -661,6 +661,17 @@ const Home2 = (props) => {
                 </View>
               </View>
             </View>
+            <View style={{ width: '100%', flexDirection: 'row', marginTop:15 }}>
+              <View>
+                <Image source={require('../../assets/MapPin.png')} style={{ width: 24, height: 27, top: 0, left: 3 }}></Image>
+              </View>
+              <View style={{ width: dimensions.SCREEN_WIDTH - 100, left: 15 }}>
+                <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, }}>Order Drop Location</Text>
+                <View style={{ flexDirection: 'row' }} >
+                  <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 5 }}>{mapdata.notificationdata.destination_address}</Text>
+                </View>
+              </View>
+            </View>
           </View>
 
           {/* <View style={{ width: '100%', height: 0.9, backgroundColor: '#fee1be', top: -9 }} /> */}

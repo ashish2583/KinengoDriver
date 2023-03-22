@@ -36,6 +36,7 @@ const Home3 = (props) => {
       const [mtype,setmType]=useState('standard')
       const [showtype,setShowType]=useState(false)
       const [confirmRide, setconfirmRide] = useState(false)
+      const [showVendorDetails, setShowVendorDetails] = useState(false)
       const [value, setValue] = useState('');
       const [loading,setLoading]=useState(false)
       const [angle,setangle]=useState(45)
@@ -67,10 +68,29 @@ const Home3 = (props) => {
           longitudeDelta: 0.0421,
         })
         // frist()
+        if(mapdata.driverridestatus == '0' || mapdata.driverridestatus == '3'){
+          setShowVendorDetails(true)
+        }
 
     },[])
 
-
+    const sendEmail = () => {
+      const email = showVendorDetails ? mapdata.notificationdata.business_emailid : mapdata.notificationdata.emailid
+      Linking.openURL(`mailto:${email}`)
+    }
+    const dialCall = () => {
+      let phoneNumber = '';
+      let num = showVendorDetails ? mapdata.notificationdata.business_phone : mapdata.notificationdata.phone;
+      console.log('dialcall num', num);
+      if (Platform.OS === 'android') {
+        phoneNumber = 'tel:${' + num + '}';
+      }
+      else {
+        phoneNumber = 'telprompt:${' + num + '}';
+      }
+      console.log('dialcall phoneNumber', phoneNumber);
+      Linking.openURL(phoneNumber);
+    };
 
     return(
     <SafeAreaView style={styles.container}>
@@ -108,11 +128,11 @@ const Home3 = (props) => {
 </SafeAreaView>
   
 <SafeAreaView>
-  <TouchableOpacity style={{width:'78%',height:40,borderRadius:5,backgroundColor:'#fff',position:'absolute',left:65,top:15,alignItems:'center',flexDirection:'row'}}
+  {/* <TouchableOpacity style={{width:'78%',height:40,borderRadius:5,backgroundColor:'#fff',position:'absolute',left:65,top:15,alignItems:'center',flexDirection:'row'}}
   onPress={()=>{}}>
   <Image source={require('../../assets/MapPin.png')} style={{ width: 25, height: 22,left:9}}></Image>
    <Text style={{left:15,color:'gray',fontSize:13}}>Varanasi India</Text>
-  </TouchableOpacity>
+  </TouchableOpacity> */}
 
 </SafeAreaView>
 
@@ -124,21 +144,23 @@ const Home3 = (props) => {
               <Image source={require('../../assets/images/profileimg.png')} style={{ width: 60, height: 60,}}></Image>
             </View>
             <View style={{width:dimensions.SCREEN_WIDTH-100,left:20,top:8}}>
-              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 15,fontWeight:'600'}}>{mapdata.notificationdata.user_name}</Text>
+              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 15,fontWeight:'600'}}>{showVendorDetails ? mapdata.notificationdata.business_name : mapdata.notificationdata.user_name}</Text>
            <View style={{flexDirection:'row'}} >
            <Image source={require('../../assets/Star.png')} style={{ width: 16, height: 16,top:6}}></Image>
-           <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,top:5,left:5,fontWeight:'600'}}>3.8</Text>
+           {showVendorDetails ?
+            <Text style={{color:Mycolors.TEXT_COLOR,fontSize:13,top:5,left:5,fontWeight:'600'}}>{parseFloat(Number(mapdata.notificationdata.business_rating).toFixed(1))}</Text>
+            :null}
            </View>
           </View>
             </View>
 
 
           <View style={{height:39,width:80, borderRadius:15,flexDirection:'row',justifyContent:'space-between',position:'absolute',right:10,top:30}}>
-          <MyButtons  height={35} width={35} borderRadius={5} press={()=>{}} 
+          <MyButtons  height={35} width={35} borderRadius={5} press={sendEmail} 
           img={require('../../assets/Envelope.png')} imgheight={20} imgwidth={20}
             titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.ORANGE}  />
           
-          <MyButtons height={35} width={35} borderRadius={5} press={()=>{}} 
+          <MyButtons height={35} width={35} borderRadius={5} press={dialCall} 
           img={require('../../assets/call.png')} imgheight={20} imgwidth={20} 
             titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN}   />
           
