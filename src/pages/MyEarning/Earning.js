@@ -59,19 +59,27 @@ const Earning = (props) => {
   const getRideHistory = async (filters = false, closeModal = false) => {
     let endPoint = driver_rides_history + '?status=1'
     if(filters){
+      if(startDate !== '' && endDate === '' ){
+        Alert.alert('Please select end date')
+        return
+      }
+      if(endDate !== '' && startDate === '' ){
+        Alert.alert('Please select start date')
+        return
+      }
       const data = {}
       if(startDate !== ''){
-        data['start_date'] = startDate
+        data['start_date'] = moment(startDate).format('YYYY-MM-DD')
       }
       if(endDate !== ''){
-        data['end_date'] = endDate
+        data['end_date'] = moment(endDate).format('YYYY-MM-DD')
       }
       if(select !== ''){
         data['select'] = select
       }
-      if(Object.keys(data)?.length > 0){
-        endPoint +='?'  
-      }
+      // if(Object.keys(data)?.length > 0){
+      //   endPoint +='?'  
+      // }
       for (const [key, value] of Object.entries(data)) {
         if(endPoint?.includes('=')){
           endPoint +=`&${key}=${value}` 
