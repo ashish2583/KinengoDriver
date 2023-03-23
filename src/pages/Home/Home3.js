@@ -15,7 +15,7 @@ import {baseUrl,booking_start_ride,booking_verify_ride,driver_logout,booking_can
 import Loader from '../../WebApi/Loader';
 // import Toast from 'react-native-simple-toast'
  import MyMapView from '../../component/MyMapView'
-// import firestore from '@react-native-firebase/firestore'
+import firestore from '@react-native-firebase/firestore'
 // import openMap from 'react-native-open-maps';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {onLogoutUser} from '../../redux/actions/user_action';
@@ -67,6 +67,7 @@ const Home3 = (props) => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         })
+        // getDriverLocation(userdetaile.driver_id.toString())
         // frist()
         if(mapdata.driverridestatus == '0' || mapdata.driverridestatus == '3'){
           setShowVendorDetails(true)
@@ -75,6 +76,27 @@ const Home3 = (props) => {
         }
 
     },[])
+
+    const getDriverLocation = async (id) => {
+      const querySanp = await firestore().collection('DriverLocation').doc(id).get()
+      const driverData = querySanp.docs.map(docSnap=>docSnap.data())
+      // const driverData = Promise.resolve(querySanp)
+      // const data = null
+      // driverData.then((value) => {
+      //   data = value
+      //   // console.log('driverData',value);
+      //   // Expected output: 123
+      // });
+      // const driverData2 = data.docs.map(docSnap=>docSnap.data())
+      // const driverData = firestore()
+      //   .collection('DriverLocation')
+      //   .doc(id)
+      //   .get()
+      //   .then(() => {
+      //     // console.log('User added!');
+      //   });
+      console.log('driverData', driverData);  
+    }
 
     const sendEmail = () => {
       const email = showVendorDetails ? mapdata.notificationdata.business_email : mapdata.notificationdata.emailid

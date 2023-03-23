@@ -54,6 +54,7 @@
     "react-native-maps-directions": "^1.9.0",
     "react-native-masonry-list": "^2.16.1",
     "react-native-modal": "^13.0.1",
+    "react-native-open-maps": "^0.4.0",
     "react-native-push-notification": "^8.1.1",
     "react-native-ratings": "^8.1.0",
     "react-native-reanimated": "^2.14.4",

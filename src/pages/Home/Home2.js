@@ -19,6 +19,7 @@ import MyButtons from '../../component/MyButtons';
 import DropDownPicker from 'react-native-dropdown-picker';
 import firestore from '@react-native-firebase/firestore'
 import Toast from 'react-native-toast-message';
+import openMap from 'react-native-open-maps';
 
 Geocoder.init(GoogleApiKey);
 
@@ -410,6 +411,17 @@ const Home2 = (props) => {
     setmodlevisual(true)
   }
 
+  const goToMap=()=> {
+    openMap(
+      { latitude: curentCord.latitude,
+         longitude: curentCord.longitude ,
+         provider:'google',
+        //  start:'Noida ,Uttar Pradesh,India',
+         end:mapdata.startPosition,
+        }
+        );
+   }
+
   return (
     <SafeAreaView style={styles.container}>
 
@@ -672,7 +684,9 @@ const Home2 = (props) => {
 
           {/* <View style={{ width: '100%', height: 0.9, backgroundColor: '#fee1be', top: -9 }} /> */}
           <View style={{ top: -15, width: '100%', backgroundColor: '#fee1be', borderRadius: 10, flexDirection: "row", justifyContent: 'space-between' }}>
-            <MyButtons title2="Navigate" height={30} width={'46%'} borderRadius={10} press={() => { props.navigation.navigate('Home3') }}
+            <MyButtons title2="Navigate" height={30} width={'46%'} borderRadius={10} 
+            // press={() => { props.navigation.navigate('Home3') }}
+            press={() => { goToMap() }}
               img={require('../../assets/layer_9.png')} imgleft={25} imgheight={23} imgwidth={16} tit2left={-2}
               titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} fontWeight={'500'} fontSize={13} marginVertical={10} />
             <Image source={require('../../assets/green-arrow.png')} style={{ width: 18, height: 18, alignSelf: 'center', right: 20 }}></Image>
