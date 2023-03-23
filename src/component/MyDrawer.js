@@ -90,8 +90,8 @@ const MyView=(props)=>{
 <View style={{width:'100%',alignSelf:'center',marginTop:0,}}>
 
  <MyView name="Earning" touch={()=>{props.navigation.navigate('Earning')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>  
- <MyView name="Money Transfer" touch={()=>{props.navigation.navigate('MonyTransfer')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>              
- <MyView name="Reward" touch={()=>{props.navigation.navigate('Reward')}} img={require('../assets/Group6541.png')} imgstyle={{width:26,height:27,}} desc={'Insurance And Discounts'}/>        
+ {/* <MyView name="Money Transfer" touch={()=>{props.navigation.navigate('MonyTransfer')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>               */}
+ {/* <MyView name="Reward" touch={()=>{props.navigation.navigate('Reward')}} img={require('../assets/Group6541.png')} imgstyle={{width:26,height:27,}} desc={'Insurance And Discounts'}/>         */}
  <MyView name="Help" touch={()=>{props.navigation.navigate('Help')}} img={require('../assets/Group64164.png')} imgstyle={{width:27,height:26,}} desc={'Get Support, Accident Insurance'}/>        
 
 </View>
