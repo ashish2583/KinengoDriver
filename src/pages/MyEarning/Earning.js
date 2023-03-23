@@ -66,8 +66,8 @@ const Earning = (props) => {
       if(endDate !== ''){
         data['end_date'] = endDate
       }
-      if(status !== ''){
-        data['status'] = status
+      if(select !== ''){
+        data['select'] = select
       }
       if(Object.keys(data)?.length > 0){
         endPoint +='?'  
@@ -81,7 +81,8 @@ const Earning = (props) => {
         console.log(`${key}: ${value}`);
       }
   
-    } 
+    }
+    console.log('endPoint getRideHistory', endPoint); 
     setLoading(true)
     try {
       const { responseJson, err } = await requestGetApi(
