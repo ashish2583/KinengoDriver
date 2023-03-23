@@ -166,27 +166,22 @@ const Home2 = (props) => {
     // setDateValue(mapdata.driverridestatus)
     statusLable(mapdata.driverridestatus)
   }, [])
-  useEffect(() => {
-    const backAction = () => {
-      console.log('datevalue', datevalue);
-      console.log('check back', !(datevalue == '1' || datevalue == '2'));
-      if(!(datevalue == '1' || datevalue == '2')){
-        // Alert.alert('Please deliver this order to receive new orders.')
-        Toast.show({text1: 'Please deliver this order to receive new orders.'})
-        // return true;
-      }else{
-        // return true;
-      }
-      return true
-    };
-    const backHandler = BackHandler.addEventListener(
-      'hardwareBackPress',
-      backAction,
-      // ()=>{},
-    );
+   useEffect(
+    () =>
+      props.navigation.addListener('beforeRemove', (e) => {
+        if(datevalue == '1' || datevalue == '2'){
+          // If we don't have unsaved changes, then we don't need to do anything
+          return;
+        }
 
-    return () => backHandler.remove();
-  }, []);
+        // Prevent default behavior of leaving the screen
+        e.preventDefault();
+
+        // Prompt the user before leaving the screen
+        Alert.alert('Please deliver this order to receive new orders.')
+       }),
+    [props.navigation, datevalue]
+  );
   //function : get api
   const googleGetApi = async (googleUrl = '') => {
     const response = await fetch(googleUrl, {

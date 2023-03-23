@@ -70,6 +70,8 @@ const Home3 = (props) => {
         // frist()
         if(mapdata.driverridestatus == '0' || mapdata.driverridestatus == '3'){
           setShowVendorDetails(true)
+        }else{
+          setShowVendorDetails(false)
         }
 
     },[])
