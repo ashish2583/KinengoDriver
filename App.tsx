@@ -15,6 +15,7 @@ import PushNotification from 'react-native-push-notification'
 import PushNotificationIOS from '@react-native-community/push-notification-ios'
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 // import Orientation from 'react-native-orientation';
+import Toast from 'react-native-toast-message';
 
 const App = (props) => {
   // const mynavigation = useNavigation();
@@ -141,6 +142,7 @@ const App = (props) => {
      <Provider store={store}>
        <NavigationContainer theme={DefaultTheme}>
                 <MainNav/>
+                <Toast />
       </NavigationContainer>
      </Provider>
    

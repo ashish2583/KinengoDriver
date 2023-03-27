@@ -32,7 +32,7 @@ const Home3 = (props) => {
     const userdetaile  = useSelector(state => state.user.user_details)
     const person_Image = "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
    
-      const [modlevisual, setmodlevisual] = useState(true);
+      const [modlevisual, setmodlevisual] = useState(false);
       const [mtype,setmType]=useState('standard')
       const [showtype,setShowType]=useState(false)
       const [confirmRide, setconfirmRide] = useState(false)

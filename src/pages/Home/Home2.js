@@ -140,7 +140,7 @@ const Home2 = (props) => {
   const [dateopen, setDateOpen] = useState(false);
   const [datevalue, setDateValue] = useState(mapdata.driverridestatus);
   const [ridedate, setRideDate] = useState([
-    { label: 'select Job Status', value: '' },
+    // { label: 'select Job Status', value: '' },
     { label: 'On the way to restaurant', value: '0' },
     { label: 'Waiting at the restaurant', value: '3' },
     // {label: 'Food is not prepared', value: '4'},
@@ -167,6 +167,7 @@ const Home2 = (props) => {
     // setDateValue(mapdata.driverridestatus)
     statusLable(mapdata.driverridestatus)
   }, [])
+
    useEffect(
     () =>
       props.navigation.addListener('beforeRemove', (e) => {
@@ -179,7 +180,7 @@ const Home2 = (props) => {
         e.preventDefault();
 
         // Prompt the user before leaving the screen
-        Alert.alert('Please deliver this order to receive new orders.')
+        Toast.show({text1:"Please deliver this order to receive new orders."})
        }),
     [props.navigation, datevalue]
   );
@@ -291,14 +292,13 @@ const Home2 = (props) => {
     }
   }
 
-
-
   const frist = () => {
     if (watch == '1') {
       myposition()
       second()
     }
   }
+
   const second = () => {
     setTimeout(() => {
       frist()
@@ -320,6 +320,7 @@ const Home2 = (props) => {
   }
 
   const dialCall = (num) => {
+    console.log('numbers',num);
     let phoneNumber = '';
 
     if (Platform.OS === 'android') {
@@ -349,7 +350,6 @@ const Home2 = (props) => {
       },
       error => {
         console.log('The curent error is', error);
-        // Alert.alert(error.message.toString());
       },
       {
         showLocationDialog: true,
@@ -378,7 +378,6 @@ const Home2 = (props) => {
       },
       error => {
         console.log('The curent error is', error);
-        // Alert.alert(error.message.toString());
       },
       {
         showLocationDialog: true,
@@ -388,7 +387,6 @@ const Home2 = (props) => {
       }
     );
   }
-
 
   const resetStacks = (page) => {
     props.navigation.reset({
@@ -411,17 +409,43 @@ const Home2 = (props) => {
     setmodlevisual(true)
   }
 
-  const goToMap=()=> {
+  const LatlongTo_address = async() => {
+    var latlongs=''
+    if(datevalue=='5')
+     {
+      latlongs=mapdata.destnationPosition
+     }else{
+      latlongs=mapdata.startPosition
+     }
+    Geocoder.from(latlongs.latitude, latlongs.longitude)
+      .then(json => {
+        var addressComponent = json.results[0].formatted_address;
+        console.log('The address is', json.results[0].formatted_address);
+        goToMap(addressComponent)
+      })
+      .catch(error => {
+        console.warn(error)
+      });
+  }
+
+  const goToMap=(add)=> {
+
+    console.log('mapdata.startPosition', mapdata.startPosition);
+   
     openMap(
       { latitude: curentCord.latitude,
          longitude: curentCord.longitude ,
          provider:'google',
         //  start:'Noida ,Uttar Pradesh,India',
-         end:mapdata.startPosition,
+        // end : 'Noida ,Uttar Pradesh,India',
+        end:add,
         }
         );
    }
-
+  const sendEmail = (myMail) => {
+      console.log('sendEmail email', myMail);
+      Linking.openURL(`mailto:${myMail}`) 
+    }
   return (
     <SafeAreaView style={styles.container}>
 
@@ -459,39 +483,6 @@ const Home2 = (props) => {
               <Text style={{ left: 15, color: Mycolors.TEXT_COLOR, fontSize: 13, fontWeight: 'bold' }}>DUTY</Text>
             </View>
 
-            {/* <Toggle
-  value={toggleValue}
-  onPress={(newState) => {
-    // setToggleValue(newState)
-    console.log(true);
-  }}
-  //  leftTitle="Veg"
-  // rightTitle="Non-Veg"
-  trackBarStyle={{
-    borderColor: "gray",
-    width:55,height:25,
-    backgroundColor:toggleValue?'gray':'green'
-  }}
-  
-  trackBar={{
-    backgroundColor:'#fff',
-    width: 53,
-  }}
-
-  thumbButton={{
-    width: 24,
-    height: 24,
-    radius: 24,
-    backgroundColor:'#fff',
-
-  }}
-  thumbStyle={{
-    left:2,
-    right:2,
-    backgroundColor:'#fff',
-  }}
-  containerStyle={{width:60,height:40}}
-/> */}
             <Text style={{ color: 'green' }}>Online</Text>
 
           </TouchableOpacity>
@@ -548,13 +539,16 @@ const Home2 = (props) => {
 
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
-            <MyButtons title2="Send Message" height={30} width={'45%'} borderRadius={5} press={() => { }}
-              img={require('../../assets/Envelope.png')} imgleft={10} imgheight={20} imgwidth={20} tit2left={10}
+            <MyButtons title2="Send Email" height={30} width={'45%'} borderRadius={5} 
+            press={() => {
+              sendEmail(mapdata.notificationdata.business_email)
+             }}
+              img={require('../../assets/Envelope.png')} imgleft={10} imgheight={20} imgwidth={20} 
               titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.ORANGE} fontWeight={'500'} fontSize={13} marginVertical={10} />
 
             <MyButtons title2="Call Restaurant" height={30} width={'45%'} borderRadius={5} press={() => {
               dialCall(mapdata.notificationdata.business_phone)
-            }}
+             }}
               img={require('../../assets/call.png')} imgleft={10} imgheight={20} imgwidth={20} tit2left={10}
               titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.GREEN} fontWeight={'500'} fontSize={13} marginVertical={10} />
           </View>
@@ -616,7 +610,10 @@ const Home2 = (props) => {
             </View>
 
             <View style={{ height: 39, width: 80, borderRadius: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
-              <MyButtons height={35} width={35} borderRadius={5} press={() => { }}
+              <MyButtons height={35} width={35} borderRadius={5} 
+              press={() => {
+                Linking.openURL(`mailto:${mapdata.notificationdata.emailid}`) 
+               }}
                 img={require('../../assets/Envelope.png')} imgheight={20} imgwidth={20}
                 titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.ORANGE} />
 
@@ -683,15 +680,15 @@ const Home2 = (props) => {
           </View>
 
           {/* <View style={{ width: '100%', height: 0.9, backgroundColor: '#fee1be', top: -9 }} /> */}
-          <View style={{ top: -15, width: '100%', backgroundColor: '#fee1be', borderRadius: 10, flexDirection: "row", justifyContent: 'space-between' }}>
+          <TouchableOpacity style={{ top: -15, width: '100%', backgroundColor: '#fee1be', borderRadius: 10, flexDirection: "row", justifyContent: 'space-between' }}
+          onPress={()=>{LatlongTo_address()}}>
             <MyButtons title2="Navigate" height={30} width={'46%'} borderRadius={10} 
-            // press={() => { props.navigation.navigate('Home3') }}
-            press={() => { goToMap() }}
+           // press={() => { props.navigation.navigate('Home3') }}
+             press={() => { LatlongTo_address() }}
               img={require('../../assets/layer_9.png')} imgleft={25} imgheight={23} imgwidth={16} tit2left={-2}
               titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} fontWeight={'500'} fontSize={13} marginVertical={10} />
             <Image source={require('../../assets/green-arrow.png')} style={{ width: 18, height: 18, alignSelf: 'center', right: 20 }}></Image>
-          </View>
-
+          </TouchableOpacity>
 
         </View>
 
@@ -737,12 +734,6 @@ const Home2 = (props) => {
 
         </View>
 
-
-
-
-
-
-
         <View style={{ width: '100%', height: 60, backgroundColor: 'transparent', marginTop: 10 }} />
 
 
@@ -754,8 +745,8 @@ const Home2 = (props) => {
       {modlevisual ?
         <View style={{ width: dimensions.SCREEN_WIDTH, height: dimensions.SCREEN_HEIGHT, backgroundColor: 'rgba(0,0,0,0.4)', position: 'absolute', left: 0, top: 0 }}>
 
-          <View style={{ height: 350, backgroundColor: '#fff', borderTopLeftRadius: 15, borderTopRightRadius: 15, position: 'absolute', bottom: 0, width: '100%', borderColor: '#fff', borderWidth: 0.3, alignSelf: 'center' }}>
-
+          <View style={{ height: datevalue === '1' ? 500 : 400, backgroundColor: '#fff', borderTopLeftRadius: 15, borderTopRightRadius: 15, position: 'absolute', bottom: 0, width: '100%', borderColor: '#fff', borderWidth: 0.3, alignSelf: 'center' }}>
+        <ScrollView>
 
             <View style={{ marginTop: 5, width: '100%', alignItems: 'flex-start', justifyContent: 'flex-start', paddingHorizontal: 20, paddingVertical: 20, borderTopLeftRadius: 15, borderTopRightRadius: 15, }}>
               <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, }}>Job </Text>
@@ -777,7 +768,8 @@ const Home2 = (props) => {
                 onChangeValue={(value) => {
                   setDateValue(value)
                 }}
-                listMode="MODAL"
+                // dropDownDirection="TOP"
+               // listMode="MODAL"
                 placeholderStyle={{
                   color: Mycolors.TEXT_COLOR,
                   // fontWeight: "bold"
@@ -787,12 +779,15 @@ const Home2 = (props) => {
                 }}
                 style={{ borderColor: 'transparent', backgroundColor: Mycolors.BG_COLOR, }}
                 containerStyle={{
-                  borderColor: 'red'
+                  borderColor: 'red',
+                  // height:400
                 }}
                 disabledStyle={{
                   opacity: 0.5
                 }}
+                // maxHeight={400}
                 dropDownContainerStyle={{
+                   height:400,
                   backgroundColor: Mycolors.BG_COLOR == '#fff' ? '#fff' : "rgb(50,50,50)",
                   borderColor: 'transparent',
                   shadowColor: '#000000',
@@ -803,6 +798,8 @@ const Home2 = (props) => {
                   shadowRadius: 5,
                   shadowOpacity: 1.0,
                   elevation: 5,
+                  // zIndex:999,
+                 
                 }}
               />
             </View>
@@ -814,44 +811,71 @@ const Home2 = (props) => {
                 }}
                 placeholder="Enter reason for cancellation"
                 placeholderTextColor={Mycolors.GrayColor}
-                style={styles.input}
+                multiline
+                style={[styles.input,{borderColor:'gray',borderWidth:0.3,height:100,borderRadius:0}]}
               /> : null}
             <View style={{ alignSelf: 'center', width: '90%', marginTop: 36 }}>
-              <MyButtons title="Save" height={50} width={'100%'} borderRadius={5} press={() => {
+            <MyButtons title="Save" height={50} width={'100%'} borderRadius={5} press={() => {
                 if (datevalue == '0') {
-                  Alert.alert('Cannot change status to Default status (Ongoing)')
+                  Toast.show({ text1: 'The changed status cannot be same as the previous one.'});
+                  ChangeRideStatus(datevalue)
+                  return
+                }
+                if (datevalue === '2') {
+                  Toast.show({ text1: 'Order Delivered Successfully!' });
+                  setmodlevisual(false)
+                  ChangeRideStatus(datevalue)
+                  return
+                }
+                if (datevalue === '3') {
+                  Toast.show({ text1: 'Status has been changed to Waiting at restaurant' });
+                  setmodlevisual(false)
+                  ChangeRideStatus(datevalue)
+                  return
+                }
+                if (datevalue === '5') {
+                  Toast.show({ text1: 'Status has been changed to On the way to deliver' });
+                  setmodlevisual(false)
+                  ChangeRideStatus(datevalue)
                   return
                 }
                 if (datevalue == '1') {
                   if (reason === '') {
-                    Alert.alert('Enter reason for cancellation')
+                    Toast.show({ text1: 'Please enter the reason for cancellation' });
+                    setmodlevisual(false)
                     return
                   }
                   ChangeRideStatus(datevalue)
-                } else {
+                }
+                else {
                   ChangeRideStatus(datevalue)
                 }
                 setmodlevisual(false)
               }}
                 titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.signupButton} fontWeight={'600'} fontSize={14} marginVertical={10} />
+
+
+
               <MyButtons title="Cancel" height={50} width={'100%'} borderRadius={5} press={() => { setmodlevisual(false) }}
-                titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} fontWeight={'600'} fontSize={14} marginVertical={10} />
+                titlecolor={Mycolors.TEXT_COLOR} backgroundColor={'transparent'} fontWeight={'600'} fontSize={14} marginVertical={10} borderColor={'gray'} borderWidth={1}/>
 
             </View>
 
 
 
+{datevalue === '1' ?
+<View style={{width:100,height:300}}></View>
+: 
+<View style={{width:100,height:300}}></View>
+}
 
-
-            {/* </KeyboardAwareScrollView> */}
+            </ScrollView> 
 
           </View>
 
         </View>
         : null
       }
-
-
 
 
       {My_Alert ? <MyAlert sms={alert_sms} okPress={() => { setMy_Alert(false) }} /> : null}
