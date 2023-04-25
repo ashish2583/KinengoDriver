@@ -69,7 +69,8 @@ const Login = (props) => {
       setLoading(true)
       var data = {
         "email": email,
-        "password": pass
+        "password": pass,
+        "device_id": mapdata.devicetoken
       }
       const { responseJson, err } = await requestPostApi(UserID_login, data, 'POST', '')
       setLoading(false)
@@ -131,7 +132,7 @@ const Login = (props) => {
               setemail(text)
             }}
             placeholder="User Name"
-            keyboardType='number-pad'
+           // keyboardType='number-pad'
             placeholderTextColor={Mycolors.GrayColor}
             style={styles.input}
           />
@@ -186,7 +187,7 @@ const Login = (props) => {
         </View> */}
 
       </ScrollView>
-      <View style={{ flexDirection: 'row', alignSelf: 'center', top: -30 }}>
+      {/* <View style={{ flexDirection: 'row', alignSelf: 'center', top: -30 }}>
         <Text style={[styles.textStyle, { color: Mycolors.TEXT_COLOR }]}
           onPress={() => { resetStacks('SignUp') }}>New user ?</Text>
 
@@ -194,7 +195,7 @@ const Login = (props) => {
           onPress={() => { resetStacks('SignUp') }}> Register now</Text>
 
 
-      </View>
+      </View> */}
 
       {modlevisual ?
         <View style={{ width: dimensions.SCREEN_WIDTH, height: '100%', backgroundColor: 'rgba(0,0,0,0.4)', position: 'absolute', left: 0, bottom: 0, top: 0, right: 0, flex: 1 }}>

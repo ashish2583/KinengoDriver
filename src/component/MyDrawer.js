@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Alert, Text, Image,StatusBar, ScrollView, SafeAreaView, Platform, TextInput, View, StyleSheet, TouchableOpacity, ActivityIndicator, Keyboard, Dimensions, FlatList ,BackHandler} from 'react-native';
+import { Alert, Text, Image,StatusBar, ScrollView,Linking, SafeAreaView, Platform, TextInput, View, StyleSheet, TouchableOpacity, ActivityIndicator, Keyboard, Dimensions, FlatList ,BackHandler} from 'react-native';
 import { DrawerContentScrollView,DrawerItem } from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer ,StackActions,CommonActions} from '@react-navigation/native';
@@ -60,6 +60,10 @@ const MyView=(props)=>{
     
   }
   
+  const sendEmail = (myMail) => {
+    console.log('sendEmail email', myMail);
+    Linking.openURL(`mailto:${myMail}`) 
+  }
 
     return (
       <SafeAreaView style={{flex:1,}}>
@@ -85,14 +89,20 @@ const MyView=(props)=>{
 </View>
 
 </View>
-<ScrollView style={{flex:1, paddingLeft:30,paddingVertical:10,paddingRight:10}}> 
+<ScrollView style={{flex:1, paddingLeft:15,paddingVertical:10,paddingRight:10}}> 
 
 <View style={{width:'100%',alignSelf:'center',marginTop:0,}}>
+<MyView name="Home" touch={()=>{props.navigation.navigate('Home')}} img={require('../assets/HouseGray.png')} imgstyle={{width:27,height:26,}} desc={'Click on Home to manage the rides'}/>  
 
  <MyView name="Earning" touch={()=>{props.navigation.navigate('Earning')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>  
  {/* <MyView name="Money Transfer" touch={()=>{props.navigation.navigate('MonyTransfer')}} img={require('../assets/CurrencyCircleDolar.png')} imgstyle={{width:27,height:26,}} desc={'See All Your Earnings In One Place'}/>               */}
  {/* <MyView name="Reward" touch={()=>{props.navigation.navigate('Reward')}} img={require('../assets/Group6541.png')} imgstyle={{width:26,height:27,}} desc={'Insurance And Discounts'}/>         */}
- <MyView name="Help" touch={()=>{props.navigation.navigate('Help')}} img={require('../assets/Group64164.png')} imgstyle={{width:27,height:26,}} desc={'Get Support, Accident Insurance'}/>        
+ <MyView name="Help" touch={()=>{
+  // props.navigation.navigate('Help')
+  sendEmail('support@kinengo.com')
+  }} img={require('../assets/Group64164.png')} imgstyle={{width:27,height:26,}} desc={'Get Support, Accident Insurance'}/>        
+ <MyView name="Terms & Conditions" touch={()=>{props.navigation.navigate('TermCondition')}} img={require('../assets/contract.png')} imgstyle={{width:27,height:26,}} desc={'TERMS & CONDITIONS for Kinengo Driver'}/>        
+ <MyView name="Privacy Policy" touch={()=>{props.navigation.navigate('PrivicyPolicy')}} img={require('../assets/Note.png')} imgstyle={{width:27,height:26,}} desc={'PRIVACY POLICY for Kinengo Driver'}/>        
 
 </View>
 

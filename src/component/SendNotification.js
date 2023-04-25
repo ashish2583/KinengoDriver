@@ -1,4 +1,4 @@
-const SendNotification= async(data)=>{
+  const sendNotification= async(data)=>{
     const firApiKey="AAAA5TYSar4:APA91bH-_IBpo9IfiG4beQQjvc0YB5pZKgio_VNLE3ZxLsmjVeFyGHuA34ZVYpKUqdjXjogrf2-wdoh7zlGmp-BTykl7qNhAybGNWjcBdw0SDQZsiEasCpKce6CoPTmg4rhK94gQfwNZ"
     const  message={
 registration_ids:[data.token], //Devide token
@@ -22,4 +22,4 @@ let response = await fetch("https://fcm.googleapis.com/fcm/send", {method: "POST
 responce = await response.json();
 console.log('HIIIII',responce);
  }
-  export default {SendNotification}
+  export default {sendNotification}

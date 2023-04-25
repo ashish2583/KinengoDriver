@@ -15,11 +15,42 @@ import PushNotification from 'react-native-push-notification'
 import PushNotificationIOS from '@react-native-community/push-notification-ios'
 import dynamicLinks from '@react-native-firebase/dynamic-links';
 // import Orientation from 'react-native-orientation';
-import Toast from 'react-native-toast-message';
+import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
 
 const App = (props) => {
   // const mynavigation = useNavigation();
-  LogBox.ignoreAllLogs() 
+  LogBox.ignoreAllLogs()
+  
+  const toastConfig = {
+    success: (props) => (
+      <BaseToast
+        {...props}
+        style={{ borderLeftColor: '#ADC430',borderColor:'#ADC430',borderWidth:1,height:55,width:'90%' }}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
+        text1Style={{
+          fontSize: 12,
+          fontWeight: '400'
+          
+        }}
+        // text2Style={{
+        //   fontSize: 15,
+        //   fontWeight: '400'
+          
+        // }}
+      />
+    ),
+    error: (props) => (
+      <ErrorToast
+        {...props}
+        text1Style={{
+          fontSize: 12
+        }}
+        text2Style={{
+          fontSize: 12
+        }}
+      />
+    ),
+  };
 
   
     const isDarkMode = useColorScheme() === 'dark';
@@ -142,7 +173,7 @@ const App = (props) => {
      <Provider store={store}>
        <NavigationContainer theme={DefaultTheme}>
                 <MainNav/>
-                <Toast />
+                <Toast config={toastConfig}/>
       </NavigationContainer>
      </Provider>
    

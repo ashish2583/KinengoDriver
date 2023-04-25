@@ -147,7 +147,7 @@ const [myreson,setmyReson]=useState({
   latitudeDelta: 0.0922,
   longitudeDelta: 0.0421,
 })
-const [estTime,setestTime]=useState('')
+const [estTime,setEstTime]=useState('')
 const [distance,setdistance]=useState('')
 const [fuleCost, setfuleCost] = useState('');
 const [fuleModle, setfuleModle] = useState(false);
@@ -156,6 +156,7 @@ const [alert_sms, setalert_sms] = useState('')
 const [time, settime] = useState(30);
 const timeCopy = useRef(60);
 const intervalID = useRef(0);
+const [estDistance, setEstDistance] = useState('')
 
   useEffect( () => {
     updateWalletData()
@@ -168,7 +169,7 @@ const intervalID = useRef(0);
   useEffect( () => {
     if(modlevisual){
       if(time < 0){
-        setmodlevisual(false)
+       setmodlevisual(false)
       }
       if(time < 0){
         return
@@ -179,7 +180,7 @@ const intervalID = useRef(0);
   }, [modlevisual, decrementTime, time])
   useEffect(() => {
     const unsubscribe = props.navigation.addListener('blur', () => {
-      setmodlevisual(false)
+       setmodlevisual(false)
     });
     return unsubscribe;
   }, [props.navigation]);
@@ -206,7 +207,6 @@ const intervalID = useRef(0);
       setLoading(false)
       console.log("updateWalletData error", error);
     }
-  
 }
   const senNoti= async()=>{
     let notidata={
@@ -273,7 +273,7 @@ const intervalID = useRef(0);
     }
   }
 
-   const AcceptRideClick = async () => {
+ const AcceptRideClick = async () => {
     // props.navigation.navigate('Home2', { from: 'home' })
     var data = {
       "driver_id": userdetaile.driver_id,
@@ -307,48 +307,52 @@ const intervalID = useRef(0);
     }
           }
 
-
   messaging().onNotificationOpenedApp(remoteMessage => {
     const data = remoteMessage.data
     console.log('Notification caused app to open from background state:',remoteMessage)
     if(remoteMessage.notification.body=='You have a new ride'){
-     // dispatch(setDestnationAddress(data.business_address))
-     // dispatch(setStartAddress(data.start_location))
-      dispatch(setNotificationData(data))
-      // resetStacks('Home2')
-    }
+      calculateTravelTime(remoteMessage.data.lattitude,remoteMessage.data.longitude,remoteMessage.data.destination_lat,remoteMessage.data.destination_long)
+       settime(30)
+       setmodlevisual(true)
+       if(modlevisual != true){
+         callAutoTimer()
+       }else{
+         return false
+       }
+       dispatch(setNotificationData(data))
+       // resetStacks('Home2')
+     }else if(remoteMessage.notification.body=='new message'){
+       // dispatch(setMessageCount(mapdata.messagecount+1)) 
+      }
   });
   messaging()
     .getInitialNotification()
     .then(remoteMessage => {
-      if (remoteMessage) {
-        console.log(
-          'Notification caused app to open from quit state:',
-          remoteMessage,
-        );
-        const data = remoteMessage.data
-        console.log('Home Notification==>>',remoteMessage)
-        if(remoteMessage.notification.body=='You have a new ride'){
-         // dispatch(setDestnationAddress(data.business_address))
-         // dispatch(setStartAddress(data.start_location))
-          dispatch(setNotificationData(data))
-          // resetStacks('Home2')
+      // console.log('====================================');
+      console.log('remoteMessage', remoteMessage);
+      // console.log('====================================');
+      if(remoteMessage.notification.body=='You have a new ride'){
+        calculateTravelTime(remoteMessage.data.lattitude,remoteMessage.data.longitude,remoteMessage.data.destination_lat,remoteMessage.data.destination_long)
+         settime(30)
+         setmodlevisual(true)
+         if(modlevisual != true){
+           callAutoTimer()
+         }else{
+           return false
+         }
+         dispatch(setNotificationData(data))
+         // resetStacks('Home2')
+       }else if(remoteMessage.notification.body=='new message'){
+       
+         // dispatch(setMessageCount(mapdata.messagecount+1)) 
         }
-      }
     });
 
   messaging().onMessage(async remoteMessage => {
   const data = remoteMessage.data
   console.log('Home Notification==>>',remoteMessage)
   if(remoteMessage.notification.body=='You have a new ride'){
-    // {"collapseKey": "com.kinengodriver", 
-    // "data": {"business_address": "Sector 57, Noida, Uttar Pradesh, India",
-    //  "business_name": "Nile Technologies", 
-    //  "lattitude": "28.608600616455078", "longitude": "77.35099792480469",
-    //   "notificationType": "riderequest", "order_id": "11", "ride_id": "3"},
-    //   "from": "984454687422", "messageId": "0:1677066019102075%2e068bdc2e068bdc", 
-    //   "notification": {"android": {"sound": "default"}, "body": "You have a new ride",
-    //    "title": "KinenGo"}, "sentTime": 1677066019083, "ttl": 2419200}
+   calculateTravelTime(remoteMessage.data.lattitude,remoteMessage.data.longitude,remoteMessage.data.destination_lat,remoteMessage.data.destination_long)
     settime(30)
     setmodlevisual(true)
     if(modlevisual != true){
@@ -356,18 +360,10 @@ const intervalID = useRef(0);
     }else{
       return false
     }
-    
-    // if(remoteMessage.notification.body!='new message'  && remoteMessage.notification.body!='Ride Cancelled By Customer'){
-    // var dest_pos={latitude: parseInt(data.end_latitude), longitude: parseInt(data.end_longitude)}
-    // var st_pos={latitude: parseInt(data.start_latitude), longitude: parseInt(data.start_longitude)}  
-    //  dispatch(setDestnationAddress(data.business_address))
-    // dispatch(setDestnationPosition(dest_pos))
-    // dispatch(setStartPosition(st_pos))
-    // dispatch(setStartAddress(data.start_location))
     dispatch(setNotificationData(data))
     // resetStacks('Home2')
   }else if(remoteMessage.notification.body=='new message'){
-    // dispatch(setMessageCount(mapdata.messagecount+1))
+    // dispatch(setMessageCount(mapdata.messagecount+1)) 
    }
   }); 
 
@@ -494,12 +490,54 @@ const intervalID = useRef(0);
       })
       .catch(error => console.warn(error));
   }
+  const googleGetApi = async (googleUrl = '') => {
+    const response = await fetch(googleUrl, {
+      method: "GET",
+      body: "",
+      headers: {},
+    } 
+    )
+    let responseJson = response.json();
+    return { responseJson: responseJson, err: null }
+  }
+  const calculateTravelTime = async (originLat, originLong,destLat,destLong) => {
+    const url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + originLat + "," + originLong + "&destinations=" + destLat + "," + destLong + "&mode=driving" + "&units=imperial&key=" + GoogleApiKey
+    setLoading(true)
+    const { responseJson, err } = await googleGetApi(url)
+    setLoading(false)
+    const promise1 = Promise.resolve(responseJson)
+    promise1.then((value) => {
+      console.log(value)
+      console.log('calculateTravelTime responseJson', value);
+      if (value.rows[0].elements[0].status === 'OK') {
+        // value.rows[0].elements[0].duration['text']
+        console.log('====================================');
+        console.log(value.rows[0].elements[0].duration['text']);
+        console.log('====================================');
+        setEstTime(value.rows[0].elements[0].duration['text'])
+      } else {
+        // Alert.alert('Zero results found')
+      }
+    })
+    // if(responseJson.rows[0].elements[0].status !== 'ZERO_RESULTS' || responseJson.rows[0].elements[0].status !== 'NOT_FOUND'){
+    //   // responseJson.rows[0].elements[0].duration['text']
+    //   setEstTime(responseJson.rows[0].elements[0].duration['text'])
+    // }else{
+    //   Alert.alert('Zero results found')
+    // }
+    console.log('calculateTravelTime res==>>', responseJson)
+    if (responseJson.headers.success == 1) {
+    } else {
+    }
+
+  }
 
   return (
     <SafeAreaView style={styles.container}>
    <HomeHeader height={60}  paddingHorizontal={15}
    press1={()=>{props.navigation.openDrawer()}} img1={require('../../assets/List.png')} img1width={25} img1height={25} 
-   press2={()=>{}} img2={require('../../assets/Kinengo_Green.png')} img2width={95} img2height={20}
+   press2={()=>{ }} img2={require('../../assets/Kinengo_Green.png')} img2width={95} img2height={20}
+  //  props.navigation.navigate('Chat')
    press3={()=>{}} img3={require('../../assets/Bell.png')} img3width={25} img3height={25} />
 
     <ScrollView style={{paddingHorizontal:15,flexGrow:1}} nestedScrollEnabled={true}>
@@ -520,7 +558,6 @@ const intervalID = useRef(0);
    }}>
    <TouchableOpacity style={{width:'100%',height:50,flexDirection:'row',
     justifyContent:'space-between',alignItems:'center',
-   
     paddingHorizontal:10 ,borderRadius:5,overflow:'hidden'   
     }} onPress={()=>{}}>
     <View style={{flexDirection:'row',alignItems:'center'}}>
@@ -569,8 +606,8 @@ const intervalID = useRef(0);
    
     <View style={{alignItems:'center',marginTop:20}}>
     <Image source={require('../../assets/TotalEarningsfromKarryGO.png')} style={{width:'100%',height:150,}}></Image>
-   <View style={{position:'absolute',top:'32%',left:30}}>
-<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${parseFloat(Number(walletDetail).toFixed(3))}</Text>
+   <View style={{position:'absolute',top:'32%',left:20}}>
+<Text style={{fontSize:20,color:Mycolors.BG_COLOR,fontWeight:'600'}}>${parseFloat(Number(walletDetail).toFixed(2))}</Text>
    </View>
     </View>
 {! toggleValue ?
@@ -583,8 +620,8 @@ const intervalID = useRef(0);
    
    
   <MapView
-          style={{ height: 400,
-   width: 400,
+          style={{ height: dimensions.SCREEN_HEIGHT*60/100,
+   width: 400, 
    justifyContent: 'flex-end',
    alignItems: 'center',borderRadius:10}}
           provider={PROVIDER_GOOGLE}
@@ -615,11 +652,9 @@ const intervalID = useRef(0);
           showsIndoorLevelPicker={true}
             >
         
-         
-   
         </MapView>
   
-
+ 
 
     {/* <Image source={require('../../assets/Maskgroup.png')} style={{width:'100%',height:400,}}></Image> */}
    
@@ -636,6 +671,7 @@ const intervalID = useRef(0);
 {modlevisual ?
   <View style={{ width: dimensions.SCREEN_WIDTH, height: '100%', backgroundColor: 'rgba(0,0,0,0.4)', position: 'absolute', left: 0, bottom: 0, top: 0, right: 0, flex: 1 }}>
           <View style={{ height: dimensions.SCREEN_HEIGHT * 52 / 100, backgroundColor: '#fff', borderTopLeftRadius: 15, borderTopRightRadius: 15, position: 'absolute', bottom: 0, width: '99%', borderColor: '#fff', borderWidth: 0.3, alignSelf: 'center' }}>
+          <ScrollView>
             {/* <View style={{ width: 100, height: 30, position: 'absolute', top: 0, zIndex: 999, alignSelf: 'center', borderRadius: 5 }}>
             <TouchableOpacity onPress={() => { setmodlevisual(false) }}style={{ width: 50, height:4,backgroundColor:Mycolors.GrayColor,borderRadius:17,marginTop:10 ,alignSelf:'center'}}>
             </TouchableOpacity>
@@ -672,18 +708,29 @@ const intervalID = useRef(0);
                 <View style={{ width: dimensions.SCREEN_WIDTH - 100, left: 20 }}>
                   <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, fontWeight: '600', }}>Est. Time</Text>
                   <View style={{ flexDirection: 'row' }} >
-                    <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 5 }}>09 min</Text>
+                    <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 5 }}>{estTime}</Text>
                   </View>
                 </View>
               </View>
               <View style={{ width: '100%', flexDirection: 'row' }}>
                 <View>
-                  <Image source={require('../../assets/MapPin.png')} style={{ width: 24, height: 27, top: 5, left: 3 }}></Image>
+                  <Image source={require('../../assets/MapPin.png')} style={{ width: 24, height: 27,  left: 3 }}></Image>
                 </View>
                 <View style={{ width: dimensions.SCREEN_WIDTH - 100, left: 20 }}>
                   <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, fontWeight: '600', }}>Order Pickup Location</Text>
                   <View style={{ flexDirection: 'row' }} >
                     <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 5 }}>{mapdata.notificationdata.business_address}</Text>
+                  </View>
+                </View>
+              </View>
+              <View style={{ width: '100%', flexDirection: 'row',marginTop:10 }}>
+                <View>
+                  <Image source={require('../../assets/MapPin.png')} style={{ width: 24, height: 27,  left: 3 }}></Image>
+                </View>
+                <View style={{ width: dimensions.SCREEN_WIDTH - 100, left: 20 }}>
+                  <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 14, fontWeight: '600', }}>Order Drop Location</Text>
+                  <View style={{ flexDirection: 'row' }} >
+                    <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 5 }}>{mapdata.notificationdata.destination_address}</Text>
                   </View>
                 </View>
               </View>
@@ -727,6 +774,8 @@ const intervalID = useRef(0);
                 <Text style={{ color: Mycolors.BG_COLOR, fontSize: 13, fontWeight: 'bold', marginLeft: 5 }}>Reject</Text>
               </TouchableOpacity>
             </View>
+            <View style={{width:20,height:100}} />
+           </ScrollView>
           </View>
         </View>
         : null

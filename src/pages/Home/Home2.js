@@ -20,6 +20,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import firestore from '@react-native-firebase/firestore'
 import Toast from 'react-native-toast-message';
 import openMap from 'react-native-open-maps';
+import sendNotification from '../../component/SendNotification';
 
 Geocoder.init(GoogleApiKey);
 
@@ -139,6 +140,7 @@ const Home2 = (props) => {
   const [modlevisual, setmodlevisual] = useState(false);
   const [dateopen, setDateOpen] = useState(false);
   const [datevalue, setDateValue] = useState(mapdata.driverridestatus);
+  const [currentStatus, setCurrentStatus] = useState(null);
   const [ridedate, setRideDate] = useState([
     // { label: 'select Job Status', value: '' },
     { label: 'On the way to restaurant', value: '0' },
@@ -146,7 +148,7 @@ const Home2 = (props) => {
     // {label: 'Food is not prepared', value: '4'},
     { label: 'On the way to deliver', value: '5' },
     // {label: 'On Hold', value: '5'},
-    { label: 'Cancel', value: '1' },
+    { label: 'Cancel delivery', value: '1' },
     // {label: 'Not recived', value: '6'},
     { label: 'Delivered', value: '2' },
   ]);
@@ -160,14 +162,19 @@ const Home2 = (props) => {
   const [drvRideStatus, setdrvRideStatus] = useState('')
   const [reason, setReason] = useState('')
   useEffect(() => {
+
     frist()
     getPosition()
     calculateTravelTime2()
     console.log('mapdata.notificationdata', mapdata.notificationdata);
     // setDateValue(mapdata.driverridestatus)
+    setCurrentStatus(mapdata.driverridestatus)
+    setDateValue(mapdata.driverridestatus)
     statusLable(mapdata.driverridestatus)
+    var sms=userdetaile.first_name+' has been assigned to deliver your order'
+    senNoti(sms)
   }, [])
-
+  
    useEffect(
     () =>
       props.navigation.addListener('beforeRemove', (e) => {
@@ -184,7 +191,18 @@ const Home2 = (props) => {
        }),
     [props.navigation, datevalue]
   );
-  //function : get api
+ 
+  const senNoti= async(mess)=>{
+    let notidata={
+      'data': mapdata.notificationdata,
+      'title':'Kinengo',
+      'body': mess,
+      'token':mapdata.notificationdata.user_device_id
+    } 
+    let result= await sendNotification.sendNotification(notidata)
+     // console.log('result')
+  }
+
   const googleGetApi = async (googleUrl = '') => {
     const response = await fetch(googleUrl, {
       method: "GET",
@@ -262,8 +280,7 @@ const Home2 = (props) => {
   }
 
   const ChangeRideStatus = async (val) => {
-
-    var data = {
+   var data = {
       "driver_id": userdetaile.driver_id,
       "notes": val == '1' ? reason : '',
       "ride_id": mapdata.notificationdata.ride_id,
@@ -279,12 +296,32 @@ const Home2 = (props) => {
     setLoading(false)
     console.log('ChangeRideStatus the res==>>', responseJson)
     if (responseJson.headers.success == 1) {
+      // Toast.show({text1:responseJson.headers.message})
       dispatch(setDriverRideStatus(val))
       setDateValue(val)
       statusLable(val)
+      setCurrentStatus(val)
       setmodlevisual(false)
-      if (val == '2' || val == '1') {
+      if(val=='1'){
+        let sms=userdetaile.first_name+' has cancelled your order.'
+        senNoti(sms)
+        Toast.show({ text1: 'Your ride has been cancelled' });
         props.navigation.navigate('Home')
+      }else if(val=='2'){
+        let sms='Order Delivered Successfully!'
+        senNoti(sms)
+        Toast.show({ text1: 'Order Delivered Successfully!' });
+        props.navigation.navigate('Home')
+      }else if(val=='5'){
+        let sms=userdetaile.first_name+' is on the way to deliver your order.'
+        senNoti(sms)
+        Toast.show({ text1: 'Status has been changed to On the way to deliver' });
+      }else if(val=='3'){
+        let sms=userdetaile.first_name+' is waiting at the '+mapdata.notificationdata.business_name
+        senNoti(sms)
+        Toast.show({ text1: 'Status has been changed to Waiting at restaurant' });
+      }else{
+
       }
     } else {
       setalert_sms(err)
@@ -324,7 +361,7 @@ const Home2 = (props) => {
     let phoneNumber = '';
 
     if (Platform.OS === 'android') {
-      phoneNumber = 'tel:${' + num + '}';
+      phoneNumber = 'tel:' + num ;
     }
     else {
       phoneNumber = 'telprompt:${' + num + '}';
@@ -520,11 +557,10 @@ const Home2 = (props) => {
 
             <View style={{ flexDirection: 'column', width: '70%', justifyContent: 'flex-start', alignItems: "flex-start" }}>
               <Text style={{ fontSize: 14, color: Mycolors.TEXT_COLOR, textAlign: 'center', fontWeight: '600', marginTop: 5 }}>{mapdata.notificationdata.business_name}</Text>
-              <View style={{ flexDirection: 'row', marginTop: 10, ajustifyContent: 'flex-start', alignItems: "flex-start" }}>
+              <View style={{ flexDirection: 'row', marginTop: 10, ajustifyContent: 'flex-start', alignItems: "flex-start",width:dimensions.SCREEN_WIDTH*40/100 }}>
                 <Text style={{ fontSize: 13, color: Mycolors.TEXT_COLOR, fontWeight: '600' }}>Address: </Text>
-
                 <Text style={{ fontSize: 13, color: Mycolors.GrayColor, }}>{mapdata.notificationdata.address}</Text>
-                <Image source={require('../../assets/layer_9.png')} style={{ width: 9, height: 12, alignSelf: 'center', left: 5 }}></Image>
+                {/* <Image source={require('../../assets/layer_9.png')} style={{ width: 9, height: 12, alignSelf: 'center', left: 5 }}></Image> */}
               </View>
               {mapdata.notificationdata.rating !== null ?
                 <View style={{ flexDirection: 'row', marginTop: 5, justifyContent: 'flex-start', alignItems: "flex-start" }}>
@@ -546,7 +582,7 @@ const Home2 = (props) => {
               img={require('../../assets/Envelope.png')} imgleft={10} imgheight={20} imgwidth={20} 
               titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.ORANGE} fontWeight={'500'} fontSize={13} marginVertical={10} />
 
-            <MyButtons title2="Call Restaurant" height={30} width={'45%'} borderRadius={5} press={() => {
+            <MyButtons title2="Call Restaurant" height={30} width={'46%'} borderRadius={5} press={() => {
               dialCall(mapdata.notificationdata.business_phone)
              }}
               img={require('../../assets/call.png')} imgleft={10} imgheight={20} imgwidth={20} tit2left={10}
@@ -612,9 +648,10 @@ const Home2 = (props) => {
             <View style={{ height: 39, width: 80, borderRadius: 15, flexDirection: 'row', justifyContent: 'space-between' }}>
               <MyButtons height={35} width={35} borderRadius={5} 
               press={() => {
-                Linking.openURL(`mailto:${mapdata.notificationdata.emailid}`) 
+                // Linking.openURL(`mailto:${mapdata.notificationdata.emailid}`) 
+                props.navigation.navigate('Chat')
                }}
-                img={require('../../assets/Envelope.png')} imgheight={20} imgwidth={20}
+                img={require('../../assets/messenger.png')} imgheight={20} imgwidth={20}
                 titlecolor={Mycolors.BG_COLOR} backgroundColor={Mycolors.ORANGE} />
 
               <MyButtons height={35} width={35} borderRadius={5} press={() => {
@@ -704,7 +741,7 @@ const Home2 = (props) => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, }}>Order Amount</Text>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, }}>$ {parseFloat(Number(mapdata.notificationdata.paid_amount).toFixed(3))}</Text>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 12, }}>$ {parseFloat(Number(mapdata.notificationdata.paid_amount).toFixed(2))}</Text>
           </View>
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 8 }}>
@@ -716,7 +753,7 @@ const Home2 = (props) => {
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 8 }}>
             <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, fontWeight: '600' }}>Total Amount</Text>
-            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, fontWeight: '600' }}>$ {parseFloat(Number(mapdata.notificationdata.paid_amount).toFixed(3))}</Text>
+            <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, fontWeight: '600' }}>$ {parseFloat(Number(mapdata.notificationdata.paid_amount).toFixed(2))}</Text>
           </View>
 
 
@@ -725,9 +762,9 @@ const Home2 = (props) => {
               <Image source={require('../../assets/Grouph2.png')} style={{ width: 19, height: 27, top: 5, left: 3 }}></Image>
             </View>
             <View style={{ width: dimensions.SCREEN_WIDTH - 100, left: 20 }}>
-              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, }}>Payment Status:: </Text>
+              <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 13, }}>Payment Status: </Text>
               <View style={{ flexDirection: 'row' }} >
-                <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 2 }}>Amount Paid $ {parseFloat(Number(mapdata.notificationdata.paid_amount).toFixed(3))} via online</Text>
+                <Text style={{ color: Mycolors.TEXT_COLOR, fontSize: 11, top: 2 }}>Amount Paid $ {parseFloat(Number(mapdata.notificationdata.paid_amount).toFixed(2))} via online</Text>
               </View>
             </View>
           </View>
@@ -764,7 +801,8 @@ const Home2 = (props) => {
                 setOpen={() => { setDateOpen(!dateopen) }}
                 setValue={(v) => { setDateValue(v) }}
                 setItems={(i) => { setRideDate(i) }}
-                placeholder="Select Status"
+                // placeholder="Select Status"
+                placeholder={ridedate?.find(el=>el?.value == datevalue)?.label || "Select Status"}
                 onChangeValue={(value) => {
                   setDateValue(value)
                 }}
@@ -816,33 +854,34 @@ const Home2 = (props) => {
               /> : null}
             <View style={{ alignSelf: 'center', width: '90%', marginTop: 36 }}>
             <MyButtons title="Save" height={50} width={'100%'} borderRadius={5} press={() => {
-                if (datevalue == '0') {
+                // if (datevalue == '0') {
+                //   Toast.show({ text1: 'The changed status cannot be same as the previous one.'});
+                //   ChangeRideStatus(datevalue)
+                //   return
+                // }
+                if (currentStatus == datevalue) {
                   Toast.show({ text1: 'The changed status cannot be same as the previous one.'});
-                  ChangeRideStatus(datevalue)
+                  // ChangeRideStatus(datevalue)
                   return
                 }
                 if (datevalue === '2') {
-                  Toast.show({ text1: 'Order Delivered Successfully!' });
                   setmodlevisual(false)
                   ChangeRideStatus(datevalue)
                   return
                 }
                 if (datevalue === '3') {
-                  Toast.show({ text1: 'Status has been changed to Waiting at restaurant' });
                   setmodlevisual(false)
                   ChangeRideStatus(datevalue)
                   return
                 }
                 if (datevalue === '5') {
-                  Toast.show({ text1: 'Status has been changed to On the way to deliver' });
                   setmodlevisual(false)
                   ChangeRideStatus(datevalue)
                   return
                 }
                 if (datevalue == '1') {
-                  if (reason === '') {
+                  if (reason == '' || reason.trim().length == 0) {
                     Toast.show({ text1: 'Please enter the reason for cancellation' });
-                    setmodlevisual(false)
                     return
                   }
                   ChangeRideStatus(datevalue)
@@ -864,9 +903,9 @@ const Home2 = (props) => {
 
 
 {datevalue === '1' ?
-<View style={{width:100,height:300}}></View>
+<View style={{width:100,height:250}}></View>
 : 
-<View style={{width:100,height:300}}></View>
+<View style={{width:100,height:250}}></View>
 }
 
             </ScrollView> 
